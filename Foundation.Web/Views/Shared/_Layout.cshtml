@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Foundation.Web</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Foundation.Web.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <gcds-header lang-href="#" skip-to-herf="#main-content">
+        <div slot="menu">
+            <gcds-top-nav label="Foundation" alignment="right">
+                <gcds-nav-link href="@Url.Action("Index","Home")" slot="home">Foundation</gcds-nav-link>
+                <gcds-nav-link href="@Url.Action("Privacy","Components")">Privacy</gcds-nav-link>
+                <gcds-nav-link href="@Url.Action("Index","Components")">Components</gcds-nav-link>
+            </gcds-top-nav>
+        </div>
+        <div slot="breadcrumb">
+            <gcds-breadcrumbs>
+                <gcds-breadcrumbs-item href="#">Home</gcds-breadcrumbs-item>
+            </gcds-breadcrumbs>
+        </div>
+    </gcds-header>
+    <gcds-container id="main-content" size="xl" centered tag="main" main>
+        @RenderBody()
+    </gcds-container>
+
+    <gcds-footer display="full" >
+
+    </gcds-footer>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
