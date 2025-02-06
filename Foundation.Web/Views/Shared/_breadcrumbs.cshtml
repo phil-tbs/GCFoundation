@@ -1,0 +1,29 @@
+﻿@* @using cloudscribe.Web.Navigation *@
+@* @inject INavigationManager NavigationManager *@
+
+@* @{ *@
+@*     var breadcrumbs = await NavigationManager.GetTree(); *@
+@*     var currentNode = breadcrumbs.GetActiveNode(); *@
+@*     var breadcrumbItems = currentNode?.GetCrumbTrail(false) ?? new List<TreeNode<NavigationNode>>(); *@
+@* } *@
+
+@* @if (breadcrumbItems.Any()) *@
+@* { *@
+@*     <nav aria-label="breadcrumb"> *@
+@*         <ul class="breadcrumb"> *@
+@*             @foreach (var item in breadcrumbItems) *@
+@*             { *@
+@*                 <li class="breadcrumb-item"> *@
+@*                     @if (!string.IsNullOrEmpty(item.Value.Url)) *@
+@*                     { *@
+@*                         <a href="@item.Value.Url">@item.Value.Text</a> *@
+@*                     } *@
+@*                     else *@
+@*                     { *@
+@*                         <span>@item.Value.Text</span> *@
+@*                     } *@
+@*                 </li> *@
+@*             } *@
+@*         </ul> *@
+@*     </nav> *@
+@* } *@
