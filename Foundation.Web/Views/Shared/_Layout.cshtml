@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using cloudscribe.Web.Navigation
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -17,9 +18,7 @@
             </gcds-top-nav>
         </div>
         <div slot="breadcrumb">
-            <gcds-breadcrumbs>
-                <gcds-breadcrumbs-item href="#">Home</gcds-breadcrumbs-item>
-            </gcds-breadcrumbs>
+            @await Component.InvokeAsync("Navigation", new { viewName = "GCDSBreadcrumbs", filterName = NamedNavigationFilters.Breadcrumbs, startingNodeKey = "" })
         </div>
     </gcds-header>
     <gcds-container id="main-content" size="xl" centered tag="main" main>

@@ -7,7 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="cloudscribe.Web.Localization" Version="8.0.0" />
+    <PackageReference Include="cloudscribe.Web.Navigation" Version="8.0.0" />
+    <PackageReference Include="cloudscribe.Web.SiteMap" Version="8.0.0" />
+    <PackageReference Include="cloudscribe.Web.SiteMap.FromNavigation" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="9.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Foundation.Components\Foundation.Components.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Infrastructure\Middleware\" />
+    <Folder Include="Infrastructure\Services\" />
   </ItemGroup>
 
 </Project>
