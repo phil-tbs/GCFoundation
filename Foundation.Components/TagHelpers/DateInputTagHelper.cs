@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 namespace Foundation.Components.TagHelpers
 {
     [HtmlTargetElement("gcds-date-input")]
-    public class DateInputTagHelper : BaseFromComponentTagHelper
+    public class DateInputTagHelper : BaseFormComponentTagHelper
     {
         public required DateInputFormatTypeEnum Format { get; set; }
 

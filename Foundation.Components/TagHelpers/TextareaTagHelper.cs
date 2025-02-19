@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 namespace Foundation.Components.TagHelpers
 {
     [HtmlTargetElement("gcds-textarea")]
-    public class TextareaTagHelper: BaseFromComponentTagHelper
+    public class TextareaTagHelper: BaseFormComponentTagHelper
     {
         public required string Label { get; set; }
         public required string TextareaId { get; set; }
