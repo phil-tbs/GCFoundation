@@ -117,10 +117,67 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Field_Firstname" xml:space="preserve">
+  <data name="Field_Firstname_Label" xml:space="preserve">
     <value>Prénom</value>
+  </data>
+  <data name="Field_Firstname_Hint" xml:space="preserve">
+    <value>Entrer votre prenom</value>
   </data>
   <data name="Field_Lastname" xml:space="preserve">
     <value>Nom de famille</value>
+  </data>
+  <data name="FullName_Label" xml:space="preserve">
+    <value>Nom complet</value>
+  </data>
+  <data name="FullName_Hint" xml:space="preserve">
+    <value>Entrez votre nom complet comme sur votre pièce d’identité.</value>
+  </data>
+  <data name="Email_Label" xml:space="preserve">
+    <value>Adresse électronique</value>
+  </data>
+  <data name="Email_Hint" xml:space="preserve">
+    <value>Entrez une adresse électronique valide (ex: nom@exemple.com).</value>
+  </data>
+  <data name="Password_Label" xml:space="preserve">
+    <value>Mot de passe</value>
+  </data>
+  <data name="Password_Hint" xml:space="preserve">
+    <value>Choisissez un mot de passe fort avec au moins 8 caractères.</value>
+  </data>
+  <data name="Website_Label" xml:space="preserve">
+    <value>Site web</value>
+  </data>
+  <data name="Website_Hint" xml:space="preserve">
+    <value>Entrez l’URL de votre site personnel ou professionnel.</value>
+  </data>
+  <data name="Age_Label" xml:space="preserve">
+    <value>Âge</value>
+  </data>
+  <data name="Age_Hint" xml:space="preserve">
+    <value>Entrez votre âge (doit être 18 ou plus).</value>
+  </data>
+  <data name="Bio_Label" xml:space="preserve">
+    <value>Biographie</value>
+  </data>
+  <data name="Bio_Hint" xml:space="preserve">
+    <value>Écrivez une courte biographie sur vous-même.</value>
+  </data>
+  <data name="Country_Label" xml:space="preserve">
+    <value>Pays</value>
+  </data>
+  <data name="Country_Hint" xml:space="preserve">
+    <value>Sélectionnez votre pays de résidence.</value>
+  </data>
+  <data name="Gender_Label" xml:space="preserve">
+    <value>Genre</value>
+  </data>
+  <data name="Gender_Hint" xml:space="preserve">
+    <value>Sélectionnez votre identité de genre.</value>
+  </data>
+  <data name="AgreeToTerms_Label" xml:space="preserve">
+    <value>Accepter les conditions d'utilisation</value>
+  </data>
+  <data name="AgreeToTerms_Hint" xml:space="preserve">
+    <value>Vous devez accepter pour continuer.</value>
   </data>
 </root>

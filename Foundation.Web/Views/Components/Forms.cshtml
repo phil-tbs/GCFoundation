@@ -1,10 +1,38 @@
 ﻿@model FormTestViewModel
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
 
 
-<form method="post" action="@Url.Action("FormValidationTest", "Components")">
-    <gcds-input for="@Model.Firstname"/>
-    <gcds-input input-input-id="input-lastname" label="Lastname" name="lastname" />
-</form>
+@if (Model == null)
+{
+    <p style="color: red;">Model is NULL!</p>
+}
+else
+{
+
+    <form method="post" action="@Url.Action("FormValidationTest", "Components")">
+        @* <gcds-input for="@Model.Firstname"></gcds-input> *@
+        @* <gcds-input for="@Model.Lastname"></gcds-input> *@
+
+
+        <fd-feild for="@Model.FullName"/>
+        <fd-feild for="@Model.Email"></fd-feild>
+        <fd-feild for="@Model.Password"></fd-feild>
+        <fd-feild for="@Model.Website"></fd-feild>
+        <fd-feild for="@Model.Age"></fd-feild>
+        <fd-feild for="@Model.Bio"></fd-feild>
+
+        <fdcp-select for="@Model.SelectedCountry" items="@Model.CountryOptions" />
+
+        <fd-feild for="@Model.Gender">
+            <gcds-radio value="Male">Male</gcds-radio>
+            <gcds-radio value="Female">Female</gcds-radio>
+            <gcds-radio value="Other">Other</gcds-radio>
+        </fd-feild>
+
+        <fd-feild for="@Model.AgreeToTerms">
+            I agree to the terms and conditions
+        </fd-feild>
+
+        <button type="submit">Submit</button>
+
+    </form>
+}

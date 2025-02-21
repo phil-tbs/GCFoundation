@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Reflection.Emit;
+using System.Reflection;
 using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
+using Foundation.Components.Attributes;
 using Foundation.Components.Enum;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
@@ -68,14 +71,7 @@ namespace Foundation.Components.TagHelpers
                 Name ??= For.Name;
                 Value ??= For.Model?.ToString() ?? "";
                 Required = Required || For.Metadata.ValidatorMetadata.OfType<RequiredAttribute>().Any();
-                ErrorMessage ??= For.Metadata.ValidatorMetadata.OfType<RequiredAttribute>().FirstOrDefault()?.ErrorMessage;
-
-                // Get error message from the model's RequiredAttribute
-                var requiredAttr = For.Metadata.ValidatorMetadata.OfType<RequiredAttribute>().FirstOrDefault();
-                if (requiredAttr != null)
-                {
-                    ErrorMessage = requiredAttr.ErrorMessage ?? GetDefaultRequiredMessage(Name);
-                }
+                RetrieveLocalizedProperties();
             }
 
             AddAttributeIfNotNull(output, "name", Name);
@@ -90,12 +86,17 @@ namespace Foundation.Components.TagHelpers
             base.Process(context, output);
         }
 
-        private string GetDefaultRequiredMessage(string? fieldName)
+        private void RetrieveLocalizedProperties()
         {
-            // Load translated messages from resource files
-            var resourceManager = new ResourceManager("Foundation.Components.Resources.Validation", typeof(BaseFormComponentTagHelper).Assembly);
-            var messageTemplate = resourceManager.GetString("Field_Required") ?? "This field {0} is required.";
-            return string.Format(messageTemplate, fieldName);
+            var propertyInfo = For.Metadata.ContainerType?.GetProperty(For.Name);
+            if (propertyInfo == null) return;
+
+            var metadataAttr = propertyInfo.GetCustomAttribute<LocalizedFieldMetadataAttribute>();
+            if (metadataAttr != null)
+            {
+                Hint = metadataAttr.Hint;
+            }
         }
+
     }
 }

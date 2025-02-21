@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Foundation.Components.Attributes;
 using Foundation.Components.Enum;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
@@ -38,6 +40,7 @@ namespace Foundation.Components.TagHelpers
             {
                 InputId ??= For.Name;
                 Label ??= For.Metadata.DisplayName ?? For.Name;
+                RetrieveLocalizedProperties();
             }
 
             AddAttributeIfNotNull(output, "input-id", InputId);
@@ -46,6 +49,18 @@ namespace Foundation.Components.TagHelpers
             AddAttributeIfNotNull(output, "autocomplete", Autocomplete);
 
             base.Process(context, output);
+        }
+
+        private void RetrieveLocalizedProperties()
+        {
+            var propertyInfo = For.Metadata.ContainerType?.GetProperty(For.Name);
+            if (propertyInfo == null) return;
+
+            var metadataAttr = propertyInfo.GetCustomAttribute<LocalizedFieldMetadataAttribute>();
+            if (metadataAttr != null)
+            {
+                Label = metadataAttr.Label;
+            }
         }
     }
 }

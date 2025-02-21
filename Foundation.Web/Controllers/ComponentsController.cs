@@ -16,6 +16,16 @@ namespace Foundation.Web.Controllers
             return View(componentName);
         }
 
+        
+        public IActionResult FormValidationTest()
+        {
+
+            FormTestViewModel model = new FormTestViewModel();
+
+            return View("Forms", model);
+        }
+
+
         [HttpPost]
         public IActionResult FormValidationTest(FormTestViewModel model)
         {
