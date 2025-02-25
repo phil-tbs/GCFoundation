@@ -126,11 +126,14 @@ namespace Foundation.Components.TagHelpers.FDCP
                 };
             }
 
-            // If no DataType attribute is set, determine type from property type
-            if (this.PropertyInfo.PropertyType == typeof(int) ||
-                this.PropertyInfo.PropertyType == typeof(decimal) ||
-                this.PropertyInfo.PropertyType == typeof(double) ||
-                this.PropertyInfo.PropertyType == typeof(float))
+            Type propertyType = this.PropertyInfo.PropertyType;
+            // Converting to regular type (no nullable) for comparaison
+            Type underlyingType = Nullable.GetUnderlyingType(propertyType) ?? propertyType;
+
+            if (underlyingType == typeof(int) ||
+                underlyingType == typeof(decimal) ||
+                underlyingType == typeof(double) ||
+                underlyingType == typeof(float))
             {
                 return "number";
             }
