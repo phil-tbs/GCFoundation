@@ -91,11 +91,14 @@ namespace Foundation.Components.TagHelpers
             var propertyInfo = For.Metadata.ContainerType?.GetProperty(For.Name);
             if (propertyInfo == null) return;
 
-            var metadataAttr = propertyInfo.GetCustomAttribute<LocalizedFieldMetadataAttribute>();
-            if (metadataAttr != null)
-            {
-                Hint = metadataAttr.Hint;
-            }
+            Hint = GetLocalizedHint(propertyInfo);
+
+        }
+
+        protected string GetLocalizedHint(PropertyInfo property)
+        {
+            var displayAttr = property.GetCustomAttribute<DisplayAttribute>();
+            return displayAttr?.GetDescription() ?? string.Empty;
         }
 
     }

@@ -35,7 +35,7 @@ namespace Foundation.Web.Models
         public int? Age { get; set; }
 
         [DataType(DataType.Date)]
-        [LocalizedFieldMetadata(typeof(Forms),"DateOfBirth_Label", "DateOfBirth_Hint")]
+        [Display(Name = "DateOfBirth_Label", Description = "DateOfBirth_Hint", ResourceType = typeof(Forms))]
         [DateFormat("full")]
         public DateTime? DateOfBirth { get; set; }
 
@@ -43,12 +43,12 @@ namespace Foundation.Web.Models
         [MinLength(10)]
         [MaxLength(200)]
         [DataType(DataType.MultilineText)]
-        [Display(Name = "Bio_Label", ResourceType = typeof(Forms))]
+        [Display(Name = "Bio_Label", Description = "Bio_Hint" , ResourceType = typeof(Forms))]
         public string Bio { get; set; } = string.Empty;
 
 
         [Required]
-        [LocalizedFieldMetadata(typeof(Forms), "Country_Label", "Country_hint")]
+        [Display(Name = "Country_Label", Description = "Country_Hint", ResourceType = typeof(Forms))]
         public string? SelectedCountry { get; set;}
 
         public List<SelectListItem> CountryOptions { get; set; } = new()
@@ -71,7 +71,7 @@ namespace Foundation.Web.Models
         };
 
         [Required]
-        [LocalizedFieldMetadata(typeof(Forms),"AgreeToTerms_Label")]
+        [Display(Name = "AgreeToTerms_Label", Description = "AgreeToTerms_Hint", ResourceType = typeof(Forms))]
         public bool AgreeToTerms { get; set; }
 
 

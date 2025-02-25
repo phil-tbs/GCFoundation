@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -40,6 +41,8 @@ namespace Foundation.Components.TagHelpers
             {
                 InputId ??= For.Name;
                 Label ??= For.Metadata.DisplayName ?? For.Name;
+
+
                 RetrieveLocalizedProperties();
             }
 
@@ -56,11 +59,15 @@ namespace Foundation.Components.TagHelpers
             var propertyInfo = For.Metadata.ContainerType?.GetProperty(For.Name);
             if (propertyInfo == null) return;
 
-            var metadataAttr = propertyInfo.GetCustomAttribute<LocalizedFieldMetadataAttribute>();
-            if (metadataAttr != null)
-            {
-                Label = metadataAttr.Label;
-            }
+            // Use GetLocalizedLabel to retrieve the label
+            Label = GetLocalizedLabel(propertyInfo);
         }
+
+        protected string GetLocalizedLabel(PropertyInfo property)
+        {
+            var displayAttr = property.GetCustomAttribute<DisplayAttribute>();
+            return displayAttr?.GetName() ?? property.Name;
+        }
+
     }
 }
