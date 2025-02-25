@@ -24,7 +24,7 @@ namespace Foundation.Components.TagHelpers.FDCP
 
             output.TagName = "gcds-select"; // Render as `<select>`
             output.Attributes.SetAttribute("name", For.Name);
-            output.Attributes.SetAttribute("id", For.Name);
+            output.Attributes.SetAttribute("select-id", For.Name);
             output.Attributes.SetAttribute("class", "gcds-select");
             output.Attributes.SetAttribute("default-value", "Select option");
 

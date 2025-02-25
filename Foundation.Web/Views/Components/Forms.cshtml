@@ -13,24 +13,23 @@ else
         @* <gcds-input for="@Model.Lastname"></gcds-input> *@
 
 
-        <fd-feild for="@Model.FullName"/>
-        <fd-feild for="@Model.Email"></fd-feild>
-        <fd-feild for="@Model.Password"></fd-feild>
-        <fd-feild for="@Model.Website"></fd-feild>
-        <fd-feild for="@Model.Age"></fd-feild>
-        <fd-feild for="@Model.Bio"></fd-feild>
+        <fdcp-input for="@Model.FullName"/>
+        <fdcp-input for="@Model.Email"/>
+        <fdcp-input for="@Model.Password"/>
+        <fdcp-input for="@Model.Website"/>
+        <fdcp-input for="@Model.Age"/>
+        <fdcp-input for="@Model.Bio"/>
+        <fdcp-input for="@Model.DateOfBirth"/>
 
-        <fdcp-select for="@Model.SelectedCountry" items="@Model.CountryOptions" />
+        <fdcp-select for="@Model.SelectedCountry" items="@Model.CountryOptions"/>
 
-        <fd-feild for="@Model.Gender">
-            <gcds-radio value="Male">Male</gcds-radio>
-            <gcds-radio value="Female">Female</gcds-radio>
-            <gcds-radio value="Other">Other</gcds-radio>
-        </fd-feild>
+        <fdcp-radio for="@Model.Gender" items="@Model.GenderOptions"/>
 
-        <fd-feild for="@Model.AgreeToTerms">
+        <fdcp-checkboxes for="@Model.SelectedInterests" items="@Model.InterestOptions" />
+
+        <fdcp-input for="@Model.AgreeToTerms">
             I agree to the terms and conditions
-        </fd-feild>
+        </fdcp-input>
 
         <button type="submit">Submit</button>
 

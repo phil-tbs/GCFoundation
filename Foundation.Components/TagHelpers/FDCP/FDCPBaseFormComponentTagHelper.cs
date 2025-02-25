@@ -29,7 +29,25 @@ namespace Foundation.Components.TagHelpers.FDCP
         [ViewContext]
         public ViewContext ViewContext { get; set; } = default!;
 
-        private DataTypeAttribute? DataTypeAttribute { get; set; }
+        protected DataTypeAttribute? DataTypeAttribute
+        {
+            get
+            {
+                if (PropertyInfo == null)
+                {
+                    return null;
+                }
+                return PropertyInfo.GetCustomAttribute<DataTypeAttribute>();
+            }
+        }
+
+        protected PropertyInfo? PropertyInfo
+        {
+            get
+            {
+                return For.Metadata.ContainerType.GetProperty(For.Metadata.PropertyName);
+            }
+        }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
@@ -46,27 +64,36 @@ namespace Foundation.Components.TagHelpers.FDCP
                 return;
             }
 
-            DataTypeAttribute = property.GetCustomAttribute<DataTypeAttribute>();
-
             output.TagName = "gcds-input";
             output.TagMode = TagMode.StartTagAndEndTag;
             string fieldName = For.Name;
+            
             string label = GetLocalizedLabel(property);
             string hint = GetLocalizedHint(property);
-
+            bool required = For.Metadata.ValidatorMetadata.OfType<RequiredAttribute>().Any();
+            string fieldValue = For.Model?.ToString() ?? string.Empty; // Retrieve the model value
+            
+            
+            output.Attributes.SetAttribute("value", fieldValue);
             output.Attributes.SetAttribute("name", fieldName);
             output.Attributes.SetAttribute("label", label);
             output.Attributes.SetAttribute("hint", hint);
+            
+            if (required)
+            {
+                output.Attributes.SetAttribute("required", required);
+            }
+
 
         }
 
-        private string GetLocalizedLabel(PropertyInfo property)
+        protected string GetLocalizedLabel(PropertyInfo property)
         {
             var displayAttr = property.GetCustomAttribute<DisplayAttribute>();
             return displayAttr?.GetName() ?? property.Name;
         }
 
-        private string GetLocalizedHint(PropertyInfo property)
+        protected string GetLocalizedHint(PropertyInfo property)
         {
             var displayAttr = property.GetCustomAttribute<DisplayAttribute>();
             return displayAttr?.GetDescription() ?? string.Empty;

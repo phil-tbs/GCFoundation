@@ -1,0 +1,144 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+using Foundation.Components.Attributes;
+using Microsoft.AspNetCore.Razor.TagHelpers;
+
+namespace Foundation.Components.TagHelpers.FDCP
+{
+    [HtmlTargetElement("fdcp-input", Attributes = "for")]
+    public class FDCPInput : FDCPBaseFormComponentTagHelper
+    {
+        private enum TagType
+        {
+            input,
+            date,
+            checkbox,
+            textArea
+        }
+
+
+        public override void Process(TagHelperContext context, TagHelperOutput output)
+        {
+            // Call base class to handle label, hint, and errors
+            base.Process(context, output);
+
+            if (this.PropertyInfo == null)
+            {
+                output.SuppressOutput();
+                return;
+            }
+
+            TagType tagType = GetTagType();
+
+            
+            BuildByTagType(context,output,tagType);
+            
+
+            
+
+        }
+
+        private void BuildByTagType(TagHelperContext context, TagHelperOutput output, TagType tagType)
+        {
+            output.TagName = GetTagNameByInputType(tagType);
+
+            if (tagType == TagType.checkbox)
+            {
+                output.Attributes.SetAttribute("checkbox-id", For.Name);
+            }
+            else if (tagType == TagType.textArea)
+            {
+                output.Attributes.SetAttribute("textarea-id", For.Name);
+            }
+            else if (tagType == TagType.date)
+            {
+                DateFormatAttribute? formatAttr = this.PropertyInfo.GetCustomAttribute<DateFormatAttribute>();
+                string label = GetLocalizedLabel(this.PropertyInfo);
+
+                output.Attributes.SetAttribute("legend", label);
+                output.Attributes.SetAttribute("format", (formatAttr != null)? formatAttr.Format : "full");
+            }
+            else 
+            {
+                string gcdsType = GetInputType();
+                output.Attributes.SetAttribute("type", gcdsType);
+                output.Attributes.SetAttribute("input-id", For.Name);
+            }
+
+        }
+
+
+        private string? GetTagNameByInputType(TagType inputType)
+        {
+            switch (inputType) {
+                case TagType.input:
+                    return "gcds-input";
+                case TagType.date:
+                    return "gcds-date-input";
+                case TagType.checkbox:
+                    return "gcds-checkbox";
+                case TagType.textArea:
+                    return "gcds-textarea";
+                default:
+                    return null;
+
+            }
+        }
+
+        private TagType GetTagType()
+        {
+            if (this.PropertyInfo.PropertyType == typeof(bool))
+                return TagType.checkbox;
+
+            if (DataTypeAttribute != null)
+            {
+
+                switch (DataTypeAttribute.DataType)
+                {
+                    case DataType.Date:
+                        return TagType.date;
+                    case DataType.MultilineText:
+                        return TagType.textArea;
+                    default:
+                        return TagType.input;
+                }
+            }
+
+            return TagType.input;
+        }
+
+        private string GetInputType()
+        {
+
+            if (DataTypeAttribute != null)
+            {
+                return DataTypeAttribute.DataType switch
+                {
+                    DataType.EmailAddress => "email",
+                    DataType.Password => "password",
+                    DataType.Url => "url",
+                    _ => "text"
+                };
+            }
+
+            // If no DataType attribute is set, determine type from property type
+            if (this.PropertyInfo.PropertyType == typeof(int) ||
+                this.PropertyInfo.PropertyType == typeof(decimal) ||
+                this.PropertyInfo.PropertyType == typeof(double) ||
+                this.PropertyInfo.PropertyType == typeof(float))
+            {
+                return "number";
+            }
+
+            return "text";
+        }
+
+    }
+
+    
+}

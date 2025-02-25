@@ -181,4 +181,13 @@
   <data name="AgreeToTerms_Hint" xml:space="preserve">
     <value>You must agree to continue.</value>
   </data>
+  <data name="Interests_Label" xml:space="preserve">
+    <value>What is your interests?</value>
+  </data>
+  <data name="DateOfBirth_Label" xml:space="preserve">
+    <value>Date of birth</value>
+  </data>
+  <data name="DateOfBirth_Hint" xml:space="preserve">
+    <value>Enter your date of birth</value>
+  </data>
 </root>

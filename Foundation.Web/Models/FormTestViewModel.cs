@@ -32,7 +32,12 @@ namespace Foundation.Web.Models
         [Required]
         [Range(18, 100, ErrorMessage = "Age must be between 18 and 100.")]
         [Display(Name = "Age_Label", ResourceType = typeof(Forms))]
-        public int Age { get; set; }
+        public int? Age { get; set; }
+
+        [DataType(DataType.Date)]
+        [LocalizedFieldMetadata(typeof(Forms),"DateOfBirth_Label", "DateOfBirth_Hint")]
+        [DateFormat("full")]
+        public DateTime? DateOfBirth { get; set; }
 
         [Required]
         [MinLength(10)]
@@ -44,7 +49,7 @@ namespace Foundation.Web.Models
 
         [Required]
         [LocalizedFieldMetadata(typeof(Forms), "Country_Label", "Country_hint")]
-        public string SelectedCountry { get; set; } = string.Empty;
+        public string? SelectedCountry { get; set;}
 
         public List<SelectListItem> CountryOptions { get; set; } = new()
         {
@@ -58,10 +63,30 @@ namespace Foundation.Web.Models
         [Display(Name = "Gender_Label", ResourceType = typeof(Forms))]
         public string Gender { get; set; } = string.Empty;
 
+        public List<SelectListItem> GenderOptions { get; set; } = new()
+        {
+            new SelectListItem { Value = "Male", Text = "Male" },
+            new SelectListItem { Value = "Female", Text = "Female" },
+            new SelectListItem { Value = "Other", Text = "Other" }
+        };
+
         [Required]
-        [Display(Name = "AgreeToTerms_Label", ResourceType = typeof(Forms))]
+        [LocalizedFieldMetadata(typeof(Forms),"AgreeToTerms_Label")]
         public bool AgreeToTerms { get; set; }
 
+
+
+        [Required]
+        [Display(Name = "Interests_Label", ResourceType = typeof(Forms))]
+        public List<string> SelectedInterests { get; set; } = new();
+
+        public List<SelectListItem> InterestOptions { get; set; } = new()
+        {
+            new SelectListItem { Value = "sports", Text = "Sports" },
+            new SelectListItem { Value = "music", Text = "Music" },
+            new SelectListItem { Value = "travel", Text = "Travel" },
+            new SelectListItem { Value = "reading", Text = "Reading" }
+        };
 
     }
 }

@@ -133,6 +133,24 @@ namespace Foundation.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter your date of birth.
+        /// </summary>
+        public static string DateOfBirth_Hint {
+            get {
+                return ResourceManager.GetString("DateOfBirth_Hint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date of birth.
+        /// </summary>
+        public static string DateOfBirth_Label {
+            get {
+                return ResourceManager.GetString("DateOfBirth_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email Address.
         /// </summary>
         public static string Email_Hint {
@@ -211,6 +229,15 @@ namespace Foundation.Web.Resources {
         public static string Gender_Label {
             get {
                 return ResourceManager.GetString("Gender_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to What is your interests?.
+        /// </summary>
+        public static string Interests_Label {
+            get {
+                return ResourceManager.GetString("Interests_Label", resourceCulture);
             }
         }
         
