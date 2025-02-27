@@ -9,9 +9,8 @@ else
 {
 
 
+    <fdcp-form method="post" action="@Url.Action("FormValidationTest", "Components")" for="@Model" >
 
-    <form method="post" action="@Url.Action("FormValidationTest", "Components")">
-        <fdcp-error-summary for="@Model"></fdcp-error-summary>
         <fdcp-input for="@Model.FullName"/>
         <fdcp-input for="@Model.Email"/>
         <fdcp-input for="@Model.Password"/>
@@ -32,5 +31,5 @@ else
 
         <gcds-button type="submit">Submit</gcds-button>
 
-    </form>
+    </fdcp-form>
 }
