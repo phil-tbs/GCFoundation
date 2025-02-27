@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 namespace Foundation.Components.TagHelpers
 {
     [HtmlTargetElement("gcds-select")]
-    public class SelectTagHelper : BaseFromComponentTagHelper
+    public class SelectTagHelper : BaseFormComponentTagHelper
     {
         public required string Label { get; set; }
 

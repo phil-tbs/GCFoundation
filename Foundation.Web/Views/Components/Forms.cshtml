@@ -1,0 +1,35 @@
+﻿@model FormTestViewModel
+
+
+@if (Model == null)
+{
+    <p style="color: red;">Model is NULL!</p>
+}
+else
+{
+
+
+    <fdcp-form method="post" action="@Url.Action("FormValidationTest", "Components")" for="@Model" >
+
+        <fdcp-input for="@Model.FullName"/>
+        <fdcp-input for="@Model.Email"/>
+        <fdcp-input for="@Model.Password"/>
+        <fdcp-input for="@Model.Website"/>
+        <fdcp-input for="@Model.Age"/>
+        <fdcp-input for="@Model.Bio"/>
+        <fdcp-input for="@Model.DateOfBirth"/>
+
+        <fdcp-select for="@Model.SelectedCountry" items="@Model.CountryOptions"/>
+
+        <fdcp-radio for="@Model.Gender" items="@Model.GenderOptions"/>
+
+        <fdcp-checkboxes for="@Model.SelectedInterests" items="@Model.InterestOptions" />
+
+        <fdcp-input for="@Model.AgreeToTerms">
+            I agree to the terms and conditions
+        </fdcp-input>
+
+        <gcds-button type="submit">Submit</gcds-button>
+
+    </fdcp-form>
+}

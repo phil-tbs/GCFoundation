@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Foundation.Web.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Foundation.Web.Controllers
 {
@@ -13,6 +14,28 @@ namespace Foundation.Web.Controllers
         public IActionResult GetComponent(string componentName)
         {
             return View(componentName);
+        }
+
+        
+        public IActionResult FormValidationTest()
+        {
+
+            FormTestViewModel model = new FormTestViewModel();
+
+            return View("Forms", model);
+        }
+
+
+        [HttpPost]
+        public IActionResult FormValidationTest(FormTestViewModel model)
+        {
+
+            if (ModelState.IsValid)
+            {
+
+            }
+
+            return View("Forms", model);
         }
     }
 }

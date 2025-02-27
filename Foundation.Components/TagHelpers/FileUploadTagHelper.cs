@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers
 {
-    public class FileUploadTagHelper : BaseFromComponentTagHelper
+    public class FileUploadTagHelper : BaseFormComponentTagHelper
     {
         public required string Label { get; set; }
 

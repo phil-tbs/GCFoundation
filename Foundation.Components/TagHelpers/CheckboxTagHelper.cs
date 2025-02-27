@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 namespace Foundation.Components.TagHelpers
 {
     [HtmlTargetElement("gcds-checkbox")]
-    public class CheckboxTagHelper : BaseFromComponentTagHelper
+    public class CheckboxTagHelper : BaseFormComponentTagHelper
     {
         /// <summary>
         /// Checkbox id

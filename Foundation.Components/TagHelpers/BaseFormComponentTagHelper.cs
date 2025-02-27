@@ -1,15 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Reflection.Emit;
+using System.Reflection;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
+using Foundation.Components.Attributes;
 using Foundation.Components.Enum;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Foundation.Components.TagHelpers
 {
-    public abstract class BaseFromComponentTagHelper : BaseTagHelper
+    public abstract class BaseFormComponentTagHelper : BaseTagHelper
     {
+        [HtmlAttributeName("for")]
+        public ModelExpression For { get; set; } = default!;
+
+        [ViewContext]
+        public ViewContext ViewContext { get; set; } = default!;
+
         /// <summary>
         /// Name of the input
         /// </summary>
@@ -52,6 +66,14 @@ namespace Foundation.Components.TagHelpers
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
+            if (For != null)
+            {
+                Name ??= For.Name;
+                Value ??= For.Model?.ToString() ?? "";
+                Required = Required || For.Metadata.ValidatorMetadata.OfType<RequiredAttribute>().Any();
+                RetrieveLocalizedProperties();
+            }
+
             AddAttributeIfNotNull(output, "name", Name);
             AddAttributeIfNotNull(output, "disabled", Disabled);
             AddAttributeIfNotNull(output, "error-message", ErrorMessage);
@@ -63,5 +85,21 @@ namespace Foundation.Components.TagHelpers
 
             base.Process(context, output);
         }
+
+        private void RetrieveLocalizedProperties()
+        {
+            var propertyInfo = For.Metadata.ContainerType?.GetProperty(For.Name);
+            if (propertyInfo == null) return;
+
+            Hint = GetLocalizedHint(propertyInfo);
+
+        }
+
+        protected string GetLocalizedHint(PropertyInfo property)
+        {
+            var displayAttr = property.GetCustomAttribute<DisplayAttribute>();
+            return displayAttr?.GetDescription() ?? string.Empty;
+        }
+
     }
 }
