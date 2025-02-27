@@ -30,7 +30,7 @@ namespace Foundation.Tests.Components.Tests.FDCP
         {
             // Arrange
             var modelExplorer = new ModelExplorer(new EmptyModelMetadataProvider(), null, "Test Value");
-            var helper = new FDCPInput
+            var helper = new FDCPInputTagHelper
             {
                 For = new ModelExpression("TestProperty", modelExplorer),
                 ViewContext = new ViewContext()
@@ -54,7 +54,7 @@ namespace Foundation.Tests.Components.Tests.FDCP
             var propertyInfo = typeof(TestModel).GetProperty(nameof(TestModel.Date));
             var modelExplorer = new ModelExplorer(new EmptyModelMetadataProvider(), null, DateTime.Now);
 
-            var helper = new FDCPInput
+            var helper = new FDCPInputTagHelper
             {
                 For = new ModelExpression("Date", modelExplorer),
                 ViewContext = new ViewContext()
@@ -76,7 +76,7 @@ namespace Foundation.Tests.Components.Tests.FDCP
         {
             // Arrange
             var modelExplorer = new ModelExplorer(new EmptyModelMetadataProvider(), null, true);
-            var helper = new FDCPInput
+            var helper = new FDCPInputTagHelper
             {
                 For = new ModelExpression("IsChecked", modelExplorer),
                 ViewContext = new ViewContext()
@@ -100,7 +100,7 @@ namespace Foundation.Tests.Components.Tests.FDCP
             var propertyInfo = typeof(TestModel).GetProperty(nameof(TestModel.Comments));
             var modelExplorer = new ModelExplorer(new EmptyModelMetadataProvider(), null, "Some text");
 
-            var helper = new FDCPInput
+            var helper = new FDCPInputTagHelper
             {
                 For = new ModelExpression("Comments", modelExplorer),
                 ViewContext = new ViewContext()

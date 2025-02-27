@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 namespace Foundation.Components.TagHelpers.FDCP
 {
     [HtmlTargetElement("fdcp-input", Attributes = "for")]
-    public class FDCPInput : FDCPBaseFormComponentTagHelper
+    public class FDCPInputTagHelper : FDCPBaseFormComponentTagHelper
     {
         private enum TagType
         {

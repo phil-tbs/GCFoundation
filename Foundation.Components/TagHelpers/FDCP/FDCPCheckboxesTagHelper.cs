@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 namespace Foundation.Components.TagHelpers.FDCP
 {
     [HtmlTargetElement("fdcp-checkboxes", Attributes = "for, items")]
-    public class FDCPCheckboxes : FDCPBaseFormComponentTagHelper
+    public class FDCPCheckboxesTagHelper : FDCPBaseFormComponentTagHelper
     {
         [HtmlAttributeName("items")]
         public IEnumerable<SelectListItem> Items { get; set; } = new List<SelectListItem>();

@@ -11,7 +11,7 @@ namespace Foundation.Components.TagHelpers.FDCP
 {
 
     [HtmlTargetElement("fdcp-radio", Attributes = "for, items")]
-    public class FDCPRadio : FDCPBaseFormComponentTagHelper
+    public class FDCPRadioTagHelper : FDCPBaseFormComponentTagHelper
     {
 
         [HtmlAttributeName("items")]
