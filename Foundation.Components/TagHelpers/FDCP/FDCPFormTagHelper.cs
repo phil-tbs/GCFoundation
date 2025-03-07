@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
@@ -43,6 +44,7 @@ namespace Foundation.Components.TagHelpers.FDCP
 
 
             var errorSummaryTag = new TagBuilder("gcds-error-summary");
+            errorSummaryTag.Attributes.Add("lang", CultureInfo.CurrentCulture.Name);
 
             // Add error summary if model has errors
             if (!Model.IsValid)

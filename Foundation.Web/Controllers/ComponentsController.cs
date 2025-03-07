@@ -3,20 +3,23 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Foundation.Web.Controllers
 {
+    [Route("components")]
     public class ComponentsController : Controller
     {
+        [HttpGet("")]
         public IActionResult Index()
         {
             return View();
         }
 
 
+        [HttpGet("component")]
         public IActionResult GetComponent(string componentName)
         {
             return View(componentName);
         }
 
-        
+        [HttpGet("testingForm")]
         public IActionResult FormValidationTest()
         {
 

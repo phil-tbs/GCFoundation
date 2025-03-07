@@ -1,5 +1,7 @@
-﻿using System.Text.Json;
+﻿using System.Globalization;
+using System.Text.Json;
 using Foundation.Components.Models;
+using Foundation.Components.Utilities;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers.FDCP
@@ -24,6 +26,8 @@ namespace Foundation.Components.TagHelpers.FDCP
                 ));
             output.TagMode = TagMode.StartTagAndEndTag;
             output.TagName = "gcds-error-summary";
+            output.Attributes.SetAttribute("lang", LanguageUtilitiy.GetCurrentApplicationLanguage());
+
             if (!Model.IsValid)
             {
                 output.Attributes.SetAttribute("error-links", errorJson);
