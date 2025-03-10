@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Reflection;
+using Foundation.Components.Utilities;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
@@ -37,7 +39,13 @@ namespace Foundation.Components.TagHelpers.FDCP
         {
             get
             {
-                return For.Metadata.ContainerType.GetProperty(For.Metadata.PropertyName);
+                PropertyInfo? propertyInfo = null;
+
+                if (!string.IsNullOrEmpty(For.Metadata.PropertyName))
+                {
+                    propertyInfo = For.Metadata.ContainerType?.GetProperty(For.Metadata.PropertyName);
+                }
+                return propertyInfo;
             }
         }
 
@@ -70,6 +78,8 @@ namespace Foundation.Components.TagHelpers.FDCP
             output.Attributes.SetAttribute("name", fieldName);
             output.Attributes.SetAttribute("label", label);
             output.Attributes.SetAttribute("hint", hint);
+
+            output.Attributes.SetAttribute("lang", LanguageUtilitiy.GetCurrentApplicationLanguage());
             
             if (required)
             {

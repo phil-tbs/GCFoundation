@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
@@ -15,13 +16,13 @@ namespace Foundation.Components.TagHelpers.FDCP
     public class FDCPFormTagHelper : TagHelper
     {
         [HtmlAttributeName("for")]
-        public BaseViewModel Model { get; set; }
+        public BaseViewModel Model { get; set; } = default!;
 
         [HtmlAttributeName("method")]
         public string Method { get; set; } = "post";
 
         [HtmlAttributeName("action")]
-        public string Action { get; set; }
+        public string Action { get; set; } = default!;
 
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
@@ -43,6 +44,7 @@ namespace Foundation.Components.TagHelpers.FDCP
 
 
             var errorSummaryTag = new TagBuilder("gcds-error-summary");
+            errorSummaryTag.Attributes.Add("lang", CultureInfo.CurrentCulture.Name);
 
             // Add error summary if model has errors
             if (!Model.IsValid)

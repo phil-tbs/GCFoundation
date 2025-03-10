@@ -1,4 +1,5 @@
-﻿@using cloudscribe.Web.Navigation
+﻿@using Foundation.Components.Utilities
+@using cloudscribe.Web.Navigation
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +10,19 @@
     <link rel="stylesheet" href="~/Foundation.Web.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <gcds-header lang-href="#" skip-to-herf="#main-content">
+    @{
+        RouteValueDictionary routeValueDictionary = new RouteValueDictionary(ViewContext.RouteData.Values);
+        routeValueDictionary["culture"] = LanguageUtilitiy.GetOppositeLangauge();
+        Foundation.Components.Enum.LanguageEnum currentLanguage = Foundation.Components.Enum.LanguageEnum.en;
+
+        if (LanguageUtilitiy.GetCurrentApplicationLanguage() == "fr")
+        {
+            currentLanguage = Foundation.Components.Enum.LanguageEnum.fr;
+        }
+
+
+    }
+    <gcds-header lang-href="@Url.RouteUrl(routeValueDictionary)" skip-to-herf="#main-content" lang="@currentLanguage">
         <div slot="menu">
             <gcds-top-nav label="Foundation" alignment="right">
                 <gcds-nav-link href="@Url.Action("Index","Home")" slot="home">Foundation</gcds-nav-link>

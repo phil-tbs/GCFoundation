@@ -57,6 +57,11 @@ namespace Foundation.Components.TagHelpers.FDCP
             }
             else if (tagType == TagType.date)
             {
+                if(this.PropertyInfo == null)
+                {
+                    throw new InvalidOperationException("Missing proprities");
+                }
+
                 DateFormatAttribute? formatAttr = this.PropertyInfo.GetCustomAttribute<DateFormatAttribute>();
                 string label = GetLocalizedLabel(this.PropertyInfo);
 

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Foundation.Web.Controllers
 {
+    [Route("home")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -13,6 +14,7 @@ namespace Foundation.Web.Controllers
             _logger = logger;
         }
 
+        [HttpGet("")]
         public IActionResult Index()
         {
             return View();
