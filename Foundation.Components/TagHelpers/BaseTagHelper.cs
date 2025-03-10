@@ -33,7 +33,8 @@ namespace Foundation.Components.TagHelpers
             // Add the attribute only if the value is not null or default
             if (attributeValue != null && !attributeValue.Equals(default))
             {
-                output.Attributes.SetAttribute(attributeName, CaseUtility.ConvertToKebabCase(attributeValue.ToString()));
+                string attributeValueString = attributeValue.ToString() ?? string.Empty; // Ensure it's not null
+                output.Attributes.SetAttribute(attributeName, CaseUtility.ConvertToKebabCase(attributeValueString));
             }
         }
     }

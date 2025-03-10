@@ -25,7 +25,7 @@ namespace Foundation.Components.TagHelpers
 
         public SizeTypeEmum Size { get; set; } = SizeTypeEmum.lg;
 
-        public string Tag {  get; set; }
+        public string? Tag {  get; set; }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {

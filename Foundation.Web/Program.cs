@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Localization;
 using System.Globalization;
 using Microsoft.Extensions.Options;
 using Foundation.Web.Infrastructure.Extensions;
+using Foundation.Components.Services.Interfaces;
+using Foundation.Components.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +23,9 @@ builder.Services.AddCloudscribeNavigation(builder.Configuration.GetSection("Navi
 builder.Services.Configure<GlobalResourceOptions>(builder.Configuration.GetSection("GlobalResourceOptions"));
 builder.Services.AddSingleton<IStringLocalizerFactory, GlobalResourceManagerStringLocalizerFactory>();
 builder.Services.AddLocalization();
+
+builder.Services.AddSingleton(typeof(IBreadcrumbsLocalizationService), typeof(BreadcrumbsLocalizationService<Foundation.Web.Resources.Navigation>));
+
 
 
 

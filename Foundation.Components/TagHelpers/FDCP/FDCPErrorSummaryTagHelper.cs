@@ -10,7 +10,7 @@ namespace Foundation.Components.TagHelpers.FDCP
     public class FDCPErrorSummaryTagHelper: TagHelper
     {
         [HtmlAttributeName("for")]
-        public BaseViewModel Model { get; set; }
+        public BaseViewModel Model { get; set; } = default!;
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {

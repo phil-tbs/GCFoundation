@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -25,8 +26,15 @@ namespace Foundation.Components.TagHelpers.FDCP
             }
 
             string fieldName = For.Name;
-            string label = GetLocalizedLabel(For.Metadata.ContainerType.GetProperty(For.Metadata.PropertyName));
-            string hint = GetLocalizedHint(For.Metadata.ContainerType.GetProperty(For.Metadata.PropertyName));
+            PropertyInfo? propertyInfo = this.PropertyInfo;
+
+            if (propertyInfo == null)
+            {
+                throw new InvalidOperationException("Missing proprities");
+            }
+
+            string label = GetLocalizedLabel(propertyInfo);
+            string hint = GetLocalizedHint(propertyInfo);
 
             // Retrieve selected values (if any)
             var selectedValues = For.Model as List<string> ?? new List<string>();

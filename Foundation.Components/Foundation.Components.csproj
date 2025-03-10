@@ -27,4 +27,12 @@
     </EmbeddedResource>
   </ItemGroup>
 
+	<ItemGroup>
+		<Content Include="Views\Shared\Components\Navigation\GCDSBreadcrumbs.cshtml">
+			<Pack>true</Pack>
+			<PackagePath>contentFiles\any\net8.0\Views\Shared\Components\Navigation\</PackagePath>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
 </Project>

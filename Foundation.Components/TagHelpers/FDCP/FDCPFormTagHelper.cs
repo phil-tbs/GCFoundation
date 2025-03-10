@@ -16,13 +16,13 @@ namespace Foundation.Components.TagHelpers.FDCP
     public class FDCPFormTagHelper : TagHelper
     {
         [HtmlAttributeName("for")]
-        public BaseViewModel Model { get; set; }
+        public BaseViewModel Model { get; set; } = default!;
 
         [HtmlAttributeName("method")]
         public string Method { get; set; } = "post";
 
         [HtmlAttributeName("action")]
-        public string Action { get; set; }
+        public string Action { get; set; } = default!;
 
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {

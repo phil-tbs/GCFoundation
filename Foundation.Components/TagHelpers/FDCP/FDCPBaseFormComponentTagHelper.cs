@@ -39,7 +39,13 @@ namespace Foundation.Components.TagHelpers.FDCP
         {
             get
             {
-                return For.Metadata.ContainerType.GetProperty(For.Metadata.PropertyName);
+                PropertyInfo? propertyInfo = null;
+
+                if (!string.IsNullOrEmpty(For.Metadata.PropertyName))
+                {
+                    propertyInfo = For.Metadata.ContainerType?.GetProperty(For.Metadata.PropertyName);
+                }
+                return propertyInfo;
             }
         }
 
