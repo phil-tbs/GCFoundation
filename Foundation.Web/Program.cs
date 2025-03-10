@@ -23,6 +23,7 @@ builder.Services.AddSingleton<IStringLocalizerFactory, GlobalResourceManagerStri
 builder.Services.AddLocalization();
 
 
+
 var supportedCultures = new[] { new CultureInfo("en-CA"), new CultureInfo("fr-CA") };
 
 var routeSegmentLocalizationProvider = new FirstUrlSegmentRequestCultureProvider(supportedCultures.ToList());

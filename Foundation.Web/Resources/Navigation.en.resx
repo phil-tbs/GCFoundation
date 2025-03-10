@@ -120,7 +120,7 @@
   <data name="Nav_Components" xml:space="preserve">
     <value>Components</value>
   </data>
-  <data name="Nav_Home " xml:space="preserve">
+  <data name="Nav_Home" xml:space="preserve">
     <value>Home</value>
   </data>
 </root>

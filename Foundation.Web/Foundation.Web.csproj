@@ -22,7 +22,6 @@
   <ItemGroup>
     <Folder Include="Infrastructure\Middleware\" />
     <Folder Include="Infrastructure\Services\" />
-    <Folder Include="Infrastructure\Transformers\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +29,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Forms.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Navigation.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Navigation.resx</DependentUpon>
     </Compile>
     <Compile Update="Resources\Routes.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -42,6 +46,10 @@
     <EmbeddedResource Update="Resources\Forms.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Forms.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Navigation.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Navigation.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Routes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

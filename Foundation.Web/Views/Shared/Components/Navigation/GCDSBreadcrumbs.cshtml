@@ -3,14 +3,14 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @addTagHelper *, cloudscribe.Web.Navigation
 @using Microsoft.Extensions.Localization
-@inject IStringLocalizer<cloudscribe.Web.Navigation.MenuResources> sr
+@inject IStringLocalizer<Foundation.Web.Resources.Navigation> sr
 @if (Model.CurrentNode != null && (Model.ParentChain.Count > 1 || (Model.TailCrumbs != null && Model.TailCrumbs.Count > 0)))
 {
     <gcds-breadcrumbs>
         @foreach (var node in Model.ParentChain)
         {
             if (!await Model.ShouldAllowView(node)) { continue; }
-            <gcds-breadcrumbs-item href="@Url.Content(Model.AdjustUrl(node))">@sr[Model.AdjustText(node)]</gcds-breadcrumbs-item>
+            <gcds-breadcrumbs-item href="@Url.Content(Model.AdjustUrl(node))">@sr[Model.AdjustText(node)].Value</gcds-breadcrumbs-item>
         }
     </gcds-breadcrumbs>
 }

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<NavNode key="Home" controller="Home" action="Index" area="" preservedRouteParameters="culture" text="Home">
+<NavNode key="Home" controller="Home" action="Index" area="" preservedRouteParameters="culture" text="Nav_Home">
 	<Children>
-		<NavNode key="components" controller="Components" action="Index" area="" preservedRouteParameters="culture" text="Components" >
+		<NavNode key="components" controller="Components" action="Index" area="" preservedRouteParameters="culture" text="Nav_Components" >
 			<Children>
 				<NavNode key="breadcrumbs" controller="Components" action="GetComponent" area="" preservedRouteParameters="culture" text="Breadcrumbs" >
 					<Children />
