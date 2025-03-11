@@ -8,6 +8,9 @@ using Microsoft.Extensions.Options;
 using Foundation.Web.Infrastructure.Extensions;
 using Foundation.Components.Services.Interfaces;
 using Foundation.Components.Services;
+using Foundation.Security.Middlewares;
+using Foundation.Security.Settings;
+using Foundation.Components.Setttings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,7 +29,33 @@ builder.Services.AddLocalization();
 
 builder.Services.AddSingleton(typeof(IBreadcrumbsLocalizationService), typeof(BreadcrumbsLocalizationService<Foundation.Web.Resources.Navigation>));
 
+FoundationComponentsSettings defaultFoundationComponentsSettings = new FoundationComponentsSettings();
 
+builder.Services.Configure<FoundationComponentsSettings>(options =>
+{
+    options.FontAwesomeVersion = builder.Configuration.GetSection("FoundationComponentsSettings")["FontAwesomeVersion"] ?? defaultFoundationComponentsSettings.FontAwesomeVersion;
+    options.GCDSVersion = builder.Configuration.GetSection("FoundationComponentsSettings")["GCDSVersion"] ?? defaultFoundationComponentsSettings.GCDSVersion;
+});
+
+builder.Services.Configure<ContentPolicySettings>(options =>
+{
+    List<string> jsList = builder.Configuration.GetSection("ContentPolicySettings:JavascriptCDN").Get<List<string>>() ?? new List<string>();
+    jsList.Add(defaultFoundationComponentsSettings.GCDSJavaScriptCDN.Host);
+    options.JavascriptCDN = jsList;
+
+    List<string> cssList = builder.Configuration.GetSection("ContentPolicySettings:CssCDN").Get<List<string>>() ?? new List<string>();
+    cssList.Add(defaultFoundationComponentsSettings.GCDSCssCDN.Host);
+    cssList.Add(defaultFoundationComponentsSettings.FontAwesomeCDN.Host);
+    options.CssCDN = cssList;
+
+    List<string> cssHashList = builder.Configuration.GetSection("ContentPolicySettings:CssCDNHash").Get<List<string>>() ?? new List<string>();
+    cssHashList.Add(defaultFoundationComponentsSettings.GCDSCssCDNHash);
+    options.CssCDNHash = cssHashList;
+
+    List<string> fontList = builder.Configuration.GetSection("ContentPolicySettings:FontCDN").Get<List<string>>() ?? new List<string>();
+    fontList.Add(defaultFoundationComponentsSettings.FontAwesomeCDN.Host);
+    options.FontCDN = fontList;
+});
 
 
 var supportedCultures = new[] { new CultureInfo("en-CA"), new CultureInfo("fr-CA") };
@@ -71,6 +100,8 @@ var localizationOptions = app.Services.GetRequiredService<IOptions<RequestLocali
 app.UseRequestLocalization(localizationOptions);
 
 app.UseAuthorization();
+
+app.UseMiddleware<ContentPoliciesMiddleware>();
 
 app.Use(async (context, next) =>
 {

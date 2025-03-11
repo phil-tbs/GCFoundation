@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Foundation.Components\Foundation.Components.csproj" />
+    <ProjectReference Include="..\Foundation.Security\Foundation.Security.csproj" />
   </ItemGroup>
 
   <ItemGroup>
