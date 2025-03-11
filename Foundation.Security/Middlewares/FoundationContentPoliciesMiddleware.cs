@@ -5,12 +5,12 @@ using Microsoft.Extensions.Options;
 
 namespace Foundation.Security.Middlewares
 {
-    public class ContentPoliciesMiddleware
+    public class FoundationContentPoliciesMiddleware
     {
         private readonly RequestDelegate _next;
         private readonly ContentPolicySettings _settings;
 
-        public ContentPoliciesMiddleware(RequestDelegate next, IOptions<ContentPolicySettings> settings)
+        public FoundationContentPoliciesMiddleware(RequestDelegate next, IOptions<ContentPolicySettings> settings)
         {
             _next = next;
             _settings = settings.Value;
