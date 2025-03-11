@@ -3,11 +3,13 @@ using cloudscribe.Web.Localization;
 using cloudscribe.Web.SiteMap;
 using Microsoft.Extensions.Localization;
 using Microsoft.AspNetCore.Localization;
-using System.Globalization;
 using Microsoft.Extensions.Options;
 using Foundation.Web.Infrastructure.Extensions;
 using Foundation.Components.Services.Interfaces;
 using Foundation.Components.Services;
+using Foundation.Security.Middlewares;
+using Foundation.Web.Infrastructure.Services;
+using Foundation.Components.Utilities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,10 +28,11 @@ builder.Services.AddLocalization();
 
 builder.Services.AddSingleton(typeof(IBreadcrumbsLocalizationService), typeof(BreadcrumbsLocalizationService<Foundation.Web.Resources.Navigation>));
 
+// Configure foundation
+builder.Services.ConfigureFoundationServices(builder.Configuration);
 
-
-
-var supportedCultures = new[] { new CultureInfo("en-CA"), new CultureInfo("fr-CA") };
+// Language configuration
+var supportedCultures = LanguageUtilitiy.GetSupportedCulture();
 
 var routeSegmentLocalizationProvider = new FirstUrlSegmentRequestCultureProvider(supportedCultures.ToList());
 
@@ -57,9 +60,11 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+// Load all javascript dependencies for foundation and GCDS
 app.UseMiddleware<FoundationComponentsMiddleware>();
 
-
+// Add foundation security middleware(Add CSP)
+app.UseMiddleware<FoundationContentPoliciesMiddleware>();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
@@ -71,6 +76,7 @@ var localizationOptions = app.Services.GetRequiredService<IOptions<RequestLocali
 app.UseRequestLocalization(localizationOptions);
 
 app.UseAuthorization();
+
 
 app.Use(async (context, next) =>
 {

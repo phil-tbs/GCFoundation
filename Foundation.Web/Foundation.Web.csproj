@@ -17,11 +17,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Foundation.Components\Foundation.Components.csproj" />
+    <ProjectReference Include="..\Foundation.Security\Foundation.Security.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Infrastructure\Middleware\" />
-    <Folder Include="Infrastructure\Services\" />
   </ItemGroup>
 
   <ItemGroup>
