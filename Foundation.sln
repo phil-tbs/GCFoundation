@@ -13,6 +13,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation.Tests", "Foundat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foundation.Tests.Components", "Foundation.Tests.Components\Foundation.Tests.Components.csproj", "{8713E164-1B01-4688-84C1-40CCBE935AA2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation.lib", "Foundation.lib", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation.GUI", "Foundation.GUI", "{33E917A5-46A0-4D18-AEA8-F80CE2F8FB76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +44,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{7171844E-45FB-4648-94AF-0391742B2A07} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{3952C78E-B93D-47BE-9118-891C9C3143A9} = {33E917A5-46A0-4D18-AEA8-F80CE2F8FB76}
+		{911B7864-EDEE-4D51-BFBC-B50306C89FD8} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{8713E164-1B01-4688-84C1-40CCBE935AA2} = {32C4694C-DFB2-47F5-8841-5C852D530DA7}
 	EndGlobalSection
 EndGlobal
