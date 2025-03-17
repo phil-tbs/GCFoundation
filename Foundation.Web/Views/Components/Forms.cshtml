@@ -1,4 +1,5 @@
-﻿@model FormTestViewModel
+﻿@using System.Web
+@model FormTestViewModel
 
 
 @if (Model == null)
@@ -7,29 +8,76 @@
 }
 else
 {
+    <section>
+        <gcds-heading tag="h1">
+            Form
+        </gcds-heading>
+        <gcds-text>
+            The form components from the foundation help you build your own form with minumum implementation
+            Almost everything is done in the model
+        </gcds-text>
+    </section>
+    
+    <div>
+        <gcds-heading tag="h2">
+            Form components preview
+        </gcds-heading>
+        <fdcp-form method="post" action="@Url.Action("FormValidationTest", "Components")" for="@Model">
 
+            <fdcp-input for="@Model.FullName" />
+            <fdcp-input for="@Model.Email" />
+            <fdcp-input for="@Model.Password" />
+            <fdcp-input for="@Model.Website" />
+            <fdcp-input for="@Model.Age" />
+            <fdcp-input for="@Model.Bio" />
+            <fdcp-input for="@Model.DateOfBirth" />
 
-    <fdcp-form method="post" action="@Url.Action("FormValidationTest", "Components")" for="@Model" >
+            <fdcp-select for="@Model.SelectedCountry" items="@Model.CountryOptions" />
 
-        <fdcp-input for="@Model.FullName"/>
-        <fdcp-input for="@Model.Email"/>
-        <fdcp-input for="@Model.Password"/>
-        <fdcp-input for="@Model.Website"/>
-        <fdcp-input for="@Model.Age"/>
-        <fdcp-input for="@Model.Bio"/>
-        <fdcp-input for="@Model.DateOfBirth"/>
+            <fdcp-radio for="@Model.Gender" items="@Model.GenderOptions" />
 
-        <fdcp-select for="@Model.SelectedCountry" items="@Model.CountryOptions"/>
+            <fdcp-checkboxes for="@Model.SelectedInterests" items="@Model.InterestOptions" />
 
-        <fdcp-radio for="@Model.Gender" items="@Model.GenderOptions"/>
+            <fdcp-input for="@Model.AgreeToTerms">
+                I agree to the terms and conditions
+            </fdcp-input>
 
-        <fdcp-checkboxes for="@Model.SelectedInterests" items="@Model.InterestOptions" />
+            <gcds-button type="submit">Submit</gcds-button>
 
-        <fdcp-input for="@Model.AgreeToTerms">
-            I agree to the terms and conditions
-        </fdcp-input>
+        </fdcp-form>
+    </div>
 
-        <gcds-button type="submit">Submit</gcds-button>
+    
 
-    </fdcp-form>
+    <div>
+        <pre>
+        <code class="language-cshtml">
+                @Html.Raw(HttpUtility.HtmlEncode(@"
+<fdcp-form method=""post"" action=""@Url.Action(""FormValidationTest"", ""Components"")"" for=""@Model"">
+
+<fdcp-input for=""@Model.FullName"" />
+<fdcp-input for=""@Model.Email"" />
+<fdcp-input for=""@Model.Password"" />
+<fdcp-input for=""@Model.Website"" />
+<fdcp-input for=""@Model.Age"" />
+<fdcp-input for=""@Model.Bio"" />
+<fdcp-input for=""@Model.DateOfBirth"" />
+
+<fdcp-select for=""@Model.SelectedCountry"" items=""@Model.CountryOptions"" />
+
+<fdcp-radio for=""@Model.Gender"" items=""@Model.GenderOptions"" />
+
+<fdcp-checkboxes for=""@Model.SelectedInterests"" items=""@Model.InterestOptions"" />
+
+<fdcp-input for=""@Model.AgreeToTerms"">
+    I agree to the terms and conditions
+</fdcp-input>
+
+<gcds-button type=""submit"">Submit</gcds-button>
+
+</fdcp-form>
+        "))
+        </code>
+        </pre>
+    </div>
 }

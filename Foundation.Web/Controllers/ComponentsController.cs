@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Foundation.Web.Controllers
 {
     [Route("components")]
-    public class ComponentsController : Controller
+    public class ComponentsController : BaseController
     {
         [HttpGet("")]
         public IActionResult Index()
@@ -22,7 +22,7 @@ namespace Foundation.Web.Controllers
         [HttpGet("testingForm")]
         public IActionResult FormValidationTest()
         {
-
+            SetPageTitle("Form");
             FormTestViewModel model = new FormTestViewModel();
 
             return View("Forms", model);
