@@ -10,6 +10,7 @@ using Foundation.Components.Services;
 using Foundation.Security.Middlewares;
 using Foundation.Web.Infrastructure.Services;
 using Foundation.Components.Utilities;
+using Microsoft.AspNetCore.CookiePolicy;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -65,6 +66,14 @@ app.UseMiddleware<FoundationComponentsMiddleware>();
 
 // Add foundation security middleware(Add CSP)
 app.UseMiddleware<FoundationContentPoliciesMiddleware>();
+
+// Secure Cookies
+app.UseCookiePolicy(new CookiePolicyOptions
+{
+    MinimumSameSitePolicy = SameSiteMode.Strict,  // Prevent cross-site requests
+    Secure = CookieSecurePolicy.Always,  // Only send cookies over HTTPS
+    HttpOnly = HttpOnlyPolicy.Always  // Prevent JavaScript access to cookies
+});
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

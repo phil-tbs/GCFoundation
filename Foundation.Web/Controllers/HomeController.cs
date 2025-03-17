@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Foundation.Web.Controllers
 {
     [Route("home")]
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
 
