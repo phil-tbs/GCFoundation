@@ -1,15 +1,15 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+	<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
   </PropertyGroup>
 
   <ItemGroup>
+	<FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="cloudscribe.Web.Navigation" Version="8.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.3.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Razor" Version="2.3.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,11 +28,14 @@
   </ItemGroup>
 
 	<ItemGroup>
-		<Content Include="Views\Shared\Components\Navigation\GCDSBreadcrumbs.cshtml">
-			<Pack>true</Pack>
-			<PackagePath>contentFiles\any\net8.0\Views\Shared\Components\Navigation\</PackagePath>
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
+		<!-- Include all Views in Shared Components -->
+		<EmbeddedResource Include="Views\**\*.*" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Update="Views\Shared\Components\Navigation\GCDSBreadcrumbs.cshtml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Content>
 	</ItemGroup>
 
 </Project>
