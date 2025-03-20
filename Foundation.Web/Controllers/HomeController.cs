@@ -30,12 +30,5 @@ namespace Foundation.Web.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-        [HttpGet("chooser")]
-        public IActionResult LanguageChooser()
-        {
-            LanguageChooserModel languageChooserModel = new LanguageChooserModel();
-            return View(languageChooserModel);
-        }
     }
 }

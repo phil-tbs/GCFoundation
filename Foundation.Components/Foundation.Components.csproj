@@ -32,10 +32,23 @@
 		<EmbeddedResource Include="Views\**\*.*" />
 	</ItemGroup>
 
+
 	<ItemGroup>
 	  <Content Update="Views\Shared\Components\Navigation\GCDSBreadcrumbs.cshtml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Views\Errors\" />
+	  <Folder Include="wwwroot\images\splash\" />
+	  <Folder Include="wwwroot\lib\bootstrap\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Views\Language\Index.cshtml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	</ItemGroup>
 
 </Project>
