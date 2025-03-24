@@ -4,14 +4,9 @@ using Microsoft.AspNetCore.Mvc.ViewEngines;
 
 namespace Foundation.Web.Controllers
 {
-    [Route("language")]
+    [Route("/")]
     public class LanguageController : BaseController
     {
-        private readonly ICompositeViewEngine _viewEngine;
-        public LanguageController(ICompositeViewEngine viewEngine) 
-        {
-            _viewEngine = viewEngine;
-        }
 
         [HttpGet("")]
         public IActionResult Index()

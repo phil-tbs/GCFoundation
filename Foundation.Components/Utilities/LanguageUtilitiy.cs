@@ -26,5 +26,10 @@ namespace Foundation.Components.Utilities
         {
             return (CultureInfo.CurrentCulture.Name == _supportedCulture[0].Name ? _supportedCulture[1] : _supportedCulture[0]).Name.Split('-')[0];
         }
+
+        public static bool IsCultureSupported(string cultureName)
+        {
+            return _supportedCulture.Contains(new CultureInfo(cultureName));
+        }
     }
 }

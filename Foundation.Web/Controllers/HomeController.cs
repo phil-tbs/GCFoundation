@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Foundation.Components.Models;
 using Foundation.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,6 +14,7 @@ namespace Foundation.Web.Controllers
         {
             _logger = logger;
         }
+
 
         [HttpGet("")]
         public IActionResult Index()

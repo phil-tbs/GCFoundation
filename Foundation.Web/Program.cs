@@ -97,22 +97,6 @@ app.UseRequestLocalization(localizationOptions);
 
 app.UseAuthorization();
 
-
-app.Use(async (context, next) =>
-{
-    var culture = "en"; // Default culture
-    var path = context.Request.Path.Value;
-
-    // If the request is for the root ("/"), redirect to the default culture route
-    if (string.IsNullOrEmpty(path) || path == "/")
-    {
-        context.Response.Redirect($"/{culture}/home/");
-        return;
-    }
-
-    await next();
-});
-
 // Default route
 app.MapControllerRoute(
     name: "default",
