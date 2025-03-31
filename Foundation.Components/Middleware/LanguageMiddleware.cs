@@ -22,21 +22,31 @@ namespace Foundation.Components.Middleware
         public async Task InvokeAsync(HttpContext context)
         {
             var path = context.Request.Path.Value;
-            string? culture = path?.Split('/').FirstOrDefault();
+
+            if (string.IsNullOrEmpty(path) || path.StartsWith("/_content"))
+            {
+                await _next(context);
+                return;
+            }
+
+            string? culture = path?.Split('/')[1];
 
 
             if (!string.IsNullOrEmpty(culture) && LanguageUtilitiy.IsCultureSupported(culture))
             {
+                string? cultureCookie = context.Request.Cookies["Culture"];
 
-            }
-
-            var cultureCookie = context.Request.Cookies["Culture"];
-
-
-
-            if (!string.IsNullOrEmpty(cultureCookie))
-            {
-                
+                if (!string.IsNullOrEmpty(cultureCookie) || cultureCookie != culture)
+                {
+                    context.Response.Cookies.Append("Culture", culture, new CookieOptions
+                    {
+                        Expires = DateTime.UtcNow.AddDays(1),
+                        IsEssential = true,
+                        HttpOnly = true,
+                        Secure = true,
+                        SameSite = SameSiteMode.Strict,
+                    });
+                }
             }
 
             await _next(context);

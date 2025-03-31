@@ -78,6 +78,8 @@ app.UseMiddleware<FoundationComponentsMiddleware>();
 // Add foundation security middleware(Add CSP)
 app.UseMiddleware<FoundationContentPoliciesMiddleware>();
 
+app.UseMiddleware<LanguageMiddleware>();
+
 // Secure Cookies
 app.UseCookiePolicy(new CookiePolicyOptions
 {

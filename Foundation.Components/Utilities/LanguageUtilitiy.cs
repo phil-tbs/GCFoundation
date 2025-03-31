@@ -29,7 +29,7 @@ namespace Foundation.Components.Utilities
 
         public static bool IsCultureSupported(string cultureName)
         {
-            return _supportedCulture.Contains(new CultureInfo(cultureName));
+            return _supportedCulture.Contains(new CultureInfo($"{cultureName}-CA"));
         }
     }
 }
