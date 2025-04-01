@@ -1,7 +1,9 @@
 ﻿@using Foundation.Components.Utilities
+@using Microsoft.AspNetCore.Routing
 @using cloudscribe.Web.Navigation
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="@LanguageUtility.GetCurrentApplicationLanguage()">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,10 +15,10 @@
 <body>
     @{
         RouteValueDictionary routeValueDictionary = new RouteValueDictionary(ViewContext.RouteData.Values);
-        routeValueDictionary["culture"] = LanguageUtilitiy.GetOppositeLangauge();
+        routeValueDictionary["culture"] = LanguageUtility.GetOppositeLangauge();
         Foundation.Components.Enum.LanguageEnum currentLanguage = Foundation.Components.Enum.LanguageEnum.en;
 
-        if (LanguageUtilitiy.GetCurrentApplicationLanguage() == "fr")
+        if (LanguageUtility.GetCurrentApplicationLanguage() == "fr")
         {
             currentLanguage = Foundation.Components.Enum.LanguageEnum.fr;
         }

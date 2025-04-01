@@ -79,7 +79,7 @@ namespace Foundation.Components.TagHelpers.FDCP
             output.Attributes.SetAttribute("label", label);
             output.Attributes.SetAttribute("hint", hint);
 
-            output.Attributes.SetAttribute("lang", LanguageUtilitiy.GetCurrentApplicationLanguage());
+            output.Attributes.SetAttribute("lang", LanguageUtility.GetCurrentApplicationLanguage());
             
             if (required)
             {

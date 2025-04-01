@@ -26,7 +26,7 @@ namespace Foundation.Components.TagHelpers.FDCP
                 ));
             output.TagMode = TagMode.StartTagAndEndTag;
             output.TagName = "gcds-error-summary";
-            output.Attributes.SetAttribute("lang", LanguageUtilitiy.GetCurrentApplicationLanguage());
+            output.Attributes.SetAttribute("lang", LanguageUtility.GetCurrentApplicationLanguage());
 
             if (!Model.IsValid)
             {

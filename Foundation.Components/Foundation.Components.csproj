@@ -1,18 +1,23 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+	<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
   </PropertyGroup>
 
   <ItemGroup>
+	<FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="cloudscribe.Web.Navigation" Version="8.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.3.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Razor" Version="2.3.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Resources\ErrorsPage.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ErrorsPage.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\Validation.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -21,6 +26,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Resources\ErrorsPage.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorsPage.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Validation.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Validation.Designer.cs</LastGenOutput>
@@ -28,11 +37,26 @@
   </ItemGroup>
 
 	<ItemGroup>
-		<Content Include="Views\Shared\Components\Navigation\GCDSBreadcrumbs.cshtml">
-			<Pack>true</Pack>
-			<PackagePath>contentFiles\any\net8.0\Views\Shared\Components\Navigation\</PackagePath>
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
+		<!-- Include all Views in Shared Components -->
+		<EmbeddedResource Include="Views\**\*.*" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <Content Update="Views\Shared\Components\Navigation\GCDSBreadcrumbs.cshtml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="wwwroot\images\splash\" />
+	  <Folder Include="wwwroot\lib\bootstrap\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Views\Language\Index.cshtml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	</ItemGroup>
 
 </Project>

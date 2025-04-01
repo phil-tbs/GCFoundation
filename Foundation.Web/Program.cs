@@ -11,6 +11,11 @@ using Foundation.Security.Middlewares;
 using Foundation.Web.Infrastructure.Services;
 using Foundation.Components.Utilities;
 using Microsoft.AspNetCore.CookiePolicy;
+using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,7 +38,7 @@ builder.Services.AddSingleton(typeof(IBreadcrumbsLocalizationService), typeof(Br
 builder.Services.ConfigureFoundationServices(builder.Configuration);
 
 // Language configuration
-var supportedCultures = LanguageUtilitiy.GetSupportedCulture();
+var supportedCultures = LanguageUtility.GetSupportedCulture();
 
 var routeSegmentLocalizationProvider = new FirstUrlSegmentRequestCultureProvider(supportedCultures.ToList());
 
@@ -48,6 +53,12 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
 
 // Add route localization using the custom extension method
 builder.Services.AddCustomRouteLocalization();
+
+builder.Services.Configure<RazorViewEngineOptions>(options =>
+{
+    options.ViewLocationFormats.Add("/Views/Shared/Components/Navigation/{0}.cshtml");
+    options.ViewLocationFormats.Add("/contentFiles/any/net8.0/Views/Shared/Components/Navigation/{0}.cshtml");
+});
 
 
 var app = builder.Build();
@@ -67,6 +78,8 @@ app.UseMiddleware<FoundationComponentsMiddleware>();
 // Add foundation security middleware(Add CSP)
 app.UseMiddleware<FoundationContentPoliciesMiddleware>();
 
+app.UseMiddleware<LanguageMiddleware>();
+
 // Secure Cookies
 app.UseCookiePolicy(new CookiePolicyOptions
 {
@@ -85,22 +98,6 @@ var localizationOptions = app.Services.GetRequiredService<IOptions<RequestLocali
 app.UseRequestLocalization(localizationOptions);
 
 app.UseAuthorization();
-
-
-app.Use(async (context, next) =>
-{
-    var culture = "en"; // Default culture
-    var path = context.Request.Path.Value;
-
-    // If the request is for the root ("/"), redirect to the default culture route
-    if (string.IsNullOrEmpty(path) || path == "/")
-    {
-        context.Response.Redirect($"/{culture}/home/");
-        return;
-    }
-
-    await next();
-});
 
 // Default route
 app.MapControllerRoute(

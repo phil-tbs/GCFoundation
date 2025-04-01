@@ -41,5 +41,25 @@ namespace Foundation.Components.Setttings
         public string GCDSVersion { get; set; } = "0.30.0";
 
         public string FontAwesomeVersion { get; set; } = "6.4.2";
+
+        public bool UsingBootstrapCDN { get; set; } = false;
+
+        public string BootstrapCDNVersion { get; set; } = "5.3.3";
+
+        public Uri BootstrapCSSCDN
+        {
+            get
+            {
+                return new Uri($"https://cdn.jsdelivr.net/npm/bootstrap@{BootstrapCDNVersion}/dist/css/bootstrap.min.css");
+            }
+        }
+
+        public Uri BootstrapJSCDN
+        {
+            get
+            {
+                return new Uri($"https://cdn.jsdelivr.net/npm/bootstrap@{BootstrapCDNVersion}/dist/js/bootstrap.bundle.min.js");
+            }
+        }
     }
 }
