@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 using Foundation.Components.Utilities;
 using Microsoft.AspNetCore.Http;
 
@@ -21,18 +17,21 @@ namespace Foundation.Components.Middleware
 
         public async Task InvokeAsync(HttpContext context)
         {
+            string languages = string.Join("|", LanguageUtility.GetSupportedCulture().Select(x => x.TwoLetterISOLanguageName).ToList());
+            Regex regLocalization = new Regex($"^\\/({languages})\\/*");
             var path = context.Request.Path.Value;
 
-            if (string.IsNullOrEmpty(path) || path.StartsWith("/_content"))
+            if(string.IsNullOrEmpty(path) || !regLocalization.IsMatch(path))
             {
                 await _next(context);
                 return;
             }
 
+            // Extract culture
             string? culture = path?.Split('/')[1];
 
 
-            if (!string.IsNullOrEmpty(culture) && LanguageUtilitiy.IsCultureSupported(culture))
+            if (!string.IsNullOrEmpty(culture) && LanguageUtility.IsCultureSupported(culture))
             {
                 string? cultureCookie = context.Request.Cookies["Culture"];
 

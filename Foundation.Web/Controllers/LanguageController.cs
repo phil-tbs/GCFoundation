@@ -13,7 +13,7 @@ namespace Foundation.Web.Controllers
         public IActionResult Index()
         {
             string? culture = Request.Cookies["Culture"];
-            if (!string.IsNullOrEmpty(culture) && LanguageUtilitiy.IsCultureSupported(culture))
+            if (!string.IsNullOrEmpty(culture) && LanguageUtility.IsCultureSupported(culture))
             {
                 Response.Redirect(Url.Action("Index", "Home", new { culture = culture }));
             }

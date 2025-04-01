@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Foundation.Components.Utilities
 {
-    public static class LanguageUtilitiy
+    public static class LanguageUtility
     {
 
         private static readonly CultureInfo[] _supportedCulture = new[] { new CultureInfo("en-CA"), new CultureInfo("fr-CA") };

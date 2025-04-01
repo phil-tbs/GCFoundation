@@ -38,7 +38,7 @@ builder.Services.AddSingleton(typeof(IBreadcrumbsLocalizationService), typeof(Br
 builder.Services.ConfigureFoundationServices(builder.Configuration);
 
 // Language configuration
-var supportedCultures = LanguageUtilitiy.GetSupportedCulture();
+var supportedCultures = LanguageUtility.GetSupportedCulture();
 
 var routeSegmentLocalizationProvider = new FirstUrlSegmentRequestCultureProvider(supportedCultures.ToList());
 
