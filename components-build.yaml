@@ -1,0 +1,70 @@
+name: 1.0.$(Year:yy)$(Month)$(DayOfMonth)$(Rev:.r)
+
+trigger:
+  branches:
+    include:
+      - master
+      - develop
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  buildConfiguration: 'Release'
+  solution: '**/*.sln'
+  componentsProject: 'Foundation.Components/Foundation.Components.csproj'
+  outputDir: '$(Build.ArtifactStagingDirectory)/nuget'
+  nugetSource: 'EGCS-Nuget-Feed'
+
+  isMain: $[eq(variables['Build.SourceBranchName'], 'master')]
+  versionSuffix: $[coalesce(if(eq(variables.isMain, true), '', '-beta'))]
+  packageVersion: '1.0.$(Year:yy)$(Month)$(DayOfMonth)$(Rev:.r)$(versionSuffix)'
+
+
+steps:
+- task: UseDotNet@2
+  displayName: 'Install .net SDK'
+  inputs:
+    packageType: 'sdk'
+    version: '8.x'
+     
+
+- task: NuGetToolInstaller@1
+  displayName: 'NuGet Tool Installer'
+
+- task: NuGetCommand@2
+  displayName: 'Restore NuGet Packages'
+  inputs:
+    restoreSolution: '$(solution)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build Foundation.Components'
+  inputs:
+    command: 'build'
+    projects: '$(componentsProject)'
+    arguments: '--configuration $(buildConfiguration) --no-restore'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Pack Foundation.Components'
+  condition: ne(variables['Build.Reason'], 'PullRequest')
+  inputs:
+    command: 'pack'
+    packagesToPack: '$(componentsProject)'
+    configuration: '$(buildConfiguration)'
+    outputDir: '$(outputDir)'
+    nobuild: true
+    arguments: '/p:Version=$(packageVersion)'
+
+
+- task: NuGetAuthenticate@1
+  displayName: 'NuGet Authenticate'
+  condition: ne(variables['Build.Reason'], 'PullRequest')
+  
+- task: DotNetCoreCLI@2
+  displayName: 'Push NuGet Package to Azure Artifacts'
+  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+  inputs:
+    command: 'push'
+    publishVstsFeed: 'foc-poc/EGCS/EGCS-Nuget-Feed'
+    searchPatternPush: '$(outputDir)/*.nupkg'
+    arguments: '--skip-duplicate'
