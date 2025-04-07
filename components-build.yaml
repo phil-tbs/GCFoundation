@@ -17,7 +17,7 @@ variables:
   nugetSource: 'EGCS-Nuget-Feed'
 
   isMain: $[eq(variables['Build.SourceBranchName'], 'master')]
-  versionSuffix: $[coalesce(if(eq(variables.isMain, true), '', '-beta'))]
+  versionSuffix: $[coalesce(variables['isMain'], '')]
   packageVersion: '1.0.$(Year:yy)$(Month)$(DayOfMonth)$(Rev:.r)$(versionSuffix)'
 
 
