@@ -1,5 +1,3 @@
-name: 1.0.$(Year:yy)$(Month)$(DayOfMonth)$(Rev:.r)
-
 trigger:
   branches:
     include:
