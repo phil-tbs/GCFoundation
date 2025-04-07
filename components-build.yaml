@@ -1,7 +1,10 @@
+name: 1.0.$(Year:yy)$(Month)$(DayOfMonth)$(Rev:.r)
+
 trigger:
   branches:
     include:
       - master
+      - develop
 
 pool:
   vmImage: 'windows-latest'
@@ -11,7 +14,11 @@ variables:
   solution: '**/*.sln'
   componentsProject: 'Foundation.Components/Foundation.Components.csproj'
   outputDir: '$(Build.ArtifactStagingDirectory)/nuget'
-  nugetSource: 'https://pkgs.dev.azure.com/foc-poc/EGCS/_packaging/EGCS-Nuget-Feed/nuget/v3/index.json'
+  nugetSource: 'EGCS-Nuget-Feed'
+
+  isMain: $[eq(variables['Build.SourceBranchName'], 'master')]
+  versionSuffix: $[coalesce(if(eq(variables.isMain, true), '', '-beta'))]
+  packageVersion: '1.0.$(Year:yy)$(Month)$(DayOfMonth)$(Rev:.r)$(versionSuffix)'
 
 
 steps:
@@ -39,19 +46,23 @@ steps:
 
 - task: DotNetCoreCLI@2
   displayName: 'Pack Foundation.Components'
+  condition: ne(variables['Build.Reason'], 'PullRequest')
   inputs:
     command: 'pack'
     packagesToPack: '$(componentsProject)'
     configuration: '$(buildConfiguration)'
     outputDir: '$(outputDir)'
     nobuild: true
+    arguments: '/p:Version=$(packageVersion)'
 
 
 - task: NuGetAuthenticate@1
   displayName: 'NuGet Authenticate'
+  condition: ne(variables['Build.Reason'], 'PullRequest')
   
 - task: DotNetCoreCLI@2
   displayName: 'Push NuGet Package to Azure Artifacts'
+  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
   inputs:
     command: 'push'
     publishVstsFeed: 'foc-poc/EGCS/EGCS-Nuget-Feed'

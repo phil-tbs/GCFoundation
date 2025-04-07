@@ -5,6 +5,16 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+
+	<PackageId>Foundation.Components</PackageId>
+	<Version>1.0.0</Version>
+	<Authors>Philippe G. Vadnais</Authors>
+	<Company>DFO-MPO</Company>
+	<Description>Razor components base on the GC Desing system</Description>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	<RepositoryUrl>https://dev.azure.com/foc-poc/EGCS/_git/Foundation</RepositoryUrl>
+	<IncludeSymbols>true</IncludeSymbols>
+	<IncludeSource>true</IncludeSource>
   </PropertyGroup>
 
   <ItemGroup>
