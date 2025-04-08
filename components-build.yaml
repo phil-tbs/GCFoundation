@@ -34,6 +34,7 @@ steps:
   displayName: 'Restore NuGet Packages'
   inputs:
     restoreSolution: '$(solution)'
+    verbosityRestore: Detailed
 
 - task: DotNetCoreCLI@2
   displayName: 'Build Foundation.Components'
