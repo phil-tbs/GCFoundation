@@ -16,7 +16,6 @@ variables:
 
   isMain: $[eq(variables['Build.SourceBranchName'], 'master')]
   versionSuffix: $[iif(eq(variables['isMain'], 'True'), '', '-beta')]
-  packageVersion: 1.0.$[(Year:yy)$(Month)$(DayOfMonth)$(Rev:.r)$(versionSuffix)]
 
 
 steps:
