@@ -58,11 +58,11 @@ steps:
   displayName: 'NuGet Authenticate'
   condition: ne(variables['Build.Reason'], 'PullRequest')
   
-- task: DotNetCoreCLI@2
+- task: NuGetCommand@2
   displayName: 'Push NuGet Package to Azure Artifacts'
   condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
   inputs:
     command: 'push'
     publishVstsFeed: 'EGCS/EGCS-Nuget-Feed'
     searchPatternPush: '$(outputDir)/*.nupkg'
-    arguments: '--skip-duplicate'
+    allowPackageConflicts: true
