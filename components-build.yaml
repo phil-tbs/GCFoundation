@@ -64,6 +64,6 @@ steps:
   condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
   inputs:
     command: 'push'
-    publishVstsFeed: 'foc-poc/EGCS/EGCS-Nuget-Feed'
+    publishVstsFeed: 'EGCS/EGCS-Nuget-Feed'
     searchPatternPush: '$(outputDir)/*.nupkg'
     arguments: '--skip-duplicate'
