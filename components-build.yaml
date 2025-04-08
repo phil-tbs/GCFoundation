@@ -17,6 +17,7 @@ variables:
   isMain: $[eq(variables['Build.SourceBranchName'], 'master')]
   versionSuffix: $[iif(eq(variables['isMain'], 'True'), '', '-beta')]
 
+name: 1.0.$(Date:yyyyMMdd)$(Rev:.r)$(versionSuffix)
 
 steps:
 - task: UseDotNet@2
@@ -33,7 +34,6 @@ steps:
   displayName: 'Restore NuGet Packages'
   inputs:
     restoreSolution: '$(solution)'
-    verbosityRestore: Detailed
 
 - task: DotNetCoreCLI@2
   displayName: 'Build Foundation.Components'
@@ -51,8 +51,7 @@ steps:
     configuration: '$(buildConfiguration)'
     outputDir: '$(outputDir)'
     nobuild: true
-    arguments: >
-      -p:Version=1.0.$(Build.BuildId)$(versionSuffix)
+    versioningScheme: byBuildNumber
 
 
 - task: NuGetAuthenticate@1
