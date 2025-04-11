@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Foundation.Web</title>
     <link href="@StaticResourceUtility.GetImageResourcePath("favicon.ico")" rel="icon" type="image/x-icon">
+    <link rel="stylesheet" href="@StaticResourceUtility.GetLibResourcePath("tabulator/css/tabulator_bootstrap5.min.css")" />
     <link rel="stylesheet" href="@StaticResourceUtility.GetCssResourcePath("Foundation.Components.css")" asp-append-version="true" />
     <link rel="stylesheet" href="@StaticResourceUtility.GetCssResourcePath("prism.css")" asp-append-version="true" />
 </head>
@@ -45,8 +46,9 @@
     <gcds-footer display="full">
 
     </gcds-footer>
-    <script src="@StaticResourceUtility.GetJsResourcePath("Foundation.components.js")" asp-append-version="true"></script>
     <script src="@StaticResourceUtility.GetJsResourcePath("prism.js")" asp-append-version="true"></script>
+    <script src="@StaticResourceUtility.GetLibResourcePath("tabulator/js/tabulator.min.js")" asp-append-version="true"></script>
+    <script src="@StaticResourceUtility.GetJsResourcePath("Foundation.components.js")" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

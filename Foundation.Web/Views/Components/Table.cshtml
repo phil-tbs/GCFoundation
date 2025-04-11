@@ -1,0 +1,14 @@
+﻿@using Foundation.Components.Models
+@{
+    // Define the table columns in C#
+    var columns = new List<TabulatorColumn>
+    {
+        new() { Title = "Id", Field = "id", HeaderSort = true },
+        new() { Title = "Name", Field = "name", HeaderSort = true },
+        new() { Title = "Email", Field = "email", HozAlign = "center" }
+    };
+}
+
+<fdcp-tabulator-table id="usersTable"
+                      columns="@columns"
+                      ajax-url="@Url.Action("GetData", "TabulatorTest")" />
