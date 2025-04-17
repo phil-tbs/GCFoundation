@@ -25,12 +25,63 @@ namespace Foundation.Web.Controllers
         {
             IQueryable<TestUser> query = AllUsers.AsQueryable();
 
+            var properties = typeof(TestUser)
+            .GetProperties()
+            .ToDictionary(p => p.Name, StringComparer.OrdinalIgnoreCase);
+
+            string combinedFilter = string.Empty;
+
             foreach (var filter in request.Filter)
             {
-                if (!string.IsNullOrEmpty(filter.Value))
+                if (!string.IsNullOrEmpty(filter.Value) && properties.TryGetValue(filter.Field, out var property))
                 {
-                    query = query.Where($"{filter.Field}.Contains(@0)", filter.Value);
+                    string filterExpression = string.Empty;
+
+                    if (property.PropertyType == typeof(string))
+                    {
+                        filterExpression = $"{filter.Field}.Contains(@0)";
+                    }
+                    else if (property.PropertyType == typeof(int) ||
+                             property.PropertyType == typeof(long) ||
+                             property.PropertyType == typeof(decimal) ||
+                             property.PropertyType == typeof(double) ||
+                             property.PropertyType == typeof(float))
+                    {
+                        if (decimal.TryParse(filter.Value, out var numberValue))
+                        {
+                            filterExpression = $"{filter.Field} == @0";
+                        }
+                    }
+                    else if (property.PropertyType == typeof(Guid))
+                    {
+                        if (Guid.TryParse(filter.Value, out var guidValue))
+                        {
+                            filterExpression = $"{filter.Field} == @0";
+                        }
+                    }
+                    else
+                    {
+                        // fallback: treat like string
+                        filterExpression = $"{filter.Field}.ToString().Contains(@0)";
+                    }
+
+                    if (!string.IsNullOrEmpty(filterExpression))
+                    {
+                        if (!string.IsNullOrEmpty(combinedFilter))
+                        {
+                            combinedFilter = $"({combinedFilter}) Or ({filterExpression})";
+                        }
+                        else
+                        {
+                            combinedFilter = filterExpression;
+                        }
+                    }
                 }
+            }
+
+            if (!string.IsNullOrEmpty(combinedFilter))
+            {
+                query = query.Where(combinedFilter, request.Filter.Select(f => f.Value).ToArray());
             }
 
             foreach (var sorter in request.Sort)

@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Foundation.Components.Converters;
+using Foundation.Components.Enum;
 
 namespace Foundation.Components.Models
 {
@@ -32,13 +36,21 @@ namespace Foundation.Components.Models
         /// <summary>CSS class to apply to the column's cells.</summary>
         public string? CssClass { get; set; }
 
-        /// <summary>Whether the column can be resized by the user.</summary>
-        public bool? Resizable { get; set; }
+        /// <summary>Whether the column can be resized by the user. 
+        /// </summary>
+        [JsonConverter(typeof(TabulatorResizableOptionConverter))]
+        public TabulatorResizableOption Resizable { get; set; } = TabulatorResizableOption.False;
 
         /// <summary>If true, the column is frozen in place while scrolling horizontally.</summary>
         public bool? Frozen { get; set; }
 
         /// <summary>Tooltip text or boolean to enable/disable tooltips for this column.</summary>
         public string? Tooltip { get; set; }
+
+        /// <summary>
+        /// If we want to filter on that column
+        /// </summary>
+        public bool Filter { get; set; } = false;
+
     }
 }

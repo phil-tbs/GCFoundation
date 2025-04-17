@@ -17,6 +17,10 @@
 	<IncludeSource>true</IncludeSource>
   </PropertyGroup>
 
+	<Target Name="BuildSass" BeforeTargets="Build">
+		<Exec Command="npm run build:sass" />
+	</Target>
+
   <ItemGroup>
 	<FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="cloudscribe.Web.Navigation" Version="8.0.0" />
@@ -62,7 +66,6 @@
 	<ItemGroup>
 	  <Folder Include="wwwroot\images\splash\" />
 	  <Folder Include="wwwroot\lib\bootstrap\" />
-	  <Folder Include="wwwroot\lib\tabulator\" />
 	</ItemGroup>
 
 	<ItemGroup>

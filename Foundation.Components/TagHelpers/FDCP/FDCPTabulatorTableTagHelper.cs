@@ -36,31 +36,81 @@ namespace Foundation.Components.TagHelpers.FDCP
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
+
+            output.TagName = "div";
+            output.TagMode = TagMode.StartTagAndEndTag;
+            output.Attributes.SetAttribute("id", Id);
+            output.Attributes.SetAttribute("class", "tabulator-container");
+
+            output.Content.AppendHtml(GenerateSearchHtml());
+            output.Content.AppendHtml(GenerateTabulator());
+            //output.Attributes.SetAttribute("class", "tabulator-table");
+            //output.Attributes.SetAttribute("data-layout", "fitColumns");
+            //output.Attributes.SetAttribute("data-pagination", "local");
+            //output.Attributes.SetAttribute("data-pagination-size", PaginationSize);
+            //output.Attributes.SetAttribute("data-columns", System.Text.Json.JsonSerializer.Serialize(Columns, jsonOptions));
+            //if (UseStaticData && Data != null)
+            //{
+                
+            //    string dataJson = System.Text.Json.JsonSerializer.Serialize(Data, jsonOptions);
+            //    output.Attributes.SetAttribute("data-set", dataJson);
+            //}
+            //else
+            //{
+            //    output.Attributes.SetAttribute("data-ajaxURL", AjaxUrl);
+            //}
+        }
+
+        private string GenerateSearchHtml()
+        {
+            return $@"
+                <form id='{Id}-search-form'>
+                    <div class='row'>
+                        <div class='col'>
+                            <gcds-input
+                                input-id='{Id}-search=input'
+                                class='tabulator-search-input'
+                                data-tabulator-id='{Id}-tabulator'
+                                label='Search'
+                                name='{Id}-search-input'
+                                type='search'
+                                hint='You can search across all columns'
+                            ></gcds-input>
+                        </div>
+                    </div>
+                </form>
+            ";
+        }
+
+        private string GenerateTabulator()
+        {
             var jsonOptions = new JsonSerializerOptions
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
             };
 
-            output.TagName = "div";
-            output.TagMode = TagMode.StartTagAndEndTag;
-            output.Attributes.SetAttribute("id", Id);
-            output.Attributes.SetAttribute("class", "tabulator-table");
-            output.Attributes.SetAttribute("data-layout", "fitColumns");
-            output.Attributes.SetAttribute("data-pagination", "local");
-            output.Attributes.SetAttribute("data-pagination-size", PaginationSize);
-            output.Attributes.SetAttribute("data-columns", System.Text.Json.JsonSerializer.Serialize(Columns, jsonOptions));
+            var tableDiv = $@"
+            <div id='{Id}-tabulator' class='tabulator-table'
+                 data-layout='fitColumns'
+                 data-pagination='local'
+                 data-pagination-size='{PaginationSize}'
+                 data-columns='{System.Text.Json.JsonSerializer.Serialize(Columns, jsonOptions)}'";
+
             if (UseStaticData && Data != null)
             {
-                
                 string dataJson = System.Text.Json.JsonSerializer.Serialize(Data, jsonOptions);
-                output.Attributes.SetAttribute("data-set", dataJson);
+                tableDiv += $" data-set='{dataJson}'";
             }
             else
             {
-                output.Attributes.SetAttribute("data-ajaxURL", AjaxUrl);
+                tableDiv += $" data-ajaxURL='{AjaxUrl}'";
             }
-                
+
+            tableDiv += "></div>";
+
+            return tableDiv;
+
         }
     }
 }
