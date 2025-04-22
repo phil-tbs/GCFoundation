@@ -31,14 +31,20 @@ steps:
     version: '22.x'
   displayName: 'Install Node.js'
      
-
+- task: Npm@1
+  displayName: 'Install NPM packages'
+  inputs:
+    command: 'install'
+    workingDir: 'Foundation.Components'
 - task: NuGetToolInstaller@1
   displayName: 'NuGet Tool Installer'
+
 
 - task: NuGetCommand@2
   displayName: 'Restore NuGet Packages'
   inputs:
     restoreSolution: '$(solution)'
+    
 
 - task: DotNetCoreCLI@2
   displayName: 'Build Foundation.Components'
