@@ -19,7 +19,7 @@ namespace Foundation.Components.Setttings
         {
             get
             {
-                return "'sha256-wdabfDcuif2zK/ylZhFm5RyLtTWesKFJRNnvzHFPrPs='";
+                return "'sha256-wdabfDcuif2zK/ylZhFm5RyLtTWesKFJRNnvzHFPrPs=' 'sha256-LovNkyKf6BdeuYHC6NGHXX9NcrDeLb8ho1xZrkXnC0g='";
             }
         }
 

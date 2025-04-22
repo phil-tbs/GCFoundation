@@ -1,0 +1,22 @@
+{
+  "name": "foundation.components",
+  "version": "1.0.0",
+  "main": "index.js",
+    "scripts": {
+        "build:sass": "npm run sass:root && npm run sass:tabulatorTheme",
+        "watch:sass": "concurrently \"npm run sass:watchRoot\" \"npm run sass:watchTabulatorTheme\"",
+        "sass:root": "sass wwwroot/scss:wwwroot/css --style=compressed",
+        "sass:tabulatorTheme": "sass wwwroot/lib/tabulator/src/scss/Themes/GCTabulatorTheme.scss wwwroot/lib/tabulator/dist/css/GCTabulatorTheme.css --no-source-map --style=compressed",
+        "sass:watchRoot": "sass --watch wwwroot/scss:wwwroot/css --style=compressed",
+        "sass:watchTabulatorTheme": "sass --watch wwwroot/lib/tabulator/src/scss/Themes/GCTabulatorTheme.scss wwwroot/lib/tabulator/dist/css/GCTabulatorTheme.css --no-source-map --style=compressed",
+        "sass:dev": "npm run build:sass && npm run watch:sass"
+    },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "sass": "^1.86.3"
+  }
+}

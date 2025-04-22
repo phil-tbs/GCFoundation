@@ -17,9 +17,14 @@
 	<IncludeSource>true</IncludeSource>
   </PropertyGroup>
 
+	<Target Name="BuildSass" BeforeTargets="Build">
+		<Exec Command="npm run build:sass" />
+	</Target>
+
   <ItemGroup>
 	<FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="cloudscribe.Web.Navigation" Version="8.0.0" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.6.0.2" />
   </ItemGroup>
 
   <ItemGroup>
