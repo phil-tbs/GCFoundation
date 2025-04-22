@@ -4,6 +4,16 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+	<PackageId>Foundation.Security</PackageId>
+	<Version>1.0.0</Version>
+	<Authors>Philippe G. Vadnais</Authors>
+	<Company>DFO-MPO</Company>
+	<Description>Foundation security module help to secure your application</Description>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	<RepositoryUrl>https://dev.azure.com/foc-poc/EGCS/_git/Foundation</RepositoryUrl>
+	<IncludeSymbols>true</IncludeSymbols>
+	<IncludeSource>true</IncludeSource>
   </PropertyGroup>
 
   <ItemGroup>
