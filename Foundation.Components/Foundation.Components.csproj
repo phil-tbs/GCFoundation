@@ -17,8 +17,9 @@
 	<IncludeSource>true</IncludeSource>
   </PropertyGroup>
 
-	<Target Name="BuildSass" BeforeTargets="Build">
-		<Exec Command="npm run build:sass" />
+	<Target Name="NpmBuild" BeforeTargets="Build">
+		<Exec Command="npm install" WorkingDirectory="$(ProjectDir)" />
+		<Exec Command="npm run build" WorkingDirectory="$(ProjectDir)" />
 	</Target>
 
   <ItemGroup>
@@ -66,6 +67,7 @@
 	<ItemGroup>
 	  <Folder Include="wwwroot\images\splash\" />
 	  <Folder Include="wwwroot\lib\bootstrap\" />
+	  <Folder Include="wwwroot\scss\" />
 	</ItemGroup>
 
 	<ItemGroup>
