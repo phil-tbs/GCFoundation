@@ -44,21 +44,6 @@ namespace Foundation.Components.TagHelpers.FDCP
 
             output.Content.AppendHtml(GenerateSearchHtml());
             output.Content.AppendHtml(GenerateTabulator());
-            //output.Attributes.SetAttribute("class", "tabulator-table");
-            //output.Attributes.SetAttribute("data-layout", "fitColumns");
-            //output.Attributes.SetAttribute("data-pagination", "local");
-            //output.Attributes.SetAttribute("data-pagination-size", PaginationSize);
-            //output.Attributes.SetAttribute("data-columns", System.Text.Json.JsonSerializer.Serialize(Columns, jsonOptions));
-            //if (UseStaticData && Data != null)
-            //{
-                
-            //    string dataJson = System.Text.Json.JsonSerializer.Serialize(Data, jsonOptions);
-            //    output.Attributes.SetAttribute("data-set", dataJson);
-            //}
-            //else
-            //{
-            //    output.Attributes.SetAttribute("data-ajaxURL", AjaxUrl);
-            //}
         }
 
         private string GenerateSearchHtml()
