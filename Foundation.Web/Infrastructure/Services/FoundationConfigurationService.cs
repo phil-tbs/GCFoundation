@@ -30,6 +30,8 @@ namespace Foundation.Web.Infrastructure.Services
 
                 options.GCDSVersion = configuration.GetValue<string>("FoundationComponentsSettings:GCDSVersion")
                                       ?? defaultSettings.GCDSVersion;
+                options.ApplicationNameEn = configuration.GetValue<string>("FoundationComponentsSettings:ApplicationNameFr") ?? "No name";
+                options.ApplicationNameFr = configuration.GetValue<string>("FoundationComponentsSettings:ApplicationNameEn") ?? "Sans nom";
             });
 
             // Configure Content Policy settings

@@ -30,6 +30,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Forms.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Menu.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Menu.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\Navigation.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -46,6 +51,10 @@
     <EmbeddedResource Update="Resources\Forms.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Forms.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Menu.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Menu.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Navigation.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -1,4 +1,5 @@
 ﻿using Foundation.Web.Models;
+using Foundation.Web.Resources;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Foundation.Web.Controllers
@@ -9,6 +10,7 @@ namespace Foundation.Web.Controllers
         [HttpGet("")]
         public IActionResult Index()
         {
+            SetPageTitle(Menu.Menu_Components);
             return View();
         }
 
@@ -16,6 +18,7 @@ namespace Foundation.Web.Controllers
         [HttpGet("component")]
         public IActionResult GetComponent(string componentName)
         {
+            SetPageTitle($"{Menu.Menu_Components}: {componentName}");
             return View(componentName);
         }
 
