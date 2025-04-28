@@ -3,7 +3,8 @@
         layout: el.dataset.layout || "fitColumns",
         pagination: true,
         paginationSize: parseInt(el.dataset.paginationSize || "10"),
-        columns: []
+        columns: [],
+        height: '100%'
     };
 
     // Parse columns
@@ -11,16 +12,6 @@
         try {
             config.columns = JSON.parse(el.dataset.columns);
 
-
-            // Loop through columns and enhance them if needed
-            config.columns.forEach(col => {
-                if (col.headerFilter) {
-                    if (["input", "number", "select"].includes(col.headerFilter)) {
-                        col.headerFilterOriginal = col.headerFilter;
-                        col.headerFilter = createAccessibleHeaderFilter;
-                    }
-                }
-            });
 
         } catch (e) {
             console.error("Failed to parse columns:", e);
