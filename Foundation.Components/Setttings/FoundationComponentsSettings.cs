@@ -3,11 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Foundation.Components.Utilities;
 
 namespace Foundation.Components.Setttings
 {
+    /// <summary>
+    /// A class to configure foundation basic settings
+    /// </summary>
     public class FoundationComponentsSettings
     {
+        /// <summary>
+        /// Gc design system css CDN
+        /// </summary>
         public Uri GCDSCssCDN { 
             get
             {
@@ -15,6 +22,9 @@ namespace Foundation.Components.Setttings
             }
         }
 
+        /// <summary>
+        /// Gc Design css hash to execute inline styles
+        /// </summary>
         public string GCDSCssCDNHash
         {
             get
@@ -23,6 +33,9 @@ namespace Foundation.Components.Setttings
             }
         }
 
+        /// <summary>
+        /// Gc Design system javascript CDN
+        /// </summary>
         public Uri GCDSJavaScriptCDN { 
             get
             {
@@ -30,6 +43,9 @@ namespace Foundation.Components.Setttings
             }
         }
 
+        /// <summary>
+        /// Font awsome CDN
+        /// </summary>
         public Uri FontAwesomeCDN
         {
             get
@@ -38,14 +54,29 @@ namespace Foundation.Components.Setttings
             }
         }
 
-        public string GCDSVersion { get; set; } = "0.30.0";
+        /// <summary>
+        /// GC design system version
+        /// </summary>
+        public string GCDSVersion { get; set; } = "0.34.1";
 
+        /// <summary>
+        /// Font awesome version
+        /// </summary>
         public string FontAwesomeVersion { get; set; } = "6.4.2";
 
+        /// <summary>
+        /// If using bootstrap CDN
+        /// </summary>
         public bool UsingBootstrapCDN { get; set; } = false;
 
+        /// <summary>
+        /// Version of bootstrap used
+        /// </summary>
         public string BootstrapCDNVersion { get; set; } = "5.3.3";
 
+        /// <summary>
+        /// Bootstrap CSS CDN
+        /// </summary>
         public Uri BootstrapCSSCDN
         {
             get
@@ -54,11 +85,28 @@ namespace Foundation.Components.Setttings
             }
         }
 
+        /// <summary>
+        /// Bootstrap javascript CDN
+        /// </summary>
         public Uri BootstrapJSCDN
         {
             get
             {
                 return new Uri($"https://cdn.jsdelivr.net/npm/bootstrap@{BootstrapCDNVersion}/dist/js/bootstrap.bundle.min.js");
+            }
+        }
+
+        public string ApplicationNameEn { get; set; } = string.Empty;
+        public string ApplicationNameFr { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Return the application name depending on the language
+        /// </summary>
+        public string ApplicationName
+        {
+            get
+            {
+                return LanguageUtility.IsEnglish() ? ApplicationNameEn : ApplicationNameFr;
             }
         }
     }
