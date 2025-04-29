@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 using Foundation.Components.Enum;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
@@ -45,66 +41,87 @@ namespace Foundation.Components.TagHelpers.FDCP
         /// </summary>
         public bool ShowCloseButton { get; set; } = true;
 
+
+        public override void Process(TagHelperContext context, TagHelperOutput output)
+        {
+            Console.WriteLine("SYNC Process was called.");
+            output.TagName = "div";
+            output.Content.SetHtmlContent("Sync modal content.");
+        }
+
         /// <summary>
         /// Processes the <bootstrap-modal> tag and renders a Bootstrap 5 modal HTML structure.
         /// </summary>
         /// <param name="context">The context of the TagHelper execution.</param>
         /// <param name="output">The output to write the rendered HTML to.</param>
-        public override void Process(TagHelperContext context, TagHelperOutput output)
+        public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
-            output.TagName = "div"; // Replace <bootstrap-modal> with <div>
+            // Log to see if ProcessAsync is being called
+            Console.WriteLine("ProcessAsync was called");
+
+            output.TagName = "div";
+            output.TagMode = TagMode.StartTagAndEndTag;
             output.Attributes.SetAttribute("class", "modal fade");
             output.Attributes.SetAttribute("id", Id);
             output.Attributes.SetAttribute("tabindex", "-1");
-            output.Attributes.SetAttribute("role", "dialog");
             output.Attributes.SetAttribute("aria-labelledby", $"{Id}Label");
             output.Attributes.SetAttribute("aria-hidden", "true");
 
             var dialogClasses = "modal-dialog";
             if (Centered) dialogClasses += " modal-dialog-centered";
             if (Scrollable) dialogClasses += " modal-dialog-scrollable";
+            if (Size == ModalSize.Small) dialogClasses += " modal-sm";
+            else if (Size == ModalSize.Large) dialogClasses += " modal-lg";
 
-            switch (Size)
+            var childContent = output.GetChildContentAsync().Result;
+            var html = childContent.GetContent();
+
+            // Split body and footer manually
+            var bodyHtml = string.Empty;
+            var footerHtml = string.Empty;
+
+            if (html.Contains("id=\"globalModalFooter\""))
             {
-                case ModalSize.Small:
-                    dialogClasses += " modal-sm";
-                    break;
-                case ModalSize.Large:
-                    dialogClasses += " modal-lg";
-                    break;
-                case ModalSize.Default:
-                default:
-                    break;
+                var bodyStart = html.IndexOf("<div", StringComparison.OrdinalIgnoreCase);
+                var footerStart = html.IndexOf("id=\"globalModalFooter\"", StringComparison.OrdinalIgnoreCase);
+
+                bodyHtml = html.Substring(0, footerStart);
+                footerHtml = html.Substring(footerStart);
+            }
+            else
+            {
+                bodyHtml = html;
             }
 
-            var innerHtml = $@"
-                <div class='{dialogClasses}' role='document'>
-                    <div class='modal-content'>
-                        <div class='modal-header'>
-                            <h5 class='modal-title' id='{Id}Label'>{Title}</h5>";
+            var sb = new StringBuilder();
+            sb.AppendLine($"<div class='{dialogClasses}' role='document'>");
+            sb.AppendLine("  <div class='modal-content'>");
 
-                            if (ShowCloseButton)
-                            {
-                                innerHtml += @"
-                            <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>";
-                            }
+            sb.AppendLine("    <div class='modal-header'>");
+            sb.AppendLine($"      <h5 class='modal-title' id='{Id}Label'>{Title}</h5>");
+            if (ShowCloseButton)
+            {
+                sb.AppendLine("      <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>");
+            }
+            sb.AppendLine("    </div>");
 
-                            innerHtml += @"
-                        </div>
-                        <div class='modal-body'>";
+            sb.AppendLine("    <div class='modal-body'>");
+            sb.AppendLine(bodyHtml);
+            sb.AppendLine("    </div>");
 
-                            // Add whatever is inside the <bootstrap-modal> tag
-                            innerHtml += output.GetChildContentAsync().Result.GetContent();
+            if (!string.IsNullOrWhiteSpace(footerHtml))
+            {
+                sb.AppendLine("    <div class='modal-footer'>");
+                sb.AppendLine(footerHtml);
+                sb.AppendLine("    </div>");
+            }
 
-                            innerHtml += @"
-                        </div>
-                        <div class='modal-footer'>
-                            <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
-                        </div>
-                    </div>
-                </div>";
+            sb.AppendLine("  </div>");
+            sb.AppendLine("</div>");
 
-            output.Content.SetHtmlContent(innerHtml);
+            output.Content.SetHtmlContent(sb.ToString());
+
+            await Task.CompletedTask;
         }
     }
 }

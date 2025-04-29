@@ -1,4 +1,21 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.querySelector('[button-id=timeout-modal]');
+    console.log("Button found:", btn);
 
-// Write your JavaScript code.
+    if (btn) {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            openGlobalModal({
+                title: 'Session Expiring Soon',
+                body: `<p>Your session is about to expire. Do you want to continue?</p>`,
+                footer: `
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Logout</button>
+                            <button type="button" class="btn btn-success" id="globalModalContinueSessionButton">Continue</button>
+                        `
+            });
+        });
+    } else {
+        console.warn("Timeout modal button not found.");
+    }
+});

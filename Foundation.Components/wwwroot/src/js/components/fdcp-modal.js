@@ -1,15 +1,21 @@
-﻿    // Open the global modal with custom title/body/footer
+﻿
+// Open the global modal with custom title/body/footer
     function openGlobalModal(options) {
         const modalTitle = document.querySelector('#globalModal .modal-title');
-    const modalBody = document.querySelector('#globalModalBody');
-    const modalFooter = document.querySelector('#globalModalFooter');
+        const modalBody = document.querySelector('#globalModalBody');
+        const modalFooter = document.querySelector('#globalModalFooter');
 
-    if (modalTitle) modalTitle.innerHTML = options.title || '';
-    if (modalBody) modalBody.innerHTML = options.body || '';
-    if (modalFooter) modalFooter.innerHTML = options.footer || '';
+        if (modalTitle) modalTitle.innerHTML = options.title || '';
+        if (modalBody) modalBody.innerHTML = options.body || '';
+        if (modalFooter) modalFooter.innerHTML = options.footer || '';
 
-    const modal = new bootstrap.Modal(document.getElementById('globalModal'));
-    modal.show();
+        const modalElement = document.getElementById('globalModal');
+        if (modalElement) {
+            const modal = new bootstrap.Modal(modalElement);
+            modal.show();
+        } else {
+            console.error("Modal element not found");
+        }
     }
 
     // Example helper to open a confirmation modal

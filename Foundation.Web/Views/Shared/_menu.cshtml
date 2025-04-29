@@ -6,5 +6,9 @@
 <gcds-top-nav label="@settings.Value.ApplicationName" alignment="right">
     <gcds-nav-link href="@Url.Action("Index","Home")" slot="home">@settings.Value.ApplicationName</gcds-nav-link>
     <gcds-nav-link href="@Url.Action("Index","Installation")">@Menu.Menu_Installation</gcds-nav-link>
-    <gcds-nav-link href="@Url.Action("Index","Components")">@Menu.Menu_Components</gcds-nav-link>
+
+    <gcds-nav-group open-trigger="components" menu-label="@Menu.Menu_Components">
+        <gcds-nav-link href="@Url.Action("gcds","Components")">@Menu.Menu_Components_GCDesign</gcds-nav-link>
+        <gcds-nav-link href="@Url.Action("Index","Components")">@Menu.Menu_Components_FDCP</gcds-nav-link>
+    </gcds-nav-group>
 </gcds-top-nav>

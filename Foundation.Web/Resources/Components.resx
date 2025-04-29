@@ -117,19 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Menu_Components" xml:space="preserve">
-    <value>Composants</value>
+  <data name="GcdsHeading" xml:space="preserve">
+    <value>GC Design System Components</value>
   </data>
-  <data name="Menu_Components_FDCP" xml:space="preserve">
-    <value>Composants de foundation</value>
+  <data name="GcdsParagraph1" xml:space="preserve">
+    <value>All GC Design System components are compatible out of the box. Just make sure the library is configured to point to the latest version. If the version was recently updated, you may not yet see autocomplete suggestions in Foundation.</value>
   </data>
-  <data name="Menu_Components_GCDesign" xml:space="preserve">
-    <value>Composants du syst'eme de design GC</value>
+  <data name="GcdsLinkText" xml:space="preserve">
+    <value>Find all components in the
+&lt;gcds-link href="https://design-system.alpha.canada.ca/en/components/" target="_blank" external&gt;
+ GC Design System documentation
+&lt;/gcds-link&gt;.</value>
   </data>
-  <data name="Menu_Components_GCDesign_url" xml:space="preserve">
-    <value>https://systeme-design.alpha.canada.ca/fr/composants/</value>
-  </data>
-  <data name="Menu_Installation" xml:space="preserve">
-    <value>Installation</value>
+  <data name="GcdsParagraph2" xml:space="preserve">
+    <value>To use GC Design System components, you’ll need to use the Web Component code. The components should also appear in Visual Studio if they have been implemented. However, even if a component doesn't appear in IntelliSense, you can still use it—just make sure you’re referencing the correct version of the GC Design System.</value>
   </data>
 </root>

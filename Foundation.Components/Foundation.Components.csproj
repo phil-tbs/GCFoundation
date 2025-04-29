@@ -57,6 +57,10 @@
 		<EmbeddedResource Include="Views\**\*.*" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Content Remove="Views\Shared\_ViewImports.cshtml" />
+	</ItemGroup>
+
 
 	<ItemGroup>
 	  <Content Update="Views\Shared\Components\Navigation\GCDSBreadcrumbs.cshtml">

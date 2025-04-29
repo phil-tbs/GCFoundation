@@ -117,19 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Menu_Components" xml:space="preserve">
-    <value>Composants</value>
+  <data name="GcdsHeading" xml:space="preserve">
+    <value>Composants du Système de design GC</value>
   </data>
-  <data name="Menu_Components_FDCP" xml:space="preserve">
-    <value>Composants de foundation</value>
+  <data name="GcdsParagraph1" xml:space="preserve">
+    <value>Tous les composants du Système de design GC sont compatibles dès le départ. 
+ Assurez-vous simplement que la bibliothèque est configurée pour utiliser la dernière version.
+ Si la version a été récemment mise à jour, il se peut que la saisie semi-automatique ne soit pas encore disponible dans Foundation.</value>
   </data>
-  <data name="Menu_Components_GCDesign" xml:space="preserve">
-    <value>Composants du syst'eme de design GC</value>
+  <data name="GcdsLinkText" xml:space="preserve">
+    <value>Trouvez tous les composants dans la 
+&lt;gcds-link href="https://systeme-design.alpha.canada.ca/fr/composants/" target="_blank" external&gt;
+    documentation du Système de design GC
+&lt;/gcds-link&gt;.</value>
   </data>
-  <data name="Menu_Components_GCDesign_url" xml:space="preserve">
-    <value>https://systeme-design.alpha.canada.ca/fr/composants/</value>
-  </data>
-  <data name="Menu_Installation" xml:space="preserve">
-    <value>Installation</value>
+  <data name="GcdsParagraph2" xml:space="preserve">
+    <value>Pour utiliser les composants du Système de design GC, vous devez utiliser le code des Web Components.
+ Les composants devraient également apparaître dans Visual Studio s’ils ont été implémentés.
+ Cependant, même si un composant n’apparaît pas dans IntelliSense, vous pouvez toujours l’utiliser—assurez-vous simplement de référencer la bonne version du Système de design GC.</value>
   </data>
 </root>
