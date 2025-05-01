@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using Foundation.Components.Enum;
+using Foundation.Components.Resources;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers.FDCP
@@ -41,13 +42,7 @@ namespace Foundation.Components.TagHelpers.FDCP
         /// </summary>
         public bool ShowCloseButton { get; set; } = true;
 
-
-        public override void Process(TagHelperContext context, TagHelperOutput output)
-        {
-            Console.WriteLine("SYNC Process was called.");
-            output.TagName = "div";
-            output.Content.SetHtmlContent("Sync modal content.");
-        }
+        public bool IsStaticBackdrop { get; set; } = false;
 
         /// <summary>
         /// Processes the <bootstrap-modal> tag and renders a Bootstrap 5 modal HTML structure.
@@ -56,8 +51,6 @@ namespace Foundation.Components.TagHelpers.FDCP
         /// <param name="output">The output to write the rendered HTML to.</param>
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
-            // Log to see if ProcessAsync is being called
-            Console.WriteLine("ProcessAsync was called");
 
             output.TagName = "div";
             output.TagMode = TagMode.StartTagAndEndTag;
@@ -66,6 +59,10 @@ namespace Foundation.Components.TagHelpers.FDCP
             output.Attributes.SetAttribute("tabindex", "-1");
             output.Attributes.SetAttribute("aria-labelledby", $"{Id}Label");
             output.Attributes.SetAttribute("aria-hidden", "true");
+            if (IsStaticBackdrop)
+            {
+                output.Attributes.SetAttribute("data-bs-backdrop", "static");
+            }
 
             var dialogClasses = "modal-dialog";
             if (Centered) dialogClasses += " modal-dialog-centered";
@@ -73,25 +70,8 @@ namespace Foundation.Components.TagHelpers.FDCP
             if (Size == ModalSize.Small) dialogClasses += " modal-sm";
             else if (Size == ModalSize.Large) dialogClasses += " modal-lg";
 
-            var childContent = output.GetChildContentAsync().Result;
+            var childContent = await output.GetChildContentAsync();
             var html = childContent.GetContent();
-
-            // Split body and footer manually
-            var bodyHtml = string.Empty;
-            var footerHtml = string.Empty;
-
-            if (html.Contains("id=\"globalModalFooter\""))
-            {
-                var bodyStart = html.IndexOf("<div", StringComparison.OrdinalIgnoreCase);
-                var footerStart = html.IndexOf("id=\"globalModalFooter\"", StringComparison.OrdinalIgnoreCase);
-
-                bodyHtml = html.Substring(0, footerStart);
-                footerHtml = html.Substring(footerStart);
-            }
-            else
-            {
-                bodyHtml = html;
-            }
 
             var sb = new StringBuilder();
             sb.AppendLine($"<div class='{dialogClasses}' role='document'>");
@@ -101,20 +81,11 @@ namespace Foundation.Components.TagHelpers.FDCP
             sb.AppendLine($"      <h5 class='modal-title' id='{Id}Label'>{Title}</h5>");
             if (ShowCloseButton)
             {
-                sb.AppendLine("      <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>");
+                sb.AppendLine($"      <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='{Modal.Modal_Close}'></button>");
             }
             sb.AppendLine("    </div>");
 
-            sb.AppendLine("    <div class='modal-body'>");
-            sb.AppendLine(bodyHtml);
-            sb.AppendLine("    </div>");
-
-            if (!string.IsNullOrWhiteSpace(footerHtml))
-            {
-                sb.AppendLine("    <div class='modal-footer'>");
-                sb.AppendLine(footerHtml);
-                sb.AppendLine("    </div>");
-            }
+            sb.AppendLine(html);
 
             sb.AppendLine("  </div>");
             sb.AppendLine("</div>");

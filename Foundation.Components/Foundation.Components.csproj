@@ -34,6 +34,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ErrorsPage.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Modal.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Modal.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\Validation.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -45,6 +50,10 @@
     <EmbeddedResource Update="Resources\ErrorsPage.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ErrorsPage.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Modal.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Modal.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Validation.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -69,6 +78,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Views\Authentication\" />
 	  <Folder Include="wwwroot\images\splash\" />
 	  <Folder Include="wwwroot\lib\bootstrap\" />
 	  <Folder Include="wwwroot\scss\" />

@@ -5,6 +5,7 @@
 @using Foundation.Components.Setttings
 
 @inject IOptions<FoundationComponentsSettings> settings;
+@inject IOptions<FoundationSessionSetting> sessionSetting;
 
 <!DOCTYPE html>
 <html lang="@LanguageUtility.GetCurrentApplicationLanguage()">
@@ -60,7 +61,7 @@
                 @await Html.PartialAsync(searchPartialViewName);
             </div>
         }
-       
+
         <div slot="breadcrumb">
             @await Component.InvokeAsync("Navigation", new { viewName = "GCDSBreadcrumbs", filterName = NamedNavigationFilters.Breadcrumbs, startingNodeKey = "" })
         </div>
@@ -73,14 +74,14 @@
 
     </gcds-footer>
 
-    <fdcp-modal id="globalModal" title="Global Modal">
-        <div id="globalModalBody">
-            <!-- Modal body content injected dynamically -->
-        </div>
-        <div id="globalModalFooter">
-            <!-- Modal footer buttons injected dynamically -->
-        </div>
-    </fdcp-modal>
+    @* Render all modal in that section to make sure to block all content on the page *@
+    @await RenderSectionAsync("Modals", required: false)
+
+    @* If configuration  *@
+    @if (sessionSetting.Value.UseSession && sessionSetting.Value.UseReminder)
+    {
+        @await Html.PartialAsync("Modals/_ExtendSessionModal");
+    }
 
     <script src="@StaticResourceUtility.GetLibResourcePath("prism/js/prism.js")" asp-append-version="true"></script>
     <script src="@StaticResourceUtility.GetLibResourcePath("tabulator/dist/js/tabulator.min.js")" asp-append-version="true"></script>
