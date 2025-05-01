@@ -28,8 +28,6 @@
         {
             currentLanguage = Foundation.Components.Enum.LanguageEnum.fr;
         }
-
-
     }
     <gcds-header lang-href="@Url.RouteUrl(routeValueDictionary)" skip-to-herf="#main-content" lang="@currentLanguage">
         @{
@@ -67,6 +65,7 @@
         </div>
     </gcds-header>
     <gcds-container id="main-content" size="xl" centered tag="main" main>
+        <partial name="_PageNotification" />
         @RenderBody()
     </gcds-container>
 

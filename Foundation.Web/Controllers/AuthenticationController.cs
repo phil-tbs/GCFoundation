@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Foundation.Web.Controllers
 {
     [Route("authentication")]
-    public class AuthenticationController : Controller
+    public class AuthenticationController : BaseController
     {
         [HttpGet("login")]
         public IActionResult Login()
@@ -18,10 +18,16 @@ namespace Foundation.Web.Controllers
         [HttpGet("logout")]
         public IActionResult Logout()
         {
+            SetPageNotification(new Components.Models.PageNotification
+            {
+                Title = "Your session timeout!",
+                Message = "For inactivity your session timeout.",
+                AlertType = Components.Enum.AlertTypeEnum.Danger
+            });
             return RedirectToAction("Index", "Home");
         }
 
-        [HttpPost("extend")]
+        [HttpPost("refresh")]
         public IActionResult RefreshSession()
         {
             HttpContext.Session.SetString("KeepAlive", DateTime.UtcNow.ToString());
