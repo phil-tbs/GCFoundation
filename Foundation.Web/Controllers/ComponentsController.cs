@@ -22,6 +22,13 @@ namespace Foundation.Web.Controllers
             return View(componentName);
         }
 
+        [HttpGet("gcds")]
+        public IActionResult Gcds()
+        {
+            SetPageTitle(Menu.Menu_Components_GCDesign);
+            return View();
+        }
+
         [HttpGet("testingForm")]
         public IActionResult FormValidationTest()
         {

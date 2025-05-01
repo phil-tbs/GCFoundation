@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Foundation.Web.Resources {
+namespace Foundation.Components.Resources {
     using System;
     
     
@@ -22,24 +22,24 @@ namespace Foundation.Web.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Menu {
+    internal class Modal {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Menu() {
+        internal Modal() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Foundation.Web.Resources.Menu", typeof(Menu).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Foundation.Components.Resources.Modal", typeof(Modal).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace Foundation.Web.Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,47 +61,48 @@ namespace Foundation.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Components.
+        ///   Looks up a localized string similar to Close.
         /// </summary>
-        public static string Menu_Components {
+        internal static string Modal_Close {
             get {
-                return ResourceManager.GetString("Menu_Components", resourceCulture);
+                return ResourceManager.GetString("Modal_Close", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Foundation components.
+        ///   Looks up a localized string similar to Extend Session.
         /// </summary>
-        public static string Menu_Components_FDCP {
+        internal static string ModalExtendSession_Extend_Btn {
             get {
-                return ResourceManager.GetString("Menu_Components_FDCP", resourceCulture);
+                return ResourceManager.GetString("ModalExtendSession_Extend_Btn", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GC Design System components.
+        ///   Looks up a localized string similar to Logout.
         /// </summary>
-        public static string Menu_Components_GCDesign {
+        internal static string ModalExtendSession_Logout_Btn {
             get {
-                return ResourceManager.GetString("Menu_Components_GCDesign", resourceCulture);
+                return ResourceManager.GetString("ModalExtendSession_Logout_Btn", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://design-system.alpha.canada.ca/en/components/.
+        ///   Looks up a localized string similar to For your security, your session will expire in &lt;span id=&quot;session-countdown&quot;&gt;&lt;span&gt; due to inactivity.
+        ///Would you like to extend your session?.
         /// </summary>
-        public static string Menu_Components_GCDesign_url {
+        internal static string ModalExtendSession_Text {
             get {
-                return ResourceManager.GetString("Menu_Components_GCDesign_url", resourceCulture);
+                return ResourceManager.GetString("ModalExtendSession_Text", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Installation.
+        ///   Looks up a localized string similar to Your session is about to expire.
         /// </summary>
-        public static string Menu_Installation {
+        internal static string ModalExtendSession_Title {
             get {
-                return ResourceManager.GetString("Menu_Installation", resourceCulture);
+                return ResourceManager.GetString("ModalExtendSession_Title", resourceCulture);
             }
         }
     }

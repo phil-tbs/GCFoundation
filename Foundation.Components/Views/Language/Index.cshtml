@@ -15,7 +15,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Canada.ca</title>
-    <link rel="stylesheet" href="@StaticResourceUtility.GetCssResourcePath("LanguageChooserPage.css")" asp-append-version="true" />
+    <link rel="stylesheet" href="@StaticResourceUtility.GetCssResourcePath("LanguageChooserPage.min.css")" asp-append-version="true" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" asp-append-version="true" />
     <link href="@StaticResourceUtility.GetImageResourcePath("favicon.ico")" rel="icon" type="image/x-icon">
 </head>
@@ -47,7 +47,7 @@
             <div class="footer">
                 <div class="row">
                     <div class="col-8"><a href="@Model.TermLinkEn">Terms & conditions</a> <span class="fa-solid fa-asterisk"></span> <a href="@Model.TermLinkFr">Avis</a></div>
-                    <div class="col-4"><gcds-signature type="wordmark"></gcds-signature></div>
+                    <div class="col-4"><gcds-signature type="Signature"></gcds-signature></div>
                 </div>
             </div>
         </div>

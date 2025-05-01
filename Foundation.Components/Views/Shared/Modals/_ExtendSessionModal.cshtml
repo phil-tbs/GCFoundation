@@ -1,0 +1,19 @@
+﻿@using Foundation.Components.Resources
+@using Foundation.Components.Setttings
+@using Microsoft.Extensions.Options
+
+@inject IOptions<FoundationSessionSetting> sessionSetting;
+
+<fdcp-session-modal id="session-extend-modal" title="@Modal.ModalExtendSession_Title" is-static-backdrop="true" 
+session-timeout="@sessionSetting.Value.SessionTimeout" 
+reminder-time="@sessionSetting.Value.ReminderTime" 
+refresh-url="@sessionSetting.Value.RefreshURL" 
+logout-url="@sessionSetting.Value.LogoutURL">
+	<fdcp-modal-body>
+		<p>@Html.Raw(Modal.ModalExtendSession_Text)</p>
+	</fdcp-modal-body>
+	<fdcp-modal-footer>
+		<gcds-button button-id="session-extend-refresh-btn" button-role="start">@Modal.ModalExtendSession_Extend_Btn</gcds-button>
+		<gcds-button button-id="session-extend-logout-btn" type="link" href="@sessionSetting.Value.LogoutURL">@Modal.ModalExtendSession_Logout_Btn</gcds-button>
+	</fdcp-modal-footer>
+</fdcp-session-modal>

@@ -17,8 +17,9 @@
 	<IncludeSource>true</IncludeSource>
   </PropertyGroup>
 
-	<Target Name="BuildSass" BeforeTargets="Build">
-		<Exec Command="npm run build:sass" />
+	<Target Name="NpmBuild" BeforeTargets="Build">
+		<Exec Command="npm install" WorkingDirectory="$(ProjectDir)" />
+		<Exec Command="npm run build" WorkingDirectory="$(ProjectDir)" />
 	</Target>
 
   <ItemGroup>
@@ -33,6 +34,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ErrorsPage.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Modal.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Modal.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\Validation.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -45,6 +51,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ErrorsPage.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Modal.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Modal.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Validation.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Validation.Designer.cs</LastGenOutput>
@@ -54,6 +64,10 @@
 	<ItemGroup>
 		<!-- Include all Views in Shared Components -->
 		<EmbeddedResource Include="Views\**\*.*" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Remove="Views\Shared\_ViewImports.cshtml" />
 	</ItemGroup>
 
 
@@ -66,6 +80,7 @@
 	<ItemGroup>
 	  <Folder Include="wwwroot\images\splash\" />
 	  <Folder Include="wwwroot\lib\bootstrap\" />
+	  <Folder Include="wwwroot\scss\" />
 	</ItemGroup>
 
 	<ItemGroup>

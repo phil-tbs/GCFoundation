@@ -37,6 +37,8 @@ builder.Services.AddSingleton(typeof(IBreadcrumbsLocalizationService), typeof(Br
 // Configure foundation
 builder.Services.ConfigureFoundationServices(builder.Configuration);
 
+builder.Services.AddFoundationSession(builder.Configuration);
+
 // Language configuration
 var supportedCultures = LanguageUtility.GetSupportedCulture();
 
@@ -87,6 +89,9 @@ app.UseCookiePolicy(new CookiePolicyOptions
     Secure = CookieSecurePolicy.Always,  // Only send cookies over HTTPS
     HttpOnly = HttpOnlyPolicy.Always  // Prevent JavaScript access to cookies
 });
+
+app.UseFoundationSession();
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

@@ -22,14 +22,14 @@ namespace Foundation.Web.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Menu {
+    public class Components {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Menu() {
+        internal Components() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Foundation.Web.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Foundation.Web.Resources.Menu", typeof(Menu).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Foundation.Web.Resources.Components", typeof(Components).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,47 +61,41 @@ namespace Foundation.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Components.
+        ///   Looks up a localized string similar to GC Design System Components.
         /// </summary>
-        public static string Menu_Components {
+        public static string GcdsHeading {
             get {
-                return ResourceManager.GetString("Menu_Components", resourceCulture);
+                return ResourceManager.GetString("GcdsHeading", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Foundation components.
+        ///   Looks up a localized string similar to Find all components in the
+        ///&lt;gcds-link href=&quot;https://design-system.alpha.canada.ca/en/components/&quot; target=&quot;_blank&quot; external&gt;
+        /// GC Design System documentation
+        ///&lt;/gcds-link&gt;..
         /// </summary>
-        public static string Menu_Components_FDCP {
+        public static string GcdsLinkText {
             get {
-                return ResourceManager.GetString("Menu_Components_FDCP", resourceCulture);
+                return ResourceManager.GetString("GcdsLinkText", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GC Design System components.
+        ///   Looks up a localized string similar to All GC Design System components are compatible out of the box. Just make sure the library is configured to point to the latest version. If the version was recently updated, you may not yet see autocomplete suggestions in Foundation..
         /// </summary>
-        public static string Menu_Components_GCDesign {
+        public static string GcdsParagraph1 {
             get {
-                return ResourceManager.GetString("Menu_Components_GCDesign", resourceCulture);
+                return ResourceManager.GetString("GcdsParagraph1", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://design-system.alpha.canada.ca/en/components/.
+        ///   Looks up a localized string similar to To use GC Design System components, you’ll need to use the Web Component code. The components should also appear in Visual Studio if they have been implemented. However, even if a component doesn&apos;t appear in IntelliSense, you can still use it—just make sure you’re referencing the correct version of the GC Design System..
         /// </summary>
-        public static string Menu_Components_GCDesign_url {
+        public static string GcdsParagraph2 {
             get {
-                return ResourceManager.GetString("Menu_Components_GCDesign_url", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Installation.
-        /// </summary>
-        public static string Menu_Installation {
-            get {
-                return ResourceManager.GetString("Menu_Installation", resourceCulture);
+                return ResourceManager.GetString("GcdsParagraph2", resourceCulture);
             }
         }
     }

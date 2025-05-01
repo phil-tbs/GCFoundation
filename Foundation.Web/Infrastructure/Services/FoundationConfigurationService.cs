@@ -41,10 +41,11 @@ namespace Foundation.Web.Infrastructure.Services
                 options.CssCDN = configuration.GetWithDefaults("ContentPolicySettings:CssCDN", new List<string>
             {
                 defaultSettings.GCDSCssCDN.Host,
-                defaultSettings.FontAwesomeCDN.Host
+                defaultSettings.FontAwesomeCDN.Host,
+
             });
                 options.CssCDNHash = configuration.GetWithDefaults("ContentPolicySettings:CssCDNHash", new List<string> { defaultSettings.GCDSCssCDNHash });
-                options.FontCDN = configuration.GetWithDefaults("ContentPolicySettings:FontCDN", new List<string> { defaultSettings.FontAwesomeCDN.Host });
+                options.FontCDN = configuration.GetWithDefaults("ContentPolicySettings:FontCDN", new List<string> { defaultSettings.FontAwesomeCDN.Host, defaultSettings.GCDSCssCDN.Host });
             });
         }
     }

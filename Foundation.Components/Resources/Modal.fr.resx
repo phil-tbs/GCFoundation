@@ -117,19 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Menu_Components" xml:space="preserve">
-    <value>Composants</value>
+  <data name="ModalExtendSession_Extend_Btn" xml:space="preserve">
+    <value>Prolonger la session</value>
   </data>
-  <data name="Menu_Components_FDCP" xml:space="preserve">
-    <value>Composants de foundation</value>
+  <data name="ModalExtendSession_Logout_Btn" xml:space="preserve">
+    <value>Fermer la session</value>
   </data>
-  <data name="Menu_Components_GCDesign" xml:space="preserve">
-    <value>Composants du syst'eme de design GC</value>
+  <data name="ModalExtendSession_Text" xml:space="preserve">
+    <value>Pour des raisons de sécurité, votre session expirera dans &lt;span id="session-time"&gt;&lt;span&gt; en raison d’une inactivité.
+Souhaitez-vous prolonger votre session?</value>
   </data>
-  <data name="Menu_Components_GCDesign_url" xml:space="preserve">
-    <value>https://systeme-design.alpha.canada.ca/fr/composants/</value>
+  <data name="ModalExtendSession_Title" xml:space="preserve">
+    <value>Votre session est sur le point d’expirer</value>
   </data>
-  <data name="Menu_Installation" xml:space="preserve">
-    <value>Installation</value>
+  <data name="Modal_Close" xml:space="preserve">
+    <value>Fermer</value>
   </data>
 </root>
