@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Foundation.Components.Resources {
+namespace Foundation.Web.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace Foundation.Components.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ErrorsPage {
+    public class Home {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ErrorsPage() {
+        internal Home() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Foundation.Components.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Foundation.Components.Resources.ErrorsPage", typeof(ErrorsPage).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Foundation.Web.Resources.Home", typeof(Home).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,47 +61,37 @@ namespace Foundation.Components.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An unexpected error has occurred. Please try again later or contact support if the problem persists..
+        ///   Looks up a localized string similar to Foundation is a library that provides helpers to build a GC web application compliant with the latest standards..
         /// </summary>
-        public static string GlobalError_Text {
+        public static string Index_Description {
             get {
-                return ResourceManager.GetString("GlobalError_Text", resourceCulture);
+                return ResourceManager.GetString("Index_Description", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Something went wrong.
+        ///   Looks up a localized string similar to &lt;gcds-heading tag=&quot;h2&quot;&gt;Features:&lt;/gcds-heading&gt;
+        ///&lt;gcds-text&gt;
+        ///    &lt;ul&gt;
+        ///        &lt;li&gt;Implements the &lt;gcds-link href=&quot;https://design-system.alpha.canada.ca/en/&quot; target=&quot;_blank&quot;&gt;GC Design System&lt;/gcds-link&gt;&lt;/li&gt;
+        ///        &lt;li&gt;Includes a security module&lt;/li&gt;
+        ///        &lt;li&gt;Standardizes form error handling&lt;/li&gt;
+        ///        &lt;li&gt;Offers a collection of components&lt;/li&gt;
+        ///    &lt;/ul&gt;
+        ///&lt;/gcds-text&gt;.
         /// </summary>
-        public static string GlobalError_Title {
+        public static string Index_Features {
             get {
-                return ResourceManager.GetString("GlobalError_Title", resourceCulture);
+                return ResourceManager.GetString("Index_Features", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;p&gt;The page you are looking for may have been moved, renamed, or is no longer available.
-        ///&lt;ul&gt;
-        ///    &lt;li&gt;Check the URL for any errors.&lt;/li&gt;
-        ///
-        ///    &lt;li&gt;Use the search function or browse the site’s main sections.&lt;/li&gt;
-        ///
-        ///    &lt;li&gt;If you believe this is an error, please &lt;a href=&quot;{0}&quot;&gt;contact us&lt;/a&gt;.&lt;/li&gt;
-        ///&lt;/ul&gt;
-        ///Return to the &lt;a href=&quot;{1}&quot;&gt;Home Page&lt;/a&gt;.
-        ///&lt;/p&gt;.
+        ///   Looks up a localized string similar to Welcome.
         /// </summary>
-        public static string NotFound_Text {
+        public static string Index_Title {
             get {
-                return ResourceManager.GetString("NotFound_Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Page Not Found.
-        /// </summary>
-        public static string NotFound_Title {
-            get {
-                return ResourceManager.GetString("NotFound_Title", resourceCulture);
+                return ResourceManager.GetString("Index_Title", resourceCulture);
             }
         }
     }

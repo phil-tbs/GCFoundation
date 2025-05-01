@@ -1,10 +1,11 @@
-﻿@using Foundation.Components.Utilities
+﻿@using Foundation.Components.Resources
+@using Foundation.Components.Utilities
 @{
-	Layout = null;
+	Layout = "_BillanguageErrorTemplate";
 	string lang = LanguageUtility.GetCurrentApplicationLanguage();
 }
 <div>
-	<gcds-error-message message-id="error-404">
-		
-	</gcds-error-message>
+	<gcds-notice type="@Foundation.Components.Enum.AlertTypeEnum.Danger" title="@ErrorsPage.NotFound_Title">
+		@Html.Raw(@ErrorsPage.NotFound_Text)
+	</gcds-notice>
 </div>

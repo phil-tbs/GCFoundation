@@ -117,7 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Error_404_Text" xml:space="preserve">
+  <data name="GlobalError_Text" xml:space="preserve">
+    <value>An unexpected error has occurred. Please try again later or contact support if the problem persists.</value>
+  </data>
+  <data name="GlobalError_Title" xml:space="preserve">
+    <value>Something went wrong</value>
+  </data>
+  <data name="NotFound_Text" xml:space="preserve">
     <value>&lt;p&gt;The page you are looking for may have been moved, renamed, or is no longer available.
 &lt;ul&gt;
     &lt;li&gt;Check the URL for any errors.&lt;/li&gt;
@@ -129,7 +135,7 @@
 Return to the &lt;a href="{1}"&gt;Home Page&lt;/a&gt;.
 &lt;/p&gt;</value>
   </data>
-  <data name="Error_404_Title" xml:space="preserve">
+  <data name="NotFound_Title" xml:space="preserve">
     <value>Page Not Found</value>
   </data>
 </root>

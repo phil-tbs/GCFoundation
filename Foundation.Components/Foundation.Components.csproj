@@ -48,7 +48,7 @@
 
   <ItemGroup>
     <EmbeddedResource Update="Resources\ErrorsPage.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ErrorsPage.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Modal.resx">

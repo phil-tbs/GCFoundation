@@ -1,20 +1,13 @@
-﻿@{
+﻿@using Foundation.Web.Resources
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div>
-    <gcds-heading tag="h1">Welcome</gcds-heading>
+    <gcds-heading tag="h1">@Home.Index_Title</gcds-heading>
     <gcds-text>
-        Foundation is a library that provide helper to build a GC web application complient.
+        @Home.Index_Description
     </gcds-text>
-
-    <gcds-heading tag="h2">Features:</gcds-heading>
-    <gcds-text>
-        <ul>
-            <li>Implement <a href="https://design-system.alpha.canada.ca/en/">GC design system</a></li>
-            <li>Include security module</li>
-            <li>Standardise form error handling</li>
-            <li>Collection of components</li>
-        </ul>
-    </gcds-text>
+    <hr/>
+    @Html.Raw(Home.Index_Features)
 </div>

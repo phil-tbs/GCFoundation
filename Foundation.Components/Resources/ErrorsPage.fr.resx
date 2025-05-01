@@ -117,7 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Error_404_Text" xml:space="preserve">
+  <data name="GlobalError_Text" xml:space="preserve">
+    <value>Une erreur inattendue est survenue. Veuillez réessayer plus tard ou contacter le soutien technique si le problème persiste.</value>
+  </data>
+  <data name="GlobalError_Title" xml:space="preserve">
+    <value>Une erreur s’est produite</value>
+  </data>
+  <data name="NotFound_Text" xml:space="preserve">
     <value>&lt;p&gt;La page que vous recherchez a peut-être été déplacée, renommée ou n'est plus disponible.
     &lt;ul&gt;
         &lt;li&gt;Vérifiez que l’URL est correcte.&lt;/li&gt;
@@ -129,7 +135,7 @@
     Retourner à la page &lt;a href="{1}"&gt;d’accueil&lt;/a&gt;.
 &lt;/p&gt;</value>
   </data>
-  <data name="Error_404_Title" xml:space="preserve">
+  <data name="NotFound_Title" xml:space="preserve">
     <value>Page introuvable</value>
   </data>
 </root>

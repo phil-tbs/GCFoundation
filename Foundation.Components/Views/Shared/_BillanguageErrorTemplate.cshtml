@@ -1,0 +1,34 @@
+﻿@using Foundation.Components.Setttings
+@using Foundation.Components.Utilities
+@using Microsoft.AspNetCore.Routing
+@using Microsoft.Extensions.Options
+
+@inject IOptions<FoundationComponentsSettings> settings;
+
+<!DOCTYPE html>
+<html lang="@LanguageUtility.GetCurrentApplicationLanguage()">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - @settings.Value.ApplicationName</title>
+    <link href="@StaticResourceUtility.GetImageResourcePath("favicon.ico")" rel="icon" type="image/x-icon">
+</head>
+<body>
+    @{
+        RouteValueDictionary routeValueDictionary = new RouteValueDictionary(ViewContext.RouteData.Values);
+        routeValueDictionary["culture"] = LanguageUtility.GetOppositeLangauge();
+        Foundation.Components.Enum.LanguageEnum currentLanguage = Foundation.Components.Enum.LanguageEnum.en;
+
+        if (LanguageUtility.GetCurrentApplicationLanguage() == "fr")
+        {
+            currentLanguage = Foundation.Components.Enum.LanguageEnum.fr;
+        }
+    }
+    <gcds-header lang-href="@Url.RouteUrl(routeValueDictionary)" skip-to-herf="#main-content" lang="@currentLanguage">
+    </gcds-header>
+    <gcds-container id="main-content" size="xl" centered tag="main" main>
+        @RenderBody()
+    </gcds-container>
+    <gcds-footer display="full"></gcds-footer>
+</body>
+</html>
