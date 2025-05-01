@@ -78,7 +78,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Views\Authentication\" />
 	  <Folder Include="wwwroot\images\splash\" />
 	  <Folder Include="wwwroot\lib\bootstrap\" />
 	  <Folder Include="wwwroot\scss\" />

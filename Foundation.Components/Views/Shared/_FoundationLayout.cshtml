@@ -66,17 +66,17 @@
     </gcds-header>
     <gcds-container id="main-content" size="xl" centered tag="main" main>
         <partial name="_PageNotification" />
+        @* Main content *@
         @RenderBody()
     </gcds-container>
 
-    <gcds-footer display="full">
-
-    </gcds-footer>
+    @* GC Footer *@
+    <gcds-footer display="full"></gcds-footer>
 
     @* Render all modal in that section to make sure to block all content on the page *@
     @await RenderSectionAsync("Modals", required: false)
 
-    @* If configuration  *@
+    @* If the session management is activated  *@
     @if (sessionSetting.Value.UseSession && sessionSetting.Value.UseReminder)
     {
         @await Html.PartialAsync("Modals/_ExtendSessionModal");
