@@ -118,22 +118,30 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="GlobalError_Text" xml:space="preserve">
-    <value>An unexpected error has occurred. Please try again later or contact support if the problem persists.</value>
+    <value>&lt;gcds-text&gt;
+  An unexpected error has occurred. Please try the following:
+  &lt;ul&gt;
+      &lt;li&gt;Try refreshing the page or return later.&lt;/li&gt;
+      &lt;li&gt;Ensure your internet connection is working.&lt;/li&gt;
+      &lt;li&gt;If the problem continues, please &lt;gcds-link href="{0}" target="_blank"&gt;contact us&lt;/gcds-link&gt;.&lt;/li&gt;
+  &lt;/ul&gt;
+  Return to the &lt;gcds-link href="/"&gt;Home Page&lt;/gcds-link&gt;.
+&lt;/gcds-text&gt;</value>
   </data>
   <data name="GlobalError_Title" xml:space="preserve">
     <value>Something went wrong</value>
   </data>
   <data name="NotFound_Text" xml:space="preserve">
-    <value>&lt;p&gt;The page you are looking for may have been moved, renamed, or is no longer available.
-&lt;ul&gt;
-    &lt;li&gt;Check the URL for any errors.&lt;/li&gt;
-
-    &lt;li&gt;Use the search function or browse the site’s main sections.&lt;/li&gt;
-
-    &lt;li&gt;If you believe this is an error, please &lt;a href="{0}"&gt;contact us&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-Return to the &lt;a href="{1}"&gt;Home Page&lt;/a&gt;.
-&lt;/p&gt;</value>
+    <value>&lt;gcds-text&gt;The page you are looking for may have been moved, renamed, or is no longer available.
+  &lt;ul&gt;
+      &lt;li&gt;Check the URL for any errors.&lt;/li&gt;
+  
+      &lt;li&gt;Use the search function or browse the site’s main sections.&lt;/li&gt;
+  
+      &lt;li&gt;If you believe this is an error, please &lt;gcds-link href="{0}" target="_blank"&gt;contact us&lt;/gcds-link&gt;.&lt;/li&gt;
+  &lt;/ul&gt;
+  Return to the &lt;gcds-link href="/"&gt;Home Page&lt;/gcds-link&gt;.
+  &lt;/gcds-text&gt;</value>
   </data>
   <data name="NotFound_Title" xml:space="preserve">
     <value>Page Not Found</value>

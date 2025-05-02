@@ -61,7 +61,25 @@ namespace Foundation.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Global error .
+        /// </summary>
+        public static string ErrorTemplates_GlobalError {
+            get {
+                return ResourceManager.GetString("ErrorTemplates_GlobalError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not found .
+        /// </summary>
+        public static string ErrorTemplates_NotFound {
+            get {
+                return ResourceManager.GetString("ErrorTemplates_NotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Learn about the core templates included in the Foundation framework. .
         /// </summary>
         public static string Index_PageDescription {
             get {
@@ -75,6 +93,96 @@ namespace Foundation.Web.Resources {
         public static string Index_PageTitle {
             get {
                 return ResourceManager.GetString("Index_PageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Foundation includes two error templates: .
+        /// </summary>
+        public static string Section_ErrorTemplates_Description {
+            get {
+                return ResourceManager.GetString("Section_ErrorTemplates_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error templates.
+        /// </summary>
+        public static string Section_ErrorTemplates_Title {
+            get {
+                return ResourceManager.GetString("Section_ErrorTemplates_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A bilingual splash page similar to the one used on Canada.ca. .
+        /// </summary>
+        public static string Section_LanguageChooser_Description {
+            get {
+                return ResourceManager.GetString("Section_LanguageChooser_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language chooser template .
+        /// </summary>
+        public static string Section_LanguageChooser_Title {
+            get {
+                return ResourceManager.GetString("Section_LanguageChooser_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The main layout template provides the base structure used across pages. .
+        /// </summary>
+        public static string Section_MainTemplate_Description {
+            get {
+                return ResourceManager.GetString("Section_MainTemplate_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Main template.
+        /// </summary>
+        public static string Section_MainTemplate_Title {
+            get {
+                return ResourceManager.GetString("Section_MainTemplate_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error templates .
+        /// </summary>
+        public static string SideNav_ErrorTemplates {
+            get {
+                return ResourceManager.GetString("SideNav_ErrorTemplates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On this page .
+        /// </summary>
+        public static string SideNav_Label {
+            get {
+                return ResourceManager.GetString("SideNav_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language chooser template.
+        /// </summary>
+        public static string SideNav_LanguageChooser {
+            get {
+                return ResourceManager.GetString("SideNav_LanguageChooser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Main template .
+        /// </summary>
+        public static string SideNav_MainTemplate {
+            get {
+                return ResourceManager.GetString("SideNav_MainTemplate", resourceCulture);
             }
         }
     }

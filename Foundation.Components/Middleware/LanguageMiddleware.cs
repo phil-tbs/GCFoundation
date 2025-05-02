@@ -1,5 +1,5 @@
 ﻿using System.Text.RegularExpressions;
-using Foundation.Components.Utilities;
+using Foundation.Common.Utilities;
 using Microsoft.AspNetCore.Http;
 
 namespace Foundation.Components.Middleware

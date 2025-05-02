@@ -8,14 +8,9 @@ using Foundation.Web.Infrastructure.Extensions;
 using Foundation.Components.Services.Interfaces;
 using Foundation.Components.Services;
 using Foundation.Security.Middlewares;
-using Foundation.Web.Infrastructure.Services;
-using Foundation.Components.Utilities;
 using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.AspNetCore.Mvc.Razor;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.Http;
+using Foundation.Common.Utilities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,11 +27,13 @@ builder.Services.Configure<GlobalResourceOptions>(builder.Configuration.GetSecti
 builder.Services.AddSingleton<IStringLocalizerFactory, GlobalResourceManagerStringLocalizerFactory>();
 builder.Services.AddLocalization();
 
+// Configure breacrumbds localization service
 builder.Services.AddSingleton(typeof(IBreadcrumbsLocalizationService), typeof(BreadcrumbsLocalizationService<Foundation.Web.Resources.Navigation>));
 
 // Configure foundation
-builder.Services.ConfigureFoundationServices(builder.Configuration);
 
+builder.Services.AddFoundationComponents(builder.Configuration);
+builder.Services.AddFoundationContentPolicies(builder.Configuration);
 builder.Services.AddFoundationSession(builder.Configuration);
 
 // Language configuration
@@ -90,6 +87,9 @@ app.UseCookiePolicy(new CookiePolicyOptions
     HttpOnly = HttpOnlyPolicy.Always  // Prevent JavaScript access to cookies
 });
 
+// Use Foundation
+app.UseFoundationComponents();
+app.UseFoundationContentPolicies();
 app.UseFoundationSession();
 
 

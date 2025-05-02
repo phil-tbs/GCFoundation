@@ -1,7 +1,9 @@
-﻿@using Foundation.Components.Resources
+﻿@using Foundation.Common.Utilities
+@using Foundation.Components.Resources
 @using Foundation.Components.Utilities
 @{
 	Layout = "_BillanguageErrorTemplate";
+	ViewData["Title"] = ErrorsPage.NotFound_Title;
 	string lang = LanguageUtility.GetCurrentApplicationLanguage();
 }
 <div>

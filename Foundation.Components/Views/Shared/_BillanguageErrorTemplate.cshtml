@@ -1,4 +1,6 @@
-﻿@using Foundation.Components.Setttings
+﻿@using Foundation.Common.Settings
+@using Foundation.Common.Utilities
+@using Foundation.Components.Setttings
 @using Foundation.Components.Utilities
 @using Microsoft.AspNetCore.Routing
 @using Microsoft.Extensions.Options
@@ -25,6 +27,11 @@
         }
     }
     <gcds-header lang-href="@Url.RouteUrl(routeValueDictionary)" skip-to-herf="#main-content" lang="@currentLanguage">
+        <div slot="menu">
+            <gcds-top-nav label="@settings.Value.ApplicationName" alignment="right">
+                <gcds-nav-link href="/" slot="home">@settings.Value.ApplicationName</gcds-nav-link>
+            </gcds-top-nav>
+        </div>
     </gcds-header>
     <gcds-container id="main-content" size="xl" centered tag="main" main>
         @RenderBody()

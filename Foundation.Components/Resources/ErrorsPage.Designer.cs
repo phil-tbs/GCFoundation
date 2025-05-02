@@ -61,7 +61,15 @@ namespace Foundation.Components.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An unexpected error has occurred. Please try again later or contact support if the problem persists..
+        ///   Looks up a localized string similar to &lt;gcds-text&gt;
+        ///  An unexpected error has occurred. Please try the following:
+        ///  &lt;ul&gt;
+        ///      &lt;li&gt;Try refreshing the page or return later.&lt;/li&gt;
+        ///      &lt;li&gt;Ensure your internet connection is working.&lt;/li&gt;
+        ///      &lt;li&gt;If the problem continues, please &lt;gcds-link href=&quot;{0}&quot; target=&quot;_blank&quot;&gt;contact us&lt;/gcds-link&gt;.&lt;/li&gt;
+        ///  &lt;/ul&gt;
+        ///  Return to the &lt;gcds-link href=&quot;/&quot;&gt;Home Page&lt;/gcds-link&gt;.
+        ///&lt;/gcds-text&gt;.
         /// </summary>
         public static string GlobalError_Text {
             get {
@@ -79,16 +87,16 @@ namespace Foundation.Components.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;p&gt;The page you are looking for may have been moved, renamed, or is no longer available.
-        ///&lt;ul&gt;
-        ///    &lt;li&gt;Check the URL for any errors.&lt;/li&gt;
-        ///
-        ///    &lt;li&gt;Use the search function or browse the site’s main sections.&lt;/li&gt;
-        ///
-        ///    &lt;li&gt;If you believe this is an error, please &lt;a href=&quot;{0}&quot;&gt;contact us&lt;/a&gt;.&lt;/li&gt;
-        ///&lt;/ul&gt;
-        ///Return to the &lt;a href=&quot;{1}&quot;&gt;Home Page&lt;/a&gt;.
-        ///&lt;/p&gt;.
+        ///   Looks up a localized string similar to &lt;gcds-text&gt;The page you are looking for may have been moved, renamed, or is no longer available.
+        ///  &lt;ul&gt;
+        ///      &lt;li&gt;Check the URL for any errors.&lt;/li&gt;
+        ///  
+        ///      &lt;li&gt;Use the search function or browse the site’s main sections.&lt;/li&gt;
+        ///  
+        ///      &lt;li&gt;If you believe this is an error, please &lt;gcds-link href=&quot;{0}&quot; target=&quot;_blank&quot;&gt;contact us&lt;/gcds-link&gt;.&lt;/li&gt;
+        ///  &lt;/ul&gt;
+        ///  Return to the &lt;gcds-link href=&quot;/&quot;&gt;Home Page&lt;/gcds-link&gt;.
+        ///  &lt;/gcds-text&gt;.
         /// </summary>
         public static string NotFound_Text {
             get {

@@ -117,10 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ErrorTemplates_GlobalError" xml:space="preserve">
+    <value>Erreur générale</value>
+  </data>
+  <data name="ErrorTemplates_NotFound" xml:space="preserve">
+    <value>Non trouvé</value>
+  </data>
   <data name="Index_PageDescription" xml:space="preserve">
-    <value />
+    <value>Apprenez-en plus sur les modèles de base inclus dans le cadre Foundation.</value>
   </data>
   <data name="Index_PageTitle" xml:space="preserve">
     <value>Gabarit</value>
+  </data>
+  <data name="Section_ErrorTemplates_Description" xml:space="preserve">
+    <value>Foundation comprend deux modèles d’erreur :</value>
+  </data>
+  <data name="Section_ErrorTemplates_Title" xml:space="preserve">
+    <value>Modèles d’erreur</value>
+  </data>
+  <data name="Section_LanguageChooser_Description" xml:space="preserve">
+    <value>Une page d’accueil bilingue semblable à celle utilisée sur Canada.ca.</value>
+  </data>
+  <data name="Section_LanguageChooser_Title" xml:space="preserve">
+    <value>Modèle de sélection de langue</value>
+  </data>
+  <data name="Section_MainTemplate_Description" xml:space="preserve">
+    <value>Le modèle principal fournit la structure de base utilisée sur les pages.</value>
+  </data>
+  <data name="Section_MainTemplate_Title" xml:space="preserve">
+    <value>Modèle principal</value>
+  </data>
+  <data name="SideNav_ErrorTemplates" xml:space="preserve">
+    <value>Modèles d’erreur</value>
+  </data>
+  <data name="SideNav_Label" xml:space="preserve">
+    <value>Sur cette page</value>
+  </data>
+  <data name="SideNav_LanguageChooser" xml:space="preserve">
+    <value>Modèle de sélection de langue</value>
+  </data>
+  <data name="SideNav_MainTemplate" xml:space="preserve">
+    <value>Modèle principal</value>
   </data>
 </root>

@@ -1,5 +1,5 @@
 ﻿using System.Security.Cryptography;
-using Foundation.Security.Settings;
+using Foundation.Common.Settings;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 
@@ -8,9 +8,9 @@ namespace Foundation.Security.Middlewares
     public class FoundationContentPoliciesMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly ContentPolicySettings _settings;
+        private readonly FoundationContentPolicySettings _settings;
 
-        public FoundationContentPoliciesMiddleware(RequestDelegate next, IOptions<ContentPolicySettings> settings)
+        public FoundationContentPoliciesMiddleware(RequestDelegate next, IOptions<FoundationContentPolicySettings> settings)
         {
             _next = next;
             _settings = settings.Value;

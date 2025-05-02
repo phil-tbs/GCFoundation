@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Foundation.Common.Settings;
 using Foundation.Components.Setttings;
 using Foundation.Components.Utilities;
 using Microsoft.AspNetCore.Http;

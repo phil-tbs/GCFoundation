@@ -3,19 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Foundation.Components.Utilities;
+using Foundation.Common.Utilities;
 
-namespace Foundation.Components.Setttings
+namespace Foundation.Common.Settings
 {
-    /// <summary>
-    /// A class to configure foundation basic settings
-    /// </summary>
     public class FoundationComponentsSettings
     {
         /// <summary>
         /// Gc design system css CDN
         /// </summary>
-        public Uri GCDSCssCDN { 
+        public Uri GCDSCssCDN
+        {
             get
             {
                 return new Uri($"https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@{GCDSVersion}/dist/gcds/gcds.css");
@@ -36,7 +34,8 @@ namespace Foundation.Components.Setttings
         /// <summary>
         /// Gc Design system javascript CDN
         /// </summary>
-        public Uri GCDSJavaScriptCDN { 
+        public Uri GCDSJavaScriptCDN
+        {
             get
             {
                 return new Uri($"https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@{GCDSVersion}/dist/gcds/gcds.esm.js");
@@ -109,5 +108,17 @@ namespace Foundation.Components.Setttings
                 return LanguageUtility.IsEnglish() ? ApplicationNameEn : ApplicationNameFr;
             }
         }
+
+        /// <summary>
+        /// The link where you support is in french
+        /// You can also add mailto:
+        /// </summary>
+        public string SupportLinkFr { get; set; } = default!;
+
+        /// <summary>
+        /// The link where you support is in english
+        /// You can also add mailto:
+        /// </summary>
+        public string SupportLinkEn { get; set; } = default!;
     }
 }

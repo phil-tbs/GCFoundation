@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation.lib", "Foundatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation.GUI", "Foundation.GUI", "{33E917A5-46A0-4D18-AEA8-F80CE2F8FB76}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foundation.Common", "Foundation.Common\Foundation.Common.csproj", "{A0BD39B3-2F55-45C5-BB8D-3171E8549899}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{8713E164-1B01-4688-84C1-40CCBE935AA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8713E164-1B01-4688-84C1-40CCBE935AA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8713E164-1B01-4688-84C1-40CCBE935AA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0BD39B3-2F55-45C5-BB8D-3171E8549899}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0BD39B3-2F55-45C5-BB8D-3171E8549899}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0BD39B3-2F55-45C5-BB8D-3171E8549899}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0BD39B3-2F55-45C5-BB8D-3171E8549899}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{3952C78E-B93D-47BE-9118-891C9C3143A9} = {33E917A5-46A0-4D18-AEA8-F80CE2F8FB76}
 		{911B7864-EDEE-4D51-BFBC-B50306C89FD8} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{8713E164-1B01-4688-84C1-40CCBE935AA2} = {32C4694C-DFB2-47F5-8841-5C852D530DA7}
+		{A0BD39B3-2F55-45C5-BB8D-3171E8549899} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6C1579E6-5869-4607-AAA8-BF4BF7463E36}

@@ -1,46 +1,44 @@
 ﻿@using Foundation.Web.Resources
+
 <gcds-heading tag="h1">
-	@Template.Index_PageTitle
+    @Template.Index_PageTitle
 </gcds-heading>
 
-<gcds-text >
-	@Template.Index_PageDescription
+<gcds-text>
+    @Template.Index_PageDescription
 </gcds-text>
 
 <gcds-grid columns-desktop="1fr 3fr" columns="1fr">
-	<gcds-side-nav label="On this page">
-		<gcds-nav-link href="#">Main template</gcds-nav-link>
-		<gcds-nav-link href="#">Errors template</gcds-nav-link>
-		<gcds-nav-link href="#">Language chooser tempate</gcds-nav-link>
-	</gcds-side-nav>
-	<div>
-		<gcds-heading tag="h2">
-			Main template
-		</gcds-heading>
+    <gcds-side-nav label="@Template.SideNav_Label">
+        <gcds-nav-link href="#main-template">@Template.SideNav_MainTemplate</gcds-nav-link>
+        <gcds-nav-link href="#error-templates">@Template.SideNav_ErrorTemplates</gcds-nav-link>
+        <gcds-nav-link href="#language-chooser">@Template.SideNav_LanguageChooser</gcds-nav-link>
+    </gcds-side-nav>
 
-		<gcds-text>
+    <div>
+        <gcds-heading tag="h2" id="main-template">
+            @Template.Section_MainTemplate_Title
+        </gcds-heading>
+        <gcds-text>
+            @Template.Section_MainTemplate_Description
+        </gcds-text>
 
-		</gcds-text>
+        <gcds-heading tag="h2" id="error-templates">
+            @Template.Section_ErrorTemplates_Title
+        </gcds-heading>
+        <gcds-text>
+            @Template.Section_ErrorTemplates_Description
+            <ul>
+                <li><gcds-link href="@Url.Action("GlobalError", "Errors")">@Template.ErrorTemplates_GlobalError</gcds-link></li>
+                <li><gcds-link href="@Url.Action("NotFoundError", "Errors")">@Template.ErrorTemplates_NotFound</gcds-link></li>
+            </ul>
+        </gcds-text>
 
-		<gcds-heading tag="h2">
-			Errors template
-		</gcds-heading>
-
-		<gcds-text>
-			Foundation template include 2 error template.
-			<ul>
-				<li><gcds-link href="@Url.Action("GlobalError", "Errors")">Global error</gcds-link></li>
-				<li><gcds-link href="@Url.Action("NotFoundError", "Errors")">Not found</gcds-link></li></li>
-			</ul>
-		</gcds-text>
-
-		<gcds-heading tag="h2">
-			Language chooser tempate
-		</gcds-heading>
-
-		<gcds-text>
-			Foundation include a language chooser page like Canada.ca splash screen.
-
-		</gcds-text>
-	</div>
+        <gcds-heading tag="h2" id="language-chooser">
+            @Template.Section_LanguageChooser_Title
+        </gcds-heading>
+        <gcds-text>
+            @Template.Section_LanguageChooser_Description
+        </gcds-text>
+    </div>
 </gcds-grid>

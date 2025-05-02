@@ -1,11 +1,13 @@
-﻿@using Foundation.Components.Resources
+﻿@using Foundation.Common.Utilities
+@using Foundation.Components.Resources
 @using Foundation.Components.Utilities
 @{
 	Layout = "_BillanguageErrorTemplate";
+	ViewData["Title"] = @ErrorsPage.GlobalError_Title;
 	string lang = LanguageUtility.GetCurrentApplicationLanguage();
 }
 <div>
 	<gcds-notice type="@Foundation.Components.Enum.AlertTypeEnum.Danger" title="@ErrorsPage.GlobalError_Title">
-		@ErrorsPage.GlobalError_Text
+		@Html.Raw(ErrorsPage.GlobalError_Text)
 	</gcds-notice>
 </div>
