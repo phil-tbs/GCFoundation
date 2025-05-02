@@ -117,22 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Menu_Components" xml:space="preserve">
-    <value>Components</value>
+  <data name="ErrorTemplates_GlobalError" xml:space="preserve">
+    <value>Global error </value>
   </data>
-  <data name="Menu_Components_FDCP" xml:space="preserve">
-    <value>Foundation components</value>
+  <data name="ErrorTemplates_NotFound" xml:space="preserve">
+    <value>Not found </value>
   </data>
-  <data name="Menu_Components_GCDesign" xml:space="preserve">
-    <value>GC Design System components</value>
+  <data name="Index_PageDescription" xml:space="preserve">
+    <value>Learn about the core templates included in the Foundation framework. </value>
   </data>
-  <data name="Menu_Components_GCDesign_url" xml:space="preserve">
-    <value>https://design-system.alpha.canada.ca/en/components/</value>
-  </data>
-  <data name="Menu_Installation" xml:space="preserve">
-    <value>Installation</value>
-  </data>
-  <data name="Menu_Template" xml:space="preserve">
+  <data name="Index_PageTitle" xml:space="preserve">
     <value>Template</value>
+  </data>
+  <data name="Section_ErrorTemplates_Description" xml:space="preserve">
+    <value>The Foundation includes two error templates: </value>
+  </data>
+  <data name="Section_ErrorTemplates_Title" xml:space="preserve">
+    <value>Error templates</value>
+  </data>
+  <data name="Section_LanguageChooser_Description" xml:space="preserve">
+    <value>A bilingual splash page similar to the one used on Canada.ca. </value>
+  </data>
+  <data name="Section_LanguageChooser_Title" xml:space="preserve">
+    <value>Language chooser template </value>
+  </data>
+  <data name="Section_MainTemplate_Description" xml:space="preserve">
+    <value>The main layout template provides the base structure used across pages. </value>
+  </data>
+  <data name="Section_MainTemplate_Title" xml:space="preserve">
+    <value>Main template</value>
+  </data>
+  <data name="SideNav_ErrorTemplates" xml:space="preserve">
+    <value>Error templates </value>
+  </data>
+  <data name="SideNav_Label" xml:space="preserve">
+    <value>On this page </value>
+  </data>
+  <data name="SideNav_LanguageChooser" xml:space="preserve">
+    <value>Language chooser template</value>
+  </data>
+  <data name="SideNav_MainTemplate" xml:space="preserve">
+    <value>Main template </value>
   </data>
 </root>

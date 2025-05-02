@@ -132,4 +132,7 @@
   <data name="Menu_Installation" xml:space="preserve">
     <value>Installation</value>
   </data>
+  <data name="Menu_Template" xml:space="preserve">
+    <value>Gabarit</value>
+  </data>
 </root>

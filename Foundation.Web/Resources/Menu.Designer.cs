@@ -104,5 +104,14 @@ namespace Foundation.Web.Resources {
                 return ResourceManager.GetString("Menu_Installation", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Template.
+        /// </summary>
+        public static string Menu_Template {
+            get {
+                return ResourceManager.GetString("Menu_Template", resourceCulture);
+            }
+        }
     }
 }

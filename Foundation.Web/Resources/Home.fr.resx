@@ -117,22 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Menu_Components" xml:space="preserve">
-    <value>Components</value>
+  <data name="Index_Title" xml:space="preserve">
+    <value>Bienvenue</value>
   </data>
-  <data name="Menu_Components_FDCP" xml:space="preserve">
-    <value>Foundation components</value>
+  <data name="Index_Description" xml:space="preserve">
+    <value>Foundation est une bibliothèque qui fournit des outils pour développer une application Web du GC conforme aux normes les plus récentes.</value>
   </data>
-  <data name="Menu_Components_GCDesign" xml:space="preserve">
-    <value>GC Design System components</value>
-  </data>
-  <data name="Menu_Components_GCDesign_url" xml:space="preserve">
-    <value>https://design-system.alpha.canada.ca/en/components/</value>
-  </data>
-  <data name="Menu_Installation" xml:space="preserve">
-    <value>Installation</value>
-  </data>
-  <data name="Menu_Template" xml:space="preserve">
-    <value>Template</value>
+  <data name="Index_Features" xml:space="preserve">
+    <value>&lt;gcds-heading tag="h2"&gt;Fonctionnalités :&lt;/gcds-heading&gt;
+&lt;gcds-text&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Implémente le &lt;gcds-link href="https://systeme-design.alpha.canada.ca/fr/" target="_blank"&gt;Système de design GC&lt;/gcds-link&gt;&lt;/li&gt;
+    &lt;li&gt;Comprend un module de sécurité&lt;/li&gt;
+    &lt;li&gt;Normalise la gestion des erreurs de formulaire&lt;/li&gt;
+    &lt;li&gt;Offre une collection de composants&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/gcds-text&gt;</value>
   </data>
 </root>

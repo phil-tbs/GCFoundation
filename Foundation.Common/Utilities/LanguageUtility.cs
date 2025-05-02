@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Foundation.Components.Utilities
+namespace Foundation.Common.Utilities
 {
     /// <summary>
     /// Provides utility methods for handling application language and culture settings.
