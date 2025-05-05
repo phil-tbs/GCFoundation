@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Foundation.Common.Utilities;
 using Foundation.Components.Enum;
 using Foundation.Components.Models;
 using Microsoft.AspNetCore.Razor.TagHelpers;
@@ -15,23 +16,23 @@ namespace Foundation.Components.TagHelpers
     {
         public string? ContextualHeadling {  get; set; }
 
-        public List<FooterLink>? ContextualLinks { get; set; }
+        public IEnumerable<FooterLink>? ContextualLinks { get; set; }
 
-        public FooterDisplayTypeEnum Display { get; set; } = FooterDisplayTypeEnum.full;
+        public FooterDisplayType Display { get; set; } = FooterDisplayType.full;
 
-        public LanguageEnum Lan { get; set; } = LanguageEnum.en;
+        public Language Lan { get; set; } = Language.en;
 
-        public List<FooterLink>? SubLinks { get; set; }
+        public IEnumerable<FooterLink>? SubLinks { get; set; }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             AddAttributeIfNotNull(output, "contextual-heading", ContextualHeadling);
 
-            if (ContextualLinks?.Any() == true)
+            if (ContextualLinks != null && ContextualLinks.Any() != false)
             {
                 string contextualLinksJson = JsonSerializer.Serialize(
                     ContextualLinks.ToDictionary(link => link.Label, link => link.Link),
-                    new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase }
+                    JsonOptionsUtility.CamelCase
                 );
                 output.Attributes.SetAttribute("contextual-links", contextualLinksJson);
             }
@@ -40,11 +41,11 @@ namespace Foundation.Components.TagHelpers
 
             AddAttributeIfNotNull(output, "lan", Lan);
 
-            if (SubLinks?.Any() == true)
+            if (SubLinks != null && SubLinks.Any() != false)
             {
                 string subLinksJson = JsonSerializer.Serialize(
                     SubLinks.ToDictionary(link => link.Label, link => link.Link),
-                    new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase }
+                    JsonOptionsUtility.CamelCase
                 );
                 output.Attributes.SetAttribute("contextual-links", subLinksJson);
             }

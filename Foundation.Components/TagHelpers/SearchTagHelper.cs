@@ -12,9 +12,9 @@ namespace Foundation.Components.TagHelpers
     {
         public required string Action { get; set; }
 
-        public LanguageEnum Lang { get; set; } = LanguageEnum.en;
+        public Language Lang { get; set; } = Language.en;
 
-        public SearchMethodEnum Method { get; set; } = SearchMethodEnum.Get;
+        public SearchMethod Method { get; set; } = SearchMethod.Get;
 
         public required string Name { get; set; }
 

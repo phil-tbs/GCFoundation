@@ -15,15 +15,15 @@ namespace Foundation.Components.TagHelpers
 
         public required string Legend { get; set; }
 
-        public bool Disabled { get; set; } = false;
+        public bool Disabled { get; set; }
 
         public string? ErrorMessage { get; set; }
 
         public string? Hint { get; set; }
 
-        public LanguageEnum Lan { get; set; } = LanguageEnum.en;
+        public Language Lan { get; set; } = Language.en;
 
-        public bool Required { get; set; } = false;
+        public bool Required { get; set; }
 
         public string? ValidateOn { get; set; } = "blur";
 

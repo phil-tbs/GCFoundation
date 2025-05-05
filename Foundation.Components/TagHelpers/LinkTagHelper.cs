@@ -15,13 +15,13 @@ namespace Foundation.Components.TagHelpers
 
         public string? Download { get; set; }
 
-        public bool External { get; set; } = false;
+        public bool External { get; set; }
 
         public required string Href { get; set; } = "";
 
         public string? Rel { get; set; }
 
-        public LinkSizeEnum Size { get; set; } = LinkSizeEnum.Inherit;
+        public LinkSize Size { get; set; } = LinkSize.Inherit;
 
         /// <summary>
         /// Target of the link (_blank, _self, _parent, framename)
@@ -30,7 +30,7 @@ namespace Foundation.Components.TagHelpers
 
         public string? Type {  get; set; }
 
-        public LinkVariantEnum Variant { get; set; } = LinkVariantEnum.Default;
+        public LinkVariant Variant { get; set; } = LinkVariant.Default;
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {

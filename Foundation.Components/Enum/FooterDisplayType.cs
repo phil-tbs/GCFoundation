@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Foundation.Components.Enum
 {
-    public enum LanguageEnum
+    public enum FooterDisplayType
     {
-        en,
-        fr
+        full,
+        compact
     }
 }

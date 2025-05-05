@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Foundation.Components.Enum
 {
-    public enum TextRoleEnum
+    public enum PaginationDisplay
     {
-        Primary,
-        Secondary,
-        Light
+        List,
+        Simple
     }
 }

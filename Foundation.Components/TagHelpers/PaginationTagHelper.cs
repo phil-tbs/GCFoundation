@@ -15,9 +15,9 @@ namespace Foundation.Components.TagHelpers
 
         public int CurrentPage { get; set; }
 
-        public PaginationDisplayEnum Display { get; set; } = PaginationDisplayEnum.List;
+        public PaginationDisplay Display { get; set; } = PaginationDisplay.List;
 
-        public LanguageEnum Lang { get; set; } = LanguageEnum.en;
+        public Language Lang { get; set; } = Language.en;
 
         public string NextHref { get; set; } = "#next";
 
@@ -29,7 +29,7 @@ namespace Foundation.Components.TagHelpers
 
         public int TotalPages { get; set; }
 
-        public string? Url { get; set; }
+        public Uri? Url { get; set; }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {

@@ -15,7 +15,9 @@ namespace Foundation.Components.TagHelpers.FDCP
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            if(Model == null)
+            ArgumentNullException.ThrowIfNull(output, nameof(output));
+
+            if (Model == null)
             {
                 output.SuppressOutput();
                 return;

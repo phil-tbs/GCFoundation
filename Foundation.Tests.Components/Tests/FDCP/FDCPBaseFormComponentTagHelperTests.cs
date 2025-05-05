@@ -60,6 +60,8 @@ namespace Foundation.Tests.Components.Tests.FDCP
             Assert.Equal("gcds-input", output.TagName);
             Assert.Contains("name=\"TestProperty\"", output.Attributes.ToString());
             Assert.Contains("value=\"Test Value\"", output.Attributes.ToString());
+
+            await Task.CompletedTask;
         }
 
         [Fact]

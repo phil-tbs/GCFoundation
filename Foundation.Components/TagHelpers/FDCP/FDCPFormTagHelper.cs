@@ -26,13 +26,17 @@ namespace Foundation.Components.TagHelpers.FDCP
 
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
+            ArgumentNullException.ThrowIfNull(output, nameof(output));
+
             if (Model == null)
             {
-                throw new ArgumentNullException(nameof(Model), "The model cannot be null.");
+                throw new InvalidOperationException("The model cannot be null.");
             }
 
+#pragma warning disable CA2007 // Consider calling ConfigureAwait on the awaited task
             var childContent = output.Content.IsModified ? output.Content.GetContent() :
             (await output.GetChildContentAsync()).GetContent();
+#pragma warning restore CA2007 // Consider calling ConfigureAwait on the awaited task
 
             // Start the <form> tag
             output.TagName = "form";

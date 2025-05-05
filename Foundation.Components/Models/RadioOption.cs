@@ -13,11 +13,11 @@ namespace Foundation.Components.Models
 
         public required string Value { get; set; }
 
-        public bool Required { get; set; } = false;
+        public bool Required { get; set; }
 
-        public bool Disabled { get; set; } = false;
+        public bool Disabled { get; set; }
 
-        public bool Checked { get; set; } = false;
+        public bool Checked { get; set; }
 
         public string? Hint { get; set; }
 

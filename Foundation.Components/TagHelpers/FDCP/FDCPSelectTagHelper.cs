@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,8 @@ namespace Foundation.Components.TagHelpers.FDCP
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
+            ArgumentNullException.ThrowIfNull(output, nameof(output));
+
             // Call base class to handle label, hint, and errors
             base.Process(context, output);
 
@@ -34,7 +37,7 @@ namespace Foundation.Components.TagHelpers.FDCP
             foreach (var item in Items)
             {
                 var selected = For.Model?.ToString() == item.Value ? " selected" : "";
-                sb.AppendLine($"<option value='{item.Value}'{selected}>{item.Text}</option>");
+                sb.AppendLine(CultureInfo.InvariantCulture, $"<option value='{item.Value}'{selected}>{item.Text}</option>");
             }
 
             output.Content.SetHtmlContent(sb.ToString());

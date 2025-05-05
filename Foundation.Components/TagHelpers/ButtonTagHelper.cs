@@ -15,18 +15,20 @@ namespace Foundation.Components.TagHelpers
 
         public string? ButtonRole { get; set; }
 
-        public bool Disable { get; set; } = false;
+        public bool Disable { get; set; }
 
         public string? Name { get; set; }
 
-        public ButtonSizeTypeEnum Size { get; set; } = ButtonSizeTypeEnum.regular;
+        public ButtonSizeType Size { get; set; } = ButtonSizeType.regular;
 
-        public ButtonTypeEnum Type { get; set; } = ButtonTypeEnum.button;
+        public ButtonType Type { get; set; } = ButtonType.button;
 
         public string? Value { get; set; }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
+            ArgumentNullException.ThrowIfNull(output, nameof(output));
+
             output.TagName = "gcds-button";
 
             AddAttributeIfNotNull(output, "button-id", ButtonId);

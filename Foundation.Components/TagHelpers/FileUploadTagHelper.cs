@@ -15,7 +15,7 @@ namespace Foundation.Components.TagHelpers
 
         public string? Accept { get; set; }
 
-        public bool Multiple { get; set; } = false;
+        public bool Multiple { get; set; }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {

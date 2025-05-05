@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Reflection;
+using System.Text.Json;
 using Foundation.Common.Utilities;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
@@ -10,6 +11,14 @@ namespace Foundation.Components.TagHelpers.FDCP
 {
     public abstract class FDCPBaseFormComponentTagHelper : TagHelper
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        protected static readonly JsonSerializerOptions CamelCaseOptions = new()
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+        };
+
         /// <summary>
         /// Binds the tag helper to a model property, enabling validation and data binding.
         /// </summary>
@@ -51,6 +60,8 @@ namespace Foundation.Components.TagHelpers.FDCP
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
+            ArgumentNullException.ThrowIfNull(output, nameof(output));
+
             if (For == null)
             {
                 output.SuppressOutput();
@@ -89,13 +100,15 @@ namespace Foundation.Components.TagHelpers.FDCP
 
         }
 
-        protected string GetLocalizedLabel(PropertyInfo property)
+        protected static string GetLocalizedLabel(PropertyInfo property)
         {
+            ArgumentNullException.ThrowIfNull(property, nameof(property));
+
             var displayAttr = property.GetCustomAttribute<DisplayAttribute>();
             return displayAttr?.GetName() ?? property.Name;
         }
 
-        protected string GetLocalizedHint(PropertyInfo property)
+        protected static string GetLocalizedHint(PropertyInfo property)
         {
             var displayAttr = property.GetCustomAttribute<DisplayAttribute>();
             return displayAttr?.GetDescription() ?? string.Empty;

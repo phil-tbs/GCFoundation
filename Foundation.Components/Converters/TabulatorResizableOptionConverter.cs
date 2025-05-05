@@ -25,6 +25,8 @@ namespace Foundation.Components.Converters
 
         public override void Write(Utf8JsonWriter writer, TabulatorResizableOption value, JsonSerializerOptions options)
         {
+            ArgumentNullException.ThrowIfNull(writer);
+
             switch (value)
             {
                 case TabulatorResizableOption.True:

@@ -10,6 +10,8 @@ namespace Foundation.Components.Middleware
     {
         public static IServiceCollection AddFoundationSession(this IServiceCollection services, IConfiguration configuration)
         {
+            ArgumentNullException.ThrowIfNull(configuration, nameof(configuration));
+
             var section = configuration.GetSection("FoundationSession");
             services.Configure<FoundationSessionSetting>(section);
 

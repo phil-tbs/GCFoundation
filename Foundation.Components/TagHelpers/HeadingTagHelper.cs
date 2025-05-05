@@ -11,7 +11,7 @@ namespace Foundation.Components.TagHelpers
     [HtmlTargetElement("gcds-heading")]
     public class HeadingTagHelper : BaseTagHelper
     {
-        public required HeadingTagEnum Tag { get; set; } = HeadingTagEnum.h2;
+        public required HeadingTag Tag { get; set; } = HeadingTag.h2;
 
         public bool CharacterLimit { get; set; } = true;
 

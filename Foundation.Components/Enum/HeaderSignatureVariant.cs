@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Foundation.Components.Enum
 {
-    public enum SignatureVariantEnum
+    public enum HeaderSignatureVariant
     {
-        Colour,
-        White
+        colour,
+        white
     }
 }

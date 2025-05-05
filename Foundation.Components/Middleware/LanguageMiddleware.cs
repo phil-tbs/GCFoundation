@@ -17,18 +17,20 @@ namespace Foundation.Components.Middleware
 
         public async Task InvokeAsync(HttpContext context)
         {
+            ArgumentNullException.ThrowIfNull(context, nameof(context));
+
             string languages = string.Join("|", LanguageUtility.GetSupportedCulture().Select(x => x.TwoLetterISOLanguageName).ToList());
             Regex regLocalization = new Regex($"^\\/({languages})\\/*");
             var path = context.Request.Path.Value;
 
-            if(string.IsNullOrEmpty(path) || !regLocalization.IsMatch(path))
+            if (string.IsNullOrWhiteSpace(path) || !regLocalization.IsMatch(path))
             {
-                await _next(context);
+                await _next(context).ConfigureAwait(false);
                 return;
             }
 
             // Extract culture
-            string? culture = path?.Split('/')[1];
+            string culture = path.Split('/')[1];
 
 
             if (!string.IsNullOrEmpty(culture) && LanguageUtility.IsCultureSupported(culture))
@@ -48,7 +50,7 @@ namespace Foundation.Components.Middleware
                 }
             }
 
-            await _next(context);
+            await _next(context).ConfigureAwait(false);
         }
 
     }

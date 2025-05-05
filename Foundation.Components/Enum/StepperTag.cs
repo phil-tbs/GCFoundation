@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Foundation.Components.Enum
 {
-    public enum FooterDisplayTypeEnum
+    public enum StepperTag
     {
-        full,
-        compact
+        h1,
+        h2,
+        h3,
     }
 }

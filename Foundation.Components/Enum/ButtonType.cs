@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace Foundation.Components.Enum
 {
-    public enum TextDisplayEnum
+    public enum ButtonType
     {
-        Block,
-        Flex,
-        Inline,
-        InlineBlock,
-        InlineFlex,
-        None
+        button,
+        link,
+        submit,
+        reset
     }
 }

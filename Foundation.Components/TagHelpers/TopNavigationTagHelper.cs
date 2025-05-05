@@ -14,8 +14,8 @@ namespace Foundation.Components.TagHelpers
     {
         public required string Label { get; set; }
 
-        public TopMenuAlignmentEnum Alignment { get; set; } = TopMenuAlignmentEnum.right;
-        public LanguageEnum Lang { get; set; } = LanguageEnum.en;
+        public TopMenuAlignment Alignment { get; set; } = TopMenuAlignment.right;
+        public Language Lang { get; set; } = Language.en;
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {

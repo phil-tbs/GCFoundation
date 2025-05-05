@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Foundation.Components.Enum
 {
-    public enum AlertTypeEnum
+    public enum ButtonSizeType
     {
-        Success,
-        Danger,
-        Info,
-        Warning
+
+        regular,
+        small,
     }
 }

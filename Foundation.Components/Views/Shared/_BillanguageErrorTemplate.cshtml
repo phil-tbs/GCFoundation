@@ -19,11 +19,11 @@
     @{
         RouteValueDictionary routeValueDictionary = new RouteValueDictionary(ViewContext.RouteData.Values);
         routeValueDictionary["culture"] = LanguageUtility.GetOppositeLangauge();
-        Foundation.Components.Enum.LanguageEnum currentLanguage = Foundation.Components.Enum.LanguageEnum.en;
+        Foundation.Components.Enum.Language currentLanguage = Foundation.Components.Enum.Language.en;
 
         if (LanguageUtility.GetCurrentApplicationLanguage() == "fr")
         {
-            currentLanguage = Foundation.Components.Enum.LanguageEnum.fr;
+            currentLanguage = Foundation.Components.Enum.Language.fr;
         }
     }
     <gcds-header lang-href="@Url.RouteUrl(routeValueDictionary)" skip-to-herf="#main-content" lang="@currentLanguage">

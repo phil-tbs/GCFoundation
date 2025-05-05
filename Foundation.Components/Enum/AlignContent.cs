@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace Foundation.Components.Enum
 {
-    public enum CardTitleTagEnum
+    public enum AlignContent
     {
-        a,
-        h3,
-        h4,
-        h5,
-        h6
+        center,
+        end,
+        spaceArround,
+        spaceBetween,
+        spaceEvenly,
+        start,
+        stretch
     }
 }

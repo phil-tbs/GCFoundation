@@ -11,8 +11,8 @@ namespace Foundation.Components.TagHelpers
     [HtmlTargetElement("gcds-topic-menu")]
     public class TopicMenuTagHelper: BaseTagHelper
     {
-        public bool Home { get; set; } = false;
-        public LanguageEnum Lang { get; set; } = LanguageEnum.en;
+        public bool Home { get; set; }
+        public Language Lang { get; set; } = Language.en;
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {

@@ -13,14 +13,14 @@ namespace Foundation.Components.TagHelpers
     {
         public bool CharacterLimit { get; set; } = true;
 
-        public TextDisplayEnum Display { get; set; } = TextDisplayEnum.Block;
+        public TextDisplay Display { get; set; } = TextDisplay.Block;
 
         public string? MarginBottom { get; set; } = "300";
         public string? MarginTop { get; set; } = "0";
 
-        public TextSizeEnum Size { get; set; } = TextSizeEnum.Body;
+        public TextSize Size { get; set; } = TextSize.Body;
 
-        public TextRoleEnum TextRole { get; set; } = TextRoleEnum.Primary;
+        public TextRole TextRole { get; set; } = TextRole.Primary;
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {

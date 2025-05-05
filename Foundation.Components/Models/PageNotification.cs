@@ -13,6 +13,6 @@ namespace Foundation.Components.Models
 
         public required string Message { get; set; }
 
-        public AlertTypeEnum AlertType { get; set; } = AlertTypeEnum.Info;
+        public AlertType AlertType { get; set; } = AlertType.Info;
     }
 }

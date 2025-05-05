@@ -11,7 +11,7 @@ namespace Foundation.Components.TagHelpers
     [HtmlTargetElement("gcds-sr-only")]
     public class SrOnlyTagHelper : BaseTagHelper
     {
-        public SrOnlyTagEnum Tag { get; set; }
+        public SrOnlyTag Tag { get; set; }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {

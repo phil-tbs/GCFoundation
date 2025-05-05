@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Foundation.Components.Enum
 {
-    public enum AutocompleteTypeEnum
+    public enum TextSize
     {
-        on,
-        off,
+        Body,
+        Small
     }
 }

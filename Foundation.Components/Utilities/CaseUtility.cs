@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +25,7 @@ namespace Foundation.Components.Utilities
                 if (char.IsUpper(c))
                 {
                     builder.Append('-');
-                    builder.Append(char.ToLower(c));
+                    builder.Append(char.ToLower(c, CultureInfo.InvariantCulture));
                 }
                 else
                 {

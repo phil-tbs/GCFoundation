@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Foundation.Components.Enum
 {
-    public enum SearchMethodEnum
+    public enum LinkSize
     {
-        Get,
-        Post
+        Inherit,
+        Small,
+        Regular
     }
 }

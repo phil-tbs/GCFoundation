@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Foundation.Components.Enum
 {
-    public enum HeaderSignatureVariantEnum
+    public enum DateInputFormatType
     {
-        colour,
-        white
+        full,
+        compact
     }
 }

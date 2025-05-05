@@ -11,9 +11,9 @@ namespace Foundation.Components.TagHelpers
     [HtmlTargetElement("gcds-grid")]
     public class GridTagHelper : BaseTagHelper
     {
-        public AlignContentEnum? AlignContent { get; set; }
+        public AlignContent? AlignContent { get; set; }
 
-        public AlignItemEnum AlingItem { get; set; }
+        public AlignItem AlingItem { get; set; }
 
         public string? Columns { get; set; }
 
@@ -22,22 +22,22 @@ namespace Foundation.Components.TagHelpers
         public string? ColumnsTablet { get; set; }
         public SizeTypeEmum Container { get; set; } = SizeTypeEmum.full;
 
-        public GridDisplayEnum Display { get; set; } = GridDisplayEnum.grid;
+        public GridDisplay Display { get; set; } = GridDisplay.grid;
 
-        public bool EqualRowHeight { get; set; } = false;
+        public bool EqualRowHeight { get; set; }
 
         public string? Gap { get; set; } = "300";
         public string? GapDesktop { get; set; }
 
         public string? GapTablet { get; set; }
 
-        public AlignContentEnum? JustifyContent { get; set; }
+        public AlignContent? JustifyContent { get; set; }
 
-        public AlignItemEnum? JustifyItems { get; set; }
+        public AlignItem? JustifyItems { get; set; }
 
-        public AlignContentEnum? PlaceContent { get; set; }
+        public AlignContent? PlaceContent { get; set; }
 
-        public AlignItemEnum? PlaceItems { get; set; }
+        public AlignItem? PlaceItems { get; set; }
 
         public string? Tag { get; set; } = "div";
 

@@ -18,10 +18,14 @@ namespace Foundation.Components.Configuration
 
         public FoundationComponentsCdnPolicyConfigurator(IOptions<FoundationComponentsSettings> componentSettings)
         {
+            ArgumentNullException.ThrowIfNull(componentSettings, nameof(componentSettings));
+
             _componentSettings = componentSettings.Value;
         }
         public void Configure(FoundationContentPolicySettings options)
         {
+            ArgumentNullException.ThrowIfNull(options, nameof(options));
+
             // Ensure Bootstrap CDN is added if it's used
             if (_componentSettings.UsingBootstrapCDN)
             {

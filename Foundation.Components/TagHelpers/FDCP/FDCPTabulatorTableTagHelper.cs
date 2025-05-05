@@ -21,21 +21,22 @@ namespace Foundation.Components.TagHelpers.FDCP
         public string Id { get; set; } = "";
 
         /// <summary>The URL of the AJAX endpoint that returns paginated JSON data.</summary>
-        public string? AjaxUrl { get; set; }
+        public Uri? AjaxUrl { get; set; }
 
         /// <summary>Local data (optional). If provided, used instead of AJAX.</summary>
         public IEnumerable<object>? Data { get; set; }
 
         /// <summary>A list of columns to display in the Tabulator table.</summary>
-        public List<TabulatorColumn> Columns { get; set; } = new();
+        public IEnumerable<TabulatorColumn> Columns { get; set; } = Enumerable.Empty<TabulatorColumn>();
 
-        public bool UseStaticData { get; set; } = false;
+        public bool UseStaticData { get; set; }
 
         public int PaginationSize { get; set; } = 10;
 
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
+            ArgumentNullException.ThrowIfNull(output, nameof(output));
 
             output.TagName = "div";
             output.TagMode = TagMode.StartTagAndEndTag;

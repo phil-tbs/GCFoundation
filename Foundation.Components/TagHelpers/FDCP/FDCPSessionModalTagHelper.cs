@@ -14,12 +14,14 @@ namespace Foundation.Components.TagHelpers.FDCP
 
         public int ReminderTime { get; set; }
 
-        public string RefreshURL { get; set; } = default!;
+        public Uri RefreshURL { get; set; } = default!;
 
-        public string LogoutURL { get; set; } = default!;
+        public Uri LogoutURL { get; set; } = default!;
 
         public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
+            ArgumentNullException.ThrowIfNull(output, nameof(output));
+
             output.Attributes.SetAttribute("data-session-timeout", SessionTimeout);
             output.Attributes.SetAttribute("data-reminder-time", ReminderTime);
             output.Attributes.SetAttribute("data-refresh", RefreshURL);

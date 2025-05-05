@@ -12,7 +12,7 @@ namespace Foundation.Components.TagHelpers
     public class SideNavigationTagHelper : BaseTagHelper
     {
         public required string Label { get; set; }
-        public LanguageEnum Lang { get; set; } = LanguageEnum.en;
+        public Language Lang { get; set; } = Language.en;
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {

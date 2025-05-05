@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace Foundation.Components.Enum
 {
-    public enum AlignItemEnum
+    public enum DateModifiedType
     {
-        baseline,
-        center,
-        end,
-        start,
-        stretch
+        date,
+        version
     }
 }

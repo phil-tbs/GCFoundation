@@ -50,7 +50,7 @@ namespace Foundation.Components.Models
         /// <summary>
         /// If we want to filter on that column
         /// </summary>
-        public bool Filter { get; set; } = false;
+        public bool Filter { get; set; }
 
     }
 }

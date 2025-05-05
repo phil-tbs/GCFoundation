@@ -15,11 +15,11 @@ namespace Foundation.Components.TagHelpers
 
         public required string SkipToHerf { get; set; }
 
-        public LanguageEnum Lang { get; set; } = LanguageEnum.en;
+        public Language Lang { get; set; } = Language.en;
 
         public bool SignatureHasLink { get; set; } = true;
 
-        public HeaderSignatureVariantEnum SignatureVariant { get; set; } = HeaderSignatureVariantEnum.colour;
+        public HeaderSignatureVariant SignatureVariant { get; set; } = HeaderSignatureVariant.colour;
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {

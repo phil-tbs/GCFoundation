@@ -24,6 +24,7 @@ namespace Foundation.Components.TagHelpers.FDCP
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
+            ArgumentNullException.ThrowIfNull(output, nameof(output));
             // Call base class to handle label, hint, and errors
             base.Process(context, output);
 
@@ -78,7 +79,7 @@ namespace Foundation.Components.TagHelpers.FDCP
         }
 
 
-        private string? GetTagNameByInputType(TagType inputType)
+        private static string? GetTagNameByInputType(TagType inputType)
         {
             switch (inputType) {
                 case TagType.input:
@@ -97,7 +98,7 @@ namespace Foundation.Components.TagHelpers.FDCP
 
         private TagType GetTagType()
         {
-            if (this.PropertyInfo.PropertyType == typeof(bool))
+            if (this.PropertyInfo != null && this.PropertyInfo.PropertyType == typeof(bool))
                 return TagType.checkbox;
 
             if (DataTypeAttribute != null)
@@ -129,6 +130,13 @@ namespace Foundation.Components.TagHelpers.FDCP
                     DataType.Url => "url",
                     _ => "text"
                 };
+            }
+
+            // Ensure PropertyInfo is not null before accessing its PropertyType
+            if (this.PropertyInfo == null)
+            {
+                // Return a default value or handle this case appropriately
+                return "text";
             }
 
             Type propertyType = this.PropertyInfo.PropertyType;

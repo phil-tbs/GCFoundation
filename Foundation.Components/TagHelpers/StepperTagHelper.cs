@@ -15,9 +15,9 @@ namespace Foundation.Components.TagHelpers
 
         public int TotalStep { get; set; }
 
-        public LanguageEnum Lang { get; set; } = LanguageEnum.en;
+        public Language Lang { get; set; } = Language.en;
 
-        public StepperTagEnum Tag { get; set; } = StepperTagEnum.h2;
+        public StepperTag Tag { get; set; } = StepperTag.h2;
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {

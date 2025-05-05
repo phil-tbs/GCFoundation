@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace Foundation.Components.Enum
 {
-    public enum GridDisplayEnum
+    public enum CardTitleTag
     {
-        grid,
-        inlineGrid
+        a,
+        h3,
+        h4,
+        h5,
+        h6
     }
 }

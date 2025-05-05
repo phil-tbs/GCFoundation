@@ -11,8 +11,8 @@ namespace Foundation.Components.TagHelpers
     [HtmlTargetElement("gcds-breadcrumbs")]
     public class BreadcrumbsTagHelper : BaseTagHelper
     {
-        public bool HideCanadaLink { get; set; } = false;
-        public LanguageEnum Language { get; set; } = LanguageEnum.en;
+        public bool HideCanadaLink { get; set; }
+        public Language Language { get; set; } = Language.en;
         public BreadcrumbsTagHelper() { }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)

@@ -5,6 +5,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+	<NeutralLanguage>en</NeutralLanguage>
+	<AnalysisMode>All</AnalysisMode>
 
 	<PackageId>Foundation.Components</PackageId>
 	<Version>1.0.0</Version>

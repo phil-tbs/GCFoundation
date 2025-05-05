@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Foundation.Components.Enum
 {
-    public enum LinkVariantEnum
+    public enum AlertType
     {
-        Default,
-        Light
+        Success,
+        Danger,
+        Info,
+        Warning
     }
 }

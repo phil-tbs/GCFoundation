@@ -37,7 +37,7 @@ namespace Foundation.Web.Controllers
             {
                 Title       = title,
                 Message     = message,
-                AlertType   = Components.Enum.AlertTypeEnum.Success
+                AlertType   = Components.Enum.AlertType.Success
             };
         }
 

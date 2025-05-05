@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Foundation.Components.Enum
 {
-    public enum TopMenuAlignmentEnum
+    public enum AutocompleteType
     {
-        right,
-        left,
-        center
+        on,
+        off,
     }
 }

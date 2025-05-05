@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Foundation.Components.Enum
 {
-    public enum DateModifiedTypeEnum
+    public enum TopMenuAlignment
     {
-        date,
-        version
+        right,
+        left,
+        center
     }
 }

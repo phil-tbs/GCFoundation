@@ -22,7 +22,7 @@ namespace Foundation.Web.Controllers
             {
                 Title = "Your session timeout!",
                 Message = "For inactivity your session timeout.",
-                AlertType = Components.Enum.AlertTypeEnum.Danger
+                AlertType = Components.Enum.AlertType.Danger
             });
             return RedirectToAction("Index", "Home");
         }

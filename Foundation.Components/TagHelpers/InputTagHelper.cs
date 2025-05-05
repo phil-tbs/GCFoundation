@@ -27,12 +27,12 @@ namespace Foundation.Components.TagHelpers
         /// <summary>
         /// Autocomplete behavior
         /// </summary>
-        public AutocompleteTypeEnum Autocomplete { get; set; } = AutocompleteTypeEnum.off;
+        public AutocompleteType Autocomplete { get; set; } = AutocompleteType.off;
 
         /// <summary>
         /// Whether to hide the label
         /// </summary>
-        public bool HideLabel { get; set; } = false;
+        public bool HideLabel { get; set; }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
@@ -63,8 +63,9 @@ namespace Foundation.Components.TagHelpers
             Label = GetLocalizedLabel(propertyInfo);
         }
 
-        protected string GetLocalizedLabel(PropertyInfo property)
+        protected static string GetLocalizedLabel(PropertyInfo property)
         {
+            ArgumentNullException.ThrowIfNull(property, nameof(property));
             var displayAttr = property.GetCustomAttribute<DisplayAttribute>();
             return displayAttr?.GetName() ?? property.Name;
         }

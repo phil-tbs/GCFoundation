@@ -12,7 +12,7 @@ namespace Foundation.Components.TagHelpers
     public class CardTagHelper : BaseTagHelper
     {
         public required string CardTitle { get; set; }
-        public CardTitleTagEnum CardTitleTag { get; set; } = CardTitleTagEnum.h3;
+        public CardTitleTag CardTitleTag { get; set; } = CardTitleTag.h3;
 
         public required string Href {  get; set; }
 
@@ -24,7 +24,7 @@ namespace Foundation.Components.TagHelpers
 
         public string? ImgSrc { get; set; }
 
-        public LanguageEnum Lang { get; set; } = LanguageEnum.en;
+        public Language Lang { get; set; } = Language.en;
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {

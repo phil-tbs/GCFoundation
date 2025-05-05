@@ -12,7 +12,7 @@ namespace Foundation.Components.TagHelpers
     {
         public required string DetailsTitle { get; set; }
 
-        public bool Open { get; set; } = false;
+        public bool Open { get; set; }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {

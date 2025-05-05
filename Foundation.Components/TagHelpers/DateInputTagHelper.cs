@@ -11,7 +11,7 @@ namespace Foundation.Components.TagHelpers
     [HtmlTargetElement("gcds-date-input")]
     public class DateInputTagHelper : BaseFormComponentTagHelper
     {
-        public required DateInputFormatTypeEnum Format { get; set; }
+        public required DateInputFormatType Format { get; set; }
 
         public required string Legend { get; set; }
 

@@ -13,7 +13,7 @@ namespace Foundation.Components.TagHelpers
     {
         public required string Href { get; set; }
 
-        public LanguageEnum Lang { get; set; } = LanguageEnum.en;
+        public Language Lang { get; set; } = Language.en;
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {

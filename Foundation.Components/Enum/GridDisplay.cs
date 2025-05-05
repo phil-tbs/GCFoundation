@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Foundation.Components.Enum
 {
-    public enum SignatureTypeEnum
+    public enum GridDisplay
     {
-        Signature,
-        Wordmark
+        grid,
+        inlineGrid
     }
 }

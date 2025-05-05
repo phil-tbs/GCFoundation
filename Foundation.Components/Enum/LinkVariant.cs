@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Foundation.Components.Enum
 {
-    public enum LinkSizeEnum
+    public enum LinkVariant
     {
-        Inherit,
-        Small,
-        Regular
+        Default,
+        Light
     }
 }

@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace Foundation.Components.Enum
 {
-    public enum PaginationDisplayEnum
+    public enum HeadingTag
     {
-        List,
-        Simple
+        h1,
+        h2, 
+        h3, 
+        h4, 
+        h5, 
+        h6,
     }
 }

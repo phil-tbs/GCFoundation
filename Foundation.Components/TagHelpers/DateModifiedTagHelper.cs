@@ -10,9 +10,9 @@ namespace Foundation.Components.TagHelpers
 {
     public class DateModifiedTagHelper : BaseTagHelper
     {
-        public LanguageEnum Lan { get; set; } = LanguageEnum.en;
+        public Language Lan { get; set; } = Language.en;
 
-        public DateModifiedTypeEnum Type { get; set; }
+        public DateModifiedType Type { get; set; }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {

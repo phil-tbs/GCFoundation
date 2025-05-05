@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Foundation.Components.Enum
 {
-    public enum DateInputFormatTypeEnum
+    public enum TextRole
     {
-        full,
-        compact
+        Primary,
+        Secondary,
+        Light
     }
 }

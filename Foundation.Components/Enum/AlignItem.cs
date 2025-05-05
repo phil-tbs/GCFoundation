@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace Foundation.Components.Enum
 {
-    public enum StepperTagEnum
+    public enum AlignItem
     {
-        h1,
-        h2,
-        h3,
+        baseline,
+        center,
+        end,
+        start,
+        stretch
     }
 }

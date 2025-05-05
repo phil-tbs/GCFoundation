@@ -32,7 +32,7 @@ namespace Foundation.Components.TagHelpers
         /// <summary>
         /// If the component is disabled
         /// </summary>
-        public bool Disabled { get; set; } = false;
+        public bool Disabled { get; set; }
 
         /// <summary>
         /// The error messages
@@ -42,7 +42,7 @@ namespace Foundation.Components.TagHelpers
         /// <summary>
         /// If the input is required
         /// </summary>
-        public bool Required { get; set; } = false;
+        public bool Required { get; set; }
 
         /// <summary>
         /// Wich event the validation append
@@ -57,7 +57,7 @@ namespace Foundation.Components.TagHelpers
         /// <summary>
         /// Language of the input
         /// </summary>
-        public LanguageEnum Lan { get; set; }
+        public Language Lan { get; set; }
 
         /// <summary>
         /// Value of the input
@@ -95,7 +95,7 @@ namespace Foundation.Components.TagHelpers
 
         }
 
-        protected string GetLocalizedHint(PropertyInfo property)
+        protected static string GetLocalizedHint(PropertyInfo property)
         {
             var displayAttr = property.GetCustomAttribute<DisplayAttribute>();
             return displayAttr?.GetDescription() ?? string.Empty;

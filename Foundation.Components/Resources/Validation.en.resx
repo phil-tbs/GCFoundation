@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,33 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="GlobalError_Text" xml:space="preserve">
-    <value>&lt;gcds-text&gt;
-  Une erreur inattendue s’est produite. Veuillez essayer ce qui suit :
-  &lt;ul&gt;
-      &lt;li&gt;Essayez de rafraîchir la page ou revenez plus tard.&lt;/li&gt;
-      &lt;li&gt;Assurez-vous que votre connexion Internet fonctionne.&lt;/li&gt;
-      &lt;li&gt;Si le problème persiste, veuillez &lt;gcds-link href="{0}" target="_blank"&gt;nous contacter&lt;/gcds-link&gt;.&lt;/li&gt;
-  &lt;/ul&gt;
-  Retourner à la &lt;gcds-link href="/"&gt;page d’accueil&lt;/gcds-link&gt;.
-&lt;/gcds-text&gt;</value>
-  </data>
-  <data name="GlobalError_Title" xml:space="preserve">
-    <value>Une erreur s’est produite</value>
-  </data>
-  <data name="NotFound_Text" xml:space="preserve">
-    <value>&lt;gcds-text&gt;La page que vous recherchez a peut-être été déplacée, renommée ou n'est plus disponible.
-  &lt;ul&gt;
-      &lt;li&gt;Vérifiez que l’URL est correcte.&lt;/li&gt;
-
-      &lt;li&gt;Utilisez la fonction de recherche ou parcourez les principales sections du site.&lt;/li&gt;
-
-      &lt;li&gt;Si vous pensez qu'il s'agit d'une erreur, veuillez &lt;gcds-link href="{0}" target="_blank"&gt;nous contacter&lt;/gcds-link&gt;.&lt;/li&gt;
-  &lt;/ul&gt;
-  Retourner à la page &lt;a href="/"&gt;d’accueil&lt;/a&gt;.
-&lt;/gcds-text&gt;</value>
-  </data>
-  <data name="NotFound_Title" xml:space="preserve">
-    <value>Page introuvable</value>
+  <data name="Field_Required" xml:space="preserve">
+    <value>This field {0} is required.</value>
   </data>
 </root>

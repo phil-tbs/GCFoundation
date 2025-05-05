@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,20 +15,25 @@ namespace Foundation.Components.TagHelpers
 
         public required string Title { get; set; }
 
-        public HeadingTagEnum TitleTag { get; set; } = HeadingTagEnum.h2;
+        public HeadingTag TitleTag { get; set; } = HeadingTag.h2;
 
-        public AlertTypeEnum Type { get; set; } = AlertTypeEnum.Info;
-        public LanguageEnum Lang { get; set; } = LanguageEnum.en;
+        public AlertType Type { get; set; } = AlertType.Info;
+        public Language Lang { get; set; } = Language.en;
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
+            ArgumentNullException.ThrowIfNull(output, nameof(output));
             output.TagName = "gcds-notice";
 
             AddAttributeIfNotNull(output, "notice-title", Title);
 
             AddAttributeIfNotNull(output, "notice-title-tag", TitleTag);
-            AddAttributeIfNotNull(output, "type", Type.ToString().ToLower());
-            AddAttributeIfNotNull(output, "lange", Lang.ToString().ToLower());
+#pragma warning disable CA1308 // Normalize strings to uppercase
+            AddAttributeIfNotNull(output, "type", Type.ToString().ToLowerInvariant());
+#pragma warning restore CA1308 // Normalize strings to uppercase
+#pragma warning disable CA1308 // Normalize strings to uppercase
+            AddAttributeIfNotNull(output, "lange", Lang.ToString().ToLowerInvariant());
+#pragma warning restore CA1308 // Normalize strings to uppercase
 
             base.Process(context, output);
         }

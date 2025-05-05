@@ -11,12 +11,12 @@ namespace Foundation.Components.TagHelpers
     [HtmlTargetElement("gcds-signature")]
     public class SignatureTagHelper: BaseTagHelper
     {
-        public bool HasLink { get; set; } = false;
+        public bool HasLink { get; set; }
 
-        public LanguageEnum Lang { get; set; } = LanguageEnum.en;
+        public Language Lang { get; set; } = Language.en;
 
-        public SignatureTypeEnum Type { get; set; } = SignatureTypeEnum.Signature;
-        public SignatureVariantEnum Variant { get; set; } = SignatureVariantEnum.Colour;
+        public SignatureType Type { get; set; } = SignatureType.Signature;
+        public SignatureVariant Variant { get; set; } = SignatureVariant.Colour;
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {

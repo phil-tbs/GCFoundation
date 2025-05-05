@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Foundation.Components.Attributes
 {
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
-    public class DateFormatAttribute : Attribute
+    public sealed class DateFormatAttribute : Attribute
     {
         public string Format { get; }
 

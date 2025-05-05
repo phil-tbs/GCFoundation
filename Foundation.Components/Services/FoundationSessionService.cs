@@ -16,6 +16,8 @@ namespace Foundation.Components.Services
 
         public FoundationSessionService(IHttpContextAccessor accessor, IOptions<FoundationSessionSetting> options)
         {
+            ArgumentNullException.ThrowIfNull(options, nameof(options));
+
             _httpContextAccessor = accessor;
             _settings = options.Value;
         }

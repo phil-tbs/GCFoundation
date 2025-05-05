@@ -15,7 +15,7 @@ namespace Foundation.Components.TagHelpers
 
         public int CharacterCount { get; set; }
 
-        public bool HideLabel { get; set; } = false;
+        public bool HideLabel { get; set; }
 
         public int Rows { get; set; }
 

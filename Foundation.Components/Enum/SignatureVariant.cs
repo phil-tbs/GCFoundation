@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Foundation.Components.Enum
 {
-    public enum TextSizeEnum
+    public enum SignatureVariant
     {
-        Body,
-        Small
+        Colour,
+        White
     }
 }

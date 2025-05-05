@@ -6,14 +6,9 @@ using System.Threading.Tasks;
 
 namespace Foundation.Components.Enum
 {
-    public enum AlignContentEnum
+    public enum Language
     {
-        center,
-        end,
-        spaceArround,
-        spaceBetween,
-        spaceEvenly,
-        start,
-        stretch
+        en,
+        fr
     }
 }

@@ -12,11 +12,11 @@ namespace Foundation.Components.TagHelpers
     [HtmlTargetElement("gcds-container")]
     public class ContainerTagHelper : BaseTagHelper
     {
-        public bool Border { get; set; } = false;
+        public bool Border { get; set; }
 
-        public bool Centered { get; set; } = false;
+        public bool Centered { get; set; }
 
-        public bool MainContainer { get; set; } = false;
+        public bool MainContainer { get; set; }
 
 
         public string? Margin { get; set; }

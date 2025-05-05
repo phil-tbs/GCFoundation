@@ -16,7 +16,11 @@ namespace Foundation.Web.Controllers
             string? culture = Request.Cookies["Culture"];
             if (!string.IsNullOrEmpty(culture) && LanguageUtility.IsCultureSupported(culture))
             {
-                Response.Redirect(Url.Action("Index", "Home", new { culture = culture }));
+                var url = Url.Action("Index", "Home", new { culture });
+                if (!string.IsNullOrEmpty(url))
+                {
+                    return Redirect(url);
+                }
             }
 
             LanguageChooserModel model = new LanguageChooserModel

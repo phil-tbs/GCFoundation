@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -18,6 +19,8 @@ namespace Foundation.Components.TagHelpers.FDCP
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
+            ArgumentNullException.ThrowIfNull(output, nameof(output));
+
             base.Process(context, output);
 
             if (For == null)
@@ -50,7 +53,7 @@ namespace Foundation.Components.TagHelpers.FDCP
             {
                 bool isChecked = selectedValues.Contains(item.Value);
 
-                sb.Append($@"<gcds-checkbox checkbox-id=""{fieldName}_{item.Value}""
+                sb.Append(CultureInfo.InvariantCulture, $@"<gcds-checkbox checkbox-id=""{fieldName}_{item.Value}""
                   label=""{item.Text}""
                   name=""{fieldName}""
                   value=""{item.Value}""

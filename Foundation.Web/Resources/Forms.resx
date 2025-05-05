@@ -133,10 +133,10 @@
     <value>Enter your full name as shown on ID.</value>
   </data>
   <data name="Email_Label" xml:space="preserve">
-    <value> Enter a valid email (e.g., name@example.com).</value>
+    <value>Email adress</value>
   </data>
   <data name="Email_Hint" xml:space="preserve">
-    <value>Email Address</value>
+    <value>Enter a valid email address (e.g., name@example.com).</value>
   </data>
   <data name="Password_Label" xml:space="preserve">
     <value>Password</value>
@@ -154,7 +154,7 @@
     <value>Age</value>
   </data>
   <data name="Age_Hint" xml:space="preserve">
-    <value> Enter your age (must be 18 or older).</value>
+    <value>Enter your age (must be 18 or older).</value>
   </data>
   <data name="Bio_Label" xml:space="preserve">
     <value>Bio</value>
@@ -172,8 +172,7 @@
     <value>Gender</value>
   </data>
   <data name="Gender_Hint" xml:space="preserve">
-    <value>Select your gender identity.
-</value>
+    <value>Select your gender identity.</value>
   </data>
   <data name="AgreeToTerms_Label" xml:space="preserve">
     <value>Agree to Terms and Conditions</value>

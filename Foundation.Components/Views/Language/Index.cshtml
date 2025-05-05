@@ -1,12 +1,17 @@
 ﻿@using Foundation.Components.Models
 @using Foundation.Components.Utilities
+@using System.Security.Cryptography
 @model LanguageChooserModel
 @{
     Layout = null;
 
-    Random random = new Random();
-    string randomBackgroundImage = Model.BackgroundImagePaths[random.Next(Model.BackgroundImagePaths.Length)];
-
+    string randomBackgroundImage = "";
+    if (Model?.BackgroundImagePaths != null)
+    {
+        var paths = Model.BackgroundImagePaths!;
+        int index = RandomNumberGenerator.GetInt32(paths.Count);
+        randomBackgroundImage = paths[index];
+    }
 }
 
 <!DOCTYPE html>
@@ -31,22 +36,22 @@
                 </div>
                 <div class="row">
                     <section class="col-6 text-end pt-3" lang="en">
-                        <h2 class="sr-only">@Model.ApplicationTitleEn</h2>
+                        <h2 class="sr-only">@Model?.ApplicationTitleEn</h2>
                         <p>
-                            <gcds-button type="link" href="@Model.EnglishAction">English</gcds-button>
+                            <gcds-button type="link" href="@Model?.EnglishAction">English</gcds-button>
                         </p>
                     </section>
                     <section class="col-6 text-start pt-3" lang="fr">
-                        <h2 class="sr-only">@Model.ApplicationTitleFr</h2>
+                        <h2 class="sr-only">@Model?.ApplicationTitleFr</h2>
                         <p>
-                            <gcds-button type="link" href="@Model.FrenchAction">French</gcds-button>
+                            <gcds-button type="link" href="@Model?.FrenchAction">French</gcds-button>
                         </p>
                     </section>
                 </div>
             </div>
             <div class="footer">
                 <div class="row">
-                    <div class="col-8"><a href="@Model.TermLinkEn">Terms & conditions</a> <span class="fa-solid fa-asterisk"></span> <a href="@Model.TermLinkFr">Avis</a></div>
+                    <div class="col-8"><a href="@Model?.TermLinkEn">Terms & conditions</a> <span class="fa-solid fa-asterisk"></span> <a href="@Model?.TermLinkFr">Avis</a></div>
                     <div class="col-4"><gcds-signature type="Signature"></gcds-signature></div>
                 </div>
             </div>

@@ -14,7 +14,7 @@ namespace Foundation.Components.TagHelpers
 
         public required string OpenTrigger { get; set; }
 
-        public bool Open { get; set; } = false;
+        public bool Open { get; set; }
 
         public string? CloseTrigger { get; set; }
 

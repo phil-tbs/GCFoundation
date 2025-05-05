@@ -13,7 +13,7 @@ namespace Foundation.Components.Models
 
         public Dictionary<string, List<string>> Errors { get; private set; } = new();
 
-        public Dictionary<string, string> Metadata { get; set; } = new();
+        public Dictionary<string, string> Metadata { get; } = new();
 
         /// <summary>
         /// Checks Data Annotation validation and collects error messages.
@@ -42,17 +42,18 @@ namespace Foundation.Components.Models
         /// </summary>
         public void AddError(string field, string errorMessage)
         {
-            if (!Errors.ContainsKey(field))
+            if (!Errors.TryGetValue(field, out var errorList))
             {
-                Errors[field] = new List<string>();
+                errorList = new List<string>();
+                Errors[field] = errorList;
             }
-            Errors[field].Add(errorMessage);
+            errorList.Add(errorMessage);
         }
 
         /// <summary>
         /// Checks if the model has any validation errors.
         /// </summary>
-        public bool IsValid => !Errors.Any();
+        public bool IsValid => Errors.Count == 0;
 
         /// <summary>
         /// Clears all error messages.
