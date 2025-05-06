@@ -17,27 +17,27 @@ namespace Foundation.Common.Settings
         /// These will be added to the 'script-src' directive in the CSP header.
         /// Example: "https://cdn.jsdelivr.net"
         /// </summary>
-        public List<string> JavascriptCDN { get; set; } = new();
+        public IEnumerable<string> JavascriptCDN { get; set; } = Enumerable.Empty<string>();
 
         /// <summary>
         /// Gets or sets the list of CSS CDN hosts that are allowed to load stylesheets.
         /// These will be added to the 'style-src' directive in the CSP header.
         /// Example: "https://fonts.googleapis.com"
         /// </summary>
-        public List<string> CssCDN { get; set; } = new();
+        public IEnumerable<string> CssCDN { get; set; } = Enumerable.Empty<string>();
 
         /// <summary>
         /// Gets or sets the list of SHA-256 hashes that allow specific inline styles.
         /// These hashes will also be added to the 'style-src' directive to support safe inline styles.
         /// Example: "'sha256-AbCdEf123=='"
         /// </summary>
-        public List<string> CssCDNHash { get; set; } = new();
+        public IEnumerable<string> CssCDNHash { get; set; } = Enumerable.Empty<string>();
 
         /// <summary>
         /// Gets or sets the list of font CDN hosts that are allowed to load fonts.
         /// These will be added to the 'font-src' directive in the CSP header.
         /// Example: "https://fonts.gstatic.com"
         /// </summary>
-        public List<string> FontCDN { get; set; } = new();
+        public IEnumerable<string> FontCDN { get; set; } = Enumerable.Empty<string>();
     }
 }

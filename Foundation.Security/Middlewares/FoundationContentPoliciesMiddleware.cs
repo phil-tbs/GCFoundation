@@ -1,6 +1,7 @@
 ﻿using System.Security.Cryptography;
 using Foundation.Common.Settings;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 
 namespace Foundation.Security.Middlewares
@@ -12,12 +13,16 @@ namespace Foundation.Security.Middlewares
 
         public FoundationContentPoliciesMiddleware(RequestDelegate next, IOptions<FoundationContentPolicySettings> settings)
         {
+            ArgumentNullException.ThrowIfNull(settings, nameof(settings));
+
             _next = next;
             _settings = settings.Value;
         }
 
         public async Task InvokeAsync(HttpContext context)
         {
+            ArgumentNullException.ThrowIfNull(context, nameof(context));
+
             // Generate a nonce for inline styles/scripts (if needed)
             string nonce = GenerateNonce();
             context.Items["CspNonce"] = nonce; // Store for use in views (if required)
@@ -50,7 +55,7 @@ namespace Foundation.Security.Middlewares
             context.Response.Headers.Append("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
             context.Response.Headers.Append("Content-Type", "text/html; charset=utf-8");
 
-            await _next(context);
+            await _next(context).ConfigureAwait(false);
         }
 
         private static string GenerateNonce()

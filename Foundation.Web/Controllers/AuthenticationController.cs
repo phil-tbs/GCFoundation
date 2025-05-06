@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Globalization;
+using System.Reflection;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Foundation.Web.Controllers
@@ -9,7 +10,7 @@ namespace Foundation.Web.Controllers
         [HttpGet("login")]
         public IActionResult Login()
         {
-            HttpContext.Session.SetString("UserSessionStarted", DateTime.UtcNow.ToString());
+            HttpContext.Session.SetString("UserSessionStarted", DateTime.UtcNow.ToString("o", CultureInfo.InvariantCulture));
 
             // Optional: redirect or return success
             return RedirectToAction("Index", "Home");
@@ -30,7 +31,7 @@ namespace Foundation.Web.Controllers
         [HttpPost("refresh")]
         public IActionResult RefreshSession()
         {
-            HttpContext.Session.SetString("KeepAlive", DateTime.UtcNow.ToString());
+            HttpContext.Session.SetString("KeepAlive", DateTime.UtcNow.ToString("o", CultureInfo.InvariantCulture));
 
             return Ok();
         }

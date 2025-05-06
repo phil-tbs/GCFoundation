@@ -23,7 +23,7 @@ namespace Foundation.Common.Settings
         /// <summary>
         /// Gc Design css hash to execute inline styles
         /// </summary>
-        public string GCDSCssCDNHash
+        public static string GCDSCssCDNHash
         {
             get
             {
@@ -66,7 +66,7 @@ namespace Foundation.Common.Settings
         /// <summary>
         /// If using bootstrap CDN
         /// </summary>
-        public bool UsingBootstrapCDN { get; set; } = false;
+        public bool UsingBootstrapCDN { get; set; }
 
         /// <summary>
         /// Version of bootstrap used

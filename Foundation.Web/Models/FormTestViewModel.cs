@@ -51,7 +51,7 @@ namespace Foundation.Web.Models
         [Display(Name = "Country_Label", Description = "Country_Hint", ResourceType = typeof(Forms))]
         public string? SelectedCountry { get; set;}
 
-        public List<SelectListItem> CountryOptions { get; set; } = new()
+        public IEnumerable<SelectListItem> CountryOptions { get; set; } = new List<SelectListItem>
         {
             new SelectListItem { Value = "CA", Text = "Canada" },
             new SelectListItem { Value = "US", Text = "United States" },
@@ -63,7 +63,7 @@ namespace Foundation.Web.Models
         [Display(Name = "Gender_Label", ResourceType = typeof(Forms))]
         public string Gender { get; set; } = string.Empty;
 
-        public List<SelectListItem> GenderOptions { get; set; } = new()
+        public IEnumerable<SelectListItem> GenderOptions { get; set; } = new List<SelectListItem>
         {
             new SelectListItem { Value = "Male", Text = "Male" },
             new SelectListItem { Value = "Female", Text = "Female" },
@@ -78,9 +78,9 @@ namespace Foundation.Web.Models
 
         [Required]
         [Display(Name = "Interests_Label", ResourceType = typeof(Forms))]
-        public List<string> SelectedInterests { get; set; } = new();
+        public IEnumerable<string> SelectedInterests { get; set; } = Enumerable.Empty<string>();
 
-        public List<SelectListItem> InterestOptions { get; set; } = new()
+        public IEnumerable<SelectListItem> InterestOptions { get; set; } = new List<SelectListItem>
         {
             new SelectListItem { Value = "sports", Text = "Sports" },
             new SelectListItem { Value = "music", Text = "Music" },

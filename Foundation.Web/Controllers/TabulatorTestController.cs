@@ -23,6 +23,7 @@ namespace Foundation.Web.Controllers
         [HttpPost]
         public IActionResult GetData(TabulatorRequest request)
         {
+            ArgumentNullException.ThrowIfNull(request, nameof(request));
             IQueryable<TestUser> query = AllUsers.AsQueryable();
 
             var properties = typeof(TestUser)
@@ -86,7 +87,10 @@ namespace Foundation.Web.Controllers
 
             foreach (var sorter in request.Sort)
             {
-                string order = sorter.Dir.ToLower() == "desc" ? "descending" : "ascending";
+                string order = string.Equals(sorter.Dir, "desc", StringComparison.OrdinalIgnoreCase)
+                    ? "descending"
+                    : "ascending";
+
                 query = query.OrderBy($"{sorter.Field} {order}");
             }
 

@@ -5,6 +5,8 @@ namespace Foundation.Web.Infrastructure.Extensions
 {
     public static class RouteLocalizationExtensions
     {
+        private static readonly string[] SupportedCultures = new[] { "en", "fr" };
+
         public static IServiceCollection AddCustomRouteLocalization(this IServiceCollection services)
         {
             services.AddRouteLocalization(setup =>
@@ -38,7 +40,7 @@ namespace Foundation.Web.Infrastructure.Extensions
                     .TranslateAction("component"); // Ensures "/en/components/component" works
 
                 // Ensure untranslated routes exist
-                setup.UseCultures(new[] { "en", "fr" })
+                setup.UseCultures(SupportedCultures)
                     .WhereUntranslated()
                     .AddDefaultTranslation();
             });

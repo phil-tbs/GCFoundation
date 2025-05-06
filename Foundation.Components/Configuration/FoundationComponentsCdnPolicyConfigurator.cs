@@ -26,23 +26,33 @@ namespace Foundation.Components.Configuration
         {
             ArgumentNullException.ThrowIfNull(options, nameof(options));
 
-            // Ensure Bootstrap CDN is added if it's used
+            var jsCDNs = Enumerable.Empty<string>();
+            var cssCDNs = Enumerable.Empty<string>();
+            var cssHashes = Enumerable.Empty<string>();
+            var fontCDNs = Enumerable.Empty<string>();
+
             if (_componentSettings.UsingBootstrapCDN)
             {
-                options.JavascriptCDN.Add(_componentSettings.BootstrapJSCDN.Host.ToString());
-                options.CssCDN.Add(_componentSettings.BootstrapCSSCDN.Host.ToString());
+                jsCDNs = jsCDNs.Append(_componentSettings.BootstrapJSCDN.Host.ToString());
+                cssCDNs = cssCDNs.Append(_componentSettings.BootstrapCSSCDN.Host.ToString());
             }
 
-            // Add GC Design System CDNs
-            options.JavascriptCDN.Add(_componentSettings.GCDSJavaScriptCDN.Host.ToString());
-            options.CssCDN.Add(_componentSettings.GCDSCssCDN.Host.ToString());
-            options.CssCDNHash.AddRange(_componentSettings.GCDSCssCDNHash.Split(' ', StringSplitOptions.RemoveEmptyEntries));
-            options.CssCDN.Add(_componentSettings.FontAwesomeCDN.Host.ToString());
+            jsCDNs = jsCDNs.Append(_componentSettings.GCDSJavaScriptCDN.Host.ToString());
+            cssCDNs = cssCDNs
+                .Append(_componentSettings.GCDSCssCDN.Host.ToString())
+                .Append(_componentSettings.FontAwesomeCDN.Host.ToString());
 
+            cssHashes = FoundationComponentsSettings.GCDSCssCDNHash
+                .Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
-            // Add FontAwesome CDN
-            options.FontCDN.Add(_componentSettings.FontAwesomeCDN.Host.ToString());
-            options.FontCDN.Add(_componentSettings.GCDSCssCDN.Host.ToString());
+            fontCDNs = fontCDNs
+                .Append(_componentSettings.FontAwesomeCDN.Host.ToString())
+                .Append(_componentSettings.GCDSCssCDN.Host.ToString());
+
+            options.JavascriptCDN = jsCDNs;
+            options.CssCDN = cssCDNs;
+            options.CssCDNHash = cssHashes;
+            options.FontCDN = fontCDNs;
         }
     }
 }
