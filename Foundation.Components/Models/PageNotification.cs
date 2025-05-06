@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Foundation.Components.Enum;
+using Foundation.Components.Enums;
 
 namespace Foundation.Components.Models
 {

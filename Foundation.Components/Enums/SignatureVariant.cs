@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Foundation.Components.Enum
+namespace Foundation.Components.Enums
 {
     /// <summary>
     /// Specifies the visual variant of the Government of Canada signature.

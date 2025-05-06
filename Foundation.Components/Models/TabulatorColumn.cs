@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Foundation.Components.Converters;
-using Foundation.Components.Enum;
+using Foundation.Components.Enums;
 
 namespace Foundation.Components.Models
 {

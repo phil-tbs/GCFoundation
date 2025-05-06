@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Foundation.Components.Enum
+namespace Foundation.Components.Enums
 {
     /// <summary>
     /// Defines the alignment options for the top menu in the navigation component.

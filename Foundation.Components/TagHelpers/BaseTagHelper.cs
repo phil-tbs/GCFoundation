@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Foundation.Common.Utilities;
-using Foundation.Components.Enum;
+using Foundation.Components.Enums;
 using Foundation.Components.Utilities;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 

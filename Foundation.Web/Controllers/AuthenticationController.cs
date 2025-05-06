@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.Reflection;
+using Foundation.Components.Enums;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Foundation.Web.Controllers
@@ -23,7 +24,7 @@ namespace Foundation.Web.Controllers
             {
                 Title = "Your session timeout!",
                 Message = "For inactivity your session timeout.",
-                AlertType = Components.Enum.AlertType.Danger
+                AlertType = AlertType.Danger
             });
             return RedirectToAction("Index", "Home");
         }

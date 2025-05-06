@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Foundation.Components.Enum
+namespace Foundation.Components.Enums
 {
     /// <summary>
     /// Defines the possible resizable options for Tabulator columns. Determines whether the column is resizable, and if so, whether it can be resized by the header or the cell.

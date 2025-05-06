@@ -1,4 +1,5 @@
 ﻿@using Foundation.Common.Utilities
+@using Foundation.Components.Enums
 @using Foundation.Components.Resources
 @using Foundation.Components.Utilities
 @{
@@ -7,7 +8,7 @@
 	string lang = LanguageUtility.GetCurrentApplicationLanguage();
 }
 <div>
-	<gcds-notice type="@Foundation.Components.Enum.AlertType.Danger" title="@ErrorsPage.GlobalError_Title">
+	<gcds-notice type="@Foundation.Components.Enums.AlertType.Danger" title="@ErrorsPage.GlobalError_Title">
 		@Html.Raw(ErrorsPage.GlobalError_Text)
 	</gcds-notice>
 </div>

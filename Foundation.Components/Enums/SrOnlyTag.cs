@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Foundation.Components.TagHelpers;
 
-namespace Foundation.Components.Enum
+namespace Foundation.Components.Enums
 {
     /// <summary>
     /// Specifies the HTML tags that can be used with the <see cref="SrOnlyTagHelper"/> for visually hidden content that is still accessible to screen readers.

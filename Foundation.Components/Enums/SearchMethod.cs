@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Foundation.Components.Enum
+namespace Foundation.Components.Enums
 {
     /// <summary>
     /// Represents the HTTP method to use for a search form.

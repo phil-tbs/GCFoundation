@@ -1,4 +1,5 @@
-﻿using Foundation.Components.Models;
+﻿using Foundation.Components.Enums;
+using Foundation.Components.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Foundation.Web.Controllers
@@ -37,7 +38,7 @@ namespace Foundation.Web.Controllers
             {
                 Title       = title,
                 Message     = message,
-                AlertType   = Components.Enum.AlertType.Success
+                AlertType   = AlertType.Success
             };
         }
 

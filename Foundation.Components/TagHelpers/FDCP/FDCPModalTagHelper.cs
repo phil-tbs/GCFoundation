@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 using System.Text;
-using Foundation.Components.Enum;
+using Foundation.Components.Enums;
 using Foundation.Components.Resources;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 

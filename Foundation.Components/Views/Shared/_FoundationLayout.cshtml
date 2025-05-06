@@ -1,10 +1,11 @@
 ﻿@using Foundation.Common.Settings
 @using Foundation.Common.Utilities
+@using Foundation.Components.Enums
+@using Foundation.Components.Setttings
 @using Foundation.Components.Utilities
 @using Microsoft.AspNetCore.Routing
 @using Microsoft.Extensions.Options
 @using cloudscribe.Web.Navigation
-@using Foundation.Components.Setttings
 
 @inject IOptions<FoundationComponentsSettings> settings;
 @inject IOptions<FoundationSessionSetting> sessionSetting;
@@ -24,11 +25,11 @@
     @{
         RouteValueDictionary routeValueDictionary = new RouteValueDictionary(ViewContext.RouteData.Values);
         routeValueDictionary["culture"] = LanguageUtility.GetOppositeLangauge();
-        Foundation.Components.Enum.Language currentLanguage = Foundation.Components.Enum.Language.en;
+            Language currentLanguage = Language.en;
 
         if (LanguageUtility.GetCurrentApplicationLanguage() == "fr")
         {
-            currentLanguage = Foundation.Components.Enum.Language.fr;
+            currentLanguage = Language.fr;
         }
     }
     <gcds-header lang-href="@Url.RouteUrl(routeValueDictionary)" skip-to-herf="#main-content" lang="@currentLanguage">

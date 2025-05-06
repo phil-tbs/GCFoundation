@@ -1,9 +1,10 @@
-﻿@using Foundation.Components.Models
+﻿@using Foundation.Components.Enums
+@using Foundation.Components.Models
 @{
     // Define the table columns in C#
     var columns = new List<TabulatorColumn>
     {
-        new() { Title = "Id", Field = "id", HeaderSort = true, Resizable = Foundation.Components.Enum.TabulatorResizableOption.Header, Filter = true },
+        new() { Title = "Id", Field = "id", HeaderSort = true, Resizable = TabulatorResizableOption.Header, Filter = true },
         new() { Title = "Name", Field = "name", HeaderSort = true, Filter = true },
         new() { Title = "Email", Field = "email", HozAlign = "center", Filter  = true, }
     };

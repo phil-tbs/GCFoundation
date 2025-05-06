@@ -1,4 +1,5 @@
 ﻿@using Foundation.Common.Utilities
+@using Foundation.Components.Enums
 @using Foundation.Components.Utilities
 @using Microsoft.AspNetCore.Routing
 @using cloudscribe.Web.Navigation
@@ -17,11 +18,11 @@
     @{
         RouteValueDictionary routeValueDictionary = new RouteValueDictionary(ViewContext.RouteData.Values);
         routeValueDictionary["culture"] = LanguageUtility.GetOppositeLangauge();
-        Foundation.Components.Enum.Language currentLanguage = Foundation.Components.Enum.Language.en;
+            Language currentLanguage = Language.en;
 
         if (LanguageUtility.GetCurrentApplicationLanguage() == "fr")
         {
-            currentLanguage = Foundation.Components.Enum.Language.fr;
+            currentLanguage = Language.fr;
         }
 
 
