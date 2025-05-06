@@ -9,10 +9,14 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers.FDCP
 {
+    /// <summary>
+    /// A base class for form components that provides functionality for binding model properties, 
+    /// performing validation, and adding common attributes like labels and hints to the HTML output.
+    /// </summary>
     public abstract class FDCPBaseFormComponentTagHelper : TagHelper
     {
         /// <summary>
-        /// 
+        /// Options for serializing JSON property names in camel case.
         /// </summary>
         protected static readonly JsonSerializerOptions CamelCaseOptions = new()
         {
@@ -32,6 +36,9 @@ namespace Foundation.Components.TagHelpers.FDCP
         [ViewContext]
         public ViewContext ViewContext { get; set; } = default!;
 
+        /// <summary>
+        /// Retrieves the <see cref="DataTypeAttribute"/> for the property if available.
+        /// </summary>
         protected DataTypeAttribute? DataTypeAttribute
         {
             get
@@ -44,6 +51,9 @@ namespace Foundation.Components.TagHelpers.FDCP
             }
         }
 
+        /// <summary>
+        /// Retrieves the <see cref="PropertyInfo"/> for the model property bound to this tag helper.
+        /// </summary>
         protected PropertyInfo? PropertyInfo
         {
             get
@@ -58,6 +68,7 @@ namespace Foundation.Components.TagHelpers.FDCP
             }
         }
 
+        /// <inheritdoc/>
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             ArgumentNullException.ThrowIfNull(output, nameof(output));
@@ -100,6 +111,11 @@ namespace Foundation.Components.TagHelpers.FDCP
 
         }
 
+        /// <summary>
+        /// Retrieves the localized label for a property, falling back to the property name if no label is provided.
+        /// </summary>
+        /// <param name="property">The property to retrieve the label for.</param>
+        /// <returns>The localized label for the property.</returns>
         protected static string GetLocalizedLabel(PropertyInfo property)
         {
             ArgumentNullException.ThrowIfNull(property, nameof(property));
@@ -108,6 +124,11 @@ namespace Foundation.Components.TagHelpers.FDCP
             return displayAttr?.GetName() ?? property.Name;
         }
 
+        /// <summary>
+        /// Retrieves the localized hint for a property, falling back to an empty string if no hint is provided.
+        /// </summary>
+        /// <param name="property">The property to retrieve the hint for.</param>
+        /// <returns>The localized hint for the property.</returns>
         protected static string GetLocalizedHint(PropertyInfo property)
         {
             var displayAttr = property.GetCustomAttribute<DisplayAttribute>();

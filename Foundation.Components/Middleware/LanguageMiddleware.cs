@@ -4,17 +4,29 @@ using Microsoft.AspNetCore.Http;
 
 namespace Foundation.Components.Middleware
 {
-    
 
+    /// <summary>
+    /// Middleware for handling language selection based on the request URL and storing the selected language in a cookie.
+    /// </summary>
     public class LanguageMiddleware
     {
         private readonly RequestDelegate _next;
 
+        /// <summary>
+        /// Initializes the middleware with the next request delegate.
+        /// </summary>
+        /// <param name="next">The next request delegate in the pipeline.</param>
         public LanguageMiddleware(RequestDelegate next)
         {
             _next = next;
         }
 
+        /// <summary>
+        /// Processes the HTTP request to check for a language code in the URL, stores the culture in a cookie, 
+        /// and forwards the request to the next middleware in the pipeline.
+        /// </summary>
+        /// <param name="context">The HTTP context for the request.</param>
+        /// <returns>A task representing the completion of the middleware processing.</returns>
         public async Task InvokeAsync(HttpContext context)
         {
             ArgumentNullException.ThrowIfNull(context, nameof(context));

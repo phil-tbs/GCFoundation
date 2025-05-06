@@ -10,6 +10,10 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers.FDCP
 {
+    /// <summary>
+    /// A tag helper for rendering input elements for different data types (e.g., text, date, checkbox, text area). 
+    /// It supports automatic binding to model properties and validation, and it dynamically chooses the appropriate input tag based on the property type.
+    /// </summary>
     [HtmlTargetElement("fdcp-input", Attributes = "for")]
     public class FDCPInputTagHelper : FDCPBaseFormComponentTagHelper
     {
@@ -21,7 +25,7 @@ namespace Foundation.Components.TagHelpers.FDCP
             textArea
         }
 
-
+        /// <inheritdoc/>
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             ArgumentNullException.ThrowIfNull(output, nameof(output));
@@ -35,15 +39,16 @@ namespace Foundation.Components.TagHelpers.FDCP
             }
 
             TagType tagType = GetTagType();
-
             
             BuildByTagType(context,output,tagType);
-            
-
-            
-
         }
 
+        /// <summary>
+        /// Builds the HTML tag based on the tag type (input, date, checkbox, textArea).
+        /// </summary>
+        /// <param name="context">The context of the tag helper.</param>
+        /// <param name="output">The output for the tag helper content.</param>
+        /// <param name="tagType">The tag type representing the type of input element to create.</param>
         private void BuildByTagType(TagHelperContext context, TagHelperOutput output, TagType tagType)
         {
             output.TagName = GetTagNameByInputType(tagType);
@@ -78,7 +83,11 @@ namespace Foundation.Components.TagHelpers.FDCP
 
         }
 
-
+        /// <summary>
+        /// Retrieves the appropriate HTML tag name based on the input type.
+        /// </summary>
+        /// <param name="inputType">The type of the input (e.g., input, date, checkbox, textArea).</param>
+        /// <returns>The HTML tag name as a string.</returns>
         private static string? GetTagNameByInputType(TagType inputType)
         {
             switch (inputType) {
@@ -96,6 +105,10 @@ namespace Foundation.Components.TagHelpers.FDCP
             }
         }
 
+        /// <summary>
+        /// Determines the appropriate tag type (e.g., input, date, checkbox) based on the property type.
+        /// </summary>
+        /// <returns>The tag type corresponding to the model property type.</returns>
         private TagType GetTagType()
         {
             if (this.PropertyInfo != null && this.PropertyInfo.PropertyType == typeof(bool))
@@ -118,6 +131,10 @@ namespace Foundation.Components.TagHelpers.FDCP
             return TagType.input;
         }
 
+        /// <summary>
+        /// Determines the input type (e.g., text, email, password) based on the data type or property type.
+        /// </summary>
+        /// <returns>The input type as a string (e.g., "text", "email", "password").</returns>
         private string GetInputType()
         {
 
@@ -153,8 +170,5 @@ namespace Foundation.Components.TagHelpers.FDCP
 
             return "text";
         }
-
     }
-
-    
 }

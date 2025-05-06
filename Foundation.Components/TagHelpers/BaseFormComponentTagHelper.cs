@@ -16,54 +16,59 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Foundation.Components.TagHelpers
 {
+    /// <summary>
+    /// A base class for form component tag helpers, providing common properties and functionality for form inputs.
+    /// </summary>
     public abstract class BaseFormComponentTagHelper : BaseTagHelper
     {
+        /// <summary>
+        /// The model expression associated with the input field.
+        /// </summary>
         [HtmlAttributeName("for")]
         public ModelExpression For { get; set; } = default!;
 
+        /// <summary>
+        /// The <see cref="ViewContext"/> for the current view.
+        /// </summary>
         [ViewContext]
         public ViewContext ViewContext { get; set; } = default!;
 
         /// <summary>
-        /// Name of the input
+        /// The name of the input field.
         /// </summary>
         public required string Name { get; set; }
 
         /// <summary>
-        /// If the component is disabled
+        /// Indicates whether the component is disabled.
         /// </summary>
         public bool Disabled { get; set; }
 
         /// <summary>
-        /// The error messages
+        /// The error message associated with the input field, if any.
         /// </summary>
         public string? ErrorMessage { get; set; }
 
         /// <summary>
-        /// If the input is required
+        /// Indicates whether the input field is required.
         /// </summary>
         public bool Required { get; set; }
 
         /// <summary>
-        /// Wich event the validation append
+        /// The event on which validation occurs. Defaults to "blur".
         /// </summary>
         public string ValidateOn { get; set; } = "blur";
 
         /// <summary>
-        /// Information on how anwser the input
+        /// A hint providing additional information on how to answer the input.
         /// </summary>
         public string? Hint { get; set; }
 
         /// <summary>
-        /// Language of the input
-        /// </summary>
-        public Language Lan { get; set; }
-
-        /// <summary>
-        /// Value of the input
+        /// The value of the input field.
         /// </summary>
         public string? Value { get; set; }
 
+        /// <inheritdoc/>
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             if (For != null)
@@ -80,12 +85,15 @@ namespace Foundation.Components.TagHelpers
             AddAttributeIfNotNull(output, "required", Required);
             AddAttributeIfNotNull(output, "validate-on", ValidateOn);
             AddAttributeIfNotNull(output, "hint", Hint);
-            AddAttributeIfNotNull(output, "lan", Lan);
+            AddAttributeIfNotNull(output, "lang", Lang);
             AddAttributeIfNotNull(output, "value", Value);
 
             base.Process(context, output);
         }
 
+        /// <summary>
+        /// Retrieves localized properties, such as the hint text for the input field.
+        /// </summary>
         private void RetrieveLocalizedProperties()
         {
             var propertyInfo = For.Metadata.ContainerType?.GetProperty(For.Name);
@@ -95,6 +103,11 @@ namespace Foundation.Components.TagHelpers
 
         }
 
+        /// <summary>
+        /// Gets the localized hint text from the <see cref="DisplayAttribute"/> of the specified property.
+        /// </summary>
+        /// <param name="property">The property to retrieve the localized hint for.</param>
+        /// <returns>The localized hint text, or an empty string if not available.</returns>
         protected static string GetLocalizedHint(PropertyInfo property)
         {
             var displayAttr = property.GetCustomAttribute<DisplayAttribute>();

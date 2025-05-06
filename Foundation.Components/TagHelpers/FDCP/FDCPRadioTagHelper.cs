@@ -12,14 +12,20 @@ using Microsoft.Extensions.Options;
 
 namespace Foundation.Components.TagHelpers.FDCP
 {
-
+    /// <summary>
+    /// Renders a custom radio button component wrapped in a `gcds-fieldset` element.
+    /// Use &lt;fdcp-radio&gt; in your Razor views to generate a radio button group.
+    /// </summary>
     [HtmlTargetElement("fdcp-radio", Attributes = "for, items")]
     public class FDCPRadioTagHelper : FDCPBaseFormComponentTagHelper
     {
-
+        /// <summary>
+        /// List of options to display in the radio button group.
+        /// </summary>
         [HtmlAttributeName("items")]
         public IEnumerable<SelectListItem> Items { get; set; } = new List<SelectListItem>();
 
+        /// <inheritdoc/>
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             ArgumentNullException.ThrowIfNull(output, nameof(output));

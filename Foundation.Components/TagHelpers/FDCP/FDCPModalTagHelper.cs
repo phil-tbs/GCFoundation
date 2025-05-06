@@ -8,7 +8,7 @@ namespace Foundation.Components.TagHelpers.FDCP
 {
     /// <summary>
     /// Renders a Bootstrap 5 modal component.
-    /// Use <fdcp-modal> in your Razor views to generate a modal dialog.
+    /// Use &lt;fdcp-modal&gt; in your Razor views to generate a modal dialog.
     /// </summary>
     [HtmlTargetElement("fdcp-modal")]
     public class FDCPModalTagHelper : TagHelper
@@ -43,13 +43,12 @@ namespace Foundation.Components.TagHelpers.FDCP
         /// </summary>
         public bool ShowCloseButton { get; set; } = true;
 
+        /// <summary>
+        /// Determines whether the modal will have a static backdrop (prevents closing by clicking outside the modal).
+        /// </summary>
         public bool IsStaticBackdrop { get; set; }
 
-        /// <summary>
-        /// Processes the <bootstrap-modal> tag and renders a Bootstrap 5 modal HTML structure.
-        /// </summary>
-        /// <param name="context">The context of the TagHelper execution.</param>
-        /// <param name="output">The output to write the rendered HTML to.</param>
+        /// <inheritdoc/>
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
             ArgumentNullException.ThrowIfNull(output, nameof(output));

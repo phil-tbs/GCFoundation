@@ -11,11 +11,21 @@ using Microsoft.Extensions.Options;
 
 namespace Foundation.Components.Middleware
 {
+    /// <summary>
+    /// Middleware that processes HTTP requests and injects foundation component resources (e.g., CSS, JavaScript) into the HTML response.
+    /// This middleware checks if the response content type is HTML and then modifies the response by injecting the appropriate CDN or local resources.
+    /// </summary>
     public class FoundationComponentsMiddleware
     {
         private readonly RequestDelegate _next;
         private readonly FoundationComponentsSettings _foundationComponentsSettings;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FoundationComponentsMiddleware"/> class.
+        /// </summary>
+        /// <param name="next">The next middleware in the pipeline.</param>
+        /// <param name="foundationComponentsSettings">The foundation components settings for configuring CDN usage and resources.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="foundationComponentsSettings"/> is null.</exception>
         public FoundationComponentsMiddleware(RequestDelegate next, IOptions<FoundationComponentsSettings> foundationComponentsSettings)
         {
             ArgumentNullException.ThrowIfNull(foundationComponentsSettings, nameof(foundationComponentsSettings));
@@ -24,6 +34,12 @@ namespace Foundation.Components.Middleware
             _foundationComponentsSettings = foundationComponentsSettings.Value;
         }
 
+        /// <summary>
+        /// Invokes the middleware to process the HTTP request and response.
+        /// This method checks if the response is HTML and injects the appropriate CDN or local resources (CSS, JavaScript) into the response body.
+        /// </summary>
+        /// <param name="context">The HTTP context for the request and response.</param>
+        /// <returns>A task that represents the asynchronous operation.</returns>
         public async Task InvokeAsync(HttpContext context)
         {
             ArgumentNullException.ThrowIfNull(context, nameof(context));

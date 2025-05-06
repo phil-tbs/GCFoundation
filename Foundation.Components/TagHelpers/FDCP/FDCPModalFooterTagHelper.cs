@@ -7,9 +7,15 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers.FDCP
 {
+    /// <summary>
+    /// A tag helper for rendering the footer of a modal dialog.
+    /// This tag helper generates a <c>&lt;div&gt;</c> element with the class "modal-footer".
+    /// The content inside the modal footer is determined by the child content within the tag in the Razor view.
+    /// </summary>
     [HtmlTargetElement("fdcp-modal-footer")]
     public class FDCPModalFooterTagHelper: TagHelper
     {
+        /// <inheritdoc/>
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
             ArgumentNullException.ThrowIfNull(output, nameof(output));

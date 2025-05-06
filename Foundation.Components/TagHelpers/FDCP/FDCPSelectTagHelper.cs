@@ -9,6 +9,10 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers.FDCP
 {
+    /// <summary>
+    /// Renders a custom dropdown (select) component.
+    /// Use &lt;fdcp-select&gt; in your Razor views to generate a dropdown list.
+    /// </summary>
     [HtmlTargetElement("fdcp-select", Attributes = "for, items")]
     public class FDCPSelectTagHelper: FDCPBaseFormComponentTagHelper
     {
@@ -18,6 +22,7 @@ namespace Foundation.Components.TagHelpers.FDCP
         [HtmlAttributeName("items")]
         public IEnumerable<SelectListItem> Items { get; set; } = new List<SelectListItem>();
 
+        /// <inheritdoc/>
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             ArgumentNullException.ThrowIfNull(output, nameof(output));
@@ -41,8 +46,6 @@ namespace Foundation.Components.TagHelpers.FDCP
             }
 
             output.Content.SetHtmlContent(sb.ToString());
-
-            
         }
     }
 }

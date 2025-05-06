@@ -7,12 +7,21 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers.FDCP
 {
+    /// <summary>
+    /// A tag helper for rendering an error summary. It binds to a model and generates an HTML element
+    /// displaying a summary of validation errors, if any. The model should contain a collection of errors
+    /// that will be displayed in the error summary.
+    /// </summary>
     [HtmlTargetElement("fdcp-error-summary", Attributes = "for")]
     public class FDCPErrorSummaryTagHelper: TagHelper
     {
+        /// <summary>
+        /// The model that contains validation errors to be displayed in the error summary.
+        /// </summary>
         [HtmlAttributeName("for")]
         public BaseViewModel Model { get; set; } = default!;
 
+        /// <inheritdoc/>
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             ArgumentNullException.ThrowIfNull(output, nameof(output));

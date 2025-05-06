@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Foundation.Components.Models
 {
+    /// <summary>
+    /// Represents the model for selecting a language and related application links.
+    /// </summary>
     public class LanguageChooserModel
     {
         /// <summary>
@@ -39,7 +42,9 @@ namespace Foundation.Components.Models
         /// </summary>
         public string TermLinkFr { get; set; } = string.Empty;
 
-        
+        /// <summary>
+        /// Array of image paths for the background images.
+        /// </summary>
         private readonly ReadOnlyCollection<string> _backgroundImagePaths = new ReadOnlyCollection<string>(
             new[] {
                 "/_content/Foundation.Components/images/splash/sp-bg-1.jpg",

@@ -16,12 +16,23 @@ namespace Foundation.Components.Configuration
     {
         private readonly FoundationComponentsSettings _componentSettings;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FoundationComponentsCdnPolicyConfigurator"/> class.
+        /// </summary>
+        /// <param name="componentSettings">The options containing the foundation components settings.</param>
+        /// <exception cref="ArgumentNullException">Thrown when the componentSettings parameter is null.</exception>
         public FoundationComponentsCdnPolicyConfigurator(IOptions<FoundationComponentsSettings> componentSettings)
         {
             ArgumentNullException.ThrowIfNull(componentSettings, nameof(componentSettings));
 
             _componentSettings = componentSettings.Value;
         }
+
+        /// <summary>
+        /// Configures the content security policy settings for the application, including the allowed CDNs and hashes.
+        /// </summary>
+        /// <param name="options">The content policy settings to configure.</param>
+        /// <exception cref="ArgumentNullException">Thrown when the options parameter is null.</exception>
         public void Configure(FoundationContentPolicySettings options)
         {
             ArgumentNullException.ThrowIfNull(options, nameof(options));
