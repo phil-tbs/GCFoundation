@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Foundation.Components.Attributes
+﻿namespace Foundation.Components.Attributes
 {
     /// <summary>
     /// Specifies the format for a date property in a class.

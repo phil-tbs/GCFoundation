@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Foundation.Components.Services.Interfaces
+﻿namespace Foundation.Components.Services.Interfaces
 {
     /// <summary>
     /// Interface for a service that provides localization for breadcrumbs.

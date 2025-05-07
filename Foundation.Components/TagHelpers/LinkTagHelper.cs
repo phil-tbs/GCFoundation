@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Foundation.Components.Enums;
+﻿using Foundation.Components.Enums;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers
@@ -52,7 +47,7 @@ namespace Foundation.Components.TagHelpers
         /// <summary>
         /// Gets or sets the type attribute, which specifies the MIME type of the linked resource.
         /// </summary>
-        public string? Type {  get; set; }
+        public string? Type { get; set; }
 
         /// <summary>
         /// Gets or sets the variant of the link, which can define the link's appearance (e.g., default or light).

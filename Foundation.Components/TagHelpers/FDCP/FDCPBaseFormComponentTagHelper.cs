@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Globalization;
 using System.Reflection;
 using System.Text.Json;
 using Foundation.Common.Utilities;
@@ -89,20 +88,20 @@ namespace Foundation.Components.TagHelpers.FDCP
             output.TagName = "gcds-input";
             output.TagMode = TagMode.StartTagAndEndTag;
             string fieldName = For.Name;
-            
+
             string label = GetLocalizedLabel(property);
             string hint = GetLocalizedHint(property);
             bool required = For.Metadata.ValidatorMetadata.OfType<RequiredAttribute>().Any();
             string fieldValue = For.Model?.ToString() ?? string.Empty; // Retrieve the model value
-            
-            
+
+
             output.Attributes.SetAttribute("value", fieldValue);
             output.Attributes.SetAttribute("name", fieldName);
             output.Attributes.SetAttribute("label", label);
             output.Attributes.SetAttribute("hint", hint);
 
             output.Attributes.SetAttribute("lang", LanguageUtility.GetCurrentApplicationLanguage());
-            
+
             if (required)
             {
                 output.Attributes.SetAttribute("required", required);

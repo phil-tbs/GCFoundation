@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc.Rendering;
-
-namespace Foundation.Components.Models
+﻿namespace Foundation.Components.Models
 {
     /// <summary>
     /// Represents a request for data in Tabulator, including pagination, sorting, and filtering options.

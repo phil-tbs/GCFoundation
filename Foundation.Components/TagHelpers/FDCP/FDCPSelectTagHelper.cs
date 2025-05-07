@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+﻿using System.Globalization;
 using System.Text;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
@@ -14,7 +10,7 @@ namespace Foundation.Components.TagHelpers.FDCP
     /// Use &lt;fdcp-select&gt; in your Razor views to generate a dropdown list.
     /// </summary>
     [HtmlTargetElement("fdcp-select", Attributes = "for, items")]
-    public class FDCPSelectTagHelper: FDCPBaseFormComponentTagHelper
+    public class FDCPSelectTagHelper : FDCPBaseFormComponentTagHelper
     {
         /// <summary>
         /// The list of selectable options for the dropdown.

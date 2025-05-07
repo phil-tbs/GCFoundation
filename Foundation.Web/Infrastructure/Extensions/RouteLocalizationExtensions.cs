@@ -3,10 +3,21 @@ using RouteLocalization.AspNetCore;
 
 namespace Foundation.Web.Infrastructure.Extensions
 {
+    /// <summary>
+    /// Provides extension methods for setting up route localization in the application.
+    /// </summary>
     public static class RouteLocalizationExtensions
     {
-        private static readonly string[] SupportedCultures = new[] { "en", "fr" };
+        /// <summary>
+        /// Supported cultures for the application routing.
+        /// </summary>
+        private static readonly string[] SupportedCultures = ["en", "fr"];
 
+        /// <summary>
+        /// Adds custom route localization configuration to the application.
+        /// </summary>
+        /// <param name="services">The service collection to which the route localization is added.</param>
+        /// <returns>The modified <see cref="IServiceCollection"/>.</returns>
         public static IServiceCollection AddCustomRouteLocalization(this IServiceCollection services)
         {
             services.AddRouteLocalization(setup =>

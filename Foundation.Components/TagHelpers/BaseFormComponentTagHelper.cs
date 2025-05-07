@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Reflection.Emit;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Reflection;
-using System.Resources;
-using System.Text;
-using System.Threading.Tasks;
-using Foundation.Components.Attributes;
-using Foundation.Components.Enums;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Foundation.Components.TagHelpers
 {

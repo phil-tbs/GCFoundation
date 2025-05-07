@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Foundation.Components.Enums;
-using Microsoft.AspNetCore.Razor.TagHelpers;
+﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers
 {
@@ -13,7 +7,7 @@ namespace Foundation.Components.TagHelpers
     /// Renders a <c>&lt;gcds-topic-menu&gt;</c> element with attributes based on the specified properties.
     /// </summary>
     [HtmlTargetElement("gcds-topic-menu")]
-    public class TopicMenuTagHelper: BaseTagHelper
+    public class TopicMenuTagHelper : BaseTagHelper
     {
         /// <summary>
         /// Indicates whether the topic menu should be rendered in a home page context.

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Foundation.Components.Enums;
+﻿using Foundation.Components.Enums;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers
@@ -49,7 +43,7 @@ namespace Foundation.Components.TagHelpers
         /// <summary>
         /// Specifies the tag name to be used for the container (e.g., div, section, etc.).
         /// </summary>
-        public string? Tag {  get; set; }
+        public string? Tag { get; set; }
 
         /// <inheritdoc/>
         public override void Process(TagHelperContext context, TagHelperOutput output)

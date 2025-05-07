@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 using Foundation.Common.Utilities;
 using Foundation.Components.Enums;
 using Foundation.Components.Models;
@@ -21,7 +16,7 @@ namespace Foundation.Components.TagHelpers
         /// <summary>
         /// The optional heading text to display in the footer's contextual section.
         /// </summary>
-        public string? ContextualHeadling {  get; set; }
+        public string? ContextualHeadling { get; set; }
 
         /// <summary>
         /// The optional heading text to display in the footer's contextual section.

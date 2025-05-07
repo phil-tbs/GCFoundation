@@ -1,7 +1,6 @@
 ﻿using System.Security.Cryptography;
 using Foundation.Common.Settings;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 
 namespace Foundation.Security.Middlewares
@@ -40,7 +39,7 @@ namespace Foundation.Security.Middlewares
                                $"style-src 'self' {cssCDN} {cssHash} 'nonce-{nonce}'; " +
                                $"font-src 'self' {fontCDN}; " +
                                $"connect-src 'self' http://localhost:* https://localhost:* ws://localhost:* wss://localhost:*; " +
-                               $"img-src 'self' data:; " + 
+                               $"img-src 'self' data:; " +
                                $"frame-ancestors 'none'; " +
                                $"upgrade-insecure-requests;";
 

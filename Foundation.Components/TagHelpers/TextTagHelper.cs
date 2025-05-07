@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Foundation.Components.Enums;
+﻿using Foundation.Components.Enums;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers
@@ -12,7 +7,7 @@ namespace Foundation.Components.TagHelpers
     /// Represents a tag helper for rendering text elements with customizable properties like display style, size, and margins.
     /// </summary>
     [HtmlTargetElement("gcds-text")]
-    public class TextTagHelper: BaseTagHelper
+    public class TextTagHelper : BaseTagHelper
     {
         /// <summary>
         /// Gets or sets a value indicating whether the character limit is enabled.

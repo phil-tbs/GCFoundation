@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Foundation.Common.Utilities;
+﻿using Foundation.Common.Utilities;
 
 namespace Foundation.Common.Settings
 {
+    /// <summary>
+    /// Represents configuration settings for frontend dependencies and application metadata.
+    /// Provides centralized access to CDN URIs for GC Design System, Font Awesome, Bootstrap,
+    /// and multilingual application information.
+    /// </summary>
     public class FoundationComponentsSettings
     {
         /// <summary>
-        /// Gc design system css CDN
+        /// Gets the URI for the GC Design System CSS from the CDN.
         /// </summary>
         public Uri GCDSCssCDN
         {
@@ -21,7 +21,7 @@ namespace Foundation.Common.Settings
         }
 
         /// <summary>
-        /// Gc Design css hash to execute inline styles
+        /// Gets the SHA-256 hash used for inline GC Design System CSS styles for CSP (Content Security Policy).
         /// </summary>
         public static string GCDSCssCDNHash
         {
@@ -32,7 +32,7 @@ namespace Foundation.Common.Settings
         }
 
         /// <summary>
-        /// Gc Design system javascript CDN
+        /// Gets the URI for the GC Design System JavaScript module from the CDN.
         /// </summary>
         public Uri GCDSJavaScriptCDN
         {
@@ -43,7 +43,7 @@ namespace Foundation.Common.Settings
         }
 
         /// <summary>
-        /// Font awsome CDN
+        /// Gets the URI for the Font Awesome CSS from the CDN.
         /// </summary>
         public Uri FontAwesomeCDN
         {
@@ -54,27 +54,27 @@ namespace Foundation.Common.Settings
         }
 
         /// <summary>
-        /// GC design system version
+        /// Gets or sets the version of the GC Design System being used.
         /// </summary>
         public string GCDSVersion { get; set; } = "0.34.1";
 
         /// <summary>
-        /// Font awesome version
+        /// Gets or sets the version of Font Awesome being used.
         /// </summary>
         public string FontAwesomeVersion { get; set; } = "6.4.2";
 
         /// <summary>
-        /// If using bootstrap CDN
+        /// Gets or sets whether Bootstrap is used via CDN.
         /// </summary>
         public bool UsingBootstrapCDN { get; set; }
 
         /// <summary>
-        /// Version of bootstrap used
+        /// Gets or sets the version of Bootstrap being used.
         /// </summary>
         public string BootstrapCDNVersion { get; set; } = "5.3.3";
 
         /// <summary>
-        /// Bootstrap CSS CDN
+        /// Gets the URI for the Bootstrap CSS from the CDN.
         /// </summary>
         public Uri BootstrapCSSCDN
         {
@@ -85,7 +85,7 @@ namespace Foundation.Common.Settings
         }
 
         /// <summary>
-        /// Bootstrap javascript CDN
+        /// Gets the URI for the Bootstrap JavaScript bundle from the CDN.
         /// </summary>
         public Uri BootstrapJSCDN
         {
@@ -95,11 +95,18 @@ namespace Foundation.Common.Settings
             }
         }
 
+        /// <summary>
+        /// Gets or sets the English name of the application.
+        /// </summary>
         public string ApplicationNameEn { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Gets or sets the French name of the application.
+        /// </summary>
         public string ApplicationNameFr { get; set; } = string.Empty;
 
         /// <summary>
-        /// Return the application name depending on the language
+        /// Gets the application name based on the current language context.
         /// </summary>
         public string ApplicationName
         {
@@ -110,14 +117,12 @@ namespace Foundation.Common.Settings
         }
 
         /// <summary>
-        /// The link where you support is in french
-        /// You can also add mailto:
+        /// Gets or sets the support link (or mailto) for French users.
         /// </summary>
         public string SupportLinkFr { get; set; } = default!;
 
         /// <summary>
-        /// The link where you support is in english
-        /// You can also add mailto:
+        /// Gets or sets the support link (or mailto) for English users.
         /// </summary>
         public string SupportLinkEn { get; set; } = default!;
     }

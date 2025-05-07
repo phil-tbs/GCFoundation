@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Foundation.Components.Enums;
-using Microsoft.AspNetCore.Razor.TagHelpers;
+﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers
 {
@@ -13,7 +7,7 @@ namespace Foundation.Components.TagHelpers
     /// Adds the target language and URL as attributes.
     /// </summary>
     [HtmlTargetElement("gcds-lang-toggle")]
-    public class ToggleLanguageTagHelper: BaseTagHelper
+    public class ToggleLanguageTagHelper : BaseTagHelper
     {
         /// <summary>
         /// Gets or sets the hyperlink reference for the language toggle.

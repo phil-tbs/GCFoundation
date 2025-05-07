@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Razor.TagHelpers;
+﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers.FDCP
 {
@@ -12,7 +7,7 @@ namespace Foundation.Components.TagHelpers.FDCP
     /// It extends the <see cref="FDCPModalTagHelper"/> and adds additional attributes for session handling.
     /// </summary>
     [HtmlTargetElement("fdcp-session-modal")]
-    public class FDCPSessionModalTagHelper: FDCPModalTagHelper
+    public class FDCPSessionModalTagHelper : FDCPModalTagHelper
     {
         /// <summary>
         /// The session timeout in seconds. This is the time after which the session will expire.

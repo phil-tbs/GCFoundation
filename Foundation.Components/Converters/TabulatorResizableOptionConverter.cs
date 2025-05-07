@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using Foundation.Components.Enums;
 
 namespace Foundation.Components.Converters
@@ -13,7 +8,7 @@ namespace Foundation.Components.Converters
     /// A custom JSON converter for <see cref="TabulatorResizableOption"/> to support flexible input formats.
     /// Converts boolean and string values to the corresponding enum options and vice versa.
     /// </summary>
-    public class TabulatorResizableOptionConverter: JsonConverter<TabulatorResizableOption>
+    public class TabulatorResizableOptionConverter : JsonConverter<TabulatorResizableOption>
     {
         /// <summary>
         /// Reads and converts a JSON value to a <see cref="TabulatorResizableOption"/>.

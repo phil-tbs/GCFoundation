@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+﻿using System.Globalization;
 using System.Reflection;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Microsoft.Extensions.Options;
 
 namespace Foundation.Components.TagHelpers.FDCP
 {
@@ -67,11 +62,11 @@ namespace Foundation.Components.TagHelpers.FDCP
             string optionsJson = JsonSerializer.Serialize(optionsList, CamelCaseOptions);
 
             var sb = new StringBuilder();
-            sb.AppendLine(CultureInfo.InvariantCulture,$@"<gcds-radio-group name=""{fieldName}"" options='{optionsJson}'></gcds-radio-group>");
+            sb.AppendLine(CultureInfo.InvariantCulture, $@"<gcds-radio-group name=""{fieldName}"" options='{optionsJson}'></gcds-radio-group>");
 
             output.Content.SetHtmlContent(sb.ToString());
 
-            
+
         }
     }
 }

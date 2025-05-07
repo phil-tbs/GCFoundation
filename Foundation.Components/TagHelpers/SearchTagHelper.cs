@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Foundation.Components.Enums;
+﻿using Foundation.Components.Enums;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers
@@ -13,7 +8,7 @@ namespace Foundation.Components.TagHelpers
     /// The search component is used to create a search input field with customizable action, method, and other options.
     /// </summary>
     [HtmlTargetElement("gcds-search")]
-    public class SearchTagHelper: BaseTagHelper
+    public class SearchTagHelper : BaseTagHelper
     {
         /// <summary>
         /// Gets or sets the URL to which the search form will be submitted. This is typically a search endpoint.

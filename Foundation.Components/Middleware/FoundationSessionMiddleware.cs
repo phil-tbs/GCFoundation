@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 using Foundation.Components.Setttings;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;

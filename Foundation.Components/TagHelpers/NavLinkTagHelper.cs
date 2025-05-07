@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Razor.TagHelpers;
+﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers
 {
@@ -11,7 +6,7 @@ namespace Foundation.Components.TagHelpers
     /// Represents a navigation link component for use in a webpage's navigation structure.
     /// </summary>
     [HtmlTargetElement("gcds-nav-link")]
-    public class NavLinkTagHelper: BaseTagHelper
+    public class NavLinkTagHelper : BaseTagHelper
     {
         /// <summary>
         /// Gets or sets the URL that the navigation link points to.

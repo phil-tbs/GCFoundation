@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Foundation.Components.Enums;
-using Microsoft.AspNetCore.Razor.TagHelpers;
+﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers
 {
@@ -29,7 +23,7 @@ namespace Foundation.Components.TagHelpers
         {
             AddAttributeIfNotNull(output, "checkbox-id", CheckboxId);
             AddAttributeIfNotNull(output, "label", Label);
-            
+
 
             base.Process(context, output);
         }

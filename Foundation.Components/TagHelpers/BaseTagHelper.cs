@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Foundation.Common.Utilities;
+﻿using Foundation.Common.Utilities;
 using Foundation.Components.Enums;
 using Foundation.Components.Utilities;
 using Microsoft.AspNetCore.Razor.TagHelpers;
@@ -25,7 +19,7 @@ namespace Foundation.Components.TagHelpers
         {
             get
             {
-                return (LanguageUtility.IsEnglish()? Language.en : Language.fr);
+                return (LanguageUtility.IsEnglish() ? Language.en : Language.fr);
             }
         }
 
@@ -55,7 +49,7 @@ namespace Foundation.Components.TagHelpers
                     output.Attributes.SetAttribute(attributeName, attributeValue.ToString());
                 }
 
-                
+
             }
         }
 

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using Foundation.Components.Attributes;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
@@ -39,8 +34,8 @@ namespace Foundation.Components.TagHelpers.FDCP
             }
 
             TagType tagType = GetTagType();
-            
-            BuildByTagType(context,output,tagType);
+
+            BuildByTagType(context, output, tagType);
         }
 
         /// <summary>
@@ -63,7 +58,7 @@ namespace Foundation.Components.TagHelpers.FDCP
             }
             else if (tagType == TagType.date)
             {
-                if(this.PropertyInfo == null)
+                if (this.PropertyInfo == null)
                 {
                     throw new InvalidOperationException("Missing proprities");
                 }
@@ -72,9 +67,9 @@ namespace Foundation.Components.TagHelpers.FDCP
                 string label = GetLocalizedLabel(this.PropertyInfo);
 
                 output.Attributes.SetAttribute("legend", label);
-                output.Attributes.SetAttribute("format", (formatAttr != null)? formatAttr.Format : "full");
+                output.Attributes.SetAttribute("format", (formatAttr != null) ? formatAttr.Format : "full");
             }
-            else 
+            else
             {
                 string gcdsType = GetInputType();
                 output.Attributes.SetAttribute("type", gcdsType);
@@ -90,7 +85,8 @@ namespace Foundation.Components.TagHelpers.FDCP
         /// <returns>The HTML tag name as a string.</returns>
         private static string? GetTagNameByInputType(TagType inputType)
         {
-            switch (inputType) {
+            switch (inputType)
+            {
                 case TagType.input:
                     return "gcds-input";
                 case TagType.date:

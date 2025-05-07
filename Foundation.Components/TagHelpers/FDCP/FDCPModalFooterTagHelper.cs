@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Razor.TagHelpers;
+﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers.FDCP
 {
@@ -13,7 +8,7 @@ namespace Foundation.Components.TagHelpers.FDCP
     /// The content inside the modal footer is determined by the child content within the tag in the Razor view.
     /// </summary>
     [HtmlTargetElement("fdcp-modal-footer")]
-    public class FDCPModalFooterTagHelper: TagHelper
+    public class FDCPModalFooterTagHelper : TagHelper
     {
         /// <inheritdoc/>
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)

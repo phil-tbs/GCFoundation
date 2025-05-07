@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Razor.TagHelpers;
+﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers
 {
@@ -11,7 +6,7 @@ namespace Foundation.Components.TagHelpers
     /// Represents a tag helper for rendering a textarea input element with customizable properties like label, row count, and character count.
     /// </summary>
     [HtmlTargetElement("gcds-textarea")]
-    public class TextareaTagHelper: BaseFormComponentTagHelper
+    public class TextareaTagHelper : BaseFormComponentTagHelper
     {
         /// <summary>
         /// Gets or sets the label for the textarea input element. This field is required.

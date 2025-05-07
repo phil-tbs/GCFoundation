@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Foundation.Common.Settings
+﻿namespace Foundation.Common.Settings
 {
     /// <summary>
     /// Represents the configuration settings used to build a Content Security Policy (CSP).

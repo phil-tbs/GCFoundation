@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Foundation.Components.Enums;
+﻿using Foundation.Components.Enums;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers
@@ -13,7 +8,7 @@ namespace Foundation.Components.TagHelpers
     /// Used to indicate the user's progress through a sequence of steps.
     /// </summary>
     [HtmlTargetElement("gcds-stepper")]
-    public class StepperTagHelper: BaseTagHelper
+    public class StepperTagHelper : BaseTagHelper
     {
         /// <summary>
         /// Gets or sets the current step in the sequence. Should be a 1-based index.

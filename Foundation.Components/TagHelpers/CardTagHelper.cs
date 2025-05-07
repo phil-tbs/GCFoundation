@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Foundation.Components.Enums;
+﻿using Foundation.Components.Enums;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers
@@ -28,7 +23,7 @@ namespace Foundation.Components.TagHelpers
         /// <summary>
         /// Gets or sets the hyperlink URL that the card should link to.
         /// </summary>
-        public required string Href {  get; set; }
+        public required string Href { get; set; }
 
         /// <summary>
         /// Gets or sets the badge text displayed on the card. This can be used for labels or indicators.
@@ -66,7 +61,7 @@ namespace Foundation.Components.TagHelpers
             AddAttributeIfNotNull(output, "img-alt", ImgAlt);
             AddAttributeIfNotNull(output, "img-src", ImgSrc);
             AddAttributeIfNotNull(output, "lang", Lang);
-            
+
             base.Process(context, output);
         }
 

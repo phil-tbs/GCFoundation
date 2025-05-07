@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Foundation.Components.Enums;
+﻿using Foundation.Components.Enums;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers
@@ -14,7 +8,7 @@ namespace Foundation.Components.TagHelpers
     /// The notice is used to display alerts with a title, type, and associated content. The component can be customized with different heading tags and alert types.
     /// </summary>
     [HtmlTargetElement("gcds-notice")]
-    public class NoticeTagHelper: BaseTagHelper
+    public class NoticeTagHelper : BaseTagHelper
     {
         /// <summary>
         /// Gets or sets the title of the notice. This is the main heading of the alert.

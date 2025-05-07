@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 using Foundation.Common.Utilities;
-using Foundation.Components.Enums;
 using Foundation.Components.Models;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 

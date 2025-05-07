@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Foundation.Components.Enums;
+﻿using Foundation.Components.Enums;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers
@@ -13,7 +8,7 @@ namespace Foundation.Components.TagHelpers
     /// Supports optional linking, type, and variant customization for the signature.
     /// </summary>
     [HtmlTargetElement("gcds-signature")]
-    public class SignatureTagHelper: BaseTagHelper
+    public class SignatureTagHelper : BaseTagHelper
     {
         /// <summary>
         /// Gets or sets a value indicating whether the signature should have a link.

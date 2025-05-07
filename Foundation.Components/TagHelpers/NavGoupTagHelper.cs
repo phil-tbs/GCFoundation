@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Razor.TagHelpers;
+﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers
 {
@@ -12,7 +7,7 @@ namespace Foundation.Components.TagHelpers
     /// This group can contain multiple links and can be dynamically opened or closed.
     /// </summary>
     [HtmlTargetElement("gcds-nav-group")]
-    public class NavGoupTagHelper: BaseTagHelper
+    public class NavGoupTagHelper : BaseTagHelper
     {
         /// <summary>
         /// Gets or sets the label for the navigation menu group.

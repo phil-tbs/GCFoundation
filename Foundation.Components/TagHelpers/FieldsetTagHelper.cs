@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Foundation.Components.Enums;
-using Microsoft.AspNetCore.Razor.TagHelpers;
+﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers
 {
@@ -13,7 +7,7 @@ namespace Foundation.Components.TagHelpers
     /// Used to generate a fieldset with a legend, optional hint, error message, and other attributes for form inputs.
     /// </summary>
     [HtmlTargetElement("gcds-fieldset")]
-    public class FieldsetTagHelper: BaseTagHelper
+    public class FieldsetTagHelper : BaseTagHelper
     {
         /// <summary>
         /// The unique identifier for the fieldset element.

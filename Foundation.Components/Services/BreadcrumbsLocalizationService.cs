@@ -17,7 +17,8 @@ namespace Foundation.Components.Services
         /// </summary>
         /// <param name="localizer">An instance of <see cref="IStringLocalizer{T}"/> used for retrieving localized strings.</param>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="localizer"/> is null.</exception>
-        public BreadcrumbsLocalizationService(IStringLocalizer<T> localizer){
+        public BreadcrumbsLocalizationService(IStringLocalizer<T> localizer)
+        {
             _localizer = localizer ?? throw new ArgumentNullException(nameof(localizer));
         }
 

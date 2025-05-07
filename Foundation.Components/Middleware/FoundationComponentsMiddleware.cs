@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 using Foundation.Common.Settings;
-using Foundation.Components.Setttings;
 using Foundation.Components.Utilities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;

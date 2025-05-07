@@ -4,48 +4,59 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Foundation.Web.Controllers
 {
-    public class BaseController : Controller
+    /// <summary>
+    /// Base controller that provides shared functionality for setting view data, 
+    /// page notifications, and the page title. Other controllers can inherit from this class.
+    /// </summary>
+    public abstract class BaseController : Controller
     {
+        private readonly ILogger<BaseController> _logger;
 
-        public BaseController() 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BaseController"/> class.
+        /// </summary>
+        protected BaseController(ILogger<BaseController> logger)
         {
-            
+            _logger = logger;
         }
 
-
+        /// <summary>
+        /// Sets the name of the partial view to be used for the page menu.
+        /// </summary>
+        /// <param name="viewMenu">The name of the partial view for the menu.</param>
         protected void SetViewMenu(string viewMenu)
         {
             ViewData["MenuPartialViewName"] = viewMenu;
         }
 
         /// <summary>
-        /// You can set a notification at the top of the page
+        /// Sets a page-level notification to be displayed at the top of the page.
         /// </summary>
-        /// <param name="notification">Object containing information about the notification</param>
+        /// <param name="notification">An object containing the notification title, message, and alert type.</param>
         protected void SetPageNotification(PageNotification notification)
         {
             ViewData["PageNotification"] = notification;
         }
 
         /// <summary>
-        /// You can set success a page notification at the top of the page
+        /// Sets a success-type notification to be displayed at the top of the page.
         /// </summary>
-        /// <param name="title">Title of the notification</param>
-        /// <param name="message">Content of the notification</param>
+        /// <param name="title">The title of the success message.</param>
+        /// <param name="message">The message content of the success notification.</param>
         protected void SetPageSuccessNotification(string title, string message)
         {
             ViewData["PageNotification"] = new PageNotification
             {
-                Title       = title,
-                Message     = message,
-                AlertType   = AlertType.Success
+                Title = title,
+                Message = message,
+                AlertType = AlertType.Success
             };
         }
 
         /// <summary>
-        /// Will set the page title in the html head
+        /// Sets the HTML page title to appear in the browser's title bar or tab.
         /// </summary>
-        /// <param name="title">Title of the page</param>
+        /// <param name="title">The title of the page.</param>
         protected void SetPageTitle(string title)
         {
             ViewData["Title"] = title;

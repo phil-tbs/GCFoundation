@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Foundation.Components.Enums
+﻿namespace Foundation.Components.Enums
 {
     /// <summary>
     /// Represents the HTTP method to use for a search form.

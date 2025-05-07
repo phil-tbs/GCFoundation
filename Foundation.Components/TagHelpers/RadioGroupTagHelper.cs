@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 using Foundation.Common.Utilities;
-using Foundation.Components.Enums;
 using Foundation.Components.Models;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
@@ -15,7 +9,7 @@ namespace Foundation.Components.TagHelpers
     /// Gets or sets the name of the radio group. This name is used to group the radio buttons and associate them together.
     /// </summary>
     [HtmlTargetElement("gcds-radio-group")]
-    public class RadioGroupTagHelper: BaseTagHelper
+    public class RadioGroupTagHelper : BaseTagHelper
     {
         /// <summary>
         /// Gets or sets the name of the radio group. This name is used to group the radio buttons and associate them together.
