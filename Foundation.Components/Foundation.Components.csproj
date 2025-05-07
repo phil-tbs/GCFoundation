@@ -5,6 +5,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+	<NeutralLanguage>en</NeutralLanguage>
+	<AnalysisMode>All</AnalysisMode>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
 
 	<PackageId>Foundation.Components</PackageId>
 	<Version>1.0.0</Version>
@@ -17,6 +20,16 @@
 	<IncludeSource>true</IncludeSource>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningsAsErrors>$(WarningsAsErrors);NU1605;</WarningsAsErrors>
+    <WarningLevel>8</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <WarningsAsErrors>$(WarningsAsErrors);NU1605;</WarningsAsErrors>
+    <WarningLevel>8</WarningLevel>
+  </PropertyGroup>
+
 	<Target Name="NpmBuild" BeforeTargets="Build">
 		<Exec Command="npm install" WorkingDirectory="$(ProjectDir)" />
 		<Exec Command="npm run build" WorkingDirectory="$(ProjectDir)" />
@@ -25,6 +38,10 @@
   <ItemGroup>
 	<FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="cloudscribe.Web.Navigation" Version="8.0.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="System.Linq.Dynamic.Core" Version="1.6.0.2" />
   </ItemGroup>
 

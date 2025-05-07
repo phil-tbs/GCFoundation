@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Foundation.Common.Settings;
+﻿using Foundation.Common.Settings;
 using Microsoft.Extensions.Options;
 
 namespace Foundation.Components.Configuration
@@ -16,29 +11,54 @@ namespace Foundation.Components.Configuration
     {
         private readonly FoundationComponentsSettings _componentSettings;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FoundationComponentsCdnPolicyConfigurator"/> class.
+        /// </summary>
+        /// <param name="componentSettings">The options containing the foundation components settings.</param>
+        /// <exception cref="ArgumentNullException">Thrown when the componentSettings parameter is null.</exception>
         public FoundationComponentsCdnPolicyConfigurator(IOptions<FoundationComponentsSettings> componentSettings)
         {
+            ArgumentNullException.ThrowIfNull(componentSettings, nameof(componentSettings));
+
             _componentSettings = componentSettings.Value;
         }
+
+        /// <summary>
+        /// Configures the content security policy settings for the application, including the allowed CDNs and hashes.
+        /// </summary>
+        /// <param name="options">The content policy settings to configure.</param>
+        /// <exception cref="ArgumentNullException">Thrown when the options parameter is null.</exception>
         public void Configure(FoundationContentPolicySettings options)
         {
-            // Ensure Bootstrap CDN is added if it's used
+            ArgumentNullException.ThrowIfNull(options, nameof(options));
+
+            var jsCDNs = Enumerable.Empty<string>();
+            var cssCDNs = Enumerable.Empty<string>();
+            var cssHashes = Enumerable.Empty<string>();
+            var fontCDNs = Enumerable.Empty<string>();
+
             if (_componentSettings.UsingBootstrapCDN)
             {
-                options.JavascriptCDN.Add(_componentSettings.BootstrapJSCDN.Host.ToString());
-                options.CssCDN.Add(_componentSettings.BootstrapCSSCDN.Host.ToString());
+                jsCDNs = jsCDNs.Append(_componentSettings.BootstrapJSCDN.Host.ToString());
+                cssCDNs = cssCDNs.Append(_componentSettings.BootstrapCSSCDN.Host.ToString());
             }
 
-            // Add GC Design System CDNs
-            options.JavascriptCDN.Add(_componentSettings.GCDSJavaScriptCDN.Host.ToString());
-            options.CssCDN.Add(_componentSettings.GCDSCssCDN.Host.ToString());
-            options.CssCDNHash.AddRange(_componentSettings.GCDSCssCDNHash.Split(' ', StringSplitOptions.RemoveEmptyEntries));
-            options.CssCDN.Add(_componentSettings.FontAwesomeCDN.Host.ToString());
+            jsCDNs = jsCDNs.Append(_componentSettings.GCDSJavaScriptCDN.Host.ToString());
+            cssCDNs = cssCDNs
+                .Append(_componentSettings.GCDSCssCDN.Host.ToString())
+                .Append(_componentSettings.FontAwesomeCDN.Host.ToString());
 
+            cssHashes = FoundationComponentsSettings.GCDSCssCDNHash
+                .Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
-            // Add FontAwesome CDN
-            options.FontCDN.Add(_componentSettings.FontAwesomeCDN.Host.ToString());
-            options.FontCDN.Add(_componentSettings.GCDSCssCDN.Host.ToString());
+            fontCDNs = fontCDNs
+                .Append(_componentSettings.FontAwesomeCDN.Host.ToString())
+                .Append(_componentSettings.GCDSCssCDN.Host.ToString());
+
+            options.JavascriptCDN = jsCDNs;
+            options.CssCDN = cssCDNs;
+            options.CssCDNHash = cssHashes;
+            options.FontCDN = fontCDNs;
         }
     }
 }

@@ -1,28 +1,38 @@
-﻿using System.Linq;
-using System.Linq.Dynamic.Core;
+﻿using System.Linq.Dynamic.Core;
 using Foundation.Components.Models;
 using Foundation.Web.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Foundation.Web.Controllers
 {
+    /// <summary>
+    /// API controller for testing Tabulator.js integration with server-side filtering, sorting, and pagination.
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
     public class TabulatorTestController : ControllerBase
     {
-        private static readonly List<TestUser> AllUsers = Enumerable.Range(1, 100).Select(i => new TestUser
+        private static readonly List<TestUser> AllUsers = [.. Enumerable.Range(1, 100).Select(i => new TestUser
         {
             Id = i,
             Name = $"User {i}",
             Email = $"user{i}@example.com"
-        }).ToList();
+        })];
 
-
+        /// <summary>
+        /// Handles Tabulator AJAX requests, applying filtering, sorting, and pagination to the sample <see cref="TestUser"/> list.
+        /// </summary>
+        /// <param name="request">The Tabulator request object containing pagination, filter, and sort parameters.</param>
+        /// <returns>
+        /// A JSON result containing a page of filtered and sorted <see cref="TestUser"/> data and the total number of pages.
+        /// </returns>
+        /// <response code="200">Returns the filtered and paginated user data.</response>
+        /// <response code="400">If the request is null or invalid.</response>
         [HttpPost]
         public IActionResult GetData(TabulatorRequest request)
         {
+            ArgumentNullException.ThrowIfNull(request, nameof(request));
             IQueryable<TestUser> query = AllUsers.AsQueryable();
 
             var properties = typeof(TestUser)
@@ -81,12 +91,15 @@ namespace Foundation.Web.Controllers
 
             if (!string.IsNullOrEmpty(combinedFilter))
             {
-                query = query.Where(combinedFilter, request.Filter.Select(f => f.Value).ToArray());
+                query = query.Where(combinedFilter, [.. request.Filter.Select(f => f.Value)]);
             }
 
             foreach (var sorter in request.Sort)
             {
-                string order = sorter.Dir.ToLower() == "desc" ? "descending" : "ascending";
+                string order = string.Equals(sorter.Dir, "desc", StringComparison.OrdinalIgnoreCase)
+                    ? "descending"
+                    : "ascending";
+
                 query = query.OrderBy($"{sorter.Field} {order}");
             }
 

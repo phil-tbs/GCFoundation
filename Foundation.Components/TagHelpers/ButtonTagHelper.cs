@@ -1,32 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Foundation.Components.Enum;
+﻿using Foundation.Components.Enums;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers
 {
+    /// <summary>
+    /// A tag helper for rendering a custom button component within the application.
+    /// </summary>
     [HtmlTargetElement("gcds-button")]
     public class ButtonTagHelper : BaseTagHelper
     {
+        /// <summary>
+        /// The ID of the button element.
+        /// </summary>
         public string? ButtonId { get; set; }
 
+        /// <summary>
+        /// The role of the button element.
+        /// </summary>
         public string? ButtonRole { get; set; }
 
-        public bool Disable { get; set; } = false;
+        /// <summary>
+        /// Indicates whether the button is disabled.
+        /// </summary>
+        public bool Disable { get; set; }
 
+        /// <summary>
+        /// The name attribute of the button.
+        /// </summary>
         public string? Name { get; set; }
 
-        public ButtonSizeTypeEnum Size { get; set; } = ButtonSizeTypeEnum.regular;
+        /// <summary>
+        /// The size of the button. Default is <see cref="ButtonSizeType.regular"/>.
+        /// </summary>
+        public ButtonSizeType Size { get; set; } = ButtonSizeType.regular;
 
-        public ButtonTypeEnum Type { get; set; } = ButtonTypeEnum.button;
+        /// <summary>
+        /// The type of the button. Default is <see cref="ButtonType.button"/>.
+        /// </summary>
+        public ButtonType Type { get; set; } = ButtonType.button;
 
+        /// <summary>
+        /// The value attribute of the button.
+        /// </summary>
         public string? Value { get; set; }
 
+        /// <inheritdoc/>
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
+            ArgumentNullException.ThrowIfNull(output, nameof(output));
+
             output.TagName = "gcds-button";
 
             AddAttributeIfNotNull(output, "button-id", ButtonId);

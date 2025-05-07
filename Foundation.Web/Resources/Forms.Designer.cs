@@ -61,7 +61,7 @@ namespace Foundation.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  Enter your age (must be 18 or older)..
+        ///   Looks up a localized string similar to Enter your age (must be 18 or older)..
         /// </summary>
         public static string Age_Hint {
             get {
@@ -151,7 +151,7 @@ namespace Foundation.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email Address.
+        ///   Looks up a localized string similar to Enter a valid email address (e.g., name@example.com)..
         /// </summary>
         public static string Email_Hint {
             get {
@@ -160,7 +160,7 @@ namespace Foundation.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  Enter a valid email (e.g., name@example.com)..
+        ///   Looks up a localized string similar to Email adress.
         /// </summary>
         public static string Email_Label {
             get {
@@ -214,8 +214,7 @@ namespace Foundation.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select your gender identity.
-        ///.
+        ///   Looks up a localized string similar to Select your gender identity..
         /// </summary>
         public static string Gender_Hint {
             get {

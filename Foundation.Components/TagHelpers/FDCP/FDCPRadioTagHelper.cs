@@ -1,25 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Globalization;
 using System.Reflection;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers.FDCP
 {
-
+    /// <summary>
+    /// Renders a custom radio button component wrapped in a `gcds-fieldset` element.
+    /// Use &lt;fdcp-radio&gt; in your Razor views to generate a radio button group.
+    /// </summary>
     [HtmlTargetElement("fdcp-radio", Attributes = "for, items")]
     public class FDCPRadioTagHelper : FDCPBaseFormComponentTagHelper
     {
-
+        /// <summary>
+        /// List of options to display in the radio button group.
+        /// </summary>
         [HtmlAttributeName("items")]
         public IEnumerable<SelectListItem> Items { get; set; } = new List<SelectListItem>();
 
+        /// <inheritdoc/>
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
+            ArgumentNullException.ThrowIfNull(output, nameof(output));
+
             // Call base class to handle validation messages if needed
             base.Process(context, output);
             if (For == null)
@@ -54,14 +59,14 @@ namespace Foundation.Components.TagHelpers.FDCP
                 hint = ""
             }).ToList();
 
-            string optionsJson = JsonSerializer.Serialize(optionsList, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
+            string optionsJson = JsonSerializer.Serialize(optionsList, CamelCaseOptions);
 
             var sb = new StringBuilder();
-            sb.AppendLine($@"<gcds-radio-group name=""{fieldName}"" options='{optionsJson}'></gcds-radio-group>");
+            sb.AppendLine(CultureInfo.InvariantCulture, $@"<gcds-radio-group name=""{fieldName}"" options='{optionsJson}'></gcds-radio-group>");
 
             output.Content.SetHtmlContent(sb.ToString());
 
-            
+
         }
     }
 }

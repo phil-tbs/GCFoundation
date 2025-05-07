@@ -1,19 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Foundation.Components.Enum;
-using Microsoft.AspNetCore.Razor.TagHelpers;
+﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers
 {
+    /// <summary>
+    /// Represents a GC Design System topic menu TagHelper.
+    /// Renders a <c>&lt;gcds-topic-menu&gt;</c> element with attributes based on the specified properties.
+    /// </summary>
     [HtmlTargetElement("gcds-topic-menu")]
-    public class TopicMenuTagHelper: BaseTagHelper
+    public class TopicMenuTagHelper : BaseTagHelper
     {
-        public bool Home { get; set; } = false;
-        public LanguageEnum Lang { get; set; } = LanguageEnum.en;
+        /// <summary>
+        /// Indicates whether the topic menu should be rendered in a home page context.
+        /// If <c>true</c>, the <c>home</c> attribute will be added to the element.
+        /// </summary>
+        public bool Home { get; set; }
 
+        /// <summary>
+        /// Processes the tag helper and adds the <c>home</c> and <c>lang</c> attributes to the output element
+        /// if their values are set.
+        /// </summary>
+        /// <param name="context">Contains information associated with the current HTML tag.</param>
+        /// <param name="output">A writer to modify the output HTML element.</param>
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             AddAttributeIfNotNull(output, "home", Home);

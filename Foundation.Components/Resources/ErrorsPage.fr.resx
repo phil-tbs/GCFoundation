@@ -141,8 +141,7 @@
       &lt;li&gt;Si vous pensez qu'il s'agit d'une erreur, veuillez &lt;gcds-link href="{0}" target="_blank"&gt;nous contacter&lt;/gcds-link&gt;.&lt;/li&gt;
   &lt;/ul&gt;
   Retourner à la page &lt;a href="/"&gt;d’accueil&lt;/a&gt;.
-&lt;/gcds-text&gt;
-</value>
+&lt;/gcds-text&gt;</value>
   </data>
   <data name="NotFound_Title" xml:space="preserve">
     <value>Page introuvable</value>

@@ -1,23 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Globalization;
 using System.Reflection;
 using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers.FDCP
 {
+    /// <summary>
+    /// A tag helper for rendering a group of checkboxes within a fieldset. It binds to a model property
+    /// and renders a list of checkbox elements based on the provided items. It also handles 
+    /// validation, localization of labels and hints, and setting the selected values based on the model.
+    /// </summary>
     [HtmlTargetElement("fdcp-checkboxes", Attributes = "for, items")]
     public class FDCPCheckboxesTagHelper : FDCPBaseFormComponentTagHelper
     {
+        /// <summary>
+        /// The list of items to be rendered as checkboxes.
+        /// Each item should have a text (label) and value (for the checkbox).
+        /// </summary>
         [HtmlAttributeName("items")]
         public IEnumerable<SelectListItem> Items { get; set; } = new List<SelectListItem>();
 
+        /// <inheritdoc/>
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
+            ArgumentNullException.ThrowIfNull(output, nameof(output));
+
             base.Process(context, output);
 
             if (For == null)
@@ -50,7 +58,7 @@ namespace Foundation.Components.TagHelpers.FDCP
             {
                 bool isChecked = selectedValues.Contains(item.Value);
 
-                sb.Append($@"<gcds-checkbox checkbox-id=""{fieldName}_{item.Value}""
+                sb.Append(CultureInfo.InvariantCulture, $@"<gcds-checkbox checkbox-id=""{fieldName}_{item.Value}""
                   label=""{item.Text}""
                   name=""{fieldName}""
                   value=""{item.Value}""

@@ -1,41 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Text.Json;
-using System.Threading.Tasks;
 using Foundation.Components.Models;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Newtonsoft.Json;
 
 namespace Foundation.Components.TagHelpers.FDCP
 {
+    /// <summary>
+    /// Renders a Tabulator table with support for dynamic data from either a static data source or an AJAX endpoint.
+    /// </summary>
     [HtmlTargetElement("fdcp-tabulator-table")]
     public class FDCPTabulatorTableTagHelper : TagHelper
     {
 
-        /// <summary>The HTML element ID to assign to the Tabulator container (must be unique).</summary>
+        /// <summary>
+        /// The HTML element ID to assign to the Tabulator container (must be unique).
+        /// </summary>
         public string Id { get; set; } = "";
 
-        /// <summary>The URL of the AJAX endpoint that returns paginated JSON data.</summary>
-        public string? AjaxUrl { get; set; }
+        /// <summary>
+        /// The URL of the AJAX endpoint that returns paginated JSON data.
+        /// </summary>
+        public Uri? AjaxUrl { get; set; }
 
-        /// <summary>Local data (optional). If provided, used instead of AJAX.</summary>
+        /// <summary>
+        /// Local data (optional). If provided, used instead of AJAX.
+        /// </summary>
         public IEnumerable<object>? Data { get; set; }
 
-        /// <summary>A list of columns to display in the Tabulator table.</summary>
-        public List<TabulatorColumn> Columns { get; set; } = new();
+        /// <summary>
+        /// A list of columns to display in the Tabulator table.
+        /// </summary>
+        public IEnumerable<TabulatorColumn> Columns { get; set; } = Enumerable.Empty<TabulatorColumn>();
 
-        public bool UseStaticData { get; set; } = false;
+        /// <summary>
+        /// Flag indicating whether to use static data or AJAX. Defaults to false (use AJAX).
+        /// </summary>
+        public bool UseStaticData { get; set; }
 
+        /// <summary>
+        /// The number of records per page for pagination. Defaults to 10.
+        /// </summary>
         public int PaginationSize { get; set; } = 10;
 
-
+        /// <inheritdoc/>
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
+            ArgumentNullException.ThrowIfNull(output, nameof(output));
 
             output.TagName = "div";
             output.TagMode = TagMode.StartTagAndEndTag;
@@ -46,6 +56,9 @@ namespace Foundation.Components.TagHelpers.FDCP
             output.Content.AppendHtml(GenerateTabulator());
         }
 
+        /// <summary>
+        /// Generates the HTML for the search input form.
+        /// </summary>
         private string GenerateSearchHtml()
         {
             return $@"
@@ -67,6 +80,9 @@ namespace Foundation.Components.TagHelpers.FDCP
             ";
         }
 
+        /// <summary>
+        /// Generates the HTML for the Tabulator table element, including columns and data.
+        /// </summary>
         private string GenerateTabulator()
         {
             var jsonOptions = new JsonSerializerOptions

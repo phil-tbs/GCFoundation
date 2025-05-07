@@ -10,6 +10,8 @@ namespace Foundation.Security.Middlewares
 
         public static IServiceCollection AddFoundationContentPolicies(this IServiceCollection services, IConfiguration configuration)
         {
+            ArgumentNullException.ThrowIfNull(configuration, nameof(configuration));
+
             var section = configuration.GetSection("ContentPolicySettings");
             services.Configure<FoundationContentPolicySettings>(section);
 

@@ -1,5 +1,6 @@
-﻿using System.Text;
-using Foundation.Components.Enum;
+﻿using System.Globalization;
+using System.Text;
+using Foundation.Components.Enums;
 using Foundation.Components.Resources;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
@@ -7,7 +8,7 @@ namespace Foundation.Components.TagHelpers.FDCP
 {
     /// <summary>
     /// Renders a Bootstrap 5 modal component.
-    /// Use <fdcp-modal> in your Razor views to generate a modal dialog.
+    /// Use &lt;fdcp-modal&gt; in your Razor views to generate a modal dialog.
     /// </summary>
     [HtmlTargetElement("fdcp-modal")]
     public class FDCPModalTagHelper : TagHelper
@@ -30,7 +31,7 @@ namespace Foundation.Components.TagHelpers.FDCP
         /// <summary>
         /// Makes the modal body content scrollable if the content overflows.
         /// </summary>
-        public bool Scrollable { get; set; } = false;
+        public bool Scrollable { get; set; }
 
         /// <summary>
         /// Sets the size of the modal. Default, Small, or Large.
@@ -42,15 +43,15 @@ namespace Foundation.Components.TagHelpers.FDCP
         /// </summary>
         public bool ShowCloseButton { get; set; } = true;
 
-        public bool IsStaticBackdrop { get; set; } = false;
-
         /// <summary>
-        /// Processes the <bootstrap-modal> tag and renders a Bootstrap 5 modal HTML structure.
+        /// Determines whether the modal will have a static backdrop (prevents closing by clicking outside the modal).
         /// </summary>
-        /// <param name="context">The context of the TagHelper execution.</param>
-        /// <param name="output">The output to write the rendered HTML to.</param>
+        public bool IsStaticBackdrop { get; set; }
+
+        /// <inheritdoc/>
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
+            ArgumentNullException.ThrowIfNull(output, nameof(output));
 
             output.TagName = "div";
             output.TagMode = TagMode.StartTagAndEndTag;
@@ -70,18 +71,20 @@ namespace Foundation.Components.TagHelpers.FDCP
             if (Size == ModalSize.Small) dialogClasses += " modal-sm";
             else if (Size == ModalSize.Large) dialogClasses += " modal-lg";
 
+#pragma warning disable CA2007 // Consider calling ConfigureAwait on the awaited task
             var childContent = await output.GetChildContentAsync();
+#pragma warning restore CA2007 // Consider calling ConfigureAwait on the awaited task
             var html = childContent.GetContent();
 
             var sb = new StringBuilder();
-            sb.AppendLine($"<div class='{dialogClasses}' role='document'>");
+            sb.AppendLine(CultureInfo.InvariantCulture, $"<div class='{dialogClasses}' role='document'>");
             sb.AppendLine("  <div class='modal-content'>");
 
             sb.AppendLine("    <div class='modal-header'>");
-            sb.AppendLine($"      <h5 class='modal-title' id='{Id}Label'>{Title}</h5>");
+            sb.AppendLine(CultureInfo.InvariantCulture, $"      <h5 class='modal-title' id='{Id}Label'>{Title}</h5>");
             if (ShowCloseButton)
             {
-                sb.AppendLine($"      <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='{Modal.Modal_Close}'></button>");
+                sb.AppendLine(CultureInfo.InvariantCulture, $"      <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='{Modal.Modal_Close}'></button>");
             }
             sb.AppendLine("    </div>");
 
@@ -92,7 +95,6 @@ namespace Foundation.Components.TagHelpers.FDCP
 
             output.Content.SetHtmlContent(sb.ToString());
 
-            await Task.CompletedTask;
         }
     }
 }

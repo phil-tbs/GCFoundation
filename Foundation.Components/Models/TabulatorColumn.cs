@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.PortableExecutable;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
 using Foundation.Components.Converters;
-using Foundation.Components.Enum;
+using Foundation.Components.Enums;
 
 namespace Foundation.Components.Models
 {
@@ -50,7 +44,7 @@ namespace Foundation.Components.Models
         /// <summary>
         /// If we want to filter on that column
         /// </summary>
-        public bool Filter { get; set; } = false;
+        public bool Filter { get; set; }
 
     }
 }

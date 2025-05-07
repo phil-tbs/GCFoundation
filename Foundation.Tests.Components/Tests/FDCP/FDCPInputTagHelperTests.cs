@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 using Foundation.Components.TagHelpers.FDCP;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -45,6 +40,8 @@ namespace Foundation.Tests.Components.Tests.FDCP
             // Assert
             Assert.Equal("gcds-input", output.TagName);
             Assert.Contains("type=\"text\"", output.Attributes.ToString());
+
+            await Task.CompletedTask;
         }
 
         [Fact]
@@ -69,6 +66,8 @@ namespace Foundation.Tests.Components.Tests.FDCP
             // Assert
             Assert.Equal("gcds-date-input", output.TagName);
             Assert.Contains("format=\"full\"", output.Attributes.ToString());
+
+            await Task.CompletedTask;
         }
 
         [Fact]
@@ -91,6 +90,8 @@ namespace Foundation.Tests.Components.Tests.FDCP
             // Assert
             Assert.Equal("gcds-checkbox", output.TagName);
             Assert.Contains("checkbox-id=\"IsChecked\"", output.Attributes.ToString());
+
+            await Task.CompletedTask;
         }
 
         [Fact]
@@ -115,12 +116,14 @@ namespace Foundation.Tests.Components.Tests.FDCP
             // Assert
             Assert.Equal("gcds-textarea", output.TagName);
             Assert.Contains("textarea-id=\"Comments\"", output.Attributes.ToString());
+
+            await Task.CompletedTask;
         }
     }
 
     public class TestModel
     {
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
@@ -128,7 +131,7 @@ namespace Foundation.Tests.Components.Tests.FDCP
         public bool IsChecked { get; set; }
 
         [DataType(DataType.MultilineText)]
-        public string Comments { get; set; }
+        public string? Comments { get; set; }
     }
 
 }

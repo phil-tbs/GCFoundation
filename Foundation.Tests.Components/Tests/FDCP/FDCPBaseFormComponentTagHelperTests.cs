@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Foundation.Components.TagHelpers.FDCP;
+﻿using Foundation.Components.TagHelpers.FDCP;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
@@ -60,6 +55,8 @@ namespace Foundation.Tests.Components.Tests.FDCP
             Assert.Equal("gcds-input", output.TagName);
             Assert.Contains("name=\"TestProperty\"", output.Attributes.ToString());
             Assert.Contains("value=\"Test Value\"", output.Attributes.ToString());
+
+            await Task.CompletedTask;
         }
 
         [Fact]

@@ -1,36 +1,33 @@
-using System.Diagnostics;
-using Foundation.Components.Models;
-using Foundation.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Foundation.Web.Controllers
 {
+    /// <summary>
+    /// Controller for handling the home page and related routes.
+    /// </summary>
     [Route("home")]
     public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger): base()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HomeController"/> class.
+        /// </summary>
+        /// <param name="logger">The logger for logging actions in this controller.</param>
+        public HomeController(ILogger<HomeController> logger)
+            : base(logger)
         {
             _logger = logger;
         }
 
-
+        /// <summary>
+        /// Displays the home page.
+        /// </summary>
+        /// <returns>The default view for the home page.</returns>
         [HttpGet("")]
         public IActionResult Index()
         {
             return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

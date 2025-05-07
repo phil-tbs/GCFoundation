@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Foundation.Components.Setttings
+﻿namespace Foundation.Components.Setttings
 {
     /// <summary>
     /// Foundation configuration for the session
@@ -33,7 +27,7 @@ namespace Foundation.Components.Setttings
         /// If you want to activate the session right away
         /// You can activate it later in you code logic
         /// </summary>
-        public bool UseSession { get; set; } = false;
+        public bool UseSession { get; set; }
 
         /// <summary>
         /// Indicates whether the session should reset the timeout on activity.
@@ -44,12 +38,12 @@ namespace Foundation.Components.Setttings
         /// <summary>
         /// The url where the session can be extend this will be call in AJAX Javascript
         /// </summary>
-        public string RefreshURL { get; set; } = string.Empty;
+        public Uri RefreshURL { get; set; } = default!;
 
         /// <summary>
         /// This will be used to logout the user if he click on ending is session
         /// </summary>
-        public string LogoutURL { get; set; } = string.Empty;
+        public Uri LogoutURL { get; set; } = default!;
 
 
     }

@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Globalization;
 using System.Text;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers.FDCP
 {
+    /// <summary>
+    /// Renders a custom dropdown (select) component.
+    /// Use &lt;fdcp-select&gt; in your Razor views to generate a dropdown list.
+    /// </summary>
     [HtmlTargetElement("fdcp-select", Attributes = "for, items")]
-    public class FDCPSelectTagHelper: FDCPBaseFormComponentTagHelper
+    public class FDCPSelectTagHelper : FDCPBaseFormComponentTagHelper
     {
         /// <summary>
         /// The list of selectable options for the dropdown.
@@ -17,8 +18,11 @@ namespace Foundation.Components.TagHelpers.FDCP
         [HtmlAttributeName("items")]
         public IEnumerable<SelectListItem> Items { get; set; } = new List<SelectListItem>();
 
+        /// <inheritdoc/>
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
+            ArgumentNullException.ThrowIfNull(output, nameof(output));
+
             // Call base class to handle label, hint, and errors
             base.Process(context, output);
 
@@ -34,12 +38,10 @@ namespace Foundation.Components.TagHelpers.FDCP
             foreach (var item in Items)
             {
                 var selected = For.Model?.ToString() == item.Value ? " selected" : "";
-                sb.AppendLine($"<option value='{item.Value}'{selected}>{item.Text}</option>");
+                sb.AppendLine(CultureInfo.InvariantCulture, $"<option value='{item.Value}'{selected}>{item.Text}</option>");
             }
 
             output.Content.SetHtmlContent(sb.ToString());
-
-            
         }
     }
 }

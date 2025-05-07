@@ -1,46 +1,95 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Foundation.Components.Enum;
+﻿using Foundation.Components.Enums;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers
 {
+    /// <summary>
+    /// Represents a tag helper for creating a responsive grid layout using gc design system.
+    /// </summary>
     [HtmlTargetElement("gcds-grid")]
     public class GridTagHelper : BaseTagHelper
     {
-        public AlignContentEnum? AlignContent { get; set; }
+        /// <summary>
+        /// Defines the alignment of content in the grid container.
+        /// </summary>
+        public AlignContent? AlignContent { get; set; }
 
-        public AlignItemEnum AlingItem { get; set; }
+        /// <summary>
+        /// Defines the alignment of items in the grid container.
+        /// </summary>
+        public AlignItem AlingItem { get; set; }
 
+        /// <summary>
+        /// Specifies the number of columns for the grid.
+        /// </summary>
         public string? Columns { get; set; }
 
+        /// <summary>
+        /// Specifies the number of columns for the grid on desktop screens.
+        /// </summary>
         public string? ColumnsDesktop { get; set; }
 
+        /// <summary>
+        /// Specifies the number of columns for the grid on tablet screens.
+        /// </summary>
         public string? ColumnsTablet { get; set; }
+
+        /// <summary>
+        /// Defines the container width (full, custom, etc.) for the grid.
+        /// </summary>
         public SizeTypeEmum Container { get; set; } = SizeTypeEmum.full;
 
-        public GridDisplayEnum Display { get; set; } = GridDisplayEnum.grid;
+        /// <summary>
+        /// Defines the display type of the grid (grid or other options).
+        /// </summary>
+        public GridDisplay Display { get; set; } = GridDisplay.grid;
 
-        public bool EqualRowHeight { get; set; } = false;
+        /// <summary>
+        /// Indicates whether to make all rows have equal height.
+        /// </summary>
+        public bool EqualRowHeight { get; set; }
 
+        /// <summary>
+        /// Defines the gap between items in the grid.
+        /// </summary>
         public string? Gap { get; set; } = "300";
+
+        /// <summary>
+        /// Defines the gap between items in the grid on desktop screens.
+        /// </summary>
         public string? GapDesktop { get; set; }
 
+        /// <summary>
+        /// Defines the gap between items in the grid on tablet screens.
+        /// </summary>
         public string? GapTablet { get; set; }
 
-        public AlignContentEnum? JustifyContent { get; set; }
+        /// <summary>
+        /// Defines the justification of content in the grid.
+        /// </summary>
+        public AlignContent? JustifyContent { get; set; }
 
-        public AlignItemEnum? JustifyItems { get; set; }
+        /// <summary>
+        /// Defines the justification of items in the grid.
+        /// </summary>
+        public AlignItem? JustifyItems { get; set; }
 
-        public AlignContentEnum? PlaceContent { get; set; }
+        /// <summary>
+        /// Defines the alignment of content in the grid with both axes.
+        /// </summary>
+        public AlignContent? PlaceContent { get; set; }
 
-        public AlignItemEnum? PlaceItems { get; set; }
+        /// <summary>
+        /// Defines the alignment of items in the grid with both axes.
+        /// </summary>
+        public AlignItem? PlaceItems { get; set; }
 
+        /// <summary>
+        /// Specifies the tag used to render the grid container (e.g., "div").
+        /// </summary>
         public string? Tag { get; set; } = "div";
 
+        /// <inheritdoc/>
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             AddAttributeIfNotNullWithCaseConversion(output, "align-content", AlignContent);

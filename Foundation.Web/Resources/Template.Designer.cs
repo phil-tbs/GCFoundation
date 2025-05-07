@@ -61,7 +61,7 @@ namespace Foundation.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Global error .
+        ///   Looks up a localized string similar to Global error.
         /// </summary>
         public static string ErrorTemplates_GlobalError {
             get {
@@ -70,7 +70,7 @@ namespace Foundation.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Not found .
+        ///   Looks up a localized string similar to Not found.
         /// </summary>
         public static string ErrorTemplates_NotFound {
             get {
@@ -79,7 +79,7 @@ namespace Foundation.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Learn about the core templates included in the Foundation framework. .
+        ///   Looks up a localized string similar to Learn about the core templates included in the Foundation framework..
         /// </summary>
         public static string Index_PageDescription {
             get {
@@ -97,7 +97,7 @@ namespace Foundation.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Foundation includes two error templates: .
+        ///   Looks up a localized string similar to The Foundation includes two error templates:.
         /// </summary>
         public static string Section_ErrorTemplates_Description {
             get {
@@ -115,7 +115,7 @@ namespace Foundation.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A bilingual splash page similar to the one used on Canada.ca. .
+        ///   Looks up a localized string similar to A bilingual splash page similar to the one used on Canada.ca..
         /// </summary>
         public static string Section_LanguageChooser_Description {
             get {
@@ -124,7 +124,7 @@ namespace Foundation.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Language chooser template .
+        ///   Looks up a localized string similar to Language chooser template.
         /// </summary>
         public static string Section_LanguageChooser_Title {
             get {
@@ -133,7 +133,7 @@ namespace Foundation.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The main layout template provides the base structure used across pages. .
+        ///   Looks up a localized string similar to The main layout template provides the base structure used across pages..
         /// </summary>
         public static string Section_MainTemplate_Description {
             get {
@@ -151,7 +151,7 @@ namespace Foundation.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error templates .
+        ///   Looks up a localized string similar to Error templates.
         /// </summary>
         public static string SideNav_ErrorTemplates {
             get {
@@ -160,7 +160,7 @@ namespace Foundation.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to On this page .
+        ///   Looks up a localized string similar to On this page.
         /// </summary>
         public static string SideNav_Label {
             get {
@@ -178,7 +178,7 @@ namespace Foundation.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Main template .
+        ///   Looks up a localized string similar to Main template.
         /// </summary>
         public static string SideNav_MainTemplate {
             get {

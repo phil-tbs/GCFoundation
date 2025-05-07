@@ -1,16 +1,16 @@
-using Foundation.Components.Middleware;
 using cloudscribe.Web.Localization;
 using cloudscribe.Web.SiteMap;
-using Microsoft.Extensions.Localization;
-using Microsoft.AspNetCore.Localization;
-using Microsoft.Extensions.Options;
-using Foundation.Web.Infrastructure.Extensions;
-using Foundation.Components.Services.Interfaces;
-using Foundation.Components.Services;
-using Foundation.Security.Middlewares;
-using Microsoft.AspNetCore.CookiePolicy;
-using Microsoft.AspNetCore.Mvc.Razor;
 using Foundation.Common.Utilities;
+using Foundation.Components.Middleware;
+using Foundation.Components.Services;
+using Foundation.Components.Services.Interfaces;
+using Foundation.Security.Middlewares;
+using Foundation.Web.Infrastructure.Extensions;
+using Microsoft.AspNetCore.CookiePolicy;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 

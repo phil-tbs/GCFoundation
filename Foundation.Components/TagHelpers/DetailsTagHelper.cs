@@ -1,19 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Razor.TagHelpers;
+﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers
 {
+    /// <summary>
+    /// A tag helper for rendering a details element with a title and an optional open state.
+    /// </summary>
     [HtmlTargetElement("gcds-details")]
     public class DetailsTagHelper : BaseTagHelper
     {
+        /// <summary>
+        /// The title of the details element that will be displayed in the summary.
+        /// </summary>
         public required string DetailsTitle { get; set; }
 
-        public bool Open { get; set; } = false;
+        /// <summary>
+        /// A boolean indicating whether the details element should be open by default.
+        /// </summary>
+        public bool Open { get; set; }
 
+        /// <inheritdoc/>
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             AddAttributeIfNotNull(output, "details-title", DetailsTitle);
