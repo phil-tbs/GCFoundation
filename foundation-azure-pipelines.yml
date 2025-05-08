@@ -1,0 +1,129 @@
+trigger:
+  branches:
+    include:
+      - master
+      - develop
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  buildConfiguration: 'Release'
+  solution: '**/*.sln'
+  outputDir: '$(Build.ArtifactStagingDirectory)/nuget'
+  nugetSource: 'EGCS-Nuget-Feed'
+
+  isMain: $[eq(variables['Build.SourceBranchName'], 'master')]
+  versionSuffix: $[iif(eq(variables['isMain'], 'True'), '', '-beta')]
+  packageVersion: '1.0.$(Date:yyyyMMdd)$(Rev:.r)$(versionSuffix)'
+
+name: $(packageVersion)
+
+steps:
+- task: UseDotNet@2
+  displayName: 'Install .NET SDK'
+  inputs:
+    packageType: 'sdk'
+    version: '8.x'
+
+- task: UseNode@1
+  inputs:
+    version: '22.x'
+  displayName: 'Install Node.js'
+
+# Optional: Only if Foundation.Components has a package.json
+- task: Npm@1
+  displayName: 'Install NPM packages for Foundation.Components'
+  inputs:
+    command: 'install'
+    workingDir: 'Foundation.Components'
+
+- task: NuGetToolInstaller@1
+  displayName: 'NuGet Tool Installer'
+
+- task: NuGetCommand@2
+  displayName: 'Restore NuGet Packages'
+  inputs:
+    restoreSolution: '$(solution)'
+
+###############################################
+# BUILD & PACK: Foundation.Common
+###############################################
+- task: DotNetCoreCLI@2
+  displayName: 'Build Foundation.Common'
+  inputs:
+    command: 'build'
+    projects: 'Foundation.Common/Foundation.Common.csproj'
+    arguments: '--configuration $(buildConfiguration) /p:Version=$(packageVersion) --no-restore'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Pack Foundation.Common'
+  condition: ne(variables['Build.Reason'], 'PullRequest')
+  inputs:
+    command: 'pack'
+    packagesToPack: 'Foundation.Common/Foundation.Common.csproj'
+    configuration: '$(buildConfiguration)'
+    outputDir: '$(outputDir)'
+    versioningScheme: 'off'
+    arguments: '/p:PackageVersion=$(packageVersion)'
+    nobuild: true
+
+###############################################
+# BUILD & PACK: Foundation.Components
+###############################################
+- task: DotNetCoreCLI@2
+  displayName: 'Build Foundation.Components'
+  inputs:
+    command: 'build'
+    projects: 'Foundation.Components/Foundation.Components.csproj'
+    arguments: '--configuration $(buildConfiguration) /p:Version=$(packageVersion) --no-restore'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Pack Foundation.Components'
+  condition: ne(variables['Build.Reason'], 'PullRequest')
+  inputs:
+    command: 'pack'
+    packagesToPack: 'Foundation.Components/Foundation.Components.csproj'
+    configuration: '$(buildConfiguration)'
+    outputDir: '$(outputDir)'
+    versioningScheme: 'off'
+    arguments: '/p:PackageVersion=$(packageVersion)'
+    nobuild: true
+
+###############################################
+# BUILD & PACK: Foundation.Security
+###############################################
+- task: DotNetCoreCLI@2
+  displayName: 'Build Foundation.Security'
+  inputs:
+    command: 'build'
+    projects: 'Foundation.Security/Foundation.Security.csproj'
+    arguments: '--configuration $(buildConfiguration) /p:Version=$(packageVersion) --no-restore'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Pack Foundation.Security'
+  condition: ne(variables['Build.Reason'], 'PullRequest')
+  inputs:
+    command: 'pack'
+    packagesToPack: 'Foundation.Security/Foundation.Security.csproj'
+    configuration: '$(buildConfiguration)'
+    outputDir: '$(outputDir)'
+    versioningScheme: 'off'
+    arguments: '/p:PackageVersion=$(packageVersion)'
+    nobuild: true
+
+###############################################
+# PUSH TO AZURE ARTIFACTS
+###############################################
+- task: NuGetAuthenticate@1
+  displayName: 'NuGet Authenticate'
+  condition: ne(variables['Build.Reason'], 'PullRequest')
+
+- task: NuGetCommand@2
+  displayName: 'Push NuGet Packages to Azure Artifacts'
+  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+  inputs:
+    command: 'push'
+    publishVstsFeed: 'EGCS/EGCS-Nuget-Feed'
+    searchPatternPush: '$(outputDir)/*.nupkg'
+    allowPackageConflicts: true
