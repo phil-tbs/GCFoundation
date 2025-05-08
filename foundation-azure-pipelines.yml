@@ -65,7 +65,7 @@ steps:
     configuration: '$(buildConfiguration)'
     outputDir: '$(outputDir)'
     versioningScheme: 'off'
-    arguments: '/p:PackageVersion=$(packageVersion)'
+    arguments: '/p:PackageVersion=$(Build.BuildNumber)'
     nobuild: true
 
 ###############################################
@@ -87,7 +87,7 @@ steps:
     configuration: '$(buildConfiguration)'
     outputDir: '$(outputDir)'
     versioningScheme: 'off'
-    arguments: '/p:PackageVersion=$(packageVersion)'
+    arguments: '/p:PackageVersion=$(Build.BuildNumber)'
     nobuild: true
 
 ###############################################
@@ -109,7 +109,7 @@ steps:
     configuration: '$(buildConfiguration)'
     outputDir: '$(outputDir)'
     versioningScheme: 'off'
-    arguments: '/p:PackageVersion=$(packageVersion)'
+    arguments: '/p:PackageVersion=$(Build.BuildNumber)'
     nobuild: true
 
 ###############################################
