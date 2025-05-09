@@ -1,4 +1,5 @@
 ﻿using System.Linq.Dynamic.Core;
+using Foundation.Components.Controllers;
 using Foundation.Components.Models;
 using Foundation.Web.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +12,7 @@ namespace Foundation.Web.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
-    public class TabulatorTestController : ControllerBase
+    public class TabulatorTestController : FoundationBaseController
     {
         private static readonly List<TestUser> AllUsers = [.. Enumerable.Range(1, 100).Select(i => new TestUser
         {
@@ -19,6 +20,14 @@ namespace Foundation.Web.Controllers
             Name = $"User {i}",
             Email = $"user{i}@example.com"
         })];
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TabulatorTestController"/> class.
+        /// </summary>
+        /// <param name="logger">The logger instance for the controller.</param>
+        public TabulatorTestController(ILogger<TabulatorTestController> logger) : base(logger)
+        {
+        }
 
         /// <summary>
         /// Handles Tabulator AJAX requests, applying filtering, sorting, and pagination to the sample <see cref="TestUser"/> list.

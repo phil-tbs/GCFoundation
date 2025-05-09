@@ -1,4 +1,5 @@
-﻿using Foundation.Web.Models;
+﻿using Foundation.Components.Controllers;
+using Foundation.Web.Models;
 using Foundation.Web.Resources;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,7 +9,7 @@ namespace Foundation.Web.Controllers
     /// Controller that handles requests related to reusable UI components.
     /// </summary>
     [Route("components")]
-    public class ComponentsController : BaseController
+    public class ComponentsController : FoundationBaseController
     {
 
         private readonly ILogger<ComponentsController> _logger;

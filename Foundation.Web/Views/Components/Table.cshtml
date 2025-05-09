@@ -9,10 +9,8 @@
         new() { Title = "Email", Field = "email", HozAlign = "center", Filter  = true, }
     };
 
-    
-
 }
 
 <fdcp-tabulator-table id="usersTable"
                       columns="@columns"
-                      ajax-url="@(new Uri(Url.Action("GetData", "TabulatorTest") ?? ""))" />
+                      ajax-url="@Url.Action("GetData", "TabulatorTest")" />
