@@ -20,7 +20,9 @@ namespace Foundation.Components.TagHelpers.FDCP
         /// <summary>
         /// The URL of the AJAX endpoint that returns paginated JSON data.
         /// </summary>
-        public Uri? AjaxUrl { get; set; }
+#pragma warning disable CA1056 // URI-like properties should not be strings
+        public string? AjaxUrl { get; set; }
+#pragma warning restore CA1056 // URI-like properties should not be strings
 
         /// <summary>
         /// Local data (optional). If provided, used instead of AJAX.

@@ -10,6 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Infrastructure\Services\**" />
+    <Content Remove="Infrastructure\Services\**" />
+    <EmbeddedResource Remove="Infrastructure\Services\**" />
+    <None Remove="Infrastructure\Services\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="cloudscribe.Web.Localization" Version="8.0.0" />
     <PackageReference Include="cloudscribe.Web.Navigation" Version="8.0.0" />
     <PackageReference Include="cloudscribe.Web.SiteMap" Version="8.0.0" />
@@ -26,7 +33,6 @@
 
   <ItemGroup>
     <Folder Include="Infrastructure\Middleware\" />
-    <Folder Include="Infrastructure\Services\" />
   </ItemGroup>
 
   <ItemGroup>

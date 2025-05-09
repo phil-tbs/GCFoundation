@@ -1,3 +1,4 @@
+using Foundation.Components.Controllers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Foundation.Web.Controllers
@@ -6,7 +7,7 @@ namespace Foundation.Web.Controllers
     /// Controller for handling the home page and related routes.
     /// </summary>
     [Route("home")]
-    public class HomeController : BaseController
+    public class HomeController : FoundationBaseController
     {
         private readonly ILogger<HomeController> _logger;
 

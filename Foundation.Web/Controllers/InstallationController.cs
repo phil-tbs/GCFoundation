@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Foundation.Components.Controllers;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Foundation.Web.Controllers
 {
@@ -6,7 +7,7 @@ namespace Foundation.Web.Controllers
     /// Controller responsible for handling installation-related pages.
     /// </summary>
     [Route("installtion")]
-    public class InstallationController : BaseController
+    public class InstallationController : FoundationBaseController
     {
         private readonly ILogger<InstallationController> _logger;
 

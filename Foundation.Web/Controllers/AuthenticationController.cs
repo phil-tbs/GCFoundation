@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using Foundation.Components.Controllers;
 using Foundation.Components.Enums;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,7 +9,7 @@ namespace Foundation.Web.Controllers
     /// Provides actions for user authentication, including login, logout, and session refresh.
     /// </summary>
     [Route("authentication")]
-    public class AuthenticationController : BaseController
+    public class AuthenticationController : FoundationBaseController
     {
         private readonly ILogger<AuthenticationController> _logger;
 

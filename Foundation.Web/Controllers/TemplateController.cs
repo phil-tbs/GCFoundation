@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Foundation.Components.Controllers;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Foundation.Web.Controllers
 {
@@ -6,7 +7,7 @@ namespace Foundation.Web.Controllers
     /// Controller responsible for serving the template demonstration or sample view.
     /// </summary>
     [Route("template")]
-    public class TemplateController : BaseController
+    public class TemplateController : FoundationBaseController
     {
         private readonly ILogger<TemplateController> _logger;
 

@@ -1,4 +1,5 @@
 ﻿using Foundation.Common.Utilities;
+using Foundation.Components.Controllers;
 using Foundation.Components.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,7 +9,7 @@ namespace Foundation.Web.Controllers
     /// Controller responsible for handling language selection and redirection based on user culture.
     /// </summary>
     [Route("/")]
-    public class LanguageController : BaseController
+    public class LanguageController : FoundationBaseController
     {
         private readonly ILogger<LanguageController> _logger;
 
