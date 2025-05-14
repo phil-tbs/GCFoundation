@@ -1,0 +1,34 @@
+﻿@using Foundation.Components.Models
+@{
+    var searchFilterCategories = new List<SearchFilterCategory>
+    {
+        new SearchFilterCategory
+        {
+            Title = "Funding type",
+            CSSId = "funding",
+            Filters = new List<SearchFilter>
+            {
+                new SearchFilter { Title = "Grants", Count = 45, Name = "grants" },
+                new SearchFilter { Title = "Contributions", Count = 4, Name = "contributions" }
+            }
+        },
+        new SearchFilterCategory
+        {
+            Title = "Amounts",
+            CSSId = "amounts",
+            Filters = new List<SearchFilter>
+            {
+                new SearchFilter { Title = "Less than $10,000", Count = 26, Name = "less10000" },
+                new SearchFilter { Title = "$10,000 to $24,999", Count = 5, Name = "between10000and24999" }
+            }
+        }
+    };
+}
+
+<gcds-grid columns="1fr 2fr">
+    <fdcp-filters-box title="Filter" filters="@searchFilterCategories">
+
+    </fdcp-filters-box>
+</gcds-grid>
+
+

@@ -2,7 +2,7 @@
 @using Foundation.Components.Setttings
 @using Foundation.Web.Resources
 @using Microsoft.Extensions.Options
-@inject IOptions<FoundationComponentsSettings> settings;
+@inject IOptions<FoundationComponentsSettings> settings
 
 <gcds-top-nav label="@settings.Value.ApplicationName" alignment="right">
     <gcds-nav-link href="@Url.Action("Index","Home")" slot="home">@settings.Value.ApplicationName</gcds-nav-link>

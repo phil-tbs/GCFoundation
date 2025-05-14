@@ -43,7 +43,7 @@
         @if (!string.IsNullOrEmpty(bannerPartialViewName))
         {
             <div slot="banner">
-                @await Html.PartialAsync(bannerPartialViewName);
+                @await Html.PartialAsync(bannerPartialViewName)
             </div>
         }
 
@@ -51,7 +51,7 @@
         @if (!string.IsNullOrEmpty(menuPartialViewName))
         {
             <div slot="menu">
-                @await Html.PartialAsync(menuPartialViewName);
+                @await Html.PartialAsync(menuPartialViewName)
             </div>
         }
 
@@ -59,7 +59,7 @@
         @if (!string.IsNullOrEmpty(searchPartialViewName))
         {
             <div slot="search">
-                @await Html.PartialAsync(searchPartialViewName);
+                @await Html.PartialAsync(searchPartialViewName)
             </div>
         }
 

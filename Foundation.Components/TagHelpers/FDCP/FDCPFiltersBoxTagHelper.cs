@@ -1,0 +1,60 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Foundation.Components.Models;
+using Microsoft.AspNetCore.Razor.TagHelpers;
+
+namespace Foundation.Components.TagHelpers.FDCP
+{
+    [HtmlTargetElement("fdcp-filters-box")]
+    public class FDCPFiltersBoxTagHelper: TagHelper
+    {
+
+        public string Title { get; set; }
+
+        public IEnumerable<SearchFilterCategory> Filters { get; set; }
+
+        public override void Process(TagHelperContext context, TagHelperOutput output)
+        {
+            output.TagMode = TagMode.StartTagAndEndTag;
+            output.TagName = "div";
+            output.Attributes.SetAttribute("class", "filter-panel");
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append(CultureInfo.InvariantCulture, $@"<h3>{Title}</h3>");
+
+            foreach (SearchFilterCategory category in Filters)
+            {
+                sb.Append(CultureInfo.InvariantCulture, $@"<div class='filter-section'>");
+
+                sb.Append(CultureInfo.InvariantCulture, $@"<button 
+                    class='fdcp-collapse-button'
+                    data-fdcp-collapse-toggle='collapse-{category.CSSId}' 
+                    aria-expanded='{category.IsOpen.ToString().ToLower(CultureInfo.CurrentCulture)}'
+                    aria-controls='collapse-{category.CSSId}'>
+                    {category.Title}
+                </button>");
+
+                sb.Append(CultureInfo.InvariantCulture, $@"<div class='fdcp-collapse {((category.IsOpen)? "fdcp-show" : "")}' id='collapse-{category.CSSId}'>");
+
+                foreach(SearchFilter filter in category.Filters)
+                {
+                    sb.Append("<div class='filter-option'>");
+                    sb.Append(CultureInfo.InvariantCulture,$@"<input type='checkbox' name='{filter.Name}' id='{filter.Name}' />");
+                    sb.Append(CultureInfo.InvariantCulture,$@"<label for='{filter.Name}' class=''>{filter.Title}</label>");
+                    sb.Append(CultureInfo.InvariantCulture, $@"<span class='filter-count'>{filter.Count}</span>");
+                    sb.Append($@"</div>");
+                }
+                sb.Append($@"</div>");
+                sb.Append($@"</div>");
+
+            }
+
+            output.Content.SetHtmlContent(sb.ToString());
+        }
+    }
+}
