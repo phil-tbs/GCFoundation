@@ -19,6 +19,7 @@ namespace Foundation.Components.TagHelpers.FDCP
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
+            
             output.TagMode = TagMode.StartTagAndEndTag;
             output.TagName = "div";
             output.Attributes.SetAttribute("class", "filter-panel");
