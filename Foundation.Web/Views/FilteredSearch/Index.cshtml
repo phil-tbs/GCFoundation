@@ -25,5 +25,13 @@
     };
 }
 
-<fdcp-filters-box filters="@searchFilterCategories" title="Filter" ></fdcp-filters-box>
+<gcds-grid columns="1fr 2fr">
+    <fdcp-filters-box filters="@searchFilterCategories" title="Filter"></fdcp-filters-box>
+    <fdcp-search-box placeholder="Search for program’s name, funding opportunity, key words..." label="Search" search-box-id="test-search"></fdcp-search-box>
+</gcds-grid>
+
+<fdcp-badge text="test" style="Primary" is-removable="true" >test</fdcp-badge>
+<fdcp-badge text="test" style="Success"></fdcp-badge>
+<fdcp-badge text="test" style="Danger"></fdcp-badge>
+
 

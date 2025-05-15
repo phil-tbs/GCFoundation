@@ -1,0 +1,26 @@
+﻿.fdcp-badge {
+    position: relative;
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 1.875rem;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border: 1px solid;
+    border-color: $colour-blue-800;
+
+    &.fdcp-badge-danger {
+        border-color: $brand-accent;
+    }
+
+    &.fdcp-badge-success {
+        border-color: $color-success;
+    }
+
+    .fdcp-badge-close {
+        position: relative;
+        top: 50%;
+        border-radius: 50%;
+        border: none;
+        background-color: #D7E5F5;
+    }
+}
