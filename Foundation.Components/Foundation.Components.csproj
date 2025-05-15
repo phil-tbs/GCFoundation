@@ -102,7 +102,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Views\Shared\NewFolder\" />
 	  <Folder Include="wwwroot\images\splash\" />
 	  <Folder Include="wwwroot\lib\bootstrap\" />
 	</ItemGroup>

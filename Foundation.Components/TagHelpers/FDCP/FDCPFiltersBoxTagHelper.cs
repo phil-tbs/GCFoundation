@@ -34,15 +34,15 @@ namespace Foundation.Components.TagHelpers.FDCP
 
                 sb.Append(CultureInfo.InvariantCulture, $@"<button 
                     class='fdcp-collapse-button'
-                    data-fdcp-collapse-toggle='collapse-{category.CSSId}' 
+                    data-fdcp-collapse-toggle='collapse-{category.SearchFilterCategoryId}' 
                     aria-expanded='{category.IsOpen.ToString().ToLower(CultureInfo.CurrentCulture)}'
-                    aria-controls='collapse-{category.CSSId}'>
+                    aria-controls='collapse-{category.SearchFilterCategoryId}'>
                     {category.Title}
                 </button>");
 
-                sb.Append(CultureInfo.InvariantCulture, $@"<div class='fdcp-collapse {((category.IsOpen)? "fdcp-show" : "")}' id='collapse-{category.CSSId}'>");
+                sb.Append(CultureInfo.InvariantCulture, $@"<div class='fdcp-collapse {((category.IsOpen)? "fdcp-show" : "")}' id='collapse-{category.SearchFilterCategoryId}'>");
 
-                foreach(SearchFilter filter in category.Filters)
+                foreach(SearchFilterOption filter in category.Filters)
                 {
                     sb.Append("<div class='filter-option'>");
                     sb.Append(CultureInfo.InvariantCulture,$@"<input type='checkbox' name='{filter.Name}' id='{filter.Name}' />");

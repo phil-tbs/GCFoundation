@@ -5,32 +5,25 @@
         new SearchFilterCategory
         {
             Title = "Funding type",
-            CSSId = "funding",
-            Filters = new List<SearchFilter>
+            SearchFilterCategoryId = "funding",
+            Filters = new List<SearchFilterOption>
             {
-                new SearchFilter { Title = "Grants", Count = 45, Name = "grants" },
-                new SearchFilter { Title = "Contributions", Count = 4, Name = "contributions" }
+                new SearchFilterOption { Title = "Grants", Count = 45, Name = "grants" },
+                new SearchFilterOption { Title = "Contributions", Count = 4, Name = "contributions" }
             }
         },
         new SearchFilterCategory
         {
             Title = "Amounts",
-            CSSId = "amounts",
-            Filters = new List<SearchFilter>
+            SearchFilterCategoryId = "amounts",
+            Filters = new List<SearchFilterOption>
             {
-                new SearchFilter { Title = "Less than $10,000", Count = 26, Name = "less10000" },
-                new SearchFilter { Title = "$10,000 to $24,999", Count = 5, Name = "between10000and24999" }
+                new SearchFilterOption { Title = "Less than $10,000", Count = 26, Name = "less10000" },
+                new SearchFilterOption { Title = "$10,000 to $24,999", Count = 5, Name = "between10000and24999" }
             }
         }
     };
 }
 
-<fdcp-filtered-search title="Search Funding Opportunity" filters="@searchFilterCategories" />
-
-@* <gcds-grid columns="1fr 2fr"> *@
-@*     <fdcp-filters-box title="Filter" filters="@searchFilterCategories"> *@
-
-@*     </fdcp-filters-box> *@
-@* </gcds-grid> *@
-
+<fdcp-filters-box filters="@searchFilterCategories" title="Filter" ></fdcp-filters-box>
 
