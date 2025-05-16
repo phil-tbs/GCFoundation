@@ -1,16 +1,22 @@
-﻿
+﻿@using Foundation.Components.TagHelpers.FDCP
+
 <div>
-	<fdcp-badge text="Primary" style="Primary" is-removable="true"></fdcp-badge>
-	<fdcp-badge text="Success" style="Success"></fdcp-badge>
-	<fdcp-badge text="Success" style="Success" is-removable="true"></fdcp-badge>
-	<fdcp-badge text="Danger" style="Danger"></fdcp-badge>
-	<fdcp-badge text="Danger" style="Danger" is-removable="true"></fdcp-badge>
+
+	@foreach (FDCPBadgeStyle style in Enum.GetValues(typeof(FDCPBadgeStyle)))
+	{
+
+		<fdcp-badge text="@style.ToString()" style="@style" is-removable="true"></fdcp-badge>
+		<fdcp-badge text="@style.ToString()" style="@style"></fdcp-badge>
+	}
+
 </div>
 
 <div>
-	<fdcp-badge text="Primary" style="Primary" is-removable="true" inverted="true"></fdcp-badge>
-	<fdcp-badge text="Success" style="Success" inverted="true"></fdcp-badge>
-	<fdcp-badge text=" Success" style="Success" is-removable="true" inverted="true"></fdcp-badge>
-	<fdcp-badge text="Danger" style="Danger" inverted="true"></fdcp-badge>
-	<fdcp-badge text="Danger" style="Danger" is-removable="true" inverted="true"></fdcp-badge>
+	@foreach (FDCPBadgeStyle style in Enum.GetValues(typeof(FDCPBadgeStyle)))
+	{
+
+		<fdcp-badge text="@style.ToString()" style="@style" is-removable="true" inverted="true"></fdcp-badge>
+		<fdcp-badge text="@style.ToString()" style="@style" inverted="true"></fdcp-badge>
+	}
+
 </div>
