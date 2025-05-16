@@ -20,6 +20,8 @@ namespace Foundation.Components.TagHelpers.FDCP
 
         public FDCPBadgeStyle Style { get; set; }
 
+        public bool Inverted { get; set; } = false;
+
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             output.TagMode = TagMode.StartTagAndEndTag;
@@ -31,6 +33,11 @@ namespace Foundation.Components.TagHelpers.FDCP
             if (IsRemovable)
             {
                 classes.Append(" fdcp-badge-removable");
+            }
+
+            if (Inverted)
+            {
+                classes.Append(" inverted");
             }
 
             output.Attributes.SetAttribute("class", classes.ToString());
@@ -47,7 +54,7 @@ namespace Foundation.Components.TagHelpers.FDCP
             if (IsRemovable)
             {
                 contentBuilder.Append(" ");
-                contentBuilder.Append("<button type='button' class='fdcp-badge-close' aria-label='Remove badge'>&times;</button>");
+                contentBuilder.Append("<button type='button' class='fdcp-badge-close' aria-label='Remove badge'><span class=\"fa-solid fa-x\"></span></button>");
             }
 
             output.Content.SetHtmlContent(contentBuilder.ToString());

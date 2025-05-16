@@ -1,0 +1,67 @@
+﻿@use '../variables' as vars;
+
+@mixin badge-variant( $name, $background-color, $text-color, $inverted-text-color: vars.$gcds-text-light ) {
+    // Solid
+    &.fdcp-badge-#{$name} {
+        border-color: $background-color;
+        background-color: $background-color;
+        color: $text-color;
+
+        &.fdcp-badge-removable {
+            button.fdcp-badge-close {
+                background-color: vars.$gcds-text-light; // e.g., white
+                color: $background-color; // icon matches badge bg
+            }
+        }
+        // Inverted
+        &.inverted {
+            background-color: transparent;
+            border-color: $background-color;
+            color: $background-color;
+
+            &.fdcp-badge-removable {
+                button.fdcp-badge-close {
+                    background-color: $background-color; // solid bg
+                    color: vars.$gcds-text-light; // white icon
+                }
+            }
+        }
+    }
+}
+
+// Badge base styles
+.fdcp-badge {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: vars.$badge-padding-y vars.$badge-padding-x;
+    border-radius: vars.$badge-radius;
+    white-space: nowrap;
+    font-size: vars.$badge-font-size;
+    line-height: 1;
+    height: vars.$badge-height;
+    border: 1px solid;
+
+    &.fdcp-badge-removable {
+        button.fdcp-badge-close {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 0.5rem;
+            width: 1.25rem;
+            height: 1.25rem;
+            font-size: 0.75rem;
+            line-height: 1;
+            padding: 0;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    }
+    // Solid and inverted styles
+    @include badge-variant( primary, vars.$gcds-color-blue-800, vars.$gcds-text-light );
+
+    @include badge-variant( danger, vars.$gcds-color-red-700, vars.$gcds-text-light );
+
+    @include badge-variant( success, vars.$gcds-color-green-700, vars.$gcds-text-light );
+}

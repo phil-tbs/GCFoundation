@@ -1,4 +1,5 @@
-﻿@import '_variables.scss';
-@import 'components/_fdcp-SearchBox.scss';
-@import 'components/_fdcp-FilterBox.scss';
-@import 'components/_fdcp-badge.scss';
+﻿@use './variables' as vars;
+@use './components/fdcp-SearchBox';
+@use './components/fdcp-FilterBox';
+@use './components/fdcp-badge';
+
