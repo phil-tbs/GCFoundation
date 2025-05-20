@@ -136,4 +136,83 @@
  Les composants devraient également apparaître dans Visual Studio s’ils ont été implémentés.
  Cependant, même si un composant n’apparaît pas dans IntelliSense, vous pouvez toujours l’utiliser—assurez-vous simplement de référencer la bonne version du Système de design GC.</value>
   </data>
+  <data name="Badges_Title" xml:space="preserve">
+    <value>FDCP badge documnentation</value>
+  </data>
+  <data name="Badges_Overview_Title" xml:space="preserve">
+    <value>Aperçu</value>
+  </data>
+  <data name="Badges_Overview_Text" xml:space="preserve">
+    <value>Le composant &lt;code&gt;&amp;lt;fdcp-badge&amp;gt;&lt;/code&gt; est utilisé pour mettre en évidence de petites informations...
+</value>
+  </data>
+  <data name="Badges_Solid_Title" xml:space="preserve">
+    <value>Variantes pleines</value>
+  </data>
+  <data name="Badges_Solid_Text" xml:space="preserve">
+    <value>Ces badges utilisent un fond uni.</value>
+  </data>
+  <data name="Badges_Inverted_Title" xml:space="preserve">
+    <value>Variantes inversées</value>
+  </data>
+  <data name="Badges_Inverted_Text" xml:space="preserve">
+    <value>Utilisez l’attribut &lt;code&gt;inverted="true"&lt;/code&gt; pour afficher des badges avec un fond transparent.</value>
+  </data>
+  <data name="Badges_Slot_Title" xml:space="preserve">
+    <value>Début et fin</value>
+  </data>
+  <data name="Badges_Slot_Text" xml:space="preserve">
+    <value>Vous pouvez insérer une icône ou un bouton au début ou à la fin en utilisant soit l’attribut &lt;code&gt;slot&lt;/code&gt;, soit les propriétés &lt;code&gt;StartContent&lt;/code&gt; / &lt;code&gt;EndContent&lt;/code&gt;.</value>
+  </data>
+  <data name="Badges_Dismissible_Title" xml:space="preserve">
+    <value>Badge supprimable</value>
+  </data>
+  <data name="Badges_Parameters_Title" xml:space="preserve">
+    <value>Paramètres</value>
+  </data>
+  <data name="Badges_Parameters_Style" xml:space="preserve">
+    <value>Style du badge (Primaire, Succès, Danger, Info, etc.)</value>
+  </data>
+  <data name="Badges_Parameters_Inverted" xml:space="preserve">
+    <value>Applique un badge inversé avec bordure.</value>
+  </data>
+  <data name="Badges_Parameters_StartContent" xml:space="preserve">
+    <value>HTML facultatif à afficher avant le contenu du badge.</value>
+  </data>
+  <data name="Badges_Parameters_EndContent" xml:space="preserve">
+    <value>HTML facultatif à afficher après le contenu du badge.</value>
+  </data>
+  <data name="Badges_Parameters_TagId" xml:space="preserve">
+    <value>Attribut &lt;code&gt;id&lt;/code&gt; facultatif pour l’élément du badge.</value>
+  </data>
+  <data name="Badges_Notes_Title" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="Badges_Notes_1" xml:space="preserve">
+    <value>Utilisez &lt;code&gt;slot="start-content"&lt;/code&gt; et &lt;code&gt;slot="end-content"&lt;/code&gt; pour inclure du HTML.</value>
+  </data>
+  <data name="Badges_Notes_2" xml:space="preserve">
+    <value>Pour les icônes, utilisez Font Awesome ou Bootstrap Icons.</value>
+  </data>
+  <data name="Badges_Notes_3" xml:space="preserve">
+    <value>Tous les badges sont rendus en tant qu’éléments &lt;span&gt; avec la classe &lt;code&gt;fdcp-badge&lt;/code&gt;.</value>
+  </data>
+  <data name="Badges_Inverted_Anchor" xml:space="preserve">
+    <value>inversees</value>
+  </data>
+  <data name="Badges_Overview_Anchor" xml:space="preserve">
+    <value>apercu</value>
+  </data>
+  <data name="Badges_Solid_Anchor" xml:space="preserve">
+    <value>plein</value>
+  </data>
+  <data name="Badges_Slot_Anchor" xml:space="preserve">
+    <value>debut-fin</value>
+  </data>
+  <data name="Badges_Parameters_Anchor" xml:space="preserve">
+    <value>Parametres</value>
+  </data>
+  <data name="Badges_Notes_Anchor" xml:space="preserve">
+    <value>notes</value>
+  </data>
 </root>

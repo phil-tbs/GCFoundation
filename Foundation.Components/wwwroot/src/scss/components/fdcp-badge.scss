@@ -1,6 +1,6 @@
 ﻿@use '../variables' as vars;
 
-@mixin badge-variant($name, $bg, $text, $invertedText: $bg, $invertedBg: transparent) {
+@mixin badge-variant($name, $bg, $text, $invertedText: $bg, $invertedBg: vars.$gcds-text-light) {
     &.fdcp-badge-#{$name} {
         background-color: $bg;
         color: $text;
@@ -11,40 +11,12 @@
             color: $invertedText;
             border-color: $bg;
         }
-        // Close button
-        &.fdcp-badge-removable {
-            padding-right: 1.75rem; // Reserve space for close button
-
-            button.fdcp-badge-close {
-                position: absolute;
-                top: 50%;
-                right: 0.25rem;
-                transform: translateY(-50%);
-                width: 1rem;
-                height: 1rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 0.75rem;
-                line-height: 1;
-                border: none;
-                border-radius: 50%;
-                background-color: $text;
-                color: $bg;
-                cursor: pointer;
-                // Inverted fix
-                .fdcp-badge.inverted & {
-                    background-color: $bg;
-                    color: $invertedText;
-                }
-            }
-        }
     }
 }
 
 .fdcp-badge {
     position: relative;
-    display: inline-block;
+    display: inline-flex;
     padding: 0.25rem 0.75rem;
     border-radius: 1.875rem;
     white-space: nowrap;
@@ -52,6 +24,39 @@
     line-height: 1.25rem;
     font-weight: 500;
     vertical-align: middle;
+    gap: .25rem;
+
+    .fdcp-badge-start,
+    .fdcp-badge-end {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        > * {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: inherit;
+            line-height: inherit;
+        }
+        // Optional size normalization
+        i, svg, img {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        button {
+            all: unset;
+            cursor: pointer;
+            border-radius: 50%;
+            padding: 0.25rem;
+            line-height: 0;
+        }
+    }
+
+    .fdcp-badge-content {
+        display: inline-block;
+    }
     // Include all color variants
     @include badge-variant(primary, vars.$primary-color, vars.$primary-text-color);
     @include badge-variant(secondary, vars.$secondary-color, vars.$secondary-text-color);
