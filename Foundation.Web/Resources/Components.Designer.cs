@@ -97,7 +97,7 @@ namespace Foundation.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use &lt;code&gt;slot=&quot;start-content&quot;&lt;/code&gt; and &lt;code&gt;slot=&quot;end-content&quot;&lt;/code&gt; when embedding HTML. .
+        ///   Looks up a localized string similar to Use &lt;code&gt;slot=&quot;start-content&quot;&lt;/code&gt; and &lt;code&gt;slot=&quot;end-content&quot;&lt;/code&gt; when embedding HTML..
         /// </summary>
         public static string Badges_Notes_1 {
             get {
@@ -106,7 +106,7 @@ namespace Foundation.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to For font icons, use libraries like Font Awesome or Bootstrap Icons. .
+        ///   Looks up a localized string similar to For font icons, use libraries like Font Awesome or Bootstrap Icons..
         /// </summary>
         public static string Badges_Notes_2 {
             get {
@@ -115,7 +115,7 @@ namespace Foundation.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to All badges are rendered as &lt;code&gt;&amp;lt;span&amp;gt;&lt;/code&gt; elements with class &lt;code&gt;fdcp-badge&lt;/code&gt;. .
+        ///   Looks up a localized string similar to All badges are rendered as &lt;code&gt;&amp;lt;span&amp;gt;&lt;/code&gt; elements with class &lt;code&gt;fdcp-badge&lt;/code&gt;..
         /// </summary>
         public static string Badges_Notes_3 {
             get {
@@ -178,7 +178,7 @@ namespace Foundation.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Optional HTML to append after the badge content. .
+        ///   Looks up a localized string similar to Optional HTML to append after the badge content..
         /// </summary>
         public static string Badges_Parameters_EndContent {
             get {
@@ -196,7 +196,7 @@ namespace Foundation.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Optional HTML to prepend before the badge content. .
+        ///   Looks up a localized string similar to Optional HTML to prepend before the badge content..
         /// </summary>
         public static string Badges_Parameters_StartContent {
             get {
@@ -205,7 +205,7 @@ namespace Foundation.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Badge style (Primary, Success, Danger, Info, etc.) .
+        ///   Looks up a localized string similar to Badge style (Primary, Success, Danger, Info, etc.).
         /// </summary>
         public static string Badges_Parameters_Style {
             get {
@@ -214,7 +214,7 @@ namespace Foundation.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Optional &lt;code&gt;id&lt;/code&gt; attribute for the badge element. .
+        ///   Looks up a localized string similar to Optional &lt;code&gt;id&lt;/code&gt; attribute for the badge element..
         /// </summary>
         public static string Badges_Parameters_TagId {
             get {
@@ -268,7 +268,7 @@ namespace Foundation.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to These badges use a solid background. .
+        ///   Looks up a localized string similar to These badges use a solid background..
         /// </summary>
         public static string Badges_Solid_Text {
             get {

@@ -9,17 +9,33 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers.FDCP
 {
+    /// <summary>
+    /// A TagHelper that renders a filter panel with collapsible filter categories.
+    /// Intended for use in FDCP (Filtered Data Control Panel) scenarios.
+    /// </summary>
     [HtmlTargetElement("fdcp-filters-box")]
     public class FDCPFiltersBoxTagHelper: TagHelper
     {
+        /// <summary>
+        /// The title displayed at the top of the filter panel.
+        /// </summary>
+        public required string Title { get; set; }
 
-        public string Title { get; set; }
+        /// <summary>
+        /// A collection of filter categories to render in the filter panel.
+        /// Each category can contain multiple filter options.
+        /// </summary>
+        public required IEnumerable<SearchFilterCategory> Filters { get; set; }
 
-        public IEnumerable<SearchFilterCategory> Filters { get; set; }
-
+        /// <summary>
+        /// Generates the HTML output for the filter box.
+        /// </summary>
+        /// <param name="context">The context in which the tag helper is executed.</param>
+        /// <param name="output">The output of the tag helper.</param>
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            
+            ArgumentNullException.ThrowIfNull(output, nameof(output));
+
             output.TagMode = TagMode.StartTagAndEndTag;
             output.TagName = "div";
             output.Attributes.SetAttribute("class", "filter-panel");

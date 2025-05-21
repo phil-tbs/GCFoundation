@@ -143,8 +143,7 @@
     <value>Aperçu</value>
   </data>
   <data name="Badges_Overview_Text" xml:space="preserve">
-    <value>Le composant &lt;code&gt;&amp;lt;fdcp-badge&amp;gt;&lt;/code&gt; est utilisé pour mettre en évidence de petites informations...
-</value>
+    <value>Le composant &lt;code&gt;&amp;lt;fdcp-badge&amp;gt;&lt;/code&gt; est utilisé pour mettre en évidence de petites informations...</value>
   </data>
   <data name="Badges_Solid_Title" xml:space="preserve">
     <value>Variantes pleines</value>
