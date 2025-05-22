@@ -1,0 +1,32 @@
+﻿.fdcp-filtered-search {
+
+    h2 {
+        margin-bottom: 2rem;
+    }
+
+    .fdcp-search-box-wrapper {
+        position: relative;
+        max-width: 100%;
+        margin-bottom: 1rem;
+
+        input[type="search"] {
+            position: relative;
+            padding: 16px 32px 16px 60px;
+            width: 100%;
+            border-radius: 40px;
+            border: 1px solid #A8ADB4;
+            background: #FFF url('/_content/Foundation.Components/images/Icons/MagnifyingGlass.svg') no-repeat;
+            background-position: 32px 50%;
+            background-size: 1.5rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, outline 0.15s ease-in-out;
+            font-size: 1.25rem;
+            color: #333;
+
+            &:focus {
+                outline: var(--gcds-input-outline-width) solid var(--gcds-input-focus-border);
+                outline-offset: var(--gcds-input-border-width);
+            }
+        }
+    }
+}
+

@@ -1,0 +1,69 @@
+﻿@use '../variables' as vars;
+
+@mixin badge-variant($name, $bg, $text, $invertedText: $bg, $invertedBg: vars.$gcds-text-light) {
+    &.fdcp-badge-#{$name} {
+        background-color: $bg;
+        color: $text;
+        border: 1px solid $bg;
+
+        &.inverted {
+            background-color: $invertedBg;
+            color: $invertedText;
+            border-color: $bg;
+        }
+    }
+}
+
+.fdcp-badge {
+    position: relative;
+    display: inline-flex;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1.875rem;
+    white-space: nowrap;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    vertical-align: middle;
+    gap: .25rem;
+
+    .fdcp-badge-start,
+    .fdcp-badge-end {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        > * {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: inherit;
+            line-height: inherit;
+        }
+        // Optional size normalization
+        i, svg, img {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        button {
+            all: unset;
+            cursor: pointer;
+            border-radius: 50%;
+            padding: 0.25rem;
+            line-height: 0;
+        }
+    }
+
+    .fdcp-badge-content {
+        display: inline-block;
+    }
+    // Include all color variants
+    @include badge-variant(primary, vars.$primary-color, vars.$primary-text-color);
+    @include badge-variant(secondary, vars.$secondary-color, vars.$secondary-text-color);
+    @include badge-variant(success, vars.$success-color, vars.$success-text-color);
+    @include badge-variant(danger, vars.$danger-color, vars.$danger-text-color);
+    @include badge-variant(warning, vars.$warning-color, vars.$warning-text-color);
+    @include badge-variant(info, vars.$info-color, vars.$info-text-color);
+    @include badge-variant(light, vars.$light-color, vars.$light-text-color);
+    @include badge-variant(dark, vars.$dark-color, vars.$dark-text-color);
+}

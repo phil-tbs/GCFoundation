@@ -1,0 +1,114 @@
+﻿//=========================================
+// GCDS Variable
+//=========================================
+
+// Text color
+$gcds-text-light: #ffffff;
+$gcds-text-primary: #333333;
+$gcds-text-secondary: #43474E;
+
+// Links color
+$gcds-link-default: #2b4380;
+$gcds-link-hover: #0535d2;
+$gcds-link-light: #ffffff;
+$gcds-link-visited: #7532B8;
+
+// Background color
+$gcds-bg-dark: #333333;
+$gcds-bg-light: #F1F2F3;
+$gcds-bg-primary: #26374A;
+$gcds-bg-white: #ffffff;
+
+// Border Color
+$gcds-border-default: #7D828B;
+
+//State Colors
+$gcds-danger-background: #FBDDDA;
+$gcds-danger-border: #d3080c;
+$gcds-danger-text: #A62A1E;
+
+$gcds-disabled-background: #D6D9DD;
+$gcds-disabled-text: #545961;
+
+$gcds-focus-background: #0535d2;
+$gcds-focus-border: #0535d2;
+$gcds-focus-text: #ffffff;
+
+// Grayscale
+$gcds-color-grayscale-0: #fff;
+$gcds-color-grayscale-50: #f1f2f3;
+$gcds-color-grayscale-100: #d6d9dd;
+$gcds-color-grayscale-300: #a8adb4;
+$gcds-color-grayscale-500: #7d828b;
+$gcds-color-grayscale-700: #545961;
+$gcds-color-grayscale-800: #43474e;
+$gcds-color-grayscale-900: #333333;
+$gcds-color-grayscale-1000: #000;
+
+// Blue
+$gcds-color-blue-100: #d7e5f5;
+$gcds-color-blue-500: #6584a6;
+$gcds-color-blue-700: #33465c;
+$gcds-color-blue-750: #1e7b96;
+$gcds-color-blue-800: #2b4380;
+$gcds-color-blue-850: #0535d2;
+$gcds-color-blue-900: #26374a;
+
+// Red
+$gcds-color-red-100: #fbddda;
+$gcds-color-red-500: #d3080c;
+$gcds-color-red-700: #a62a1e;
+$gcds-color-red-900: #822117;
+$gcds-color-red-flag: #eb2d37;
+
+// Green
+$gcds-color-green-100: #e6f6ec;
+$gcds-color-green-500: #289f58;
+$gcds-color-green-700: #03662a;
+$gcds-color-green-800: #023b1a;
+
+// Yellow
+$gcds-color-yellow-100: #faedd1;
+$gcds-color-yellow-500: #b3800f;
+
+
+
+
+$badge-height: 1.875rem; // 30px
+$badge-padding-y: 0.25rem;
+$badge-padding-x: 0.5rem;
+$badge-radius: 1.875rem;
+$badge-font-size: 1rem;
+
+
+// Primary Colors
+$primary-color: $gcds-text-primary;
+$primary-text-color: $gcds-color-grayscale-0;
+
+// Secondary
+$secondary-color: $gcds-text-secondary;
+$secondary-text-color: $gcds-color-grayscale-0;
+
+// Success
+$success-color: $gcds-color-green-700;
+$success-text-color: $gcds-color-grayscale-0;
+
+// Danger
+$danger-color: $gcds-color-red-500;
+$danger-text-color: $gcds-color-grayscale-0;
+
+// Warning
+$warning-color: $gcds-color-yellow-500;
+$warning-text-color: $gcds-color-grayscale-1000; // Darker text for contrast
+
+// Info
+$info-color: $gcds-color-blue-750;
+$info-text-color: $gcds-color-grayscale-0;
+
+// Light
+$light-color: $gcds-color-grayscale-700;
+$light-text-color: $gcds-text-light;
+
+// Dark
+$dark-color: $gcds-color-grayscale-900;
+$dark-text-color: $gcds-color-grayscale-0;
