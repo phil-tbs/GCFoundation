@@ -1,7 +1,11 @@
 ﻿@using Foundation.Components.TagHelpers.FDCP
 @using Foundation.Web.Resources
 
-<gcds-heading tag="h1">Page Heading</gcds-heading>
+
+<fdcp-page-heading title="Page Heading"
+                   description="component displays a prominent page header with a title, description, and optional background image. It is designed for use in Razor Pages projects."
+                   src="/images/founding-opportunity-heading-bg.jpg"></fdcp-page-heading>
+
 
 <gcds-grid columns="1fr 2fr">
     <gcds-side-nav label="On this page">
@@ -19,10 +23,7 @@
         <hr />
 
         <gcds-heading tag="h2" id="example">Example</gcds-heading>
-        <fdcp-page-heading 
-            title="Founding Opportunities" 
-            description="Discover and apply for funding opportunities to support your projects and initiatives."
-            src="/images/founding-opportunity-heading-bg.jpg" />
+        <img src="~/images/PageHeadingExample.png" alt=""/>
 <pre><code class="language-html">&lt;fdcp-page-heading
     title="Founding Opportunities"
     description="Discover and apply for funding opportunities to support your projects and initiatives."

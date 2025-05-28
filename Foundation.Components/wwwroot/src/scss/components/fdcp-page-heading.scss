@@ -2,17 +2,17 @@
     width: 100vw;
     position: relative;
     display: flex;
-    top: -114px;
+    top: 0;
     left: 50%;
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
-    max-width: none;
+    margin-top: -114px;
     padding-left: 0;
     padding-right: 0;
     height: 32rem;
     align-items: center;
-    z-index: -1;
+    z-index: 0;
 
     &.fdcp-page-header--has-bg {
         background: lightgray -3.41px -234px / 100% 238.769% no-repeat
