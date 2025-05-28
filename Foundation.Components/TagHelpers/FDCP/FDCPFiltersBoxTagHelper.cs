@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+﻿using System.Globalization;
 using System.Text;
-using System.Threading.Tasks;
 using Foundation.Components.Models;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
@@ -14,7 +10,7 @@ namespace Foundation.Components.TagHelpers.FDCP
     /// Intended for use in FDCP (Filtered Data Control Panel) scenarios.
     /// </summary>
     [HtmlTargetElement("fdcp-filters-box")]
-    public class FDCPFiltersBoxTagHelper: TagHelper
+    public class FDCPFiltersBoxTagHelper : TagHelper
     {
         /// <summary>
         /// The title displayed at the top of the filter panel.
@@ -56,13 +52,13 @@ namespace Foundation.Components.TagHelpers.FDCP
                     {category.Title}
                 </button>");
 
-                sb.Append(CultureInfo.InvariantCulture, $@"<div class='fdcp-collapse {((category.IsOpen)? "fdcp-show" : "")}' id='collapse-{category.SearchFilterCategoryId}'>");
+                sb.Append(CultureInfo.InvariantCulture, $@"<div class='fdcp-collapse {((category.IsOpen) ? "fdcp-show" : "")}' id='collapse-{category.SearchFilterCategoryId}'>");
 
-                foreach(SearchFilterOption filter in category.Filters)
+                foreach (SearchFilterOption filter in category.Filters)
                 {
                     sb.Append("<div class='filter-option'>");
-                    sb.Append(CultureInfo.InvariantCulture,$@"<input type='checkbox' name='{filter.Name}' id='{filter.Name}' />");
-                    sb.Append(CultureInfo.InvariantCulture,$@"<label for='{filter.Name}' class=''>{filter.Title}</label>");
+                    sb.Append(CultureInfo.InvariantCulture, $@"<input type='checkbox' name='{filter.Name}' id='{filter.Name}' />");
+                    sb.Append(CultureInfo.InvariantCulture, $@"<label for='{filter.Name}' class=''>{filter.Title}</label>");
                     sb.Append(CultureInfo.InvariantCulture, $@"<span class='filter-count'>{filter.Count}</span>");
                     sb.Append($@"</div>");
                 }
