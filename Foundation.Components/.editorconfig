@@ -133,3 +133,6 @@ csharp_style_prefer_extended_property_pattern = true:suggestion
 csharp_style_var_for_built_in_types = false:silent
 csharp_style_var_when_type_is_apparent = false:silent
 csharp_style_var_elsewhere = false:silent
+
+# CA1308: Normalize strings to uppercase
+dotnet_diagnostic.CA1308.severity = none

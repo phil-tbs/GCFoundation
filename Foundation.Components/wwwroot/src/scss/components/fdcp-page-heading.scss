@@ -4,9 +4,7 @@
     display: flex;
     top: 0;
     left: 50%;
-    right: 50%;
     margin-left: -50vw;
-    margin-right: -50vw;
     margin-top: -114px;
     padding-left: 0;
     padding-right: 0;
@@ -15,7 +13,7 @@
     z-index: 0;
 
     &.fdcp-page-header--has-bg {
-        background: lightgray -3.41px -234px / 100% 238.769% no-repeat
+        background: lightgray 0px -234px / 100% 238.769% no-repeat
     }
 
     .text-container {
