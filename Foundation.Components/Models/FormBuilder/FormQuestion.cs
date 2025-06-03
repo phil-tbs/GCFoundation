@@ -65,6 +65,11 @@ namespace Foundation.Components.Models.FormBuilder
         /// Gets or sets the format for the question input, if applicable (e.g., "full" for date).
         /// </summary>
         public string? Format { get; set; }
+
+        /// <summary>
+        /// Gets or sets the current or default value for the question.
+        /// </summary>
+        public object? Value { get; set; }
     }
 
     /// <summary>

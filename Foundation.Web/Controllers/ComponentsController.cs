@@ -1,5 +1,6 @@
 ﻿using Foundation.Components.Controllers;
 using Foundation.Components.Models.FormBuilder;
+using Foundation.Components.Validation;
 using Foundation.Web.Models;
 using Foundation.Web.Resources;
 using Microsoft.AspNetCore.Mvc;
@@ -91,180 +92,345 @@ namespace Foundation.Web.Controllers
             return View("Forms", model);
         }
 
-
+        /// <summary>
+        /// Demonstrates a comprehensive example of a dynamic form with various question types and dependencies.
+        /// This example showcases all possible dependency actions and their interactions.
+        /// </summary>
+        /// <returns>A view containing a form with various input types and complex dependencies.</returns>
         [HttpGet("TestFormBuilder")]
         public IActionResult ExampleFormBuilder()
         {
-            var test = Url.Action("SubmitFormBuilder", "Components");
             var form = new FormDefinition
             {
                 Id = "demo-form",
-                Title = "Demo Form",
+                Title = "Dynamic Form Demo",
                 Action = Url.Action("SubmitFormBuilder", "Components"),
                 Methode = "post",
-                SubmithButtonText = "submit",
+                SubmithButtonText = "Submit Form",
                 Sections = new List<FormSection>
                 {
                     new FormSection
                     {
-                        Title = "All Question Types",
+                        Title = "Personal Information",
+                        Hint = "Please provide your basic information",
                         Questions = new List<FormQuestion>
                         {
                             new FormQuestion
                             {
-                                Id = "text",
-                                Label = "Text",
+                                Id = "fullName",
+                                Label = "Full Name",
                                 Type = QuestionType.Text,
-                                IsRequired = true
+                                IsRequired = true,
+                                Hint = "Enter your full legal name"
                             },
                             new FormQuestion
                             {
                                 Id = "email",
-                                Label = "Email",
+                                Label = "Email Address",
                                 Type = QuestionType.Email,
-                                IsRequired = true
-                            },
+                                IsRequired = true,
+                                Hint = "We'll use this for communication"
+                            }
+                        }
+                    },
+                    new FormSection
+                    {
+                        Title = "Location Information",
+                        Hint = "Tell us where you're located",
+                        Questions = new List<FormQuestion>
+                        {
+                            // Country selection with cascading dependencies
                             new FormQuestion
                             {
-                                Id = "password",
-                                Label = "Password",
-                                Type = QuestionType.Password,
-                                IsRequired = true
+                                Id = "country",
+                                Label = "Country of Residence",
+                                Type = QuestionType.Dropdown,
+                                IsRequired = true,
+                                Options = new List<QuestionOption>
+                                {
+                                    new() { Id = "ca", Value = "CA", Label = "Canada" },
+                                    new() { Id = "us", Value = "US", Label = "United States" },
+                                    new() { Id = "other", Value = "OTHER", Label = "Other" }
+                                }
                             },
+                            // Province field - shows when Canada is selected
                             new FormQuestion
                             {
-                                Id = "url",
-                                Label = "Website URL",
-                                Type = QuestionType.Url,
-                                IsRequired = false
+                                Id = "province",
+                                Label = "Province",
+                                Type = QuestionType.Dropdown,
+                                Dependencies = new List<QuestionDependency>
+                                {
+                                    new()
+                                    {
+                                        SourceQuestionId = "country",
+                                        TargetQuestionId = "province",
+                                        Action = DependencyAction.Show,
+                                        TriggerValue = "CA"
+                                    },
+                                    new()
+                                    {
+                                        SourceQuestionId = "country",
+                                        TargetQuestionId = "province",
+                                        Action = DependencyAction.Require,
+                                        TriggerValue = "CA"
+                                    }
+                                },
+                                Options = new List<QuestionOption>
+                                {
+                                    new() { Id = "on", Value = "ON", Label = "Ontario" },
+                                    new() { Id = "qc", Value = "QC", Label = "Quebec" },
+                                    new() { Id = "bc", Value = "BC", Label = "British Columbia" }
+                                }
                             },
+                            // State field - shows when US is selected
                             new FormQuestion
                             {
-                                Id = "textarea",
-                                Label = "Biography",
-                                Type = QuestionType.TextArea,
-                                IsRequired = false
+                                Id = "state",
+                                Label = "State",
+                                Type = QuestionType.Dropdown,
+                                Dependencies = new List<QuestionDependency>
+                                {
+                                    new()
+                                    {
+                                        SourceQuestionId = "country",
+                                        TargetQuestionId = "state",
+                                        Action = DependencyAction.Show,
+                                        TriggerValue = "US"
+                                    },
+                                    new()
+                                    {
+                                        SourceQuestionId = "country",
+                                        TargetQuestionId = "state",
+                                        Action = DependencyAction.Require,
+                                        TriggerValue = "US"
+                                    }
+                                },
+                                Options = new List<QuestionOption>
+                                {
+                                    new() { Id = "ny", Value = "NY", Label = "New York" },
+                                    new() { Id = "ca", Value = "CA", Label = "California" },
+                                    new() { Id = "tx", Value = "TX", Label = "Texas" }
+                                }
                             },
+                            // Other Country field - shows when Other is selected
                             new FormQuestion
                             {
-                                Id = "number",
-                                Label = "Age",
-                                Type = QuestionType.Number,
-                                IsRequired = false
-                            },
+                                Id = "otherCountry",
+                                Label = "Specify Country",
+                                Type = QuestionType.Text,
+                                Dependencies = new List<QuestionDependency>
+                                {
+                                    new()
+                                    {
+                                        SourceQuestionId = "country",
+                                        TargetQuestionId = "otherCountry",
+                                        Action = DependencyAction.Show,
+                                        TriggerValue = "OTHER"
+                                    },
+                                    new()
+                                    {
+                                        SourceQuestionId = "country",
+                                        TargetQuestionId = "otherCountry",
+                                        Action = DependencyAction.Require,
+                                        TriggerValue = "OTHER"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    new FormSection
+                    {
+                        Title = "Service Selection",
+                        Hint = "Choose your service preferences",
+                        Questions = new List<FormQuestion>
+                        {
+                            // Service Type with multiple dependent fields
                             new FormQuestion
                             {
-                                Id = "date",
-                                Label = "Date of Birth",
-                                Type = QuestionType.Date,
-                                IsRequired = false
-                            },
-                            new FormQuestion
-                            {
-                                Id = "radio",
-                                Label = "Favorite Color",
+                                Id = "serviceType",
+                                Label = "Service Type",
                                 Type = QuestionType.Radio,
                                 IsRequired = true,
                                 Options = new List<QuestionOption>
                                 {
-                                    new QuestionOption { Id = "red", Value = "red", Label = "Red" },
-                                    new QuestionOption { Id = "blue", Value = "blue", Label = "Blue" },
-                                    new QuestionOption { Id = "green", Value = "green", Label = "Green" }
+                                    new() { Id = "basic", Value = "BASIC", Label = "Basic Service" },
+                                    new() { Id = "premium", Value = "PREMIUM", Label = "Premium Service" },
+                                    new() { Id = "custom", Value = "CUSTOM", Label = "Custom Service" }
                                 }
                             },
+                            // Premium features - shown and required for premium service
                             new FormQuestion
                             {
-                                Id = "checkbox",
-                                Label = "Select Hobbies",
+                                Id = "premiumFeatures",
+                                Label = "Premium Features",
                                 Type = QuestionType.Checkbox,
-                                Options = new List<QuestionOption>
-                                {
-                                    new QuestionOption { Id = "reading", Value = "reading", Label = "Reading" },
-                                    new QuestionOption { Id = "sports", Value = "sports", Label = "Sports" },
-                                    new QuestionOption { Id = "music", Value = "music", Label = "Music" }
-                                }
-                            },
-                            new FormQuestion
-                            {
-                                Id = "dropdown",
-                                Label = "Country",
-                                Type = QuestionType.Dropdown,
-                                Options = new List<QuestionOption>
-                                {
-                                    new QuestionOption { Id = "canada", Value = "canada", Label = "Canada" },
-                                    new QuestionOption { Id = "usa", Value = "usa", Label = "USA" },
-                                    new QuestionOption { Id = "mexico", Value = "mexico", Label = "Mexico" }
-                                },
+                                Hint = "Select the premium features you want",
                                 Dependencies = new List<QuestionDependency>
                                 {
-                                    new QuestionDependency { Action = DependencyAction.Require, TriggerValue = "canada", TargetQuestionId = "town"}
+                                    new()
+                                    {
+                                        SourceQuestionId = "serviceType",
+                                        TargetQuestionId = "premiumFeatures",
+                                        Action = DependencyAction.Show,
+                                        TriggerValue = "PREMIUM"
+                                    },
+                                    new()
+                                    {
+                                        SourceQuestionId = "serviceType",
+                                        TargetQuestionId = "premiumFeatures",
+                                        Action = DependencyAction.Require,
+                                        TriggerValue = "PREMIUM"
+                                    }
+                                },
+                                Options = new List<QuestionOption>
+                                {
+                                    new() { Id = "feature1", Value = "24_7_SUPPORT", Label = "24/7 Support" },
+                                    new() { Id = "feature2", Value = "PRIORITY", Label = "Priority Service" },
+                                    new() { Id = "feature3", Value = "ADVANCED", Label = "Advanced Features" }
                                 }
                             },
+                            // Custom requirements - shown and enabled for custom service
                             new FormQuestion
                             {
-                                Id = "town",
-                                Label = "Canadien Town",
-                                Type = QuestionType.Text,
-                                IsRequired = false
+                                Id = "customRequirements",
+                                Label = "Custom Requirements",
+                                Type = QuestionType.TextArea,
+                                Hint = "Describe your custom service needs",
+                                Dependencies = new List<QuestionDependency>
+                                {
+                                    new()
+                                    {
+                                        SourceQuestionId = "serviceType",
+                                        TargetQuestionId = "customRequirements",
+                                        Action = DependencyAction.Show,
+                                        TriggerValue = "CUSTOM"
+                                    },
+                                    new()
+                                    {
+                                        SourceQuestionId = "serviceType",
+                                        TargetQuestionId = "customRequirements",
+                                        Action = DependencyAction.Require,
+                                        TriggerValue = "CUSTOM"
+                                    }
+                                }
                             },
+                            // Budget range - disabled for basic service
                             new FormQuestion
                             {
-                                Id = "fileupload",
-                                Label = "Upload Resume",
-                                Type = QuestionType.FileUpload,
-                                IsRequired = false
+                                Id = "budgetRange",
+                                Label = "Budget Range",
+                                Type = QuestionType.Dropdown,
+                                Dependencies = new List<QuestionDependency>
+                                {
+                                    new()
+                                    {
+                                        SourceQuestionId = "serviceType",
+                                        TargetQuestionId = "budgetRange",
+                                        Action = DependencyAction.Disable,
+                                        TriggerValue = "BASIC"
+                                    }
+                                },
+                                Options = new List<QuestionOption>
+                                {
+                                    new() { Id = "budget1", Value = "UNDER_1000", Label = "Under $1,000" },
+                                    new() { Id = "budget2", Value = "1000_5000", Label = "$1,000 - $5,000" },
+                                    new() { Id = "budget3", Value = "OVER_5000", Label = "Over $5,000" }
+                                }
+                            }
+                        }
+                    },
+                    new FormSection
+                    {
+                        Title = "Additional Information",
+                        Questions = new List<FormQuestion>
+                        {
+                            // Contact preference with dependent phone field
+                            new FormQuestion
+                            {
+                                Id = "contactPreference",
+                                Label = "Preferred Contact Method",
+                                Type = QuestionType.Radio,
+                                IsRequired = true,
+                                Options = new List<QuestionOption>
+                                {
+                                    new() { Id = "email", Value = "EMAIL", Label = "Email" },
+                                    new() { Id = "phone", Value = "PHONE", Label = "Phone" }
+                                }
+                            },
+                            // Phone number - required when phone is selected
+                            new FormQuestion
+                            {
+                                Id = "phoneNumber",
+                                Label = "Phone Number",
+                                Type = QuestionType.Text,
+                                Dependencies = new List<QuestionDependency>
+                                {
+                                    new()
+                                    {
+                                        SourceQuestionId = "contactPreference",
+                                        TargetQuestionId = "phoneNumber",
+                                        Action = DependencyAction.Show,
+                                        TriggerValue = "PHONE"
+                                    },
+                                    new()
+                                    {
+                                        SourceQuestionId = "contactPreference",
+                                        TargetQuestionId = "phoneNumber",
+                                        Action = DependencyAction.Require,
+                                        TriggerValue = "PHONE"
+                                    }
+                                }
+                            },
+                            // Terms acceptance
+                            new FormQuestion
+                            {
+                                Id = "termsAccepted",
+                                Label = "Terms and Conditions",
+                                Type = QuestionType.Checkbox,
+                                IsRequired = true,
+                                Options = new List<QuestionOption>
+                                {
+                                    new() { Id = "terms", Value = "true", Label = "I accept the terms and conditions" }
+                                }
                             }
                         }
                     }
                 }
             };
 
-            ViewBag.Form = form;
-            return View("FormBuilder");
-        }
+            var viewModel = new FormViewModel
+            {
+                Form = form,
+                FormData = new Dictionary<string, object?>()
+            };
 
+            return View("FormBuilder", viewModel);
+        }
 
         [HttpPost("SubmitFormBuilder")]
         [ValidateAntiForgeryToken]
-        public IActionResult SubmitFormBuilder(IFormCollection form)
+        public IActionResult SubmitFormBuilder([FromForm] FormViewModel viewModel)
         {
+            // Add the form data to the validation context
+            var validationContext = new System.ComponentModel.DataAnnotations.ValidationContext(viewModel.Form)
+            {
+                Items = { ["FormData"] = viewModel.FormData }
+            };
 
-            //var formDefinition = _formService.GetFormDefinition("form-id"); // Already localized
-            //var errors = new List<FormError>();
+            // Validate the model including dependencies
+            if (!TryValidateModel(viewModel, nameof(FormViewModel)))
+            {
+                // If validation fails, return to the form with error messages
+                return View("FormBuilder", viewModel);
+            }
 
-            //foreach (var section in formDefinition.Sections)
-            //{
-            //    foreach (var question in section.Questions)
-            //    {
-            //        var value = form[question.Id];
+            // Process the valid form data
+            // TODO: Add your form processing logic here
 
-            //        if (question.IsRequired && string.IsNullOrWhiteSpace(value))
-            //        {
-            //            errors.Add(new FormError
-            //            {
-            //                QuestionId = question.Id,
-            //                Message = new LocalizedString
-            //                {
-            //                    En = "This field is required.",
-            //                    Fr = "Ce champ est requis."
-            //                }
-            //            });
-            //        }
-
-            //        // Add dependency validation here if needed
-            //    }
-            //}
-
-            //if (errors.Any())
-            //{
-            //    ViewBag.Errors = errors;
-            //    ViewBag.Form = formDefinition;
-            //    return View("FormView");
-            //}
-
-            // Process form data
-            return RedirectToAction("Success");
-
+            // Redirect to success page or show success message
+            TempData["SuccessMessage"] = "Form submitted successfully!";
+            return RedirectToAction("ExampleFormBuilder");
         }
     }
 }

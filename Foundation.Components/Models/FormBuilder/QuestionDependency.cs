@@ -15,6 +15,11 @@ namespace Foundation.Components.Models.FormBuilder
     public class QuestionDependency
     {
         /// <summary>
+        /// Gets or sets the ID of the question that triggers this dependency.
+        /// </summary>
+        public required string SourceQuestionId { get; set; }
+
+        /// <summary>
         /// Gets or sets the ID of the question that this dependency targets.
         /// </summary>
         public required string TargetQuestionId { get; set; }
@@ -27,8 +32,12 @@ namespace Foundation.Components.Models.FormBuilder
         /// <summary>
         /// Gets or sets the action to perform when the dependency is triggered.
         /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]  
         public DependencyAction Action { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value to set when the SetValue action is triggered.
+        /// </summary>
+        public string? SetValue { get; set; }
     }
 
 
@@ -38,24 +47,23 @@ namespace Foundation.Components.Models.FormBuilder
     public enum DependencyAction
     {
         /// <summary>
+        /// Make the dependent question required.
+        /// </summary>
+        Require,
+        /// <summary>
         /// Show the dependent question.
         /// </summary>
         Show,
-
         /// <summary>
         /// Hide the dependent question.
         /// </summary>
         Hide,
+        
+        Enable,
+        Disable,
+        ClearValue,
+        SetValue
 
-        /// <summary>
-        /// Make the dependent question required.
-        /// </summary>
-        Require,
-
-        /// <summary>
-        /// Remove the dependent question.
-        /// </summary>
-        Remove
     }
 
 }

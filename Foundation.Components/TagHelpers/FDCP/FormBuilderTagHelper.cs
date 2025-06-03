@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json.Converters;
 
 namespace Foundation.Components.TagHelpers.FDCP
 {
@@ -31,8 +32,16 @@ namespace Foundation.Components.TagHelpers.FDCP
         /// </summary>
         private static readonly JsonSerializerSettings CamelCaseSettings = new()
         {
-            ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver(),
-            Converters = { new Newtonsoft.Json.Converters.StringEnumConverter(new CamelCaseNamingStrategy()) }
+            ContractResolver = new CamelCasePropertyNamesContractResolver(),
+            Converters = { new StringEnumConverter(new CamelCaseNamingStrategy()) }
+        };
+
+        /// <summary>
+        /// Options for serializing enums as integers.
+        /// </summary>
+        private static readonly JsonSerializerSettings DependencySerializerSettings = new()
+        {
+            ContractResolver = new CamelCasePropertyNamesContractResolver()
         };
 
         /// <summary>
@@ -40,7 +49,7 @@ namespace Foundation.Components.TagHelpers.FDCP
         /// </summary>
         /// <param name="context">The context for the tag helper.</param>
         /// <param name="output">The output for the tag helper.</param>
-        public override void Process(TagHelperContext context, TagHelperOutput output)
+        public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
             ArgumentNullException.ThrowIfNull(output, nameof(output));
 
@@ -48,206 +57,218 @@ namespace Foundation.Components.TagHelpers.FDCP
             output.Attributes.SetAttribute("class", "gc-form");
 
             var content = new StringBuilder();
+            await BuildFormContentAsync(content);
+            output.Content.SetHtmlContent(content.ToString());
+        }
 
-            content.Append($"<form action='{Form.Action}' method='{Form.Methode}'>");
+        private async Task BuildFormContentAsync(StringBuilder content)
+        {
+            // Form wrapper
+            content.AppendFormat(CultureInfo.InvariantCulture, 
+                "<form action='{0}' method='{1}' class='gc-form'>", 
+                Form.Action, Form.Methode);
 
-            // Add Errors summary
-            content.Append("<gcds-error-summary></gcds-error-summary>");
+            // Error summary component
+            content.AppendLine("<gcds-error-summary></gcds-error-summary>");
 
+            // Form sections
             foreach (var section in Form.Sections)
             {
-                content.AppendLine(CultureInfo.InvariantCulture, $"<gcds-fieldset fieldset-id='{section.Title}' legend='{section.Title}' hint='{section.Hint}'>");
+                content.AppendLine($@"<gcds-fieldset 
+                    fieldset-id='{section.Title}' 
+                    legend='{section.Title}' 
+                    hint='{section.Hint}'>");
 
                 foreach (var question in section.Questions)
                 {
-                    content.AppendLine(BuildQuestionMarkup(question));
+                    content.AppendLine(await RenderQuestionAsync(question));
                 }
 
                 content.AppendLine("</gcds-fieldset>");
             }
 
-            content.AppendLine("<div id='test-dynamic'></div>");
-            content.Append($"<gcds-button type='submit'>{Form.SubmithButtonText}</gcds-button>");
+            // Submit button
+            content.AppendLine($@"<gcds-button 
+                type='submit' 
+                button-role='primary'>
+                {Form.SubmithButtonText}
+            </gcds-button>");
 
-
-            content.Append("</form>");
-
-            output.Content.SetHtmlContent(content.ToString());
+            content.AppendLine("</form>");
         }
 
-        /// <summary>
-        /// Builds the HTML markup for a single form question based on its type.
-        /// </summary>
-        /// <param name="question">The form question to render.</param>
-        /// <returns>The HTML markup for the question.</returns>
-        private static string BuildQuestionMarkup(FormQuestion question)
+        private async Task<string> RenderQuestionAsync(FormQuestion question)
         {
             string language = LanguageUtility.GetCurrentApplicationLanguage();
             string isRequired = question.IsRequired ? "required" : "";
-            string? hint = question.Hint;
-            string label = question.Label;
-            string questionId = question.Id;
+            
+            // Base attributes that all components should have
+            string baseAttributes = $@"
+                id='{question.Id}'
+                lang='{language}'
+                {isRequired}";
 
-            // Old:
-            //string dependenciesAttr = question.Dependencies != null && question.Dependencies.Any()
-            //    ? $" data-dependencies='{JsonSerializer.Serialize(question.Dependencies, CamelCaseOptions)}'"
-            //    : "";
-            // New:
-            string dependenciesAttr = question.Dependencies != null && question.Dependencies.Any()
-                ? $" data-dependencies='{JsonConvert.SerializeObject(question.Dependencies, CamelCaseSettings)}'"
-                : "";
-
-
-            return question.Type switch
+            // Add dependencies attribute if question has dependencies
+            if (question.Dependencies?.Any() == true)
             {
-                QuestionType.Text or QuestionType.Email or QuestionType.Number or QuestionType.Url or QuestionType.Password
-                    => BuildInput(question.Type.ToString().ToLowerInvariant(), questionId, label, hint, language, isRequired),
+                var serializedDeps = JsonConvert.SerializeObject(question.Dependencies, DependencySerializerSettings);
+                baseAttributes += $@" data-dependencies='{serializedDeps}'";
+            }
 
-                QuestionType.Radio
-                    => BuildRadioGroup(question, language, isRequired, dependenciesAttr),
+            // Common attributes for all input types
+            string commonAttributes = $@"
+                name='{question.Id}'
+                label='{question.Label}'
+                hint='{question.Hint}'
+                {baseAttributes}";
 
-                QuestionType.Checkbox
-                    => BuildCheckboxes(question, language, isRequired, dependenciesAttr),
+            return $@"<div class='gc-form-group'>{question.Type switch
+            {
+                QuestionType.Text => $@"<gcds-input 
+                    type='text'
+                    input-id='{question.Id}'
+                    {commonAttributes}>
+                </gcds-input>",
 
-                QuestionType.Dropdown
-                    => BuildDropdown(question, language, isRequired, dependenciesAttr),
+                QuestionType.Email => $@"<gcds-input 
+                    type='email'
+                    input-id='{question.Id}'
+                    {commonAttributes}>
+                </gcds-input>",
 
-                QuestionType.TextArea
-                    => BuildTextArea(question, language, isRequired),
+                QuestionType.Password => $@"<gcds-input 
+                    type='password'
+                    input-id='{question.Id}'
+                    {commonAttributes}>
+                </gcds-input>",
 
-                QuestionType.Date
-                    => BuildDateInput(question, language, isRequired),
+                QuestionType.Url => $@"<gcds-input 
+                    type='url'
+                    input-id='{question.Id}'
+                    {commonAttributes}>
+                </gcds-input>",
 
-                _ => string.Empty
-            };
+                QuestionType.Number => $@"<gcds-input 
+                    type='number'
+                    input-id='{question.Id}'
+                    {commonAttributes}>
+                </gcds-input>",
+
+                QuestionType.Radio => await BuildRadioGroupAsync(question, language, commonAttributes),
+
+                QuestionType.Checkbox => await BuildCheckboxesAsync(question, language, commonAttributes),
+
+                QuestionType.Dropdown => $@"<gcds-select
+                    select-id='{question.Id}'
+                    {commonAttributes}>
+                    {BuildOptions(question.Options)}
+                </gcds-select>",
+
+                QuestionType.TextArea => $@"<gcds-textarea 
+                    textarea-id='{question.Id}'
+                    rows='{question.Size ?? 3}'
+                    {commonAttributes}>
+                    {question.Value ?? ""}
+                </gcds-textarea>",
+
+                QuestionType.Date => $@"<gcds-date-input
+                    legend='{question.Label}'
+                    name='{question.Id}'
+                    format='{question.Format ?? "full"}'
+                    value='{question.Value ?? ""}'
+                    {baseAttributes}>
+                </gcds-date-input>",
+
+                QuestionType.FileUpload => $@"<gcds-input 
+                    type='file'
+                    input-id='{question.Id}'
+                    {commonAttributes}>
+                </gcds-input>",
+
+                _ => throw new ArgumentException($"Unsupported question type: {question.Type}")
+            }}</div>";
         }
 
-        /// <summary>
-        /// Builds the HTML markup for a standard input element.
-        /// </summary>
-        /// <param name="type">The input type (e.g., "text", "email").</param>
-        /// <param name="id">The input ID.</param>
-        /// <param name="label">The input label.</param>
-        /// <param name="hint">The input hint (optional).</param>
-        /// <param name="lang">The language code.</param>
-        /// <param name="isRequired">The required attribute string.</param>
-        /// <returns>The HTML markup for the input element.</returns>
-        private static string BuildInput(string type, string id, string label, string? hint, string lang, string isRequired)
-            => $"<gcds-input type='{type}' input-id='{id}' label='{label}' hint='{hint}' lang='{lang}' {isRequired}></gcds-input>";
+        private async Task<string> BuildRadioGroupAsync(FormQuestion question, string lang, string commonAttributes)
+        {
+            var options = question.Options?.Select(option => new
+            {
+                option.Id,
+                option.Label,
+                option.Hint,
+                option.Value,
+                Checked = (option.Value?.ToString() == question.Value?.ToString())
+            });
 
-        /// <summary>
-        /// Builds the HTML markup for a radio group question.
-        /// </summary>
-        /// <param name="question">The form question to render as a radio group.</param>
-        /// <param name="lang">The language code for the rendered markup.</param>
-        /// <param name="isRequired">The required attribute string to indicate if the field is mandatory.</param>
-        /// <param name="dependenciesAttr">
-        /// The HTML attribute containing serialized dependency metadata, or an empty string if there are no dependencies.
-        /// </param>
-        /// <returns>The HTML markup for the radio group, including dependency metadata if applicable.</returns>
-        private static string BuildRadioGroup(FormQuestion question, string lang, string isRequired, string dependenciesAttr)
-            => $@"
+            var optionsJson = JsonConvert.SerializeObject(options, CamelCaseSettings);
+
+            return $@"
                 <gcds-radio-group
-                    name='{question.Label}'
-                    options='{JsonConvert.SerializeObject(question.Options, CamelCaseSettings)}'
-                    lang='{lang}'
-                    {isRequired}
-                    {dependenciesAttr}
-                >
+                    radio-id='{question.Id}'
+                    options='{optionsJson}'
+                    {commonAttributes}>
                 </gcds-radio-group>";
+        }
 
-        /// <summary>
-        /// Builds the HTML markup for a set of checkbox options.
-        /// </summary>
-        /// <param name="question">The form question.</param>
-        /// <param name="lang">The language code.</param>
-        /// <param name="isRequired">The required attribute string.</param>
-        /// <param name="dependenciesAttr">
-        /// The HTML attribute containing serialized dependency metadata, or an empty string if there are no dependencies.
-        /// </param>
-        /// <returns>The HTML markup for the checkboxes.</returns>
-        private static string BuildCheckboxes(FormQuestion question, string lang, string isRequired, string dependenciesAttr)
+        private string BuildOptions(IEnumerable<QuestionOption>? options)
+        {
+            if (options == null) return string.Empty;
+
+            var sb = new StringBuilder();
+            foreach (var option in options)
+            {
+                sb.AppendLine($"<option value='{option.Value}'>{option.Label}</option>");
+            }
+            return sb.ToString();
+        }
+
+        private async Task<string> BuildCheckboxesAsync(FormQuestion question, string lang, string commonAttributes)
         {
             ArgumentNullException.ThrowIfNull(question.Options, nameof(question.Options));
-            var sb = new StringBuilder();
+            var selectedValues = question.Value is IEnumerable<object> values
+                ? values.Select(v => v.ToString()).ToHashSet()
+                : new HashSet<string>();
+
+            // Handle single checkbox case
+            if (question.Options.Count() == 1)
+            {
+                var option = question.Options.First();
+                return $@"<gcds-checkbox
+                    checkbox-id=""{question.Id}""
+                    name=""{question.Id}""
+                    label=""{option.Label}""
+                    value=""{option.Value}""
+                    hint=""{question.Hint}""
+                    {(question.IsRequired ? "required" : "")}
+                    {(selectedValues.Contains(option.Value?.ToString()) ? "checked" : "")}
+                    lang=""{lang}"">
+                </gcds-checkbox>";
+            }
+
+            // Handle multiple checkboxes case
+            var checkboxes = new StringBuilder();
             foreach (var option in question.Options)
             {
-                sb.AppendLine($@"
+                checkboxes.AppendLine(CultureInfo.InvariantCulture ,$@"
                     <gcds-checkbox
-                        checkbox-id='{option.Id}'
-                        label='{option.Label}'
-                        name='{question.Id}'" +
-                    AttributeIfNotNull("hint", option.Hint) +
-                    $@" lang='{lang}'
-                        {isRequired}
-                        {dependenciesAttr}
-                    >
+                        checkbox-id=""{question.Id}_{option.Id}""
+                        name=""{question.Id}""
+                        label=""{option.Label}""
+                        value=""{option.Value}""
+                        hint=""{option.Hint}""
+                        {(selectedValues.Contains(option.Value?.ToString()) ? "checked" : "")}
+                        lang=""{lang}"">
                     </gcds-checkbox>");
             }
-            return sb.ToString();
-        }
 
-        /// <summary>
-        /// Builds the HTML markup for a dropdown/select question.
-        /// </summary>
-        /// <param name="question">The form question.</param>
-        /// <param name="lang">The language code.</param>
-        /// <param name="isRequired">The required attribute string.</param>
-        /// <param name="dependenciesAttr">
-        /// The HTML attribute containing serialized dependency metadata, or an empty string if there are no dependencies.
-        /// </param>
-        /// <returns>The HTML markup for the dropdown.</returns>
-        private static string BuildDropdown(FormQuestion question, string lang, string isRequired, string dependenciesAttr)
-        {
-            ArgumentNullException.ThrowIfNull(question.Options, nameof(question.Options));
-
-            var sb = new StringBuilder();
-            sb.AppendLine($@"
-                <gcds-select
-                    select-id='{question.Id}'
-                    label='{question.Label}'" +
-                AttributeIfNotNull("hint", question.Hint) +
-                $@" lang='{lang}'
-                    {isRequired}
-                    {dependenciesAttr}
-                >");
-            foreach (var option in question.Options)
-            {
-                sb.AppendLine(CultureInfo.InvariantCulture, $"<option value='{option.Value}'>{option.Label}</option>");
-            }
-            sb.AppendLine("</gcds-select>");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Builds the HTML markup for a textarea question.
-        /// </summary>
-        /// <param name="question">The form question.</param>
-        /// <param name="lang">The language code.</param>
-        /// <param name="isRequired">The required attribute string.</param>
-        /// <returns>The HTML markup for the textarea.</returns>
-        private static string BuildTextArea(FormQuestion question, string lang, string isRequired)
-            => $@"<gcds-textarea 
-                    textarea-id='{question.Id}' 
-                    label='{question.Label}' 
-                    name='{question.Id}' 
-                    {AttributeIfNotNull("hint", question.Hint)}
-                    {isRequired} 
-                    lang='{lang}' 
-                    rows='{question.Size}'>
-                </gcds-textarea>";
-
-        /// <summary>
-        /// Builds the HTML markup for a date input question using the GC Design System date input component.
-        /// </summary>
-        /// <param name="question">The form question.</param>
-        /// <param name="lang">The language code.</param>
-        /// <param name="isRequired">The required attribute string.</param>
-        /// <returns>The HTML markup for the date input.</returns>
-        private static string BuildDateInput(FormQuestion question, string lang, string isRequired)
-        {
-            string format = question.Format ?? "full";
-            return $"<gcds-date-input legend='{question.Label}' name='{question.Id}' format='{format}' lang='{lang}' {isRequired}></gcds-date-input>";
+            return $@"<gcds-fieldset
+                fieldset-id=""{question.Id}-group""
+                legend=""{question.Label}""
+                hint=""{question.Hint}""
+                {(question.IsRequired ? "required" : "")}
+                lang=""{lang}"">
+                {checkboxes}
+            </gcds-fieldset>";
         }
 
         /// <summary>
@@ -258,6 +279,5 @@ namespace Foundation.Components.TagHelpers.FDCP
         /// <returns>The attribute string or empty if value is null.</returns>
         private static string AttributeIfNotNull(string name, string? value)
             => value is not null ? $" {name}='{value}'" : string.Empty;
-
     }
 }
