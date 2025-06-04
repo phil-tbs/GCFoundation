@@ -160,6 +160,7 @@ namespace Foundation.Components.TagHelpers.FDCP
 
                 QuestionType.Dropdown => $@"<gcds-select
                     select-id='{question.Id}'
+                    default-value='Select option'
                     {commonAttributes}>
                     {BuildOptions(question.Options)}
                 </gcds-select>",
@@ -233,6 +234,10 @@ namespace Foundation.Components.TagHelpers.FDCP
             if (question.Options.Count() == 1)
             {
                 var option = question.Options.First();
+                string dependencies = question.Dependencies?.Any() == true
+                    ? $" data-dependencies='{JsonConvert.SerializeObject(question.Dependencies, DependencySerializerSettings)}'"
+                    : "";
+
                 return $@"<gcds-checkbox
                     checkbox-id=""{question.Id}""
                     name=""{question.Id}""
@@ -241,6 +246,7 @@ namespace Foundation.Components.TagHelpers.FDCP
                     hint=""{question.Hint}""
                     {(question.IsRequired ? "required" : "")}
                     {(selectedValues.Contains(option.Value?.ToString()) ? "checked" : "")}
+                    {dependencies}
                     lang=""{lang}"">
                 </gcds-checkbox>";
             }
@@ -249,6 +255,11 @@ namespace Foundation.Components.TagHelpers.FDCP
             var checkboxes = new StringBuilder();
             foreach (var option in question.Options)
             {
+                // Handle individual checkbox dependencies if they exist in the option
+                string optionDependencies = option.Dependencies?.Any() == true
+                    ? $" data-dependencies='{JsonConvert.SerializeObject(option.Dependencies, DependencySerializerSettings)}'"
+                    : "";
+
                 checkboxes.AppendLine(CultureInfo.InvariantCulture ,$@"
                     <gcds-checkbox
                         checkbox-id=""{question.Id}_{option.Id}""
@@ -257,15 +268,22 @@ namespace Foundation.Components.TagHelpers.FDCP
                         value=""{option.Value}""
                         hint=""{option.Hint}""
                         {(selectedValues.Contains(option.Value?.ToString()) ? "checked" : "")}
+                        {optionDependencies}
                         lang=""{lang}"">
                     </gcds-checkbox>");
             }
+
+            // Handle group-level dependencies
+            string groupDependencies = question.Dependencies?.Any() == true
+                ? $" data-dependencies='{JsonConvert.SerializeObject(question.Dependencies, DependencySerializerSettings)}'"
+                : "";
 
             return $@"<gcds-fieldset
                 fieldset-id=""{question.Id}-group""
                 legend=""{question.Label}""
                 hint=""{question.Hint}""
                 {(question.IsRequired ? "required" : "")}
+                {groupDependencies}
                 lang=""{lang}"">
                 {checkboxes}
             </gcds-fieldset>";

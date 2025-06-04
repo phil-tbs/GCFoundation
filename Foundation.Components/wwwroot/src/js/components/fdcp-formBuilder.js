@@ -36,7 +36,8 @@ const initializeDependencies = () => {
             [select-id="${sourceId}"],
             [textarea-id="${sourceId}"],
             [radio-id="${sourceId}"],
-            [checkbox-id="${sourceId}"]
+            [checkbox-id="${sourceId}"],
+            [fieldset-id="${sourceId}"]
         `);
 
         if (!sourceElement) {
@@ -54,7 +55,7 @@ const initializeDependencies = () => {
         // Set up event listeners
         sourceElement.addEventListener("gcdsChange", (event) => {
             
-            const value = event.detail; //getGCDSValue(event.target);
+            const value = event.detail;
             
             dependencyList.forEach(({ targetElement, dependency }) => {
                 const shouldApply = evaluateCondition(dependency, value);
@@ -108,25 +109,25 @@ const getGCDSValue = (element) => {
             return element.value;
         case 'gcds-checkbox':
             if (element.name) {
-                // For checkbox groups
-                const checkboxGroup = document.querySelector(`gcds-checkbox-group[checkbox-id="${element.name}"]`);
-                if (checkboxGroup) {
-                    return Array.from(checkboxGroup.querySelectorAll('gcds-checkbox:checked'))
+                // For checkbox groups, first check for a parent fieldset
+                const fieldset = element.closest('gcds-fieldset');
+                if (fieldset) {
+                    return Array.from(fieldset.querySelectorAll('gcds-checkbox:checked'))
                         .map(cb => cb.value);
                 }
-                // Fallback to regular checkbox group
+                // Fallback to finding checkboxes by name
                 const checkboxes = document.querySelectorAll(`gcds-checkbox[name="${element.name}"]:checked`);
                 return Array.from(checkboxes).map(cb => cb.value);
             }
             return element.checked;
-        case 'gcds-checkbox-group':
+        case 'gcds-fieldset':
+            // For fieldsets containing checkboxes, return array of checked values
             return Array.from(element.querySelectorAll('gcds-checkbox:checked'))
                 .map(cb => cb.value);
         case 'gcds-radio':
             const checkedRadio = document.querySelector(`gcds-radio[name="${element.name}"]:checked`);
             return checkedRadio ? checkedRadio.value : null;
         case 'gcds-radio-group':
-            // For GCDS radio groups, the value is stored in the component itself
             return element.value;
         default:
             return element.value;
@@ -196,10 +197,19 @@ const applyDependencyAction = (element, action, shouldApply, dependency) => {
  * Find the form group wrapper for an element
  */
 const findFormGroupWrapper = (element) => {
-    // Try to find the closest wrapper, fallback to element itself
-    return element.closest('.gc-form-group') || 
-           element.parentElement || 
-           element;
+    // First try to find the closest form group
+    const formGroup = element.closest('.gc-form-group');
+    if (formGroup) return formGroup;
+    
+    // If element is or is inside a fieldset, return the fieldset's form group
+    const fieldset = element.closest('gcds-fieldset') || 
+                    (element.tagName.toLowerCase() === 'gcds-fieldset' ? element : null);
+    if (fieldset) {
+        return fieldset.closest('.gc-form-group') || fieldset.parentElement || element;
+    }
+    
+    // Fallback to original behavior
+    return element.parentElement || element;
 };
 
 /**

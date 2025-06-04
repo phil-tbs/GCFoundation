@@ -30,5 +30,11 @@ namespace Foundation.Components.Models.FormBuilder
         /// Gets or sets an optional hint or description for the option.
         /// </summary>
         public string? Hint { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of dependencies that control the visibility or behavior of this option.
+        /// This is particularly useful for checkbox options that need individual dependency rules.
+        /// </summary>
+        public IEnumerable<QuestionDependency>? Dependencies { get; set; }
     }
 }
