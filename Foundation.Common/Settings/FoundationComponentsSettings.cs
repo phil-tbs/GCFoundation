@@ -27,7 +27,7 @@ namespace Foundation.Common.Settings
         {
             get
             {
-                return "'sha256-wdabfDcuif2zK/ylZhFm5RyLtTWesKFJRNnvzHFPrPs=' 'sha256-LovNkyKf6BdeuYHC6NGHXX9NcrDeLb8ho1xZrkXnC0g='";
+                return "'sha256-wdabfDcuif2zK/ylZhFm5RyLtTWesKFJRNnvzHFPrPs=' 'sha256-LovNkyKf6BdeuYHC6NGHXX9NcrDeLb8ho1xZrkXnC0g=' 'sha256-h0iBPaGm9POpej1E2Xyl3CW6D/1Nw7OWarnofqER01I=' 'sha256-biLFinpqYMtWHmXfkA1BPeCY0/fNt46SAZ+BBk5YUog='";
             }
         }
 
@@ -56,7 +56,7 @@ namespace Foundation.Common.Settings
         /// <summary>
         /// Gets or sets the version of the GC Design System being used.
         /// </summary>
-        public string GCDSVersion { get; set; } = "0.34.1";
+        public string GCDSVersion { get; set; } = "0.35.0";
 
         /// <summary>
         /// Gets or sets the version of Font Awesome being used.

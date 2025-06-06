@@ -3,5 +3,18 @@
 @use './components/fdcp-SearchBox';
 @use './components/fdcp-FilterBox';
 @use './components/fdcp-badge';
-@use './components/fdcp-page-heading'
+@use './components/fdcp-page-heading';
 
+body{
+    overflow-x: hidden;
+}
+
+.img-responsive
+{
+    width: 100%;
+    height:auto;
+}
+
+.gc-form-hidden {
+    display: none !important;
+}
