@@ -70,6 +70,33 @@ namespace Foundation.Components.Models.FormBuilder
         /// Gets or sets the current or default value for the question.
         /// </summary>
         public object? Value { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of validation rules for this question.
+        /// </summary>
+        public IEnumerable<ValidationRule>? ValidationRules { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to validate on blur (client-side).
+        /// </summary>
+        public bool ValidateOnBlur { get; set; } = true;
+
+        /// <summary>
+        /// Gets or sets the legend size for fieldsets (h2-h6).
+        /// Used to visually place the legend among the headings on the page.
+        /// </summary>
+        public string? LegendSize { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether the radio buttons or checkboxes should be displayed inline.
+        /// </summary>
+        public bool IsInline { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether this is a single tickbox (small checkbox) rather than a group.
+        /// Only applicable for Checkbox type questions with a single option.
+        /// </summary>
+        public bool IsTickbox { get; set; }
     }
 
     /// <summary>

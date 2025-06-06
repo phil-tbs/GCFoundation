@@ -36,5 +36,11 @@ namespace Foundation.Components.Models.FormBuilder
         /// This is particularly useful for checkbox options that need individual dependency rules.
         /// </summary>
         public IEnumerable<QuestionDependency>? Dependencies { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether this option is disabled.
+        /// When disabled, the option will be greyed out and non-interactive.
+        /// </summary>
+        public bool IsDisabled { get; set; }
     }
 }

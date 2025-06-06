@@ -77,6 +77,7 @@ namespace Foundation.Components.TagHelpers.FDCP
                 content.AppendLine($@"<gcds-fieldset 
                     fieldset-id='{section.Title}' 
                     legend='{section.Title}' 
+                    legend-size='h3' 
                     hint='{section.Hint}'>");
 
                 foreach (var question in section.Questions)
@@ -113,6 +114,26 @@ namespace Foundation.Components.TagHelpers.FDCP
             {
                 var serializedDeps = JsonConvert.SerializeObject(question.Dependencies, DependencySerializerSettings);
                 baseAttributes += $@" data-dependencies='{serializedDeps}'";
+            }
+
+            // Add validation rules if present
+            if (question.ValidationRules?.Any() == true)
+            {
+                var validationRules = question.ValidationRules.Select(rule => new
+                {
+                    type = rule.Type.ToString().ToLowerInvariant(),
+                    pattern = rule.Pattern,
+                    min = rule.Min,
+                    max = rule.Max,
+                    errorMessages = rule.ErrorMessages
+                });
+                var serializedRules = JsonConvert.SerializeObject(validationRules, CamelCaseSettings);
+                baseAttributes += $@" data-validation-rules='{serializedRules}'";
+                
+                if (question.ValidateOnBlur)
+                {
+                    baseAttributes += @" validate-on-blur";
+                }
             }
 
             // Common attributes for all input types
@@ -192,23 +213,29 @@ namespace Foundation.Components.TagHelpers.FDCP
 
         private async Task<string> BuildRadioGroupAsync(FormQuestion question, string lang, string commonAttributes)
         {
+            // Convert options to the required format for gcds-radios
             var options = question.Options?.Select(option => new
             {
-                option.Id,
-                option.Label,
-                option.Hint,
-                option.Value,
-                Checked = (option.Value?.ToString() == question.Value?.ToString())
+                id = $"{question.Id}_{option.Id}",
+                label = option.Label,
+                value = option.Value,
+                //@checked = (option.Value?.ToString() == question.Value?.ToString()),
+                //hint = option.Hint,
             });
 
             var optionsJson = JsonConvert.SerializeObject(options, CamelCaseSettings);
 
-            return $@"
-                <gcds-radio-group
-                    radio-id='{question.Id}'
-                    options='{optionsJson}'
-                    {commonAttributes}>
-                </gcds-radio-group>";
+            return $@"<gcds-radios
+                name='{question.Id}'
+                legend='{question.Label}'
+                legend-size='h3'
+                options='{optionsJson}'
+                {(question.IsRequired ? "required" : "")}
+                {(!string.IsNullOrEmpty(question.ErrorMessage) ? $@"error-message=""{question.ErrorMessage}""" : "")}
+                {(!string.IsNullOrEmpty(question.Hint) ? $@"hint=""{question.Hint}""" : "")}
+                lang='{lang}'
+                id='{question.Id}'>
+            </gcds-radios>";
         }
 
         private string BuildOptions(IEnumerable<QuestionOption>? options)
@@ -226,67 +253,52 @@ namespace Foundation.Components.TagHelpers.FDCP
         private async Task<string> BuildCheckboxesAsync(FormQuestion question, string lang, string commonAttributes)
         {
             ArgumentNullException.ThrowIfNull(question.Options, nameof(question.Options));
+            
+            // Convert selected values to array of strings for value attribute
             var selectedValues = question.Value is IEnumerable<object> values
-                ? values.Select(v => v.ToString()).ToHashSet()
-                : new HashSet<string>();
+                ? values.Select(v => v.ToString()).ToArray()
+                : Array.Empty<string>();
 
-            // Handle single checkbox case
-            if (question.Options.Count() == 1)
+            // Convert options to the required format for gcds-checkboxes
+            var options = question.Options.Select(option => new
             {
-                var option = question.Options.First();
-                string dependencies = question.Dependencies?.Any() == true
-                    ? $" data-dependencies='{JsonConvert.SerializeObject(question.Dependencies, DependencySerializerSettings)}'"
-                    : "";
+                id = $"{question.Id}_{option.Id}",
+                label = option.Label,
+                value = option.Value,
+                //@checked = selectedValues.Contains(option.Value?.ToString()),
+                //hint = option.Hint,
+            });
 
-                return $@"<gcds-checkbox
-                    checkbox-id=""{question.Id}""
-                    name=""{question.Id}""
-                    label=""{option.Label}""
-                    value=""{option.Value}""
-                    hint=""{question.Hint}""
-                    {(question.IsRequired ? "required" : "")}
-                    {(selectedValues.Contains(option.Value?.ToString()) ? "checked" : "")}
-                    {dependencies}
-                    lang=""{lang}"">
-                </gcds-checkbox>";
-            }
+            var optionsJson = JsonConvert.SerializeObject(options, CamelCaseSettings);
 
-            // Handle multiple checkboxes case
-            var checkboxes = new StringBuilder();
-            foreach (var option in question.Options)
-            {
-                // Handle individual checkbox dependencies if they exist in the option
-                string optionDependencies = option.Dependencies?.Any() == true
-                    ? $" data-dependencies='{JsonConvert.SerializeObject(option.Dependencies, DependencySerializerSettings)}'"
-                    : "";
+            // For single checkbox case
+            //if (question.Options.Count() == 1)
+            //{
+            //    return $@"<gcds-checkboxes
+            //        name='{question.Id}'
+            //        options='{optionsJson}'
+            //        {(question.IsRequired ? "required" : "")}
+            //        {(!string.IsNullOrEmpty(question.ErrorMessage) ? $@"error-message=""{question.ErrorMessage}""" : "")}
+            //        {(!string.IsNullOrEmpty(question.Hint) ? $@"hint=""{question.Hint}""" : "")}
+            //        validate-on='blur'
+            //        lang='{lang}'
+            //        {commonAttributes}>
+            //    </gcds-checkboxes>";
+            //}
 
-                checkboxes.AppendLine(CultureInfo.InvariantCulture ,$@"
-                    <gcds-checkbox
-                        checkbox-id=""{question.Id}_{option.Id}""
-                        name=""{question.Id}""
-                        label=""{option.Label}""
-                        value=""{option.Value}""
-                        hint=""{option.Hint}""
-                        {(selectedValues.Contains(option.Value?.ToString()) ? "checked" : "")}
-                        {optionDependencies}
-                        lang=""{lang}"">
-                    </gcds-checkbox>");
-            }
-
-            // Handle group-level dependencies
-            string groupDependencies = question.Dependencies?.Any() == true
-                ? $" data-dependencies='{JsonConvert.SerializeObject(question.Dependencies, DependencySerializerSettings)}'"
-                : "";
-
-            return $@"<gcds-fieldset
-                fieldset-id=""{question.Id}-group""
-                legend=""{question.Label}""
-                hint=""{question.Hint}""
+            // For multiple checkboxes case
+            return $@"<gcds-checkboxes
+                name='{question.Id}'
+                legend='{question.Label}'
+                {(!string.IsNullOrEmpty(question.LegendSize) ? $@"legend-size=""{question.LegendSize}""" : "legend-size=\"h3\"")}
+                options='{optionsJson}'
                 {(question.IsRequired ? "required" : "")}
-                {groupDependencies}
-                lang=""{lang}"">
-                {checkboxes}
-            </gcds-fieldset>";
+                {(!string.IsNullOrEmpty(question.ErrorMessage) ? $@"error-message=""{question.ErrorMessage}""" : "")}
+                {(!string.IsNullOrEmpty(question.Hint) ? $@"hint=""{question.Hint}""" : "")}
+                validate-on='blur'
+                lang='{lang}'
+                {commonAttributes}>
+            </gcds-checkboxes>";
         }
 
         /// <summary>

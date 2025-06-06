@@ -18,8 +18,14 @@ const initializeDependencies = () => {
                 if (!dependencyMap.has(sourceId)) {
                     dependencyMap.set(sourceId, []);
                 }
+                // Store the target ID instead of the element reference
                 dependencyMap.get(sourceId).push({
-                    targetElement: el,
+                    targetId: el.getAttribute('input-id') || 
+                             el.getAttribute('select-id') || 
+                             el.getAttribute('textarea-id') || 
+                             el.getAttribute('radio-id') || 
+                             el.getAttribute('checkbox-id') || 
+                             el.getAttribute('id'),
                     dependency: dependency
                 });
             });
@@ -35,8 +41,7 @@ const initializeDependencies = () => {
             [input-id="${sourceId}"],
             [select-id="${sourceId}"],
             [textarea-id="${sourceId}"],
-            [radio-id="${sourceId}"],
-            [checkbox-id="${sourceId}"],
+            [id="${sourceId}"],
             [fieldset-id="${sourceId}"]
         `);
 
@@ -47,7 +52,22 @@ const initializeDependencies = () => {
 
         // Initial evaluation for all dependencies
         const currentValue = getGCDSValue(sourceElement);
-        dependencyList.forEach(({ targetElement, dependency }) => {
+        dependencyList.forEach(({ targetId, dependency }) => {
+            // Find the current element in the DOM
+            const targetElement = document.querySelector(`
+                [input-id="${targetId}"],
+                [select-id="${targetId}"],
+                [textarea-id="${targetId}"],
+                [radio-id="${targetId}"],
+                [checkbox-id="${targetId}"],
+                [id="${targetId}"]
+            `);
+
+            if (!targetElement) {
+                console.warn(`Target element with ID ${targetId} not found`);
+                return;
+            }
+
             const shouldApply = evaluateCondition(dependency, currentValue);
             applyDependencyAction(targetElement, dependency.action, shouldApply, dependency);
         });
@@ -57,7 +77,22 @@ const initializeDependencies = () => {
             
             const value = event.detail;
             
-            dependencyList.forEach(({ targetElement, dependency }) => {
+            dependencyList.forEach(({ targetId, dependency }) => {
+                // Find the current element in the DOM
+                const targetElement = document.querySelector(`
+                    [input-id="${targetId}"],
+                    [select-id="${targetId}"],
+                    [textarea-id="${targetId}"],
+                    [radio-id="${targetId}"],
+                    [checkbox-id="${targetId}"],
+                    [id="${targetId}"]
+                `);
+
+                if (!targetElement) {
+                    console.warn(`Target element with ID ${targetId} not found`);
+                    return;
+                }
+
                 const shouldApply = evaluateCondition(dependency, value);
                 applyDependencyAction(targetElement, dependency.action, shouldApply, dependency);
             });
@@ -65,35 +100,6 @@ const initializeDependencies = () => {
     });
 };
 
-/**
- * Handle dependencies for an element
- */
-const handleDependencies = (el, currentValue) => {
-    try {
-        const dependencies = JSON.parse(el.getAttribute('data-dependencies'));
-        
-        dependencies.forEach((dependency) => {
-            // Try to find the target GCDS component
-            const targetWrapper = document.querySelector(`
-                [input-id="${dependency.targetQuestionId}"],
-                [select-id="${dependency.targetQuestionId}"],
-                [textarea-id="${dependency.targetQuestionId}"],
-                [radio-id="${dependency.targetQuestionId}"],
-                [checkbox-id="${dependency.targetQuestionId}"]
-            `);
-
-            if (!targetWrapper) {
-                console.warn(`Target element ${dependency.targetQuestionId} not found for dependency`, dependency);
-                return;
-            }
-
-            const shouldApply = evaluateCondition(dependency, currentValue);
-            applyDependencyAction(targetWrapper, dependency.action, shouldApply, dependency);
-        });
-    } catch (error) {
-        console.error('Error handling dependencies:', error);
-    }
-};
 
 /**
  * Get the value from a GCDS component
@@ -109,26 +115,18 @@ const getGCDSValue = (element) => {
             return element.value;
         case 'gcds-checkbox':
             if (element.name) {
-                // For checkbox groups, first check for a parent fieldset
                 const fieldset = element.closest('gcds-fieldset');
                 if (fieldset) {
                     return Array.from(fieldset.querySelectorAll('gcds-checkbox:checked'))
                         .map(cb => cb.value);
                 }
-                // Fallback to finding checkboxes by name
                 const checkboxes = document.querySelectorAll(`gcds-checkbox[name="${element.name}"]:checked`);
                 return Array.from(checkboxes).map(cb => cb.value);
             }
             return element.checked;
-        case 'gcds-fieldset':
-            // For fieldsets containing checkboxes, return array of checked values
-            return Array.from(element.querySelectorAll('gcds-checkbox:checked'))
-                .map(cb => cb.value);
         case 'gcds-radio':
             const checkedRadio = document.querySelector(`gcds-radio[name="${element.name}"]:checked`);
             return checkedRadio ? checkedRadio.value : null;
-        case 'gcds-radio-group':
-            return element.value;
         default:
             return element.value;
     }
@@ -149,7 +147,6 @@ const evaluateCondition = (dependency, currentValue) => {
 const applyDependencyAction = (element, action, shouldApply, dependency) => {
     let wrapper = findFormGroupWrapper(element);
 
-    // Handle enum values (0 = Require, 1 = Show, 2 = Hide, etc.)
     switch (action) {
         case 0: // Require
             setRequired(element, shouldApply);
@@ -157,39 +154,85 @@ const applyDependencyAction = (element, action, shouldApply, dependency) => {
             
         case 1: // Show
             toggleVisibility(wrapper, shouldApply);
+            if (shouldApply) {
+                // reinitializeGCDSComponent(element);
+            }
             break;
             
         case 2: // Hide
             toggleVisibility(wrapper, !shouldApply);
+            if (!shouldApply) {
+                // reinitializeGCDSComponent(element);
+            }
             break;
             
         case 3: // Enable
             toggleDisabled(element, !shouldApply);
+            // reinitializeGCDSComponent(element);
             break;
             
         case 4: // Disable
             toggleDisabled(element, shouldApply);
+            // reinitializeGCDSComponent(element);
             break;
             
         case 5: // ClearValue
             if (shouldApply) {
                 clearElementValue(element);
+                // reinitializeGCDSComponent(element);
             }
             break;
             
         case 6: // SetValue
             if (shouldApply && dependency.setValue) {
                 setElementValue(element, dependency.setValue);
+                // reinitializeGCDSComponent(element);
             }
             break;
             
         default:
             console.warn(`Unsupported action: ${action}`);
     }
+};
 
-    // Trigger change event for cascading dependencies
-    if (shouldApply) {
-        triggerChangeEvent(element);
+/**
+ * Reinitialize a GCDS component without cloning
+ */
+const reinitializeGCDSComponent = (element) => {
+    if (!element || !element.tagName.toLowerCase().startsWith('gcds-')) return;
+    try {
+        // First check if element is in the DOM
+        if (!element.parentNode) {
+            console.log(element);
+            console.warn('Cannot reinitialize detached element:', element);
+            return;
+        }
+
+        // Store current state
+        const currentValue = getGCDSValue(element);
+        const isRequired = element.hasAttribute('required');
+        const isDisabled = element.hasAttribute('disabled');
+
+        // Create and configure clone
+        const clone = element.cloneNode(true);
+        
+        // Copy the current state to the clone
+        if (isRequired) clone.setAttribute('required', '');
+        if (isDisabled) clone.setAttribute('disabled', '');
+        
+        // Replace the element
+        element.parentNode.replaceChild(clone, element);
+
+        // Ensure the value is properly set after reinitialization
+        if (currentValue !== null && currentValue !== undefined) {
+            setTimeout(() => {
+                setElementValue(clone, currentValue);
+            }, 0);
+        }
+
+        return clone; // Return the new element for reference
+    } catch (error) {
+        console.error('Error reinitializing GCDS component:', error);
     }
 };
 
@@ -213,13 +256,19 @@ const findFormGroupWrapper = (element) => {
 };
 
 /**
- * Toggle element visibility
+ * Toggle element visibility using classes instead of inline styles
  */
 const toggleVisibility = (element, show) => {
+    if (!element) return;
+    
     if (show) {
-        element.style.removeProperty('display');
+        element.classList.remove('gc-form-hidden');
+        // Reinitialize GCDS components when showing
+        element.querySelectorAll('[class^="gcds-"]').forEach(gcdsElement => {
+            reinitializeGCDSComponent(gcdsElement);
+        });
     } else {
-        element.style.setProperty('display', 'none');
+        element.classList.add('gc-form-hidden');
     }
 };
 
@@ -237,23 +286,29 @@ const toggleDisabled = (element, disabled) => {
  * Set required state for an element
  */
 const setRequired = (element, required) => {
-    if (!element || element.required === required) return;
-
+    if (!element) return;
     try {
-        // For GCDS components, try to set the required attribute directly
-        if (element.tagName.toLowerCase().startsWith('gcds-')) {
-            element.required = required;
-            element.setAttribute('required', required);
-            return;
+
+        const clone = element.cloneNode(true);
+
+        if (clone.tagName.toLowerCase().startsWith('gcds-')) {
+            if (required) {
+                clone.setAttribute('required', '');
+            } else {
+                clone.removeAttribute('required');
+            }
+        } else {
+            // For native elements
+            clone.required = required;
+            if (required) {
+                clone.setAttribute('required', '');
+            } else {
+                clone.removeAttribute('required');
+            }
         }
 
-        // For native elements, set both the property and attribute
-        element.required = required;
-        if (required) {
-            element.setAttribute('required', '');
-        } else {
-            element.removeAttribute('required');
-        }
+        element.parentNode.replaceChild(clone, element);
+
     } catch (error) {
         console.warn('Error setting required state:', error);
     }
@@ -282,73 +337,3 @@ const setElementValue = (element, value) => {
     }
     triggerChangeEvent(element);
 };
-
-/**
- * Get the current value of an element
- */
-const getElementValue = (element) => {
-    if (element.type === 'checkbox') {
-        if (element.name) {
-            // For checkbox groups, get all checked values
-            const checkboxes = document.querySelectorAll(`input[name="${element.name}"]:checked`);
-            return Array.from(checkboxes).map(cb => cb.value);
-        }
-        return element.checked;
-    }
-    if (element.type === 'radio') {
-        const checkedRadio = document.querySelector(`input[name="${element.name}"]:checked`);
-        return checkedRadio ? checkedRadio.value : null;
-    }
-    return element.value;
-};
-
-/**
- * Copy event listeners from one element to another
- */
-const copyEventListeners = (oldElement, newElement) => {
-    const listeners = getEventListeners(oldElement);
-    listeners.forEach(({ type, listener, options }) => {
-        newElement.addEventListener(type, listener, options);
-    });
-};
-
-/**
- * Trigger a change event on an element
- */
-const triggerChangeEvent = (element) => {
-    // Trigger native change event
-    const changeEvent = new Event('change', { bubbles: true });
-    element.dispatchEvent(changeEvent);
-
-    // Trigger GCDS change event
-    const gcdsChangeEvent = new CustomEvent('gcdsChange', {
-        bubbles: true,
-        detail: { value: getElementValue(element) }
-    });
-    element.dispatchEvent(gcdsChangeEvent);
-};
-
-/**
- * Get all event listeners attached to an element
- */
-const getEventListeners = (element) => {
-    const listeners = [];
-    const elementPrototype = Element.prototype;
-    const addEventListenerOriginal = elementPrototype.addEventListener;
-
-    // Override addEventListener to capture listeners
-    elementPrototype.addEventListener = function (type, listener, options) {
-        listeners.push({ type, listener, options });
-        addEventListenerOriginal.call(this, type, listener, options);
-    };
-
-    // Clone the element to trigger its event bindings
-    element.cloneNode(true);
-
-    // Restore original addEventListener
-    elementPrototype.addEventListener = addEventListenerOriginal;
-
-    return listeners;
-};
-
-
