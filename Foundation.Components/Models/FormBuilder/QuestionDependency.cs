@@ -35,7 +35,7 @@ namespace Foundation.Components.Models.FormBuilder
         public DependencyAction Action { get; set; }
 
         /// <summary>
-        /// Gets or sets the value to set when the SetValue action is triggered.
+        /// Gets or sets the value to set when the <see cref="DependencyAction.SetValue"/> action is triggered.
         /// </summary>
         public string? SetValue { get; set; }
     }
@@ -58,12 +58,22 @@ namespace Foundation.Components.Models.FormBuilder
         /// Hide the dependent question.
         /// </summary>
         Hide,
-        
+        /// <summary>
+        /// Enable the dependent question.
+        /// </summary>
         Enable,
+        /// <summary>
+        /// Disable the dependent question.
+        /// </summary>
         Disable,
+        /// <summary>
+        /// Clear the value of the dependent question.
+        /// </summary>
         ClearValue,
+        /// <summary>
+        /// Set the value of the dependent question.
+        /// </summary>
         SetValue
-
     }
 
 }
