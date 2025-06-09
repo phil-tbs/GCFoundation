@@ -1,15 +1,14 @@
 ﻿using System.Globalization;
 using System.Reflection;
-using System.Text;
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers.FDCP
 {
     /// <summary>
-    /// A tag helper for rendering a group of checkboxes within a fieldset. It binds to a model property
-    /// and renders a list of checkbox elements based on the provided items. It also handles 
-    /// validation, localization of labels and hints, and setting the selected values based on the model.
+    /// A tag helper for rendering a group of checkboxes using the gcds-checkboxes component.
+    /// It binds to a model property and renders checkboxes based on the provided items.
     /// </summary>
     [HtmlTargetElement("fdcp-checkboxes", Attributes = "for, items")]
     public class FDCPCheckboxesTagHelper : FDCPBaseFormComponentTagHelper
@@ -21,12 +20,18 @@ namespace Foundation.Components.TagHelpers.FDCP
         [HtmlAttributeName("items")]
         public IEnumerable<SelectListItem> Items { get; set; } = new List<SelectListItem>();
 
+        /// <summary>
+        /// Gets or sets whether the checkbox group is required.
+        /// </summary>
+        [HtmlAttributeName("required")]
+        public bool IsRequired { get; set; }
+
         /// <inheritdoc/>
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             ArgumentNullException.ThrowIfNull(output, nameof(output));
 
-            base.Process(context, output);
+            //base.Process(context, output);
 
             if (For == null)
             {
@@ -38,35 +43,39 @@ namespace Foundation.Components.TagHelpers.FDCP
 
             if (propertyInfo == null)
             {
-                throw new InvalidOperationException("Missing proprities");
+                throw new InvalidOperationException("Missing properties");
             }
 
-            string label = GetLocalizedLabel(propertyInfo);
+            string legend = GetLocalizedLabel(propertyInfo);
             string hint = GetLocalizedHint(propertyInfo);
 
             // Retrieve selected values (if any)
             var selectedValues = For.Model as List<string> ?? new List<string>();
 
-            output.TagName = "gcds-fieldset";
+            output.TagName = "gcds-checkboxes";
             output.TagMode = TagMode.StartTagAndEndTag;
-            output.Attributes.SetAttribute("fieldset-id", fieldName);
-            output.Attributes.SetAttribute("legend", label);
-            output.Attributes.SetAttribute("hint", hint);
 
-            var sb = new StringBuilder();
-            foreach (var item in Items)
+            // Convert SelectListItems to the required options format
+            var options = Items.Select(item => new
             {
-                bool isChecked = selectedValues.Contains(item.Value);
+                id = $"{fieldName}_{item.Value}",
+                label = item.Text,
+                value = item.Value,
+                @checked = selectedValues.Contains(item.Value),
+            });
 
-                sb.Append(CultureInfo.InvariantCulture, $@"<gcds-checkbox checkbox-id=""{fieldName}_{item.Value}""
-                  label=""{item.Text}""
-                  name=""{fieldName}""
-                  value=""{item.Value}""
-                  {(isChecked ? "checked" : "")} 
-                ></gcds-checkbox>");
+            AddAttributeIfNotNull(output, "name", fieldName);
+            AddAttributeIfNotNull(output, "legend", legend);
+            AddAttributeIfNotNull(output, "hint", hint);
+            AddAttributeIfNotNull(output, "options", JsonSerializer.Serialize(options));
+
+            if (IsRequired)
+            {
+                output.Attributes.SetAttribute("required", "");
             }
 
-            output.Content.SetHtmlContent(sb.ToString());
+            // Clear the content since we're using the options attribute
+            output.Content.SetHtmlContent(string.Empty);
         }
     }
 }

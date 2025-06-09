@@ -12,7 +12,7 @@ namespace Foundation.Components.TagHelpers.FDCP
     /// A base class for form components that provides functionality for binding model properties, 
     /// performing validation, and adding common attributes like labels and hints to the HTML output.
     /// </summary>
-    public abstract class FDCPBaseFormComponentTagHelper : TagHelper
+    public abstract class FDCPBaseFormComponentTagHelper : BaseTagHelper
     {
         /// <summary>
         /// Options for serializing JSON property names in camel case.
