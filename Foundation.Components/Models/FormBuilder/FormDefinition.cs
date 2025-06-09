@@ -21,11 +21,19 @@ namespace Foundation.Components.Models.FormBuilder
         /// </summary>
         public required string Title { get; set; }
 
-
+        /// <summary>
+        /// Gets or sets the form action URL or endpoint.
+        /// </summary>
         public required string Action { get; set; }
 
+        /// <summary>
+        /// Gets or sets the HTTP method used to submit the form (e.g., "post" or "get").
+        /// </summary>
         public required string Methode { get; set; } = "post";
 
+        /// <summary>
+        /// Gets or sets the text displayed on the form's submit button.
+        /// </summary>
         public required string SubmithButtonText { get; set; } = "Submit";
 
         /// <summary>

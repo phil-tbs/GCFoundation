@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.Reflection;
+using System.Text;
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;
@@ -7,11 +8,11 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 namespace Foundation.Components.TagHelpers.FDCP
 {
     /// <summary>
-    /// A tag helper for rendering a group of checkboxes using the gcds-checkboxes component.
-    /// It binds to a model property and renders checkboxes based on the provided items.
+    /// Renders a custom radio button component wrapped in a `gcds-fieldset` element.
+    /// Use &lt;fdcp-radio&gt; in your Razor views to generate a radio button group.
     /// </summary>
-    [HtmlTargetElement("fdcp-checkboxes", Attributes = "for, items")]
-    public class FDCPCheckboxesTagHelper : FDCPBaseFormComponentTagHelper
+    [HtmlTargetElement("fdcp-radios", Attributes = "for, items")]
+    public class FDCPRadiosTagHelper : FDCPBaseFormComponentTagHelper
     {
         /// <summary>
         /// The list of items to be rendered as checkboxes.
@@ -50,7 +51,7 @@ namespace Foundation.Components.TagHelpers.FDCP
             // Retrieve selected values (if any)
             var selectedValues = For.Model as List<string> ?? new List<string>();
 
-            output.TagName = "gcds-checkboxes";
+            output.TagName = "gcds-radios";
             output.TagMode = TagMode.StartTagAndEndTag;
 
             // Convert SelectListItems to the required options format
