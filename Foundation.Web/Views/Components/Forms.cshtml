@@ -36,11 +36,9 @@ else
 
             <fdcp-radio for="@Model.Gender" items="@Model.GenderOptions" />
 
-            <fdcp-checkboxes for="@Model.SelectedInterests" items="@Model.InterestOptions" />
+            <fdcp-checkboxes for="@Model.SelectedInterests" items="@Model.InterestOptions" required="true" />
 
-            <fdcp-input for="@Model.AgreeToTerms">
-                I agree to the terms and conditions
-            </fdcp-input>
+            <fdcp-checkbox for="@Model.AgreeToTerms" required="true" />
 
             <gcds-button type="submit">Submit</gcds-button>
 
@@ -67,11 +65,13 @@ else
 
 <fdcp-radio for=""@Model.Gender"" items=""@Model.GenderOptions"" />
 
-<fdcp-checkboxes for=""@Model.SelectedInterests"" items=""@Model.InterestOptions"" />
+<fdcp-checkboxes for=""@Model.SelectedInterests"" items=""@Model.InterestOptions"" required=""true"" />
 
-<fdcp-input for=""@Model.AgreeToTerms"">
-    I agree to the terms and conditions
-</fdcp-input>
+<gcds-checkbox checkbox-id=""agreeToTerms"" 
+              label=""I agree to the terms and conditions""
+              name=""@nameof(Model.AgreeToTerms)""
+              value=""true""
+              required=""true"" />
 
 <gcds-button type=""submit"">Submit</gcds-button>
 

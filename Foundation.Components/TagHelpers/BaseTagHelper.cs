@@ -46,7 +46,11 @@ namespace Foundation.Components.TagHelpers
                 }
                 else
                 {
-                    output.Attributes.SetAttribute(attributeName, attributeValue.ToString());
+
+                    if (!string.IsNullOrEmpty(attributeValue.ToString()))
+                    {
+                        output.Attributes.SetAttribute(attributeName, attributeValue.ToString());
+                    }
                 }
 
 
