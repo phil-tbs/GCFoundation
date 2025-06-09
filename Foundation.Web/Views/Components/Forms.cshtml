@@ -67,11 +67,7 @@ else
 
 <fdcp-checkboxes for=""@Model.SelectedInterests"" items=""@Model.InterestOptions"" required=""true"" />
 
-<gcds-checkbox checkbox-id=""agreeToTerms"" 
-              label=""I agree to the terms and conditions""
-              name=""@nameof(Model.AgreeToTerms)""
-              value=""true""
-              required=""true"" />
+<fdcp-checkbox for=""@Model.AgreeToTerms"" required=""true"" />
 
 <gcds-button type=""submit"">Submit</gcds-button>
 
