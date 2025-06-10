@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-using System.Reflection;
-using System.Text;
+﻿using System.Reflection;
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;

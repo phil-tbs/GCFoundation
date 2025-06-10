@@ -1,4 +1,4 @@
-﻿using Foundation.Components.TagHelpers;
+﻿using Foundation.Components.TagHelpers.GCDS;
 
 namespace Foundation.Components.Enums
 {

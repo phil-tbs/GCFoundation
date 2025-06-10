@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Foundation.Components.Models.FormBuilder;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,7 +31,7 @@ namespace Foundation.Components.Examples
         private async Task ProcessFormData(FormViewModel viewModel)
         {
             // Your form processing logic here
-            await Task.CompletedTask;
+            await Task.CompletedTask.ConfigureAwait(false);
         }
     }
-} 
+}
