@@ -18,6 +18,7 @@
 		<RepositoryUrl>https://dev.azure.com/foc-poc/EGCS/_git/Foundation</RepositoryUrl>
 		<IncludeSymbols>true</IncludeSymbols>
 		<IncludeSource>true</IncludeSource>
+		<StaticWebAssetBasePath>_content/$(PackageId)</StaticWebAssetBasePath>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -80,39 +81,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<!-- Include all Views in Shared Components -->
-		<EmbeddedResource Include="Views\**\*.*" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Compile Remove="wwwroot\scss\**" />
-		<Content Remove="wwwroot\scss\**" />
-		<EmbeddedResource Remove="wwwroot\scss\**" />
-		<None Remove="wwwroot\scss\**" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<Content Remove="Views\Shared\_ViewImports.cshtml" />
-	</ItemGroup>
-
-
-	<ItemGroup>
 		<Content Update="Views\Shared\Components\Navigation\GCDSBreadcrumbs.cshtml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</Content>
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="wwwroot\images\Icons\" />
-		<Folder Include="wwwroot\images\splash\" />
-		<Folder Include="wwwroot\lib\bootstrap\" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<ProjectReference Include="..\Foundation.Common\Foundation.Common.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
+		<EmbeddedResource Include="Views\**\*.*" />
 		<EmbeddedResource Update="Views\Language\Index.cshtml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
@@ -126,6 +99,10 @@
 		<Content Include="wwwroot\**\*.png" Pack="true" PackagePath="staticwebassets\%(RecursiveDir)%(Filename)%(Extension)" />
 		<Content Include="wwwroot\**\*.jpg" Pack="true" PackagePath="staticwebassets\%(RecursiveDir)%(Filename)%(Extension)" />
 		<Content Include="wwwroot\**\*.svg" Pack="true" PackagePath="staticwebassets\%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Foundation.Common\Foundation.Common.csproj" />
 	</ItemGroup>
 
 </Project>
