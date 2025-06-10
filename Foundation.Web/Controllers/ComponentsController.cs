@@ -1,10 +1,8 @@
 ﻿using Foundation.Components.Controllers;
 using Foundation.Components.Models.FormBuilder;
-using Foundation.Components.Validation;
 using Foundation.Web.Models;
 using Foundation.Web.Resources;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Localization;
 
 namespace Foundation.Web.Controllers
 {
@@ -104,7 +102,7 @@ namespace Foundation.Web.Controllers
             {
                 Id = "demo-form",
                 Title = "Dynamic Form Demo",
-                Action = Url.Action("SubmitFormBuilder", "Components"),
+                Action = Url.Action("SubmitFormBuilder", "Components") ?? "",
                 Methode = "post",
                 SubmithButtonText = "Submit Form",
                 Sections = new List<FormSection>

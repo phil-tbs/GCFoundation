@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Foundation.Components.Models.FormBuilder
+﻿namespace Foundation.Components.Models.FormBuilder
 {
     /// <summary>
     /// Represents an option for a form question, such as a choice in a dropdown or radio button group.
