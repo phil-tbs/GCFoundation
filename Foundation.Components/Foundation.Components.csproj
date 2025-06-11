@@ -8,6 +8,7 @@
 	<NeutralLanguage>en</NeutralLanguage>
 	<AnalysisMode>All</AnalysisMode>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<StaticWebAssetsEnabled>true</StaticWebAssetsEnabled>
 
 	<PackageId>Foundation.Components</PackageId>
 	<Version>1.0.0</Version>
@@ -18,8 +19,6 @@
 	<RepositoryUrl>https://dev.azure.com/foc-poc/EGCS/_git/Foundation</RepositoryUrl>
 	<IncludeSymbols>true</IncludeSymbols>
 	<IncludeSource>true</IncludeSource>
-	<StaticWebAssetBasePath>_content/$(PackageId)</StaticWebAssetBasePath>
-	<GenerateStaticWebAssetsManifest>true</GenerateStaticWebAssetsManifest>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -87,13 +86,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="wwwroot\**\*.*">
-			<Pack>true</Pack>
-			<PackagePath>staticwebassets\$(PackageId)\</PackagePath>
-		</None>
-	</ItemGroup>
-
-	<ItemGroup>
 		<Compile Remove="wwwroot\scss\**" />
 		<Content Remove="wwwroot\scss\**" />
 		<EmbeddedResource Remove="wwwroot\scss\**" />
@@ -101,6 +93,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Content Remove="package-lock.json" />
+	  <Content Remove="package.json" />
 	  <Content Remove="Views\Shared\_ViewImports.cshtml" />
 	</ItemGroup>
 
@@ -115,6 +109,11 @@
 	  <Folder Include="wwwroot\images\Icons\" />
 	  <Folder Include="wwwroot\images\splash\" />
 	  <Folder Include="wwwroot\lib\bootstrap\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="package-lock.json" />
+	  <None Include="package.json" />
 	</ItemGroup>
 
 	<ItemGroup>
