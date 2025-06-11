@@ -85,10 +85,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Remove="wwwroot\scss\**" />
-	  <Content Remove="wwwroot\scss\**" />
-	  <EmbeddedResource Remove="wwwroot\scss\**" />
-	  <None Remove="wwwroot\scss\**" />
+		<None Include="wwwroot\css\**\*.css">
+			<Pack>true</Pack>
+			<PackagePath>staticwebassets\css</PackagePath>
+		</None>
+		<None Include="wwwroot\js\**\*.js">
+			<Pack>true</Pack>
+			<PackagePath>staticwebassets\js</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Remove="wwwroot\scss\**" />
+		<Content Remove="wwwroot\scss\**" />
+		<EmbeddedResource Remove="wwwroot\scss\**" />
+		<None Remove="wwwroot\scss\**" />
 	</ItemGroup>
 
 	<ItemGroup>
