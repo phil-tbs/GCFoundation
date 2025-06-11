@@ -18,6 +18,8 @@
 	<RepositoryUrl>https://dev.azure.com/foc-poc/EGCS/_git/Foundation</RepositoryUrl>
 	<IncludeSymbols>true</IncludeSymbols>
 	<IncludeSource>true</IncludeSource>
+	<StaticWebAssetBasePath>_content/$(PackageId)</StaticWebAssetBasePath>
+	<GenerateStaticWebAssetsManifest>true</GenerateStaticWebAssetsManifest>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -85,13 +87,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="wwwroot\css\**\*.css">
+		<None Include="wwwroot\**\*.*">
 			<Pack>true</Pack>
-			<PackagePath>staticwebassets\css</PackagePath>
-		</None>
-		<None Include="wwwroot\js\**\*.js">
-			<Pack>true</Pack>
-			<PackagePath>staticwebassets\js</PackagePath>
+			<PackagePath>staticwebassets\$(PackageId)\</PackagePath>
 		</None>
 	</ItemGroup>
 
