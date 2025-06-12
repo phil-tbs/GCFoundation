@@ -24,6 +24,8 @@ namespace Foundation.Components.Validation
         /// </returns>
         protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
         {
+            ArgumentNullException.ThrowIfNull(validationContext);
+
             if (value is not FormDefinition form)
             {
                 return new ValidationResult("This attribute can only be used on FormDefinition properties.");
@@ -38,10 +40,10 @@ namespace Foundation.Components.Validation
 
             // Create validator and validate dependencies
             var validator = new FormDependencyValidator(form, formData);
-            var validationResults = validator.Validate();
+            var validationResults = validator.Validate().ToList();
 
             // If there are any validation errors, combine them into a single result
-            if (validationResults.Any())
+            if (validationResults.Count > 0)
             {
                 var errorMessages = validationResults
                     .Select(r => r.ErrorMessage)

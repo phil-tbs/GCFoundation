@@ -49,7 +49,7 @@ namespace Foundation.Components.TagHelpers.FDCP
         /// </summary>
         /// <param name="context">The context for the tag helper.</param>
         /// <param name="output">The output for the tag helper.</param>
-        public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
+        public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             ArgumentNullException.ThrowIfNull(output, nameof(output));
 
@@ -57,11 +57,11 @@ namespace Foundation.Components.TagHelpers.FDCP
             output.Attributes.SetAttribute("class", "gc-form");
 
             var content = new StringBuilder();
-            await BuildFormContentAsync(content);
+            BuildFormContent(content);
             output.Content.SetHtmlContent(content.ToString());
         }
 
-        private async Task BuildFormContentAsync(StringBuilder content)
+        private void BuildFormContent(StringBuilder content)
         {
             // Form wrapper
             content.AppendFormat(CultureInfo.InvariantCulture, 
@@ -74,7 +74,7 @@ namespace Foundation.Components.TagHelpers.FDCP
             // Form sections
             foreach (var section in Form.Sections)
             {
-                content.AppendLine($@"<gcds-fieldset 
+                content.AppendLine(CultureInfo.InvariantCulture, $@"<gcds-fieldset 
                     fieldset-id='{section.Title}' 
                     legend='{section.Title}' 
                     legend-size='h3' 
@@ -82,14 +82,14 @@ namespace Foundation.Components.TagHelpers.FDCP
 
                 foreach (var question in section.Questions)
                 {
-                    content.AppendLine(await RenderQuestionAsync(question));
+                    content.AppendLine(RenderQuestion(question));
                 }
 
                 content.AppendLine("</gcds-fieldset>");
             }
 
             // Submit button
-            content.AppendLine($@"<gcds-button 
+            content.AppendLine(CultureInfo.InvariantCulture, $@"<gcds-button 
                 type='submit' 
                 button-role='primary'>
                 {Form.SubmithButtonText}
@@ -98,7 +98,7 @@ namespace Foundation.Components.TagHelpers.FDCP
             content.AppendLine("</form>");
         }
 
-        private async Task<string> RenderQuestionAsync(FormQuestion question)
+        private static string RenderQuestion(FormQuestion question)
         {
             string language = LanguageUtility.GetCurrentApplicationLanguage();
             string isRequired = question.IsRequired ? "required" : "";
@@ -175,9 +175,9 @@ namespace Foundation.Components.TagHelpers.FDCP
                     {commonAttributes}>
                 </gcds-input>",
 
-                QuestionType.Radio => await BuildRadioGroupAsync(question, language, commonAttributes),
+                QuestionType.Radio => BuildRadioGroup(question, language, commonAttributes),
 
-                QuestionType.Checkbox => await BuildCheckboxesAsync(question, language, commonAttributes),
+                QuestionType.Checkbox => BuildCheckboxes(question, language, commonAttributes),
 
                 QuestionType.Dropdown => $@"<gcds-select
                     select-id='{question.Id}'
@@ -211,7 +211,7 @@ namespace Foundation.Components.TagHelpers.FDCP
             }}</div>";
         }
 
-        private async Task<string> BuildRadioGroupAsync(FormQuestion question, string lang, string commonAttributes)
+        private static string BuildRadioGroup(FormQuestion question, string lang, string commonAttributes)
         {
             // Convert options to the required format for gcds-radios
             var options = question.Options?.Select(option => new
@@ -238,19 +238,19 @@ namespace Foundation.Components.TagHelpers.FDCP
             </gcds-radios>";
         }
 
-        private string BuildOptions(IEnumerable<QuestionOption>? options)
+        private static string BuildOptions(IEnumerable<QuestionOption>? options)
         {
             if (options == null) return string.Empty;
 
             var sb = new StringBuilder();
             foreach (var option in options)
             {
-                sb.AppendLine($"<option value='{option.Value}'>{option.Label}</option>");
+                sb.AppendLine(CultureInfo.InvariantCulture, $"<option value='{option.Value}'>{option.Label}</option>");
             }
             return sb.ToString();
         }
 
-        private async Task<string> BuildCheckboxesAsync(FormQuestion question, string lang, string commonAttributes)
+        private static string BuildCheckboxes(FormQuestion question, string lang, string commonAttributes)
         {
             ArgumentNullException.ThrowIfNull(question.Options, nameof(question.Options));
             

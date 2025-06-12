@@ -58,6 +58,7 @@ namespace Foundation.Web.Controllers
         /// </summary>
         /// <returns>An HTTP 200 OK result.</returns>
         [HttpPost("refresh")]
+        [ValidateAntiForgeryToken]
         public IActionResult RefreshSession()
         {
             HttpContext.Session.SetString("KeepAlive", DateTime.UtcNow.ToString("o", CultureInfo.InvariantCulture));
