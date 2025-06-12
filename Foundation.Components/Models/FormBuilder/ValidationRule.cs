@@ -34,7 +34,7 @@ namespace Foundation.Components.Models.FormBuilder
         /// Gets or sets the localized error messages.
         /// The key is the language code (e.g., "en", "fr"), and the value is the error message.
         /// </summary>
-        public Dictionary<string, string> ErrorMessages { get; set; } = new();
+        public Dictionary<string, string> ErrorMessages { get; } = new();
 
         /// <summary>
         /// Validates the provided value against this rule.
@@ -70,6 +70,7 @@ namespace Foundation.Components.Models.FormBuilder
         /// <returns>The localized error message or a default message if not found.</returns>
         public string GetErrorMessage(string language)
         {
+            ArgumentNullException.ThrowIfNull(language, nameof(language));
             return ErrorMessages.TryGetValue(language.ToLowerInvariant(), out var message)
                 ? message
                 : ErrorMessages.TryGetValue("en", out var defaultMessage)

@@ -51,11 +51,11 @@ namespace Foundation.Components.TagHelpers.FDCP
             output.Attributes.SetAttribute("class", "gc-form");
 
             var content = new StringBuilder();
-            BuildFormContentAsync(content);
+            BuildFormContent(content);
             output.Content.SetHtmlContent(content.ToString());
         }
 
-        private void BuildFormContentAsync(StringBuilder content)
+        private void BuildFormContent(StringBuilder content)
         {
             // Form wrapper
             content.AppendFormat(CultureInfo.InvariantCulture,
@@ -76,7 +76,7 @@ namespace Foundation.Components.TagHelpers.FDCP
 
                 foreach (var question in section.Questions)
                 {
-                    content.AppendLine(RenderQuestionAsync(question));
+                    content.AppendLine(RenderQuestion(question));
                 }
 
                 content.AppendLine("</gcds-fieldset>");
@@ -92,7 +92,7 @@ namespace Foundation.Components.TagHelpers.FDCP
             content.AppendLine("</form>");
         }
 
-        private static string RenderQuestionAsync(FormQuestion question)
+        private static string RenderQuestion(FormQuestion question)
         {
             string language = LanguageUtility.GetCurrentApplicationLanguage();
             string isRequired = question.IsRequired ? "required" : "";
@@ -169,9 +169,9 @@ namespace Foundation.Components.TagHelpers.FDCP
                     {commonAttributes}>
                 </gcds-input>",
 
-                QuestionType.Radio => BuildRadioGroupAsync(question, language, commonAttributes),
+                QuestionType.Radio => BuildRadioGroup(question, language, commonAttributes),
 
-                QuestionType.Checkbox => BuildCheckboxesAsync(question, language, commonAttributes),
+                QuestionType.Checkbox => BuildCheckboxes(question, language, commonAttributes),
 
                 QuestionType.Dropdown => $@"<gcds-select
                     select-id='{question.Id}'
@@ -205,7 +205,7 @@ namespace Foundation.Components.TagHelpers.FDCP
             }}</div>";
         }
 
-        private static string BuildRadioGroupAsync(FormQuestion question, string lang, string commonAttributes)
+        private static string BuildRadioGroup(FormQuestion question, string lang, string commonAttributes)
         {
             // Convert options to the required format for gcds-radios
             var options = question.Options?.Select(option => new
@@ -244,7 +244,7 @@ namespace Foundation.Components.TagHelpers.FDCP
             return sb.ToString();
         }
 
-        private static string BuildCheckboxesAsync(FormQuestion question, string lang, string commonAttributes)
+        private static string BuildCheckboxes(FormQuestion question, string lang, string commonAttributes)
         {
             ArgumentNullException.ThrowIfNull(question.Options, nameof(question.Options));
 

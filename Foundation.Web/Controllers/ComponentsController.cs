@@ -12,14 +12,12 @@ namespace Foundation.Web.Controllers
     [Route("components")]
     public class ComponentsController : FoundationBaseController
     {
-
         private readonly ILogger<ComponentsController> _logger;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ComponentsController"/> class.
         /// </summary>
         /// <param name="logger">The logger used for logging actions and events in this controller.</param>
-
         public ComponentsController(ILogger<ComponentsController> logger)
             : base(logger)
         {
@@ -29,7 +27,9 @@ namespace Foundation.Web.Controllers
         /// <summary>
         /// Displays the main components overview page.
         /// </summary>
-        /// <returns>The components index view.</returns>
+        /// <returns>
+        /// The components index view.
+        /// </returns>
         [HttpGet("")]
         public IActionResult Index()
         {
@@ -41,7 +41,9 @@ namespace Foundation.Web.Controllers
         /// Displays a specific component view based on the component name.
         /// </summary>
         /// <param name="componentName">The name of the component to load.</param>
-        /// <returns>The view for the specified component.</returns>
+        /// <returns>
+        /// The view for the specified component.
+        /// </returns>
         [HttpGet("component")]
         public IActionResult GetComponent(string componentName)
         {
@@ -52,7 +54,9 @@ namespace Foundation.Web.Controllers
         /// <summary>
         /// Displays the GC Design System components page.
         /// </summary>
-        /// <returns>The GC Design System view.</returns>
+        /// <returns>
+        /// The GC Design System view.
+        /// </returns>
         [HttpGet("gcds")]
         public IActionResult Gcds()
         {
@@ -63,7 +67,9 @@ namespace Foundation.Web.Controllers
         /// <summary>
         /// Displays the form used to test validation behavior.
         /// </summary>
-        /// <returns>The form validation test view with an empty model.</returns>
+        /// <returns>
+        /// The form validation test view with an empty model.
+        /// </returns>
         [HttpGet("testingForm")]
         public IActionResult FormValidationTest()
         {
@@ -77,14 +83,15 @@ namespace Foundation.Web.Controllers
         /// Handles the POST request to test form validation.
         /// </summary>
         /// <param name="model">The form data submitted by the user.</param>
-        /// <returns>The same view with the model and validation results.</returns>
+        /// <returns>
+        /// The same view with the model and validation results.
+        /// </returns>
         [HttpPost]
         public IActionResult FormValidationTest(FormTestViewModel model)
         {
-
             if (ModelState.IsValid)
             {
-
+                // Add your logic here if needed when the model is valid
             }
 
             return View("Forms", model);
@@ -94,7 +101,9 @@ namespace Foundation.Web.Controllers
         /// Demonstrates a comprehensive example of a dynamic form with various question types and dependencies.
         /// This example showcases all possible dependency actions and their interactions.
         /// </summary>
-        /// <returns>A view containing a form with various input types and complex dependencies.</returns>
+        /// <returns>
+        /// A view containing a form with various input types and complex dependencies.
+        /// </returns>
         [HttpGet("TestFormBuilder")]
         public IActionResult ExampleFormBuilder()
         {
@@ -400,16 +409,24 @@ namespace Foundation.Web.Controllers
             var viewModel = new FormViewModel
             {
                 Form = form,
-                FormData = new Dictionary<string, object?>()
             };
 
             return View("FormBuilder", viewModel);
         }
 
+        /// <summary>
+        /// Handles the submission of the dynamic form builder example.
+        /// Validates the form data and processes it if valid.
+        /// </summary>
+        /// <param name="viewModel">The view model containing form definition and user input.</param>
+        /// <returns>
+        /// Redirects to the example form builder view with a success message if valid; otherwise, returns the form view with validation errors.
+        /// </returns>
         [HttpPost("SubmitFormBuilder")]
         [ValidateAntiForgeryToken]
         public IActionResult SubmitFormBuilder([FromForm] FormViewModel viewModel)
         {
+            ArgumentNullException.ThrowIfNull(viewModel, nameof(viewModel));
             // Add the form data to the validation context
             var validationContext = new System.ComponentModel.DataAnnotations.ValidationContext(viewModel.Form)
             {

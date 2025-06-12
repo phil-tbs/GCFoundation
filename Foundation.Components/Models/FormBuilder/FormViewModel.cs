@@ -16,6 +16,6 @@ namespace Foundation.Components.Models.FormBuilder
         /// <summary>
         /// Gets or sets the dictionary containing form field values keyed by question ID.
         /// </summary>
-        public Dictionary<string, object?> FormData { get; set; } = new();
+        public Dictionary<string, object?> FormData { get; } = new();
     }
 }

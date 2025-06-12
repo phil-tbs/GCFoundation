@@ -98,7 +98,7 @@ namespace Foundation.Components.Validation
         /// <param name="dependency">The dependency to evaluate.</param>
         /// <param name="sourceValue">The value of the source question.</param>
         /// <returns><c>true</c> if the condition is met; otherwise, <c>false</c>.</returns>
-        private bool EvaluateCondition(QuestionDependency dependency, object? sourceValue)
+        private static bool EvaluateCondition(QuestionDependency dependency, object? sourceValue)
         {
             var triggerValue = dependency.TriggerValue;
 
