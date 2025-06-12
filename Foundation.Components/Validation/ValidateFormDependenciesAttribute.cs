@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using Foundation.Components.Models.FormBuilder;
 
 namespace Foundation.Components.Validation
@@ -59,4 +56,4 @@ namespace Foundation.Components.Validation
             return ValidationResult.Success;
         }
     }
-} 
+}

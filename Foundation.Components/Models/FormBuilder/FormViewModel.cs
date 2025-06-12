@@ -1,4 +1,3 @@
-using System.ComponentModel.DataAnnotations;
 using Foundation.Components.Validation;
 
 namespace Foundation.Components.Models.FormBuilder
@@ -19,4 +18,4 @@ namespace Foundation.Components.Models.FormBuilder
         /// </summary>
         public Dictionary<string, object?> FormData { get; } = new();
     }
-} 
+}

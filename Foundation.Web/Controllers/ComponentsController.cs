@@ -1,10 +1,8 @@
 ﻿using Foundation.Components.Controllers;
 using Foundation.Components.Models.FormBuilder;
-using Foundation.Components.Validation;
 using Foundation.Web.Models;
 using Foundation.Web.Resources;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Localization;
 
 namespace Foundation.Web.Controllers
 {

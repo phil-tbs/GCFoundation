@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Foundation.Components.Models.FormBuilder;
 using Microsoft.AspNetCore.Mvc;
 
@@ -52,4 +51,4 @@ namespace Foundation.Components.Examples
             await Task.CompletedTask.ConfigureAwait(false);
         }
     }
-} 
+}
