@@ -8,14 +8,23 @@ import concat from 'gulp-concat';
 import babel from 'gulp-babel';
 import rename from 'gulp-rename';
 import autoprefixer from 'gulp-autoprefixer';
+import newer from 'gulp-newer';
+import { deleteAsync } from 'del';
+import plumber from 'gulp-plumber';
+import notify from 'gulp-notify';
+import through2 from 'through2';
 
 const { src, dest, watch, series, parallel } = gulp;
-const sass = gulpSass(dartSass)
+const sass = gulpSass(dartSass);
+
+// Development mode flag
+const isDev = process.env.NODE_ENV === 'development';
 
 // Paths
 const paths = {
     scss: {
-        src: 'wwwroot/src/scss/**/*.scss',
+        // Only process main SCSS files (not partials)
+        src: 'wwwroot/src/scss/*.scss',
         dest: 'wwwroot/css'
     },
     js: {
@@ -24,14 +33,30 @@ const paths = {
     }
 };
 
+// Error handling
+const errorHandler = {
+    errorHandler: notify.onError({
+        title: 'Error',
+        message: '<%= error.message %>'
+    })
+};
+
+// Clean generated files
+async function clean() {
+    await deleteAsync([
+        paths.scss.dest + '/*',
+        paths.js.dest + '/*'
+    ]);
+}
+
 // Compile SCSS
 function styles() {
     return src(paths.scss.src)
+        .pipe(plumber(errorHandler))
+        .pipe(newer({ dest: paths.scss.dest, ext: '.min.css' }))
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
-        .pipe(autoprefixer({
-            cascade: false
-        }))
+        .pipe(autoprefixer({ cascade: false }))
         .pipe(cleanCSS())
         .pipe(rename({ suffix: '.min' }))
         .pipe(sourcemaps.write('.'))
@@ -41,6 +66,8 @@ function styles() {
 // Bundle and minify JS
 function scripts() {
     return src(paths.js.src)
+        .pipe(plumber(errorHandler))
+        .pipe(newer({ dest: paths.js.dest, ext: '.min.js' }))
         .pipe(sourcemaps.init())
         .pipe(babel({
             presets: ['@babel/preset-env']
@@ -52,21 +79,25 @@ function scripts() {
         .pipe(dest(paths.js.dest));
 }
 
-// Watch files
-export function watchFiles() {
-    watch(paths.scss.src, styles);
-    watch(paths.js.src, scripts);
-}
-
-// Build
+// Build tasks
 export const build = series(
+    clean,
     parallel(styles, scripts)
 );
 
-export const dev = series(
-    build,
-    watchFiles
-);
+// Watch task (run separately with 'gulp watch')
+export const watchTask = function() {
+    // Initial build
+    build();
+    
+    // Then watch for changes
+    watch(paths.scss.src, styles);
+    watch(paths.js.src, scripts);
+};
 
-// Default when you run just "gulp"
+// Default task
 export default build;
+
+function noop() {
+    return through2.obj();
+}
