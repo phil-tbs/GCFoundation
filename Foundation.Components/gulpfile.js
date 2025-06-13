@@ -24,7 +24,7 @@ const isDev = process.env.NODE_ENV === 'development';
 const paths = {
     scss: {
         // Only process main SCSS files (not partials)
-        src: 'wwwroot/src/scss/*.scss',
+        src: 'wwwroot/src/scss/**/*.scss',
         dest: 'wwwroot/css'
     },
     js: {
@@ -55,7 +55,10 @@ function styles() {
         .pipe(plumber(errorHandler))
         .pipe(newer({ dest: paths.scss.dest, ext: '.min.css' }))
         .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sass({
+            includePaths: ['wwwroot/src/scss'],
+            outputStyle: 'compressed'
+        }).on('error', sass.logError))
         .pipe(autoprefixer({ cascade: false }))
         .pipe(cleanCSS())
         .pipe(rename({ suffix: '.min' }))
