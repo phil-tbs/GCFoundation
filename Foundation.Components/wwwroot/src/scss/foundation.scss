@@ -1,9 +1,7 @@
-﻿@use './variables' as vars;
-@use './overwrite';
-@use './components/fdcp-SearchBox';
-@use './components/fdcp-FilterBox';
-@use './components/fdcp-badge';
-@use './components/fdcp-page-heading';
+﻿@use './_variables' as vars;
+@use './_overwrite' as overwrite;
+@use './components' as components;
+
 
 body{
     overflow-x: hidden;

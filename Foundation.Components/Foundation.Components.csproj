@@ -31,10 +31,13 @@
     <WarningLevel>8</WarningLevel>
   </PropertyGroup>
 
-	<Target Name="NpmBuild" BeforeTargets="Build">
-		<Exec Command="npm install" WorkingDirectory="$(ProjectDir)" />
-		<Exec Command="npm run build" WorkingDirectory="$(ProjectDir)" />
-	</Target>
+  <Target Name="NpmInstall" BeforeTargets="Build">
+    <Exec Command="npm install" WorkingDirectory="$(ProjectDir)" />
+  </Target>
+
+  <Target Name="NpmBuild" BeforeTargets="Build" DependsOnTargets="NpmInstall">
+    <Exec Command="npm run build" WorkingDirectory="$(ProjectDir)" />
+  </Target>
 
   <ItemGroup>
 	<FrameworkReference Include="Microsoft.AspNetCore.App" />
