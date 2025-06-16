@@ -197,7 +197,6 @@ const reinitializeGCDSComponent = (element) => {
     try {
         // First check if element is in the DOM
         if (!element.parentNode) {
-            console.log(element);
             console.warn('Cannot reinitialize detached element:', element);
             return;
         }
