@@ -155,38 +155,32 @@ const applyDependencyAction = (element, action, shouldApply, dependency) => {
         case 1: // Show
             toggleVisibility(wrapper, shouldApply);
             if (shouldApply) {
-                // reinitializeGCDSComponent(element);
             }
             break;
             
         case 2: // Hide
             toggleVisibility(wrapper, !shouldApply);
             if (!shouldApply) {
-                // reinitializeGCDSComponent(element);
             }
             break;
             
         case 3: // Enable
             toggleDisabled(element, !shouldApply);
-            // reinitializeGCDSComponent(element);
             break;
             
         case 4: // Disable
             toggleDisabled(element, shouldApply);
-            // reinitializeGCDSComponent(element);
             break;
             
         case 5: // ClearValue
             if (shouldApply) {
                 clearElementValue(element);
-                // reinitializeGCDSComponent(element);
             }
             break;
             
         case 6: // SetValue
             if (shouldApply && dependency.setValue) {
                 setElementValue(element, dependency.setValue);
-                // reinitializeGCDSComponent(element);
             }
             break;
             
@@ -203,7 +197,6 @@ const reinitializeGCDSComponent = (element) => {
     try {
         // First check if element is in the DOM
         if (!element.parentNode) {
-            console.log(element);
             console.warn('Cannot reinitialize detached element:', element);
             return;
         }
@@ -288,8 +281,9 @@ const toggleDisabled = (element, disabled) => {
 const setRequired = (element, required) => {
     if (!element) return;
     try {
-
         const clone = element.cloneNode(true);
+
+        clone.removeAttribute('error-message');
 
         if (clone.tagName.toLowerCase().startsWith('gcds-')) {
             if (required) {
