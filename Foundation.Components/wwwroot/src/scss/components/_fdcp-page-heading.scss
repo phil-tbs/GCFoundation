@@ -11,10 +11,8 @@
     height: 32rem;
     align-items: center;
     z-index: 0;
-
-    &.fdcp-page-header--has-bg {
-        background: lightgray 0px -234px / 100% 238.769% no-repeat
-    }
+    background-size: cover;
+    background-position:center;
 
     .text-container {
         max-width: 70%;
