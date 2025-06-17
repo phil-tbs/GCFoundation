@@ -15,11 +15,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @await RenderSectionAsync("Metas", required: false)
     <title>@ViewData["Title"] - @settings.Value.ApplicationName</title>
     <link href="@StaticResourceUtility.GetImageResourcePath("favicon.ico")" rel="icon" type="image/x-icon">
     <link rel="stylesheet" href="@StaticResourceUtility.GetLibResourcePath("tabulator/dist/css/GCTabulatorTheme.css")" />
     <link rel="stylesheet" href="@StaticResourceUtility.GetCssResourcePath("foundation.min.css")" asp-append-version="true" />
     <link rel="stylesheet" href="@StaticResourceUtility.GetLibResourcePath("prism/css/prism.css")" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
     @{
