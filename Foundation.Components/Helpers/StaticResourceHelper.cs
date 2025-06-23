@@ -1,10 +1,10 @@
 ﻿
-namespace Foundation.Components.Utilities
+namespace Foundation.Components.Helpers
 {
     /// <summary>
     /// Provides utility methods to retrieve the path of static resources (CSS, JS, images, libraries) in the project.
     /// </summary>
-    public static class StaticResourceUtility
+    public static class StaticResourceHelper
     {
         /// <summary>
         /// Gets the full resource path for a given resource relative path.

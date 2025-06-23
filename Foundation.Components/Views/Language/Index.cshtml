@@ -1,6 +1,12 @@
 ﻿@using Foundation.Components.Models
-@using Foundation.Components.Utilities
+@using Foundation.Components.Helpers
 @using System.Security.Cryptography
+@using Microsoft.AspNetCore.Http
+
+
+@inject IHttpContextAccessor HttpContextAccessor
+
+
 @model LanguageChooserModel
 @{
     Layout = null;
@@ -12,6 +18,13 @@
         int index = RandomNumberGenerator.GetInt32(paths.Count);
         randomBackgroundImage = paths[index];
     }
+
+	if (HttpContextAccessor.HttpContext == null)
+	{
+		throw new InvalidOperationException("HttpContext is not available.");
+	}
+
+    string nonce = CspNonceHelper.AddNonceToDirective(HttpContextAccessor.HttpContext, DirectiveType.Style);
 }
 
 <!DOCTYPE html>
@@ -20,40 +33,51 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Canada.ca</title>
-    <link rel="stylesheet" href="@StaticResourceUtility.GetCssResourcePath("LanguageChooserPage.min.css")" asp-append-version="true" />
+    <link rel="stylesheet" href="@StaticResourceHelper.GetCssResourcePath("LanguageChooserPage.min.css")" asp-append-version="true" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" asp-append-version="true" />
-    <link href="@StaticResourceUtility.GetImageResourcePath("favicon.ico")" rel="icon" type="image/x-icon">
+    <link href="@StaticResourceHelper.GetImageResourcePath("favicon.ico")" rel="icon" type="image/x-icon">
 </head>
 <body>
+    
+    <style nonce="@nonce">
+        body{
+            background-size: cover;
+            background-image: url('@randomBackgroundImage');
+        }
+    </style>
+
     <main id="mainContentOfPage">
-        <div id="bg">
-            <img src="@randomBackgroundImage" />
-        </div>
         <div id="choosing-box">
             <div class="header">
+                <h1 translate="no" class="sr-only">@Model?.ApplicationTitleEn / @Model?.ApplicationTitleFr</h1>
                 <div class="logo">
                     <gcds-signature></gcds-signature>
                 </div>
-                <div class="row">
-                    <section class="col-6 text-end pt-3" lang="en">
+                <gcds-grid columns="1fr 1fr" container="sm" equal-row-height="true">
+                    <section class="text-end pt-3" lang="en">
                         <h2 class="sr-only">@Model?.ApplicationTitleEn</h2>
                         <p>
-                            <gcds-button type="link" href="@Model?.EnglishAction">English</gcds-button>
+                            <gcds-button type="link" href="@Model?.EnglishAction" translate="no">English</gcds-button>
                         </p>
                     </section>
-                    <section class="col-6 text-start pt-3" lang="fr">
+                    <section class="text-start pt-3" lang="fr">
                         <h2 class="sr-only">@Model?.ApplicationTitleFr</h2>
                         <p>
-                            <gcds-button type="link" href="@Model?.FrenchAction">French</gcds-button>
+                            <gcds-button type="link" href="@Model?.FrenchAction" translate="no">French</gcds-button>
                         </p>
                     </section>
-                </div>
+                </gcds-grid>
             </div>
             <div class="footer">
-                <div class="row">
-                    <div class="col-8"><a href="@Model?.TermLinkEn">Terms & conditions</a> <span class="fa-solid fa-asterisk"></span> <a href="@Model?.TermLinkFr">Avis</a></div>
-                    <div class="col-4"><gcds-signature type="Wordmark"></gcds-signature></div>
-                </div>
+                <gcds-grid columns="2fr 1fr" container="sm" equal-row-height="true">
+                    <div>
+                    @if (!string.IsNullOrWhiteSpace(Model?.TermLinkEn) || !string.IsNullOrWhiteSpace(Model?.TermLinkFr))
+                    {
+                        <a href="@Model?.TermLinkEn">Terms & conditions</a> <span class="fa-solid fa-asterisk"></span> <a href="@Model?.TermLinkFr">Avis</a>
+                    }
+                    </div>
+                    <div><gcds-signature type="Wordmark"></gcds-signature></div>
+                </gcds-grid>
             </div>
         </div>
     </main>

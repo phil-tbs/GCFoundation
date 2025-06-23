@@ -2,7 +2,7 @@
 @using Foundation.Common.Utilities
 @using Foundation.Components.Enums
 @using Foundation.Components.Setttings
-@using Foundation.Components.Utilities
+@using Foundation.Components.Helpers
 @using Microsoft.AspNetCore.Routing
 @using Microsoft.Extensions.Options
 
@@ -14,7 +14,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - @settings.Value.ApplicationName</title>
-    <link href="@StaticResourceUtility.GetImageResourcePath("favicon.ico")" rel="icon" type="image/x-icon">
+    <link href="@StaticResourceHelper.GetImageResourcePath("favicon.ico")" rel="icon" type="image/x-icon">
 </head>
 <body>
     @{

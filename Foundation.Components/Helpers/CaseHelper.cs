@@ -1,12 +1,12 @@
 ﻿using System.Globalization;
 using System.Text;
 
-namespace Foundation.Components.Utilities
+namespace Foundation.Components.Helpers
 {
     /// <summary>
     /// Provides utility methods for manipulating string cases, including conversion to kebab case.
     /// </summary>
-    public static class CaseUtility
+    public static class CaseHelper
     {
         /// <summary>
         /// Converts the input string from camel case or Pascal case to kebab case (e.g., "CamelCase" -> "camel-case").

@@ -1,6 +1,6 @@
 ﻿using Foundation.Common.Utilities;
 using Foundation.Components.Enums;
-using Foundation.Components.Utilities;
+using Foundation.Components.Helpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Foundation.Components.TagHelpers.GCDS
@@ -59,7 +59,7 @@ namespace Foundation.Components.TagHelpers.GCDS
 
         /// <summary>
         /// Adds an HTML attribute to the <see cref="TagHelperOutput"/> if the provided value is not null.
-        /// The value is converted to kebab-case using <see cref="CaseUtility.ConvertToKebabCase(string)"/>.
+        /// The value is converted to kebab-case using <see cref="CaseHelper.ConvertToKebabCase(string)"/>.
         /// </summary>
         /// <param name="output">The <see cref="TagHelperOutput"/> object representing the tag helper's output.</param>
         /// <param name="attributeName">The name of the HTML attribute to add.</param>
@@ -73,7 +73,7 @@ namespace Foundation.Components.TagHelpers.GCDS
             if (attributeValue != null)
             {
                 string attributeValueString = attributeValue.ToString() ?? string.Empty; // Ensure it's not null
-                output.Attributes.SetAttribute(attributeName, CaseUtility.ConvertToKebabCase(attributeValueString));
+                output.Attributes.SetAttribute(attributeName, CaseHelper.ConvertToKebabCase(attributeValueString));
             }
         }
 
