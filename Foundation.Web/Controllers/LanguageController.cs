@@ -53,6 +53,8 @@ namespace Foundation.Web.Controllers
                 TermLinkFr = "",
             };
 
+            ViewData["Title"] = $"{model.ApplicationTitleEn} / {model.ApplicationTitleFr}";
+
             return View(model);
         }
     }

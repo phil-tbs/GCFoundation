@@ -1,6 +1,6 @@
 ﻿using System.Text;
 using Foundation.Common.Settings;
-using Foundation.Components.Utilities;
+using Foundation.Components.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 
@@ -50,8 +50,8 @@ namespace Foundation.Components.Middleware
                 if (context.Response.ContentType?.Contains("text/html", StringComparison.OrdinalIgnoreCase) == true)
                 {
                     // Get the right url to the CDN or the local folder
-                    string bootstapCss = _foundationComponentsSettings.UsingBootstrapCDN ? _foundationComponentsSettings.BootstrapCSSCDN.ToString() : StaticResourceUtility.GetLibResourcePath("bootstrap/css/bootstrap.min.css");
-                    string bootstapJs = _foundationComponentsSettings.UsingBootstrapCDN ? _foundationComponentsSettings.BootstrapJSCDN.ToString() : StaticResourceUtility.GetLibResourcePath("bootstrap/js/bootstrap.min.js");
+                    string bootstapCss = _foundationComponentsSettings.UsingBootstrapCDN ? _foundationComponentsSettings.BootstrapCSSCDN.ToString() : StaticResourceHelper.GetLibResourcePath("bootstrap/css/bootstrap.min.css");
+                    string bootstapJs = _foundationComponentsSettings.UsingBootstrapCDN ? _foundationComponentsSettings.BootstrapJSCDN.ToString() : StaticResourceHelper.GetLibResourcePath("bootstrap/js/bootstrap.min.js");
 
                     string bootStrapHtml = @$"<link rel=""stylesheet"" href=""{bootstapCss}"">";
 

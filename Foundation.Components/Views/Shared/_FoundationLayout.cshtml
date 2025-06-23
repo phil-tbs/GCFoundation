@@ -2,7 +2,7 @@
 @using Foundation.Common.Utilities
 @using Foundation.Components.Enums
 @using Foundation.Components.Setttings
-@using Foundation.Components.Utilities
+@using Foundation.Components.Helpers
 @using Microsoft.AspNetCore.Routing
 @using Microsoft.Extensions.Options
 @using cloudscribe.Web.Navigation
@@ -17,10 +17,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     @await RenderSectionAsync("Metas", required: false)
     <title>@ViewData["Title"] - @settings.Value.ApplicationName</title>
-    <link href="@StaticResourceUtility.GetImageResourcePath("favicon.ico")" rel="icon" type="image/x-icon">
-    <link rel="stylesheet" href="@StaticResourceUtility.GetLibResourcePath("tabulator/dist/css/GCTabulatorTheme.css")" />
-    <link rel="stylesheet" href="@StaticResourceUtility.GetCssResourcePath("foundation.min.css")" asp-append-version="true" />
-    <link rel="stylesheet" href="@StaticResourceUtility.GetLibResourcePath("prism/css/prism.css")" asp-append-version="true" />
+    <link href="@StaticResourceHelper.GetImageResourcePath("favicon.ico")" rel="icon" type="image/x-icon">
+    <link rel="stylesheet" href="@StaticResourceHelper.GetLibResourcePath("tabulator/dist/css/GCTabulatorTheme.css")" />
+    <link rel="stylesheet" href="@StaticResourceHelper.GetCssResourcePath("foundation.min.css")" asp-append-version="true" />
+    <link rel="stylesheet" href="@StaticResourceHelper.GetLibResourcePath("prism/css/prism.css")" asp-append-version="true" />
     @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
@@ -87,9 +87,9 @@
         @await Html.PartialAsync("Modals/_ExtendSessionModal");
     }
 
-    <script src="@StaticResourceUtility.GetLibResourcePath("prism/js/prism.js")" asp-append-version="true"></script>
-    <script src="@StaticResourceUtility.GetLibResourcePath("tabulator/dist/js/tabulator.min.js")" asp-append-version="true"></script>
-    <script src="@StaticResourceUtility.GetJsResourcePath("foundation.min.js")" asp-append-version="true"></script>
+    <script src="@StaticResourceHelper.GetLibResourcePath("prism/js/prism.js")" asp-append-version="true"></script>
+    <script src="@StaticResourceHelper.GetLibResourcePath("tabulator/dist/js/tabulator.min.js")" asp-append-version="true"></script>
+    <script src="@StaticResourceHelper.GetJsResourcePath("foundation.min.js")" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
