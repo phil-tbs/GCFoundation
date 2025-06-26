@@ -74,7 +74,7 @@ namespace Foundation.Components.TagHelpers.FDCP
             {
                 contentBuilder
                     .Append("<span class='fdcp-badge-start'>")
-                    .Append(slotStart ?? StartContent)
+                    .Append(!string.IsNullOrWhiteSpace(slotStart)? slotStart : StartContent)
                     .Append("</span>");
             }
 
@@ -87,7 +87,7 @@ namespace Foundation.Components.TagHelpers.FDCP
             {
                 contentBuilder
                     .Append("<span class='fdcp-badge-end'>")
-                    .Append(slotEnd ?? EndContent)
+                    .Append(!string.IsNullOrWhiteSpace(slotEnd) ? slotEnd : EndContent)
                     .Append("</span>");
             }
 

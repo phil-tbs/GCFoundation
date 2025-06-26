@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace Foundation.Tests.Components.Tests.FDCP
+namespace Foundation.Tests.Components.Tests.TagHelpers.FDCP
 {
     public class FDCPSelectTagHelperTests
     {
