@@ -1,0 +1,16 @@
+﻿@model GCFoundation.Components.Models.FormBuilder.FormViewModel
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<gcds-heading tag="h1">Dynamic Form Example</gcds-heading>
+<gcds-text>This example demonstrates a dynamic form with dependencies using the GC Design System components.</gcds-text>
+
+<fdcp-form-builder form="@Model.Form"></fdcp-form-builder>
+
+
+

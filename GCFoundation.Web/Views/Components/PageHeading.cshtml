@@ -1,0 +1,72 @@
+﻿@using GCFoundation.Components.TagHelpers.FDCP
+@using GCFoundation.Web.Resources
+
+
+<fdcp-page-heading title="Page Heading"
+                   description="component displays a prominent page header with a title, description, and optional background image. It is designed for use in Razor Pages projects."
+                   src="/images/founding-opportunity-heading-bg.svg"></fdcp-page-heading>
+
+
+<gcds-grid columns="1fr 2fr">
+    <gcds-side-nav label="On this page">
+        <gcds-nav-link href="#overview">Overview</gcds-nav-link>
+        <gcds-nav-link href="#example">Example</gcds-nav-link>
+        <gcds-nav-link href="#parameters">Parameters</gcds-nav-link>
+        <gcds-nav-link href="#notes">Notes</gcds-nav-link>
+    </gcds-side-nav>
+    <div>
+        <gcds-heading tag="h2" id="overview">Overview</gcds-heading>
+        <p>
+            The <code>&lt;fdcp-page-heading&gt;</code> component displays a prominent page header with a title, description, and optional background image. It is designed for use in Razor Pages projects.
+        </p>
+
+        <hr />
+
+        <gcds-heading tag="h2" id="example">Example</gcds-heading>
+        <img src="~/images/PageHeadingExample.png" alt="" class="img-responsive" />
+<pre><code class="language-html">&lt;fdcp-page-heading
+    title="Founding Opportunities"
+    description="Discover and apply for funding opportunities to support your projects and initiatives."
+    src="/images/founding-opportunity-heading-bg.jpg" /&gt;
+</code></pre>
+
+        <hr />
+
+        <gcds-heading tag="h2" id="parameters">Parameters</gcds-heading>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Property</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>title</code></td>
+                    <td><code>string</code></td>
+                    <td>The main heading text (displayed as an <code>h1</code>).</td>
+                </tr>
+                <tr>
+                    <td><code>description</code></td>
+                    <td><code>string</code></td>
+                    <td>Optional. Additional descriptive text below the title.</td>
+                </tr>
+                <tr>
+                    <td><code>src</code></td>
+                    <td><code>string</code></td>
+                    <td>Optional. URL for the background image.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr />
+
+        <gcds-heading tag="h2" id="notes">Notes</gcds-heading>
+        <ul>
+            <li>The background image is set using a <code>data-bg-src</code> attribute and JavaScript for CSP compliance.</li>
+            <li>Component is responsive and accessible.</li>
+            <li>Style overrides can be applied via <code>fdcp-page-header-container</code> and related classes in your SCSS.</li>
+        </ul>
+    </div>
+</gcds-grid>

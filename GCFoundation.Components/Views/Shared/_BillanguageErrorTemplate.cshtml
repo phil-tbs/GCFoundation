@@ -1,0 +1,42 @@
+﻿@using GCFoundation.Common.Settings
+@using GCFoundation.Common.Utilities
+@using GCFoundation.Components.Helpers
+@using GCFoundation.Components.Setttings
+@using GCFoundation.Components.Enums
+@using Microsoft.AspNetCore.Routing
+@using Microsoft.Extensions.Options
+
+@inject IOptions<GCFoundationComponentsSettings> settings;
+
+<!DOCTYPE html>
+<html lang="@LanguageUtility.GetCurrentApplicationLanguage()">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - @settings.Value.ApplicationName</title>
+    <link href="@StaticResourceHelper.GetImageResourcePath("favicon.ico")" rel="icon" type="image/x-icon">
+</head>
+<body>
+    @{
+        RouteValueDictionary routeValueDictionary = new RouteValueDictionary(ViewContext.RouteData.Values);
+        routeValueDictionary["culture"] = LanguageUtility.GetOppositeLangauge();
+            Language currentLanguage = Language.en;
+
+        if (LanguageUtility.GetCurrentApplicationLanguage() == "fr")
+        {
+            currentLanguage = Language.fr;
+        }
+    }
+    <gcds-header lang-href="@Url.RouteUrl(routeValueDictionary)" skip-to-herf="#main-content" lang="@currentLanguage">
+        <div slot="menu">
+            <gcds-top-nav label="@settings.Value.ApplicationName" alignment="right">
+                <gcds-nav-link href="/" slot="home">@settings.Value.ApplicationName</gcds-nav-link>
+            </gcds-top-nav>
+        </div>
+    </gcds-header>
+    <gcds-container id="main-content" size="xl" centered tag="main" main>
+        @RenderBody()
+    </gcds-container>
+    <gcds-footer display="full"></gcds-footer>
+</body>
+</html>
