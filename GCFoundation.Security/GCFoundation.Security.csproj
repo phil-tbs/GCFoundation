@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	<AnalysisMode>All</AnalysisMode>
+
+	<PackageId>GCFoundation.Security</PackageId>
+	<Version>1.0.0</Version>
+	<Authors>Philippe G. Vadnais</Authors>
+	<Company>TBS-SCT</Company>
+	<Description>Foundation security module help to secure your application</Description>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	<RepositoryUrl></RepositoryUrl>
+	<IncludeSymbols>true</IncludeSymbols>
+	<IncludeSource>true</IncludeSource>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GCFoundation.Common\GCFoundation.Common.csproj" />
+  </ItemGroup>
+
+</Project>

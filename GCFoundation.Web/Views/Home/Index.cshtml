@@ -1,0 +1,13 @@
+﻿@using GCFoundation.Web.Resources
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <gcds-heading tag="h1">@Home.Index_Title</gcds-heading>
+    <gcds-text>
+        @Home.Index_Description
+    </gcds-text>
+    <hr/>
+    @Html.Raw(Home.Index_Features)
+</div>

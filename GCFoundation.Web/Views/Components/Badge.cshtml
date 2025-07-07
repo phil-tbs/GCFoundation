@@ -1,0 +1,120 @@
+﻿@using GCFoundation.Components.TagHelpers.FDCP
+@using GCFoundation.Web.Resources
+
+
+<gcds-heading tag="h1">@Components.Badges_Title</gcds-heading>
+
+<gcds-grid columns="1fr 2fr">
+	<gcds-side-nav label="On this page">
+		<gcds-nav-link href="#@Components.Badges_Overview_Anchor">@Components.Badges_Overview_Title</gcds-nav-link>
+		<gcds-nav-link href="#@Components.Badges_Solid_Anchor">@Components.Badges_Solid_Title</gcds-nav-link>
+		<gcds-nav-link href="#@Components.Badges_Inverted_Anchor">@Components.Badges_Inverted_Title</gcds-nav-link>
+		<gcds-nav-link href="#@Components.Badges_Slot_Anchor">@Components.Badges_Slot_Title</gcds-nav-link>
+		<gcds-nav-link href="#@Components.Badges_Parameters_Anchor">@Components.Badges_Parameters_Title</gcds-nav-link>
+		<gcds-nav-link href="#@Components.Badges_Notes_Anchor">@Components.Badges_Notes_Title</gcds-nav-link>
+	</gcds-side-nav>
+	<div>
+		<gcds-heading tag="h2" id="@Components.Badges_Overview_Anchor">@Components.Badges_Overview_Title</gcds-heading>
+		<p>
+			@Html.Raw(Components.Badges_Overview_Text)
+		</p>
+
+		<hr />
+
+		<gcds-heading tag="h2" id="@Components.Badges_Solid_Anchor">@Components.Badges_Solid_Title</gcds-heading>
+		<p>@Components.Badges_Solid_Text</p>
+
+		@foreach (FDCPBadgeStyle style in Enum.GetValues(typeof(FDCPBadgeStyle)))
+		{
+			<fdcp-badge style="@style">@style.ToString()</fdcp-badge>
+		}
+<pre><code class="language-html">&lt;fdcp-badge style="@(FDCPBadgeStyle.Primary)"&gt;Primary&lt;/fdcp-badge&gt;</code></pre>
+
+		<hr />
+
+		<gcds-heading tag="h2" id="@Components.Badges_Inverted_Anchor">@Components.Badges_Inverted_Title</gcds-heading>
+		<p>@Html.Raw(Components.Badges_Inverted_Text)</p>
+
+		@foreach (FDCPBadgeStyle style in Enum.GetValues(typeof(FDCPBadgeStyle)))
+		{
+			<fdcp-badge style="@style" inverted="true">@style.ToString()</fdcp-badge>
+		}
+<pre><code class="language-html">&lt;fdcp-badge style="Primary" inverted="true"&gt;Primary&lt;/fdcp-badge&gt;</code></pre>
+
+		<hr />
+
+		<gcds-heading tag="h2" id="@Components.Badges_Slot_Anchor">@Components.Badges_Slot_Title</gcds-heading>
+		<p>
+			@Html.Raw(Components.Badges_Slot_Text)
+		</p>
+
+		<fdcp-badge style="Info">
+			<span slot="start-content"><span class="fa fa-info-circle"></span></span>
+			Info badge
+			<span slot="end-content"><button class="btn">X</button></span>
+		</fdcp-badge>
+
+<pre><code class="language-html">
+&lt;fdcp-badge style="Info"&gt;
+	&lt;span slot="start-content"&gt;&lt;span class="fa fa-info-circle"&gt;&lt;/span&gt;&lt;/span&gt;
+	Info badge
+	&lt;span slot="end-content"&gt;&lt;button class="btn"&gt;X&lt;/button&gt;&lt;/span&gt;
+&lt;/fdcp-badge&gt;
+</code></pre>
+
+		<hr />
+
+
+		<gcds-heading tag="h2" id="@Components.Badges_Parameters_Anchor">@Components.Badges_Parameters_Title</gcds-heading>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Property</th>
+					<th>Type</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><code>Style</code></td>
+					<td><code>FDCPBadgeStyle</code></td>
+					<td>
+						@Components.Badges_Parameters_Style
+					</td>
+				</tr>
+				<tr>
+					<td><code>Inverted</code></td>
+					<td><code>bool</code></td>
+					<td>@Components.Badges_Parameters_Inverted</td>
+				</tr>
+				<tr>
+					<td><code>StartContent</code></td>
+					<td><code>string</code></td>
+					<td>@Components.Badges_Parameters_StartContent</td>
+				</tr>
+				<tr>
+					<td><code>EndContent</code></td>
+					<td><code>string</code></td>
+					<td>@Components.Badges_Parameters_EndContent</td>
+				</tr>
+				<tr>
+					<td><code>TagId</code></td>
+					<td><code>string</code></td>
+					<td>
+						@Html.Raw(Components.Badges_Parameters_TagId)
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<hr />
+
+		<gcds-heading tag="h2" id="@Components.Badges_Notes_Anchor">@Components.Badges_Notes_Title</gcds-heading>
+		<ul>
+			<li>@Html.Raw(Components.Badges_Notes_1)</li>
+			<li>@Html.Raw(Components.Badges_Notes_2)</li>
+			<li>@Html.Raw(Components.Badges_Notes_3)</li>
+		</ul>
+	</div>
+</gcds-grid>

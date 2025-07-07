@@ -1,0 +1,44 @@
+﻿@using GCFoundation.Web.Resources
+
+<gcds-heading tag="h1">
+    @Template.Index_PageTitle
+</gcds-heading>
+
+<gcds-text>
+    @Template.Index_PageDescription
+</gcds-text>
+
+<gcds-grid columns-desktop="1fr 3fr" columns="1fr">
+    <gcds-side-nav label="@Template.SideNav_Label">
+        <gcds-nav-link href="#main-template">@Template.SideNav_MainTemplate</gcds-nav-link>
+        <gcds-nav-link href="#error-templates">@Template.SideNav_ErrorTemplates</gcds-nav-link>
+        <gcds-nav-link href="#language-chooser">@Template.SideNav_LanguageChooser</gcds-nav-link>
+    </gcds-side-nav>
+
+    <div>
+        <gcds-heading tag="h2" id="main-template">
+            @Template.Section_MainTemplate_Title
+        </gcds-heading>
+        <gcds-text>
+            @Template.Section_MainTemplate_Description
+        </gcds-text>
+
+        <gcds-heading tag="h2" id="error-templates">
+            @Template.Section_ErrorTemplates_Title
+        </gcds-heading>
+        <gcds-text>
+            @Template.Section_ErrorTemplates_Description
+            <ul>
+                <li><gcds-link href="@Url.Action("GlobalError", "Errors")">@Template.ErrorTemplates_GlobalError</gcds-link></li>
+                <li><gcds-link href="@Url.Action("NotFoundError", "Errors")">@Template.ErrorTemplates_NotFound</gcds-link></li>
+            </ul>
+        </gcds-text>
+
+        <gcds-heading tag="h2" id="language-chooser">
+            @Template.Section_LanguageChooser_Title
+        </gcds-heading>
+        <gcds-text>
+            @Template.Section_LanguageChooser_Description
+        </gcds-text>
+    </div>
+</gcds-grid>
