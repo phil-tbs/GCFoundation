@@ -2,6 +2,7 @@ using GCFoundation.Components.TagHelpers.FDCP;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.Globalization;
 using Xunit;
+using GCFoundation.Components.Models;
 
 namespace GCFoundation.Tests.Components.Tests.TagHelpers.FDCP
 {
@@ -47,10 +48,17 @@ namespace GCFoundation.Tests.Components.Tests.TagHelpers.FDCP
         public void Process_WithSteps_RendersAllSteps()
         {
             // Arrange
+            var steps = new[]
+            {
+                new Step { StepNumber = 1, Label = "Step 1" },
+                new Step { StepNumber = 2, Label = "Step 2" },
+                new Step { StepNumber = 3, Label = "Step 3" }
+            };
+
             var tagHelper = new FDCPStepperTagHelper
             {
                 CurrentStep = 2,
-                StepLabels = new[] { "Step 1", "Step 2", "Step 3" }
+                Steps = steps
             };
 
             // Act
@@ -83,10 +91,17 @@ namespace GCFoundation.Tests.Components.Tests.TagHelpers.FDCP
         public void Process_CorrectlyAssignsStepClasses(int currentStep, string step1Class, string step2Class, string step3Class)
         {
             // Arrange
+            var steps = new[]
+            {
+                new Step { StepNumber = 1, Label = "Step 1" },
+                new Step { StepNumber = 2, Label = "Step 2" },
+                new Step { StepNumber = 3, Label = "Step 3" }
+            };
+
             var tagHelper = new FDCPStepperTagHelper
             {
                 CurrentStep = currentStep,
-                StepLabels = new[] { "Step 1", "Step 2", "Step 3" }
+                Steps = steps
             };
 
             // Act
@@ -97,6 +112,61 @@ namespace GCFoundation.Tests.Components.Tests.TagHelpers.FDCP
             Assert.Contains($"class='fdcp-step {step1Class}'", content);
             Assert.Contains($"class='fdcp-step {step2Class}'", content);
             Assert.Contains($"class='fdcp-step {step3Class}'", content);
+        }
+
+        [Fact]
+        public void Process_WithHiddenStep_DoesNotRenderHiddenStep()
+        {
+            // Arrange
+            var steps = new[]
+            {
+                new Step { StepNumber = 1, Label = "Step 1" },
+                new Step { StepNumber = 2, Label = "Step 2", IsHidden = true },
+                new Step { StepNumber = 3, Label = "Step 3" }
+            };
+
+            var tagHelper = new FDCPStepperTagHelper
+            {
+                CurrentStep = 1,
+                Steps = steps
+            };
+
+            // Act
+            tagHelper.Process(_context, _output);
+
+            // Assert
+            var content = _output.Content.GetContent();
+            Assert.Contains("Step 1", content);
+            Assert.DoesNotContain("Step 2", content);
+            Assert.Contains("Step 3", content);
+        }
+
+        [Fact]
+        public void Process_WithStepLink_RendersLinkCorrectly()
+        {
+            // Arrange
+            var steps = new[]
+            {
+                new Step { 
+                    StepNumber = 1, 
+                    Label = "Step 1",
+                    IsLink = true,
+                    LinkUrl = "/step1"
+                }
+            };
+
+            var tagHelper = new FDCPStepperTagHelper
+            {
+                CurrentStep = 1,
+                Steps = steps
+            };
+
+            // Act
+            tagHelper.Process(_context, _output);
+
+            // Assert
+            var content = _output.Content.GetContent();
+            Assert.Contains("<gcds-link href='/step1'>Step 1</gcds-link>", content);
         }
     }
 }
