@@ -1,5 +1,5 @@
-using System.ComponentModel.DataAnnotations;
 using GCFoundation.Components.Models.FormBuilder;
+using System.ComponentModel.DataAnnotations;
 
 namespace GCFoundation.Components.Validation
 {

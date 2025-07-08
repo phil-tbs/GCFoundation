@@ -1,7 +1,7 @@
-﻿using System.Globalization;
-using GCFoundation.Components.Controllers;
+﻿using GCFoundation.Components.Controllers;
 using GCFoundation.Components.Enums;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 
 namespace GCFoundation.Web.Controllers
 {

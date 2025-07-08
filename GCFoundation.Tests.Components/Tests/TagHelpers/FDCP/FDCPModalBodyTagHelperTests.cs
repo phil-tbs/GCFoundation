@@ -1,6 +1,5 @@
 using GCFoundation.Components.TagHelpers.FDCP;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Xunit;
 
 namespace GCFoundation.Tests.Components.Tests.TagHelpers.FDCP;
 

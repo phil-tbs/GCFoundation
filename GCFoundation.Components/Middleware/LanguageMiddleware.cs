@@ -1,6 +1,6 @@
-﻿using System.Text.RegularExpressions;
-using GCFoundation.Common.Utilities;
+﻿using GCFoundation.Common.Utilities;
 using Microsoft.AspNetCore.Http;
+using System.Text.RegularExpressions;
 
 namespace GCFoundation.Components.Middleware
 {

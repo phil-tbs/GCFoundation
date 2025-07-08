@@ -1,7 +1,7 @@
-﻿using System.Security.Cryptography;
-using GCFoundation.Common.Settings;
+﻿using GCFoundation.Common.Settings;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
+using System.Security.Cryptography;
 
 namespace GCFoundation.Security.Middlewares
 {

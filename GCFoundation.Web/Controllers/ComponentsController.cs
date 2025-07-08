@@ -1,7 +1,7 @@
 ﻿using GCFoundation.Components.Controllers;
 using GCFoundation.Components.Models.FormBuilder;
-using GCFoundation.Web.Resources;
 using GCFoundation.Web.Models;
+using GCFoundation.Web.Resources;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GCFoundation.Web.Controllers

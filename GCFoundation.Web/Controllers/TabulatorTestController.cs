@@ -1,8 +1,8 @@
-﻿using System.Linq.Dynamic.Core;
-using GCFoundation.Components.Controllers;
+﻿using GCFoundation.Components.Controllers;
 using GCFoundation.Components.Models;
 using GCFoundation.Web.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq.Dynamic.Core;
 
 namespace GCFoundation.Web.Controllers
 {

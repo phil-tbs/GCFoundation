@@ -1,8 +1,8 @@
-﻿using System.Text;
-using GCFoundation.Common.Settings;
+﻿using GCFoundation.Common.Settings;
 using GCFoundation.Components.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
+using System.Text;
 
 namespace GCFoundation.Components.Middleware
 {

@@ -1,7 +1,7 @@
-﻿using System.Text.Json;
-using System.Text.Json.Serialization;
-using GCFoundation.Components.Models;
+﻿using GCFoundation.Components.Models;
 using Microsoft.AspNetCore.Razor.TagHelpers;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace GCFoundation.Components.TagHelpers.FDCP
 {

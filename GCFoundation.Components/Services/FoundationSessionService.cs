@@ -1,7 +1,7 @@
-﻿using System.Text;
-using GCFoundation.Components.Setttings;
+﻿using GCFoundation.Components.Setttings;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
+using System.Text;
 
 namespace GCFoundation.Components.Services
 {

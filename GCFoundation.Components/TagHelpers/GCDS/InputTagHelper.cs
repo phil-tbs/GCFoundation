@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Reflection;
-using GCFoundation.Components.Enums;
+﻿using GCFoundation.Components.Enums;
 using Microsoft.AspNetCore.Razor.TagHelpers;
+using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 
 namespace GCFoundation.Components.TagHelpers.GCDS
 {

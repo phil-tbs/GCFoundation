@@ -1,8 +1,8 @@
-﻿using System.Globalization;
-using System.Text.Json;
-using GCFoundation.Components.Models;
+﻿using GCFoundation.Components.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;
+using System.Globalization;
+using System.Text.Json;
 
 namespace GCFoundation.Components.TagHelpers.FDCP
 {

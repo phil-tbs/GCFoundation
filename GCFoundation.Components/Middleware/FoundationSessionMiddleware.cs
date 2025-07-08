@@ -1,7 +1,7 @@
-﻿using System.Globalization;
-using GCFoundation.Components.Setttings;
+﻿using GCFoundation.Components.Setttings;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
+using System.Globalization;
 
 namespace GCFoundation.Components.Middleware
 {

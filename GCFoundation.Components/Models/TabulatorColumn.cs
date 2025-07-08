@@ -1,6 +1,6 @@
-﻿using System.Text.Json.Serialization;
-using GCFoundation.Components.Converters;
+﻿using GCFoundation.Components.Converters;
 using GCFoundation.Components.Enums;
+using System.Text.Json.Serialization;
 
 namespace GCFoundation.Components.Models
 {
