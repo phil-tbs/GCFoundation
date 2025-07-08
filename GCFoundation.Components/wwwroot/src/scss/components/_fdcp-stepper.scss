@@ -66,7 +66,7 @@ $progress-line-innactive-color: $fdcp-incomplte-color;
             left: 50%;
         }
         // Completed or active connector
-        &.completed:not(:last-child)::after, &.active:not(:last-child)::after {
+        &.completed::after, &.active::after {
             background: $fdcp-progress-color;
         }
         // Active step

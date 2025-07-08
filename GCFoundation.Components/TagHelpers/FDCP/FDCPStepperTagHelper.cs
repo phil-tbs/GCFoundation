@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.Globalization;
 using System.Text;
+using GCFoundation.Components.Models;
 
 namespace GCFoundation.Components.TagHelpers.FDCP
 {
@@ -11,7 +12,7 @@ namespace GCFoundation.Components.TagHelpers.FDCP
     /// <remarks>
     /// Usage example:
     /// <code>
-    /// &lt;fdcp-stepper current-step=&quot;2&quot; step-labels=&quot;@(new[] { &quot;Personal Info&quot;, &quot;Review&quot;, &quot;Submit&quot; })&quot;&gt;
+    /// &lt;fdcp-stepper current-step=&quot;2&quot; steps=&quot;@(new[] { new Step { StepNumber = 1, Status = StepStatus.Completed }, new Step { StepNumber = 2, Status = StepStatus.InProgress }, new Step { StepNumber = 3, Status = StepStatus.NotStarted } })&quot;&gt;
     /// &lt;/fdcp-stepper&gt;
     /// </code>
     /// </remarks>
@@ -20,18 +21,13 @@ namespace GCFoundation.Components.TagHelpers.FDCP
     {
         /// <summary>
         /// Gets or sets the current active step number (1-based index).
-        /// Steps before this number are marked as completed, the current step is marked as active,
-        /// and steps after this number are marked as incomplete.
         /// </summary>
-        /// <value>Default value is 1</value>
         public int CurrentStep { get; set; } = 1;
 
         /// <summary>
-        /// Gets or sets the collection of labels for each step in the process.
-        /// The number of labels determines the total number of steps displayed.
+        /// Gets or sets the collection of steps for the process.
         /// </summary>
-        /// <value>An empty list by default</value>
-        public IEnumerable<string> StepLabels { get; set; } = new List<string>();
+        public IEnumerable<Step> Steps { get; set; } = new List<Step>();
 
         /// <summary>
         /// Processes the tag helper and generates the HTML output for the stepper component.
@@ -48,20 +44,32 @@ namespace GCFoundation.Components.TagHelpers.FDCP
 
             html.AppendLine("<gcds-heading tag='h2'>Current step</gcds-heading>");
             html.AppendLine("<div class='fdcp-stepper'>");
-            for (int i = 0; i < StepLabels.Count(); i++)
+
+            foreach (var step in Steps)
             {
-                string label = StepLabels.ElementAt(i);
-                string stepClass = (i + 1) < CurrentStep
-                    ? "completed"
-                    : (i + 1) == CurrentStep
-                        ? "active"
-                        : "incomplete";
+                if (step.IsHidden || string.IsNullOrWhiteSpace(step.Label))
+                    continue;
+
+                string stepClass = step.GetStatusByCurrentStep(CurrentStep);
 
                 html.AppendLine(CultureInfo.InvariantCulture, $"<div class='fdcp-step {stepClass}'>");
-                html.AppendLine(CultureInfo.InvariantCulture, $"<div class='fdcp-step-circle'>{(i + 1)}</div>");
-                html.AppendLine(CultureInfo.InvariantCulture, $"<div class='fdcp-step-label'>{label}</div>");
+
+                string circleContent = step.GetDisplayHtml(CurrentStep);
+
+                if (step.IsLink && !string.IsNullOrEmpty(step.LinkUrl))
+                {
+                    html.AppendLine(CultureInfo.InvariantCulture, $"<div class='fdcp-step-circle'>{circleContent}</div>");
+                    html.AppendLine(CultureInfo.InvariantCulture, $"<div class='fdcp-step-label'><gcds-link href='{step.LinkUrl}'>{step.Label}</gcds-link></div>");
+                }
+                else
+                {
+                    html.AppendLine(CultureInfo.InvariantCulture, $"<div class='fdcp-step-circle'>{circleContent}</div>");
+                    html.AppendLine(CultureInfo.InvariantCulture, $"<div class='fdcp-step-label'>{step.Label}</div>");
+                }
+
                 html.AppendLine("</div>");
             }
+
             html.AppendLine("</div>");
             output.Content.SetHtmlContent(html.ToString());
         }
