@@ -3,7 +3,7 @@
 
 <gcds-heading tag="h1">Stepper</gcds-heading>
 
-<gcds-grid columns="1fr 2fr">
+<gcds-grid columns="minmax(200px, 300px) minmax(0, 1fr)" align-content="@GCFoundation.Components.Enums.AlignContent.start">
     <gcds-side-nav label="On this page">
         <gcds-nav-link href="#overview">Overview</gcds-nav-link>
         <gcds-nav-link href="#basic-usage">Basic Usage</gcds-nav-link>
@@ -12,7 +12,7 @@
         <gcds-nav-link href="#parameters">Parameters</gcds-nav-link>
         <gcds-nav-link href="#notes">Notes</gcds-nav-link>
     </gcds-side-nav>
-    <div>
+    <div class="documentation-content">
         <gcds-heading tag="h2" id="overview">Overview</gcds-heading>
         <p>
             The stepper component helps users track their progress in multi-step processes. It provides visual feedback about completed, current, and upcoming steps, supporting both numeric and icon-based display modes.
@@ -30,8 +30,8 @@
                       new Step { StepNumber = 2, Label = "Step Two", DisplayMode = StepDisplayMode.Number },
                       new Step { StepNumber = 3, Label = "Step Three", DisplayMode = StepDisplayMode.Number }
                   })"></fdcp-stepper>
-
-<pre><code class="language-cshtml">
+        <div class="language-cshtml">
+<pre><code>
 &lt;fdcp-stepper current-step="2"
     steps="@@(new List&lt;Step&gt;
           {
@@ -40,6 +40,7 @@
               new Step { StepNumber = 3, Label = "Step Three", DisplayMode = StepDisplayMode.Number }
           })"&gt;&lt;/fdcp-stepper&gt;
 </code></pre>
+</div>
 
         <hr />
 
@@ -53,8 +54,8 @@
                       new Step { StepNumber = 2, Label = "In Progress", DisplayMode = StepDisplayMode.Icon, InProgressIconHtml = "<i class='fa fa-spinner'></i>" },
                       new Step { StepNumber = 3, Label = "Not Started", DisplayMode = StepDisplayMode.Icon }
                   })"></fdcp-stepper>
-
-<pre><code class="language-cshtml">
+        <div class="language-cshtml">
+<pre><code>
 &lt;fdcp-stepper current-step="2"
     steps="@@(new List&lt;Step&gt;
           {
@@ -63,7 +64,7 @@
               new Step { StepNumber = 3, Label = "Not Started", DisplayMode = StepDisplayMode.Icon }
           })"&gt;&lt;/fdcp-stepper&gt;
 </code></pre>
-
+</div>
         <hr />
 
         <gcds-heading tag="h2" id="with-links">With Links</gcds-heading>
@@ -76,8 +77,8 @@
                       new Step { StepNumber = 2, Label = "Current" },
                       new Step { StepNumber = 3, Label = "Next" }
                   })"></fdcp-stepper>
-
-<pre><code class="language-cshtml">
+        <div class="language-cshtml">
+<pre><code>
 &lt;fdcp-stepper current-step="2"
     steps="@@(new List&lt;Step&gt;
           {
@@ -86,7 +87,7 @@
               new Step { StepNumber = 3, Label = "Next" }
           })"&gt;&lt;/fdcp-stepper&gt;
 </code></pre>
-
+</div>
         <hr />
 
         <gcds-heading tag="h2" id="parameters">Parameters</gcds-heading>
