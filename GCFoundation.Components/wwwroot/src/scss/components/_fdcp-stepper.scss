@@ -1,0 +1,91 @@
+﻿$fdcp-progress-color: var(--gcds-color-blue-700, #1a2a3a);
+$fdcp-incomplte-color: var(--gcds-color-grayscale-100, #D6D9DD) ;
+$fdcp-cicle-active-border: 3px solid $fdcp-progress-color;
+$fdcp-cicle-inactive-border: 3px solid $fdcp-progress-color;
+$fdcp-cicle-incomplete-border: 3px dashed $fdcp-incomplte-color;
+$progress-line-thickness: 4px;
+$progress-line-innactive-color: $fdcp-incomplte-color;
+
+.fdcp-stepper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+    .fdcp-step {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+        background: transparent;
+        z-index: 1;
+
+        .fdcp-step-circle {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            border: $fdcp-cicle-incomplete-border;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: $fdcp-progress-color;
+            z-index: 2;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .fdcp-step-label {
+            margin-top: 0.75rem;
+            font-size: 1.25rem;
+            text-align: center;
+        }
+        // Connector line after each step except the last
+        &:after {
+            content: "";
+            position: absolute;
+            top: calc(2.5rem / 2);
+            left: 0;
+            width: 100%;
+            height: $progress-line-thickness;
+            background: $progress-line-innactive-color;
+            z-index: 0;
+            transform: translateY(-50%);
+        }
+
+        &:first-child::after,
+        &:last-child::after {
+            width: 50%;
+        }
+
+        &:first-child::after {
+            left: 50%;
+        }
+        // Completed or active connector
+        &.completed::after, &.active::after {
+            background: $fdcp-progress-color;
+        }
+        // Active step
+        &.active .fdcp-step-circle {
+            border: $fdcp-cicle-inactive-border;
+            color: $fdcp-progress-color;
+            background: #fff;
+        }
+        // Completed step
+        &.completed .fdcp-step-circle {
+            border: $fdcp-cicle-inactive-border;
+            background: $fdcp-progress-color;
+            color: #fff;
+        }
+        // Incomplete step
+        &.incomplete .fdcp-step-circle {
+            border: $fdcp-cicle-incomplete-border;
+            color: $fdcp-cicle-inactive-border;
+            background: #fff;
+        }
+    }
+}

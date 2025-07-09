@@ -1,9 +1,6 @@
-using System.Globalization;
 using GCFoundation.Components.Enums;
-using GCFoundation.Components.Resources;
 using GCFoundation.Components.TagHelpers.FDCP;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Xunit;
 
 namespace GCFoundation.Tests.Components.Tests.TagHelpers.FDCP;
 
@@ -121,7 +118,7 @@ public class FDCPModalTagHelperTests
         // Assert
         Assert.Equal("customModal", output.Attributes["id"].Value);
         Assert.Contains("static", output.Attributes["data-bs-backdrop"].Value.ToString());
-        
+
         var content = output.Content.GetContent();
         Assert.Contains("modal-dialog-scrollable", content);
         Assert.DoesNotContain("modal-dialog-centered", content);

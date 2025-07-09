@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Text.Json;
 using GCFoundation.Common.Utilities;
 using GCFoundation.Components.Models;
 using GCFoundation.Components.TagHelpers.FDCP;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Xunit;
+using System.Text.Json;
 
 namespace GCFoundation.Tests.Components.Tests.TagHelpers.FDCP
 {

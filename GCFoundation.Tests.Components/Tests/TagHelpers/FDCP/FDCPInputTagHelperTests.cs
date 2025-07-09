@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Reflection;
 using GCFoundation.Components.Attributes;
 using GCFoundation.Components.TagHelpers.FDCP;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -9,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Xunit;
+using System.ComponentModel.DataAnnotations;
 
 namespace GCFoundation.Tests.Components.Tests.TagHelpers.FDCP
 {
@@ -37,21 +33,21 @@ namespace GCFoundation.Tests.Components.Tests.TagHelpers.FDCP
         private class TestModel
         {
             public string TextProperty { get; set; } = string.Empty;
-            
+
             [DataType(DataType.EmailAddress)]
             public string EmailProperty { get; set; } = string.Empty;
-            
+
             [DataType(DataType.Password)]
             public string PasswordProperty { get; set; } = string.Empty;
-            
+
             [DataType(DataType.Date)]
             public DateTime DateProperty { get; set; }
-            
+
             public bool BoolProperty { get; set; }
-            
+
             [DataType(DataType.MultilineText)]
             public string MultilineProperty { get; set; } = string.Empty;
-            
+
             public int NumberProperty { get; set; }
 
             [DateFormat("short")]

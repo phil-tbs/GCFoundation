@@ -1,6 +1,6 @@
-﻿using System.Text;
-using HtmlAgilityPack;
+﻿using HtmlAgilityPack;
 using Microsoft.AspNetCore.Razor.TagHelpers;
+using System.Text;
 
 namespace GCFoundation.Components.TagHelpers.FDCP
 {
@@ -74,7 +74,7 @@ namespace GCFoundation.Components.TagHelpers.FDCP
             {
                 contentBuilder
                     .Append("<span class='fdcp-badge-start'>")
-                    .Append(!string.IsNullOrWhiteSpace(slotStart)? slotStart : StartContent)
+                    .Append(!string.IsNullOrWhiteSpace(slotStart) ? slotStart : StartContent)
                     .Append("</span>");
             }
 

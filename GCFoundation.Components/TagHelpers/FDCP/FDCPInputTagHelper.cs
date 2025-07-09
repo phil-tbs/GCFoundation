@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Reflection;
-using GCFoundation.Components.Attributes;
+﻿using GCFoundation.Components.Attributes;
 using Microsoft.AspNetCore.Razor.TagHelpers;
+using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 
 namespace GCFoundation.Components.TagHelpers.FDCP
 {

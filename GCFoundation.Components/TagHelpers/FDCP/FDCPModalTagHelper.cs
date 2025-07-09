@@ -1,8 +1,8 @@
-﻿using System.Globalization;
-using System.Text;
+﻿using GCFoundation.Components.Enums;
 using GCFoundation.Components.Resources;
-using GCFoundation.Components.Enums;
 using Microsoft.AspNetCore.Razor.TagHelpers;
+using System.Globalization;
+using System.Text;
 
 namespace GCFoundation.Components.TagHelpers.FDCP
 {

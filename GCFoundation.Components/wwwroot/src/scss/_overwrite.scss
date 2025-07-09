@@ -2,3 +2,37 @@
     position: relative;
     z-index: 10;
 }
+
+.documentation-content {
+    width: 100%;
+    min-width: 0; // This is crucial for preventing flex item overflow
+
+    .language-cshtml {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        border-radius: 4px;
+
+        pre {
+            margin: 0;
+            padding: 1rem;
+
+            code {
+                display: block;
+                white-space: pre;
+                word-wrap: normal;
+                font-family: "Source Code Pro", monospace;
+                font-size: 0.95em;
+                line-height: 1.5;
+                padding-bottom: 1.5rem;
+            }
+        }
+    }
+
+    table {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        display: block;
+    }
+}

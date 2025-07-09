@@ -1,8 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
-using GCFoundation.Components.Attributes;
+﻿using GCFoundation.Components.Attributes;
 using GCFoundation.Components.Models;
 using GCFoundation.Web.Resources;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations;
 
 namespace GCFoundation.Web.Models
 {

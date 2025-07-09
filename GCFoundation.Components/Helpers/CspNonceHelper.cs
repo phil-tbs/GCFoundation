@@ -1,5 +1,5 @@
-﻿using System.Security.Cryptography;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
+using System.Security.Cryptography;
 
 namespace GCFoundation.Components.Helpers
 {

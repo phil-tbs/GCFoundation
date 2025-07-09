@@ -1,7 +1,7 @@
-﻿using System.Reflection;
-using System.Text.Json;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;
+using System.Reflection;
+using System.Text.Json;
 
 namespace GCFoundation.Components.TagHelpers.FDCP
 {

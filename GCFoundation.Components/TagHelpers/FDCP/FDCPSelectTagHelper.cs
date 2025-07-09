@@ -1,7 +1,7 @@
-﻿using System.Globalization;
-using System.Text;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;
+using System.Globalization;
+using System.Text;
 
 namespace GCFoundation.Components.TagHelpers.FDCP
 {

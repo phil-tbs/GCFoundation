@@ -1,9 +1,5 @@
-using System;
 using GCFoundation.Components.TagHelpers.FDCP;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Xunit;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace GCFoundation.Tests.Components.Tests.TagHelpers.FDCP
 {

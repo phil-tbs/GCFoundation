@@ -1,7 +1,7 @@
-﻿using System.Reflection;
+﻿using Microsoft.AspNetCore.Razor.TagHelpers;
+using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace GCFoundation.Components.TagHelpers.FDCP
 {
@@ -17,7 +17,7 @@ namespace GCFoundation.Components.TagHelpers.FDCP
         [HtmlAttributeName("required")]
         public bool IsRequired { get; set; }
 
-        private class CheckboxOption
+        private sealed class CheckboxOption
         {
             [JsonPropertyName("id")]
             public string Id { get; set; } = string.Empty;

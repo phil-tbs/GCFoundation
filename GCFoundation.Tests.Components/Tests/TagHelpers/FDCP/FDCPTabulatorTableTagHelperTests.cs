@@ -1,9 +1,7 @@
-using System.Text.Json;
 using GCFoundation.Components.Enums;
 using GCFoundation.Components.Models;
 using GCFoundation.Components.TagHelpers.FDCP;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Xunit;
 
 namespace GCFoundation.Tests.Components.Tests.TagHelpers.FDCP;
 
@@ -43,7 +41,7 @@ public class FDCPTabulatorTableTagHelperTests
         Assert.Equal("div", output.TagName);
         Assert.Equal("test-table", output.Attributes["id"].Value);
         Assert.Equal("tabulator-container", output.Attributes["class"].Value);
-        
+
         var content = output.Content.GetContent();
         Assert.Contains("test-table-search-form", content);
         Assert.Contains("test-table-tabulator", content);
@@ -91,7 +89,7 @@ public class FDCPTabulatorTableTagHelperTests
         // Assert
         Assert.Equal("div", output.TagName);
         Assert.Equal("static-table", output.Attributes["id"].Value);
-        
+
         var content = output.Content.GetContent();
         Assert.Contains("static-table-search-form", content);
         Assert.Contains("static-table-tabulator", content);
@@ -105,9 +103,9 @@ public class FDCPTabulatorTableTagHelperTests
         // Arrange
         var columns = new[]
         {
-            new TabulatorColumn 
-            { 
-                Title = "Name", 
+            new TabulatorColumn
+            {
+                Title = "Name",
                 Field = "name",
                 HeaderSort = true,
                 HozAlign = "left",

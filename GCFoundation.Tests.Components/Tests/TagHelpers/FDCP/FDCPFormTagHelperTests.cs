@@ -1,11 +1,10 @@
-using System.Globalization;
-using System.Text.Json;
-using System.Net;
-using System.Text.RegularExpressions;
 using GCFoundation.Components.Models;
 using GCFoundation.Components.TagHelpers.FDCP;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Xunit;
+using System.Globalization;
+using System.Net;
+using System.Text.Json;
+using System.Text.RegularExpressions;
 
 namespace GCFoundation.Tests.Components.Tests.TagHelpers.FDCP;
 
@@ -39,7 +38,7 @@ public class FDCPFormTagHelperTests
         Assert.Equal("form", output.TagName);
         Assert.Equal("post", output.Attributes["method"].Value);
         Assert.Equal("/test-action", output.Attributes["action"].Value);
-        
+
         var content = output.Content.GetContent();
         Assert.Contains("<gcds-error-summary", content);
         Assert.Contains($"lang=\"{CultureInfo.CurrentCulture.Name}\"", content);
@@ -76,7 +75,7 @@ public class FDCPFormTagHelperTests
         // Assert
         var content = output.Content.GetContent();
         Assert.Contains("error-links", content);
-        
+
         // Verify error links JSON structure
         var expectedErrors = new Dictionary<string, string>
         {
