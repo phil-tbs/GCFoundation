@@ -22,7 +22,7 @@ namespace GCFoundation.Components.Models
     /// Represents a step within a stepper component that can display numbers or icons
     /// and tracks the step's state and display properties.
     /// </summary>
-    public class Step
+    public class StepperStep
     {
         /// <summary>
         /// Gets or sets the numerical position of the step in the sequence.
