@@ -73,7 +73,7 @@ namespace GCFoundation.Components.TagHelpers.FDCP
             if (Size == ModalSize.Small) dialogClasses.Add("fdcp-modal__dialog--sm");
             else if (Size == ModalSize.Large) dialogClasses.Add("fdcp-modal__dialog--lg");
 
-            var childContent = await output.GetChildContentAsync();
+            var childContent = await output.GetChildContentAsync().ConfigureAwait(true);
             var html = childContent.GetContent();
 
             var sb = new StringBuilder();

@@ -32,6 +32,8 @@ public class FDCPSessionModalTagHelperTests
         await tagHelper.ProcessAsync(context, output);
 
         // Assert
+        Assert.Equal("div", output.TagName);
+        Assert.Equal("fdcp-modal", output.Attributes["class"].Value);
         Assert.Equal("3600", output.Attributes["data-session-timeout"].Value.ToString());
         Assert.Equal("300", output.Attributes["data-reminder-time"].Value.ToString());
         Assert.Equal("https://example.com/refresh", output.Attributes["data-refresh"].Value.ToString());
@@ -119,8 +121,12 @@ public class FDCPSessionModalTagHelperTests
 
         // Assert
         var content = output.Content.GetContent();
-        Assert.Contains("modal-dialog-centered", content);
+        Assert.Contains("fdcp-modal__dialog--centered", content);
+        Assert.Contains("fdcp-modal__title", content);
         Assert.Contains("Session Timeout", content);
         Assert.Equal("sessionModal", output.Attributes["id"].Value);
+        Assert.Contains("fdcp-modal__backdrop", content);
+        Assert.Contains("fdcp-modal__content", content);
+        Assert.Contains("fdcp-modal__header", content);
     }
 }
