@@ -4,8 +4,7 @@ trigger:
       - master
       - develop
 
-pool:
-  vmImage: 'TBS Self Hosted'
+pool: 'TBS Self Hosted'
 
 variables:
   buildConfiguration: 'Release'
