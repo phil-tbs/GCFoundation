@@ -7,7 +7,7 @@ using System.Text;
 namespace GCFoundation.Components.TagHelpers.FDCP
 {
     /// <summary>
-    /// Renders a Bootstrap 5 modal component.
+    /// Renders a standalone modal component.
     /// Use &lt;fdcp-modal&gt; in your Razor views to generate a modal dialog.
     /// </summary>
     [HtmlTargetElement("fdcp-modal")]
@@ -55,46 +55,43 @@ namespace GCFoundation.Components.TagHelpers.FDCP
 
             output.TagName = "div";
             output.TagMode = TagMode.StartTagAndEndTag;
-            output.Attributes.SetAttribute("class", "modal fade");
+            output.Attributes.SetAttribute("class", "fdcp-modal");
             output.Attributes.SetAttribute("id", Id);
             output.Attributes.SetAttribute("tabindex", "-1");
             output.Attributes.SetAttribute("aria-labelledby", $"{Id}Label");
             output.Attributes.SetAttribute("aria-hidden", "true");
+            output.Attributes.SetAttribute("role", "dialog");
+            
             if (IsStaticBackdrop)
             {
-                output.Attributes.SetAttribute("data-bs-backdrop", "static");
+                output.Attributes.SetAttribute("data-static", "true");
             }
 
-            var dialogClasses = "modal-dialog";
-            if (Centered) dialogClasses += " modal-dialog-centered";
-            if (Scrollable) dialogClasses += " modal-dialog-scrollable";
-            if (Size == ModalSize.Small) dialogClasses += " modal-sm";
-            else if (Size == ModalSize.Large) dialogClasses += " modal-lg";
+            var dialogClasses = new List<string> { "fdcp-modal__dialog" };
+            if (Centered) dialogClasses.Add("fdcp-modal__dialog--centered");
+            if (Scrollable) dialogClasses.Add("fdcp-modal__dialog--scrollable");
+            if (Size == ModalSize.Small) dialogClasses.Add("fdcp-modal__dialog--sm");
+            else if (Size == ModalSize.Large) dialogClasses.Add("fdcp-modal__dialog--lg");
 
-#pragma warning disable CA2007 // Consider calling ConfigureAwait on the awaited task
             var childContent = await output.GetChildContentAsync();
-#pragma warning restore CA2007 // Consider calling ConfigureAwait on the awaited task
             var html = childContent.GetContent();
 
             var sb = new StringBuilder();
-            sb.AppendLine(CultureInfo.InvariantCulture, $"<div class='{dialogClasses}' role='document'>");
-            sb.AppendLine("  <div class='modal-content'>");
-
-            sb.AppendLine("    <div class='modal-header'>");
-            sb.AppendLine(CultureInfo.InvariantCulture, $"      <h5 class='modal-title' id='{Id}Label'>{Title}</h5>");
+            sb.AppendLine("<div class='fdcp-modal__backdrop'></div>");
+            sb.AppendLine(CultureInfo.InvariantCulture, $"<div class='{string.Join(" ", dialogClasses)}' role='document'>");
+            sb.AppendLine("  <div class='fdcp-modal__content'>");
+            sb.AppendLine("    <div class='fdcp-modal__header'>");
+            sb.AppendLine(CultureInfo.InvariantCulture, $"      <h5 class='fdcp-modal__title' id='{Id}Label'>{Title}</h5>");
             if (ShowCloseButton)
             {
-                sb.AppendLine(CultureInfo.InvariantCulture, $"      <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='{Modal.Modal_Close}'></button>");
+                sb.AppendLine(CultureInfo.InvariantCulture, $"      <button type='button' class='fdcp-modal__close' aria-label='{Modal.Modal_Close}'>&times;</button>");
             }
             sb.AppendLine("    </div>");
-
             sb.AppendLine(html);
-
             sb.AppendLine("  </div>");
             sb.AppendLine("</div>");
 
             output.Content.SetHtmlContent(sb.ToString());
-
         }
     }
 }

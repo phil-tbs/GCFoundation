@@ -37,11 +37,6 @@ namespace GCFoundation.Components.Configuration
             var cssHashes = Enumerable.Empty<string>();
             var fontCDNs = Enumerable.Empty<string>();
 
-            if (_componentSettings.UsingBootstrapCDN)
-            {
-                jsCDNs = jsCDNs.Append(_componentSettings.BootstrapJSCDN.Host.ToString());
-                cssCDNs = cssCDNs.Append(_componentSettings.BootstrapCSSCDN.Host.ToString());
-            }
 
             jsCDNs = jsCDNs.Append(_componentSettings.GCDSJavaScriptCDN.Host.ToString());
             cssCDNs = cssCDNs

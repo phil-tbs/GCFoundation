@@ -10,6 +10,7 @@ namespace GCFoundation.Components.TagHelpers.FDCP
     [HtmlTargetElement("fdcp-modal-footer")]
     public class FDCPModalFooterTagHelper : TagHelper
     {
+        public ModalFooterAlign Align { get; set; } = ModalFooterAlign.Right;
         /// <inheritdoc/>
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
@@ -17,7 +18,17 @@ namespace GCFoundation.Components.TagHelpers.FDCP
 
             output.TagName = "div";
             output.TagMode = TagMode.StartTagAndEndTag;
-            output.Attributes.Add("class", "modal-footer");
+
+            string alignClass = Align switch
+            {
+                ModalFooterAlign.Left => "left",
+                ModalFooterAlign.Center => "center",
+                ModalFooterAlign.Right => "right",
+                _ => throw new ArgumentOutOfRangeException(nameof(Align), Align, null)
+            };
+
+            output.Attributes.Add("class", $"fdcp-modal__footer {alignClass}");
+
 
             // Razor context: ConfigureAwait(false) is not safe here
 #pragma warning disable CA2007 // Consider calling ConfigureAwait on the awaited task
@@ -28,5 +39,21 @@ namespace GCFoundation.Components.TagHelpers.FDCP
             output.Content.SetHtmlContent(html);
 
         }
+    }
+
+    public enum ModalFooterAlign
+    {
+        /// <summary>
+        /// Aligns the footer content to the left.
+        /// </summary>
+        Left,
+        /// <summary>
+        /// Aligns the footer content to the center.
+        /// </summary>
+        Center,
+        /// <summary>
+        /// Aligns the footer content to the right.
+        /// </summary>
+        Right
     }
 }

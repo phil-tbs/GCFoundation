@@ -7,10 +7,15 @@
             e.preventDefault();
 
             const modalElement = document.getElementById('timeout-modal');
-
-            const modal = new bootstrap.Modal(modalElement);
-            modal.show();
-
+            if (modalElement && modalElement.FDCPModalInstance) {
+                modalElement.FDCPModalInstance.show();
+            } else if (modalElement) {
+                // Fallback: create instance if not already created
+                modalElement.FDCPModalInstance = new FDCPModal(modalElement);
+                modalElement.FDCPModalInstance.show();
+            } else {
+                console.warn("Timeout modal element not found.");
+            }
         });
     } else {
         console.warn("Timeout modal button not found.");

@@ -3,7 +3,7 @@
 
     if (!sessionModalElement) return;
 
-    const bootstrapModal = new bootstrap.Modal(sessionModalElement);
+    const fdcpModal = new FDCPModal(sessionModalElement);
     const timer = parseInt(sessionModalElement.dataset.sessionTimeout, 10);
     const reminder = parseInt(sessionModalElement.dataset.reminderTime, 10);
     const refreshUrl = sessionModalElement.dataset.refresh;
@@ -29,7 +29,7 @@
             window.dispatchEvent(event);
 
             secondsRemaining = reminder * 60;
-            bootstrapModal.show();
+            fdcpModal.show();
             startCountdown();
         }, reminderTimeInMs);
     };
@@ -60,7 +60,7 @@
                 method: 'POST',
                 credentials: 'include'
             }).then(() => {
-                bootstrapModal.hide();
+                fdcpModal.hide();
                 startReminderTimer(); // Reset everything
             });
         });

@@ -1,13 +1,12 @@
 ﻿namespace GCFoundation.Components.Enums
 {
     /// <summary>
-    /// Defines available modal sizes for Bootstrap Modal.
+    /// Defines available modal sizes for Modal.
     /// </summary>
     public enum ModalSize
     {
         /// <summary>
         /// Represents the default modal size. 
-        /// The size will be based on Bootstrap's default modal size settings.
         /// </summary>
         Default,
 

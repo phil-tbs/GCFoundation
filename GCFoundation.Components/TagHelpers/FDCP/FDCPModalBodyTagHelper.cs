@@ -17,7 +17,7 @@ namespace GCFoundation.Components.TagHelpers.FDCP
 
             output.TagName = "div";
             output.TagMode = TagMode.StartTagAndEndTag;
-            output.Attributes.Add("class", "modal-body");
+            output.Attributes.Add("class", "fdcp-modal__body");
 
             // Razor context: ConfigureAwait(false) is not safe here
 #pragma warning disable CA2007 // Consider calling ConfigureAwait on the awaited task

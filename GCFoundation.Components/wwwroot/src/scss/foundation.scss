@@ -3,8 +3,10 @@
 @use './components' as components;
 
 
-body{
+body {
     overflow-x: hidden;
+    font: var(--gcds-font-text);
+    color: var(--gcds-text-primary);
 }
 
 .img-responsive
