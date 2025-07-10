@@ -11,7 +11,7 @@ variables:
   solution: '**/*.sln'
   outputDir: '$(Build.ArtifactStagingDirectory)/nuget'
   nugetSource: 'TBS_Custom_Feed'
-  componentsProject: 'GCFoundation.Components/GCFoundation.Components.csproj'
+  componentsProject: 'GCFoundation.Components/CGFoundation.Components.csproj'
   commonProject: 'GCFoundation.Common/GCFoundation.Common.csproj'
   securityProject: 'GCFoundation.Security/GCFoundation.Security.csproj'
 
@@ -52,7 +52,7 @@ steps:
 # BUILD & PACK: Foundation.Common
 ###############################################
 - task: DotNetCoreCLI@2
-  displayName: 'Build Foundation.Common'
+  displayName: 'Build GCFoundation.Common'
   inputs:
     command: 'build'
     projects: '$(commonProject)'
@@ -73,14 +73,14 @@ steps:
 # BUILD & PACK: Foundation.Components
 ###############################################
 - task: DotNetCoreCLI@2
-  displayName: 'Build Foundation.Components'
+  displayName: 'Build GCFoundation.Components'
   inputs:
     command: 'build'
     projects: '$(componentsProject)'
     arguments: '--configuration $(buildConfiguration) --no-restore'
 
 - task: DotNetCoreCLI@2
-  displayName: 'Pack Foundation.Components'
+  displayName: 'Pack GCFoundation.Components'
   condition: ne(variables['Build.Reason'], 'PullRequest')
   inputs:
     command: 'pack'
@@ -94,7 +94,7 @@ steps:
 # BUILD & PACK: Foundation.Security
 ###############################################
 - task: DotNetCoreCLI@2
-  displayName: 'Build Foundation.Components'
+  displayName: 'Build GCFoundation.Components'
   inputs:
     command: 'build'
     projects: '$(securityProject)'
@@ -102,7 +102,7 @@ steps:
 
 
 - task: DotNetCoreCLI@2
-  displayName: 'Pack Foundation.Security'
+  displayName: 'Pack GCFoundation.Security'
   condition: ne(variables['Build.Reason'], 'PullRequest')
   inputs:
     command: 'pack'
