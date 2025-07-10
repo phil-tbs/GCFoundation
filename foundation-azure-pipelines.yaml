@@ -5,7 +5,7 @@ trigger:
       - develop
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'TBS Self Hosted'
 
 variables:
   buildConfiguration: 'Release'
@@ -39,7 +39,7 @@ steps:
   displayName: 'Install NPM packages for Foundation.Components'
   inputs:
     command: 'install'
-    workingDir: 'Foundation.Components'
+    workingDir: 'GCFoundation.Components'
 
 - task: NuGetToolInstaller@1
   displayName: 'NuGet Tool Installer'
