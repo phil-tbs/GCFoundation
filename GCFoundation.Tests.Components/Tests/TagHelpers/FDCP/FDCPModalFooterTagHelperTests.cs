@@ -27,8 +27,36 @@ public class FDCPModalFooterTagHelperTests
         // Assert
         Assert.Equal("div", output.TagName);
         Assert.Equal(TagMode.StartTagAndEndTag, output.TagMode);
-        Assert.Equal("modal-footer", output.Attributes["class"].Value);
+        Assert.Equal("fdcp-modal__footer right", output.Attributes["class"].Value);
         Assert.Equal("Test content", output.Content.GetContent());
+    }
+
+    [Theory]
+    [InlineData(ModalFooterAlign.Left, "fdcp-modal__footer left")]
+    [InlineData(ModalFooterAlign.Center, "fdcp-modal__footer center")]
+    [InlineData(ModalFooterAlign.Right, "fdcp-modal__footer right")]
+    public async Task ProcessAsync_WithAlignment_RendersCorrectAlignmentClass(ModalFooterAlign align, string expectedClass)
+    {
+        // Arrange
+        var tagHelper = new FDCPModalFooterTagHelper { Align = align };
+        var context = new TagHelperContext(
+            new TagHelperAttributeList(),
+            new Dictionary<object, object>(),
+            "test"
+        );
+
+        var output = new TagHelperOutput("fdcp-modal-footer",
+            new TagHelperAttributeList(),
+            (cache, encoder) => Task.FromResult<TagHelperContent>(
+                new DefaultTagHelperContent().SetHtmlContent("Test content")));
+
+        // Act
+        await tagHelper.ProcessAsync(context, output);
+
+        // Assert
+        Assert.Equal("div", output.TagName);
+        Assert.Equal(TagMode.StartTagAndEndTag, output.TagMode);
+        Assert.Equal(expectedClass, output.Attributes["class"].Value);
     }
 
     [Fact]

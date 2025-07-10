@@ -24,11 +24,11 @@
         <p>A basic stepper with numbered steps:</p>
 
         <fdcp-stepper current-step="2"
-            steps="@(new List<Step>
+            steps="@(new List<StepperStep>
                   {
-                      new Step { StepNumber = 1, Label = "Step One", DisplayMode = StepDisplayMode.Number },
-                      new Step { StepNumber = 2, Label = "Step Two", DisplayMode = StepDisplayMode.Number },
-                      new Step { StepNumber = 3, Label = "Step Three", DisplayMode = StepDisplayMode.Number }
+                      new StepperStep { StepNumber = 1, Label = "Step One", DisplayMode = StepDisplayMode.Number },
+                      new StepperStep { StepNumber = 2, Label = "Step Two", DisplayMode = StepDisplayMode.Number },
+                      new StepperStep { StepNumber = 3, Label = "Step Three", DisplayMode = StepDisplayMode.Number }
                   })"></fdcp-stepper>
         <div class="language-cshtml">
 <pre><code>
@@ -48,11 +48,11 @@
         <p>Stepper with custom icons for different states:</p>
 
         <fdcp-stepper current-step="2"
-            steps="@(new List<Step>
+            steps="@(new List<StepperStep>
                   {
-                      new Step { StepNumber = 1, Label = "Complete", DisplayMode = StepDisplayMode.Icon, CompletedIconHtml = "<i class='fa fa-check'></i>" },
-                      new Step { StepNumber = 2, Label = "In Progress", DisplayMode = StepDisplayMode.Icon, InProgressIconHtml = "<i class='fa fa-spinner'></i>" },
-                      new Step { StepNumber = 3, Label = "Not Started", DisplayMode = StepDisplayMode.Icon }
+                      new StepperStep { StepNumber = 1, Label = "Complete", DisplayMode = StepDisplayMode.Icon, CompletedIconHtml = "<i class='fa fa-check'></i>" },
+                      new StepperStep { StepNumber = 2, Label = "In Progress", DisplayMode = StepDisplayMode.Icon, InProgressIconHtml = "<i class='fa fa-spinner'></i>" },
+                      new StepperStep { StepNumber = 3, Label = "Not Started", DisplayMode = StepDisplayMode.Icon }
                   })"></fdcp-stepper>
         <div class="language-cshtml">
 <pre><code>
@@ -71,11 +71,11 @@
         <p>Stepper with clickable steps:</p>
 
         <fdcp-stepper current-step="2"
-            steps="@(new List<Step>
+            steps="@(new List<StepperStep>
                   {
-                      new Step { StepNumber = 1, Label = "Back", IsLink = true, LinkUrl = "#step1" },
-                      new Step { StepNumber = 2, Label = "Current" },
-                      new Step { StepNumber = 3, Label = "Next" }
+                      new StepperStep { StepNumber = 1, Label = "Back", IsLink = true, LinkUrl = "#step1" },
+                      new StepperStep { StepNumber = 2, Label = "Current" },
+                      new StepperStep { StepNumber = 3, Label = "Next" }
                   })"></fdcp-stepper>
         <div class="language-cshtml">
 <pre><code>

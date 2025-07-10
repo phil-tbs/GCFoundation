@@ -27,7 +27,7 @@ namespace GCFoundation.Components.TagHelpers.FDCP
         /// <summary>
         /// Gets or sets the collection of steps for the process.
         /// </summary>
-        public IEnumerable<Step> Steps { get; set; } = new List<Step>();
+        public IEnumerable<StepperStep> Steps { get; set; } = new List<StepperStep>();
 
         /// <summary>
         /// Processes the tag helper and generates the HTML output for the stepper component.

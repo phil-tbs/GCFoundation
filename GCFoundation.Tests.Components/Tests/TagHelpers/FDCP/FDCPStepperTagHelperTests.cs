@@ -50,9 +50,9 @@ namespace GCFoundation.Tests.Components.Tests.TagHelpers.FDCP
             // Arrange
             var steps = new[]
             {
-                new Step { StepNumber = 1, Label = "Step 1" },
-                new Step { StepNumber = 2, Label = "Step 2" },
-                new Step { StepNumber = 3, Label = "Step 3" }
+                new StepperStep { StepNumber = 1, Label = "Step 1" },
+                new StepperStep { StepNumber = 2, Label = "Step 2" },
+                new StepperStep { StepNumber = 3, Label = "Step 3" }
             };
 
             var tagHelper = new FDCPStepperTagHelper
@@ -93,9 +93,9 @@ namespace GCFoundation.Tests.Components.Tests.TagHelpers.FDCP
             // Arrange
             var steps = new[]
             {
-                new Step { StepNumber = 1, Label = "Step 1" },
-                new Step { StepNumber = 2, Label = "Step 2" },
-                new Step { StepNumber = 3, Label = "Step 3" }
+                new StepperStep { StepNumber = 1, Label = "Step 1" },
+                new StepperStep { StepNumber = 2, Label = "Step 2" },
+                new StepperStep { StepNumber = 3, Label = "Step 3" }
             };
 
             var tagHelper = new FDCPStepperTagHelper
@@ -120,9 +120,9 @@ namespace GCFoundation.Tests.Components.Tests.TagHelpers.FDCP
             // Arrange
             var steps = new[]
             {
-                new Step { StepNumber = 1, Label = "Step 1" },
-                new Step { StepNumber = 2, Label = "Step 2", IsHidden = true },
-                new Step { StepNumber = 3, Label = "Step 3" }
+                new StepperStep { StepNumber = 1, Label = "Step 1" },
+                new StepperStep { StepNumber = 2, Label = "Step 2", IsHidden = true },
+                new StepperStep { StepNumber = 3, Label = "Step 3" }
             };
 
             var tagHelper = new FDCPStepperTagHelper
@@ -147,7 +147,7 @@ namespace GCFoundation.Tests.Components.Tests.TagHelpers.FDCP
             // Arrange
             var steps = new[]
             {
-                new Step { 
+                new StepperStep { 
                     StepNumber = 1, 
                     Label = "Step 1",
                     IsLink = true,

@@ -28,16 +28,18 @@ public class FDCPModalTagHelperTests
         // Assert
         Assert.Equal("div", output.TagName);
         Assert.Equal(TagMode.StartTagAndEndTag, output.TagMode);
-        Assert.Equal("modal fade", output.Attributes["class"].Value);
+        Assert.Equal("fdcp-modal", output.Attributes["class"].Value);
         Assert.Equal("modal", output.Attributes["id"].Value);
         Assert.Equal("-1", output.Attributes["tabindex"].Value);
         Assert.Equal("modalLabel", output.Attributes["aria-labelledby"].Value);
         Assert.Equal("true", output.Attributes["aria-hidden"].Value);
+        Assert.Equal("dialog", output.Attributes["role"].Value);
 
         var content = output.Content.GetContent();
-        Assert.Contains("modal-dialog modal-dialog-centered", content);
-        Assert.Contains("<h5 class='modal-title' id='modalLabel'>Modal Title</h5>", content);
-        Assert.Contains("btn-close", content);
+        Assert.Contains("fdcp-modal__backdrop", content);
+        Assert.Contains("fdcp-modal__dialog fdcp-modal__dialog--centered", content);
+        Assert.Contains("<h5 class='fdcp-modal__title' id='modalLabel'>Modal Title</h5>", content);
+        Assert.Contains("fdcp-modal__close", content);
         Assert.Contains("Test content", content);
     }
 
@@ -58,8 +60,8 @@ public class FDCPModalTagHelperTests
     }
 
     [Theory]
-    [InlineData(ModalSize.Small, "modal-sm")]
-    [InlineData(ModalSize.Large, "modal-lg")]
+    [InlineData(ModalSize.Small, "fdcp-modal__dialog--sm")]
+    [InlineData(ModalSize.Large, "fdcp-modal__dialog--lg")]
     [InlineData(ModalSize.Default, "")]
     public async Task ProcessAsync_AppliesCorrectSizeClass(ModalSize size, string expectedClass)
     {
@@ -117,12 +119,37 @@ public class FDCPModalTagHelperTests
 
         // Assert
         Assert.Equal("customModal", output.Attributes["id"].Value);
-        Assert.Contains("static", output.Attributes["data-bs-backdrop"].Value.ToString());
+        Assert.Equal("true", output.Attributes["data-static"].Value);
 
         var content = output.Content.GetContent();
-        Assert.Contains("modal-dialog-scrollable", content);
-        Assert.DoesNotContain("modal-dialog-centered", content);
+        Assert.Contains("fdcp-modal__dialog--scrollable", content);
+        Assert.DoesNotContain("fdcp-modal__dialog--centered", content);
         Assert.Contains("Custom Title", content);
-        Assert.DoesNotContain("btn-close", content);
+        Assert.DoesNotContain("fdcp-modal__close", content);
+        Assert.Contains("fdcp-modal__backdrop", content);
+    }
+
+    [Fact]
+    public async Task ProcessAsync_WithEmptyTitle_UsesEmptyTitle()
+    {
+        // Arrange
+        var tagHelper = new FDCPModalTagHelper { Title = string.Empty };
+        var context = new TagHelperContext(
+            new TagHelperAttributeList(),
+            new Dictionary<object, object>(),
+            "test"
+        );
+
+        var output = new TagHelperOutput("fdcp-modal",
+            new TagHelperAttributeList(),
+            (cache, encoder) => Task.FromResult<TagHelperContent>(
+                new DefaultTagHelperContent()));
+
+        // Act
+        await tagHelper.ProcessAsync(context, output);
+
+        // Assert
+        var content = output.Content.GetContent();
+        Assert.Contains($"<h5 class='fdcp-modal__title' id='modalLabel'></h5>", content);
     }
 }

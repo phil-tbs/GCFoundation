@@ -112,7 +112,6 @@
   <ItemGroup>
     <Folder Include="wwwroot\images\Icons\" />
     <Folder Include="wwwroot\images\splash\" />
-    <Folder Include="wwwroot\lib\bootstrap\" />
   </ItemGroup>
 
   <ItemGroup>

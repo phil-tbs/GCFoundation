@@ -27,7 +27,7 @@ public class FDCPModalBodyTagHelperTests
         // Assert
         Assert.Equal("div", output.TagName);
         Assert.Equal(TagMode.StartTagAndEndTag, output.TagMode);
-        Assert.Equal("modal-body", output.Attributes["class"].Value);
+        Assert.Equal("fdcp-modal__body", output.Attributes["class"].Value);
         Assert.Equal("Test content", output.Content.GetContent());
     }
 
@@ -43,8 +43,9 @@ public class FDCPModalBodyTagHelperTests
         );
 
         // Act & Assert
-        await Assert.ThrowsAsync<ArgumentNullException>(
+        var exception = await Assert.ThrowsAsync<ArgumentNullException>(
             async () => await tagHelper.ProcessAsync(context, null!));
+        Assert.Equal("output", exception.ParamName);
     }
 
     [Fact]

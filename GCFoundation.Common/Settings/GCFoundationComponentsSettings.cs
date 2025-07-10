@@ -4,7 +4,7 @@ namespace GCFoundation.Common.Settings
 {
     /// <summary>
     /// Represents configuration settings for frontend dependencies and application metadata.
-    /// Provides centralized access to CDN URIs for GC Design System, Font Awesome, Bootstrap,
+    /// Provides centralized access to CDN URIs for GC Design System, Font Awesome,
     /// and multilingual application information.
     /// </summary>
     public class GCFoundationComponentsSettings
@@ -63,37 +63,6 @@ namespace GCFoundation.Common.Settings
         /// </summary>
         public string FontAwesomeVersion { get; set; } = "6.4.2";
 
-        /// <summary>
-        /// Gets or sets whether Bootstrap is used via CDN.
-        /// </summary>
-        public bool UsingBootstrapCDN { get; set; }
-
-        /// <summary>
-        /// Gets or sets the version of Bootstrap being used.
-        /// </summary>
-        public string BootstrapCDNVersion { get; set; } = "5.3.3";
-
-        /// <summary>
-        /// Gets the URI for the Bootstrap CSS from the CDN.
-        /// </summary>
-        public Uri BootstrapCSSCDN
-        {
-            get
-            {
-                return new Uri($"https://cdn.jsdelivr.net/npm/bootstrap@{BootstrapCDNVersion}/dist/css/bootstrap.min.css");
-            }
-        }
-
-        /// <summary>
-        /// Gets the URI for the Bootstrap JavaScript bundle from the CDN.
-        /// </summary>
-        public Uri BootstrapJSCDN
-        {
-            get
-            {
-                return new Uri($"https://cdn.jsdelivr.net/npm/bootstrap@{BootstrapCDNVersion}/dist/js/bootstrap.bundle.min.js");
-            }
-        }
 
         /// <summary>
         /// Gets or sets the English name of the application.
