@@ -1,24 +1,228 @@
-﻿@section Scripts {
+﻿@using GCFoundation.Components.Models
+@using GCFoundation.Web.Resources
+@using GCFoundation.Components.Helpers
+@inject IHttpContextAccessor HttpContextAccessor
+
+@section Scripts {
 	<script src="/js/site.js" type="text/javascript"></script>
+    <script nonce="@CspNonceHelper.AddNonceToDirective(HttpContextAccessor.HttpContext!, DirectiveType.Script)">
+        document.addEventListener('DOMContentLoaded', () => {
+            // Regular modal initialization
+            const regularBtn = document.querySelector('[button-id=regular-modal]');
+            if (regularBtn) {
+                regularBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    const modalElement = document.getElementById('regular-modal');
+                    if (modalElement) {
+                        modalElement.FDCPModalInstance = modalElement.FDCPModalInstance || new FDCPModal(modalElement);
+                        modalElement.FDCPModalInstance.show();
+                    }
+                });
+            }
+        });
+    </script>
 }
 
-<gcds-button button-id="timeout-modal">
-	Open time out modal
-</gcds-button>
+<gcds-heading tag="h1">Modal</gcds-heading>
 
-<gcds-button button-id="regular-modal">
-	Open regular modal
-</gcds-button>
+<gcds-grid columns="minmax(200px, 300px) minmax(0, 1fr)" align-content="@GCFoundation.Components.Enums.AlignContent.start">
+    <gcds-side-nav label="On this page">
+        <gcds-nav-link href="#overview">Overview</gcds-nav-link>
+        <gcds-nav-link href="#basic-usage">Basic Usage</gcds-nav-link>
+        <gcds-nav-link href="#session-modal">Session Modal</gcds-nav-link>
+        <gcds-nav-link href="#parameters">Parameters</gcds-nav-link>
+        <gcds-nav-link href="#notes">Notes</gcds-nav-link>
+    </gcds-side-nav>
+    <div class="documentation-content">
+        <gcds-heading tag="h2" id="overview">Overview</gcds-heading>
+        <gcds-text>
+            The Modal component provides a flexible dialog system for displaying content in a popup overlay. It supports regular modals for general use and specialized session modals for handling user session management.
+        </gcds-text>
 
+        <hr />
 
-@section Modals{
-	<fdcp-modal id="timeout-modal" title="Session is about to close" is-static-backdrop="true">
-		<fdcp-modal-body>
-			<p>Your session is about to close!</p>
-		</fdcp-modal-body>
-		<fdcp-modal-footer>
-			<gcds-button>Exit</gcds-button>
-			<gcds-button>Extend my session</gcds-button>
-		</fdcp-modal-footer>
-	</fdcp-modal>
+        <gcds-heading tag="h2" id="basic-usage">Basic Usage</gcds-heading>
+        <gcds-text>Click the buttons below to see the modals in action:</gcds-text>
+
+        <div class="example-section">
+            <gcds-button button-id="regular-modal">
+                Open Regular Modal
+            </gcds-button>
+
+            <gcds-button button-id="timeout-modal">
+                Open Timeout Modal
+            </gcds-button>
+
+            <div class="language-cshtml">
+<pre><code>
+&lt;!-- Button to trigger the modal --&gt;
+&lt;gcds-button button-id="regular-modal"&gt;
+    Open Regular Modal
+&lt;/gcds-button&gt;
+
+&lt;!-- Modal definition --&gt;
+&lt;fdcp-modal id="regular-modal" title="Example Modal"&gt;
+    &lt;fdcp-modal-body&gt;
+        &lt;p&gt;This is a regular modal with custom content.&lt;/p&gt;
+    &lt;/fdcp-modal-body&gt;
+    &lt;fdcp-modal-footer&gt;
+        &lt;gcds-button button-id="close-modal"&gt;Close&lt;/gcds-button&gt;
+        &lt;gcds-button button-id="save-changes"&gt;Save Changes&lt;/gcds-button&gt;
+    &lt;/fdcp-modal-footer&gt;
+&lt;/fdcp-modal&gt;
+
+&lt;!-- JavaScript to initialize the modal --&gt;
+&lt;script&gt;
+    document.addEventListener('DOMContentLoaded', () => {
+        const regularBtn = document.querySelector('[button-id=regular-modal]');
+        if (regularBtn) {
+            regularBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                const modalElement = document.getElementById('regular-modal');
+                if (modalElement) {
+                    modalElement.FDCPModalInstance = modalElement.FDCPModalInstance || new FDCPModal(modalElement);
+                    modalElement.FDCPModalInstance.show();
+                }
+            });
+        }
+    });
+&lt;/script&gt;
+</code></pre>
+            </div>
+        </div>
+
+        <hr />
+
+        <gcds-heading tag="h2" id="session-modal">Session Modal</gcds-heading>
+        <gcds-text>A specialized modal for handling session timeouts:</gcds-text>
+
+        <div class="language-cshtml">
+<pre><code>
+&lt;fdcp-session-modal id="session-modal" title="Session Timeout" 
+    is-static-backdrop="true"
+    session-timeout="3600"
+    reminder-time="300"
+    refresh-url="/api/session/refresh"
+    logout-url="/logout"&gt;
+    &lt;fdcp-modal-body&gt;
+        &lt;p&gt;Your session is about to expire!&lt;/p&gt;
+    &lt;/fdcp-modal-body&gt;
+    &lt;fdcp-modal-footer&gt;
+        &lt;gcds-button button-id="extend-session"&gt;Extend Session&lt;/gcds-button&gt;
+        &lt;gcds-button button-id="logout"&gt;Logout&lt;/gcds-button&gt;
+    &lt;/fdcp-modal-footer&gt;
+&lt;/fdcp-session-modal&gt;
+</code></pre>
+        </div>
+
+        <hr />
+
+        <gcds-heading tag="h2" id="parameters">Parameters</gcds-heading>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Property</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>Id</code></td>
+                    <td><code>string</code></td>
+                    <td>Unique identifier for the modal (default: "modal")</td>
+                </tr>
+                <tr>
+                    <td><code>Title</code></td>
+                    <td><code>string</code></td>
+                    <td>Text displayed in the modal header</td>
+                </tr>
+                <tr>
+                    <td><code>Centered</code></td>
+                    <td><code>bool</code></td>
+                    <td>Centers the modal vertically (default: true)</td>
+                </tr>
+                <tr>
+                    <td><code>Scrollable</code></td>
+                    <td><code>bool</code></td>
+                    <td>Makes the modal body scrollable</td>
+                </tr>
+                <tr>
+                    <td><code>Size</code></td>
+                    <td><code>ModalSize</code></td>
+                    <td>Modal size (Default, Small, or Large)</td>
+                </tr>
+                <tr>
+                    <td><code>ShowCloseButton</code></td>
+                    <td><code>bool</code></td>
+                    <td>Shows close button in header (default: true)</td>
+                </tr>
+                <tr>
+                    <td><code>IsStaticBackdrop</code></td>
+                    <td><code>bool</code></td>
+                    <td>Prevents closing by clicking outside</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Session Modal Additional Parameters</h3>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td><code>SessionTimeout</code></td>
+                    <td><code>int</code></td>
+                    <td>Session timeout in seconds</td>
+                </tr>
+                <tr>
+                    <td><code>ReminderTime</code></td>
+                    <td><code>int</code></td>
+                    <td>Time before timeout to show reminder</td>
+                </tr>
+                <tr>
+                    <td><code>RefreshURL</code></td>
+                    <td><code>Uri</code></td>
+                    <td>Endpoint to refresh the session</td>
+                </tr>
+                <tr>
+                    <td><code>LogoutURL</code></td>
+                    <td><code>Uri</code></td>
+                    <td>Endpoint to log out the user</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr />
+
+        <gcds-heading tag="h2" id="notes">Notes</gcds-heading>
+        <ul>
+            <li><gcds-text>Modals require unique IDs when multiple are used on the same page</gcds-text></li>
+            <li><gcds-text>Session modals automatically handle timeout warnings and session extension</gcds-text></li>
+            <li><gcds-text>Use <code>is-static-backdrop="true"</code> for modals that require user action</gcds-text></li>
+            <li><gcds-text>Modal content should be wrapped in <code>&lt;fdcp-modal-body&gt;</code> and <code>&lt;fdcp-modal-footer&gt;</code> tags</gcds-text></li>
+        </ul>
+    </div>
+</gcds-grid>
+
+@section Modals {
+    <!-- Regular Modal Example -->
+    <fdcp-modal id="regular-modal" title="Example Modal">
+        <fdcp-modal-body>
+            <gcds-text>This is a regular modal with custom content.</gcds-text>
+        </fdcp-modal-body>
+        <fdcp-modal-footer>
+            <gcds-button button-id="close-modal">Close</gcds-button>
+            <gcds-button button-id="save-changes">Save Changes</gcds-button>
+        </fdcp-modal-footer>
+    </fdcp-modal>
+
+    <!-- Timeout Modal Example -->
+    <fdcp-modal id="timeout-modal" title="Session is about to close" is-static-backdrop="true">
+        <fdcp-modal-body>
+            <gcds-text>Your session is about to close!</gcds-text>
+        </fdcp-modal-body>
+        <fdcp-modal-footer>
+            <gcds-button button-id="exit-session">Exit</gcds-button>
+            <gcds-button button-id="extend-session">Extend my session</gcds-button>
+        </fdcp-modal-footer>
+    </fdcp-modal>
 }
