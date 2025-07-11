@@ -1,20 +1,22 @@
 ﻿@use './_variables' as vars;
 @use './_overwrite' as overwrite;
 @use './components' as components;
-
+@use './_table' as table;
 
 body {
     overflow-x: hidden;
     font: var(--gcds-font-text);
     color: var(--gcds-text-primary);
+    margin: 0;
+    padding: 0;
 }
 
-.img-responsive
-{
+.img-responsive {
     width: 100%;
-    height:auto;
+    height: auto;
 }
 
 .gc-form-hidden {
     display: none !important;
 }
+

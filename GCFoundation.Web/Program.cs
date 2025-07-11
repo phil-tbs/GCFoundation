@@ -75,9 +75,9 @@ if (!app.Environment.IsDevelopment())
 app.UseMiddleware<GCFoundationComponentsMiddleware>();
 
 // Add foundation security middleware(Add CSP)
-app.UseMiddleware<FoundationContentPoliciesMiddleware>();
+app.UseMiddleware<GCFoundationContentPoliciesMiddleware>();
 
-app.UseMiddleware<LanguageMiddleware>();
+app.UseMiddleware<GCFoundationLanguageMiddleware>();
 
 // Secure Cookies
 app.UseCookiePolicy(new CookiePolicyOptions
@@ -88,9 +88,9 @@ app.UseCookiePolicy(new CookiePolicyOptions
 });
 
 // Use Foundation
-app.UseFoundationComponents();
-app.UseFoundationContentPolicies();
-app.UseFoundationSession();
+app.UseGCFoundationComponents();
+app.UseGCFoundationContentPolicies();
+app.UseGCFoundationSession();
 
 
 app.UseHttpsRedirection();

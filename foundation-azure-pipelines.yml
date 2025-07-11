@@ -59,7 +59,7 @@ steps:
     arguments: '--configuration $(buildConfiguration) --no-restore'
 
 - task: DotNetCoreCLI@2
-  displayName: 'Pack Foundation.Common'
+  displayName: 'Pack GCFoundation.Common'
   condition: ne(variables['Build.Reason'], 'PullRequest')
   inputs:
     command: 'pack'
@@ -94,7 +94,7 @@ steps:
 # BUILD & PACK: Foundation.Security
 ###############################################
 - task: DotNetCoreCLI@2
-  displayName: 'Build GCFoundation.Components'
+  displayName: 'Build GCFoundation.Security'
   inputs:
     command: 'build'
     projects: '$(securityProject)'

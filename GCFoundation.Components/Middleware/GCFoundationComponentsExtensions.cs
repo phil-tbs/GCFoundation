@@ -41,7 +41,7 @@ namespace GCFoundation.Components.Middleware
         /// </summary>
         /// <param name="app">The application builder to add middleware to.</param>
         /// <returns>The updated <see cref="IApplicationBuilder"/> with foundation components middleware added.</returns>
-        public static IApplicationBuilder UseFoundationComponents(this IApplicationBuilder app)
+        public static IApplicationBuilder UseGCFoundationComponents(this IApplicationBuilder app)
         {
             app.UseMiddleware<GCFoundationComponentsMiddleware>();
             return app;

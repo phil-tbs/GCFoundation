@@ -1,0 +1,111 @@
+// Modern table styles - both default and class-based
+table,
+.gcfoundation-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 1.5rem 0;
+    color: var(--gcds-text-primary);
+    font: var(--gcds-font-text);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+// Table header styles
+th,
+.gcfoundation-table th {
+    background-color: var(--gcds-background-grey);
+    border-bottom: 2px solid var(--gcds-border-default);
+    padding: 1rem;
+    text-align: left;
+    font-weight: 700;
+    position: relative;
+}
+
+// Table cell styles
+td,
+.gcfoundation-table td {
+    padding: 1rem;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--gcds-border-default);
+}
+
+// Modern hover effects
+.gcfoundation-table-hover tr:hover {
+    background-color: var(--gcds-background-light);
+    transition: background-color 0.2s ease;
+}
+
+// Striped rows variant
+.gcfoundation-table-striped tbody tr:nth-of-type(odd) {
+    background-color: var(--gcds-background-grey-light);
+}
+
+// Bordered variant
+.gcfoundation-table-bordered {
+    th, td {
+        border: 1px solid var(--gcds-border-default);
+    }
+}
+
+// Compact variant
+.gcfoundation-table-sm {
+    th, td {
+        padding: 0.5rem;
+    }
+}
+
+// Responsive tables
+@media screen and (max-width: 768px) {
+    .gcfoundation-table-responsive {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        
+        // Remove horizontal scroll on mobile for better UX
+        &::-webkit-scrollbar {
+            height: 6px;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--gcds-border-default);
+            border-radius: 3px;
+        }
+    }
+}
+
+// Focus styles for keyboard navigation
+th:focus,
+td:focus,
+.gcfoundation-table th:focus,
+.gcfoundation-table td:focus {
+    outline: 3px solid var(--gcds-focus-border);
+    outline-offset: -3px;
+    position: relative;
+    z-index: 1;
+}
+
+// Caption styles
+caption,
+.gcfoundation-table caption {
+    font: var(--gcds-font-header-h4);
+    color: var(--gcds-text-primary);
+    text-align: left;
+    margin-bottom: 1rem;
+    padding: 0.5rem 0;
+}
+
+// Status variants
+.gcfoundation-table-success {
+    background-color: var(--gcds-success-light);
+}
+
+.gcfoundation-table-warning {
+    background-color: var(--gcds-warning-light);
+}
+
+.gcfoundation-table-danger {
+    background-color: var(--gcds-error-light);
+}
