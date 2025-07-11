@@ -33,7 +33,7 @@ namespace GCFoundation.Components.TagHelpers.GCDS
         /// <summary>
         /// Defines the padding of the container. Default value is "300".
         /// </summary>
-        public string? Padding { get; set; } = "300";
+        public string? Padding { get; set; }
 
         /// <summary>
         /// Defines the size of the container. Default is <see cref="SizeTypeEmum.lg"/>.

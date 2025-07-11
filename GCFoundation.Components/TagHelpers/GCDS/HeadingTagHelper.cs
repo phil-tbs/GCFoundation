@@ -36,7 +36,7 @@ namespace GCFoundation.Components.TagHelpers.GCDS
         {
             AddAttributeIfNotNull(output, "tag", Tag);
             AddAttributeIfNotNull(output, "character-limit", CharacterLimit);
-            AddAttributeIfNotNull(output, "margin-bottom", Tag);
+            AddAttributeIfNotNull(output, "margin-bottom", MarginBottom);
             AddAttributeIfNotNull(output, "margin-top", MarginTop);
 
             base.Process(context, output);

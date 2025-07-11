@@ -52,7 +52,7 @@ namespace GCFoundation.Components.TagHelpers.GCDS
         /// <summary>
         /// Defines the gap between items in the grid.
         /// </summary>
-        public string? Gap { get; set; } = "300";
+        public string? Gap { get; set; }
 
         /// <summary>
         /// Defines the gap between items in the grid on desktop screens.
