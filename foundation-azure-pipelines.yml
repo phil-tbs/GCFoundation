@@ -4,17 +4,16 @@ trigger:
       - master
       - develop
 
-pool:
-  vmImage: 'windows-latest'
+pool: 'TBS Self Hosted'
 
 variables:
   buildConfiguration: 'Release'
   solution: '**/*.sln'
   outputDir: '$(Build.ArtifactStagingDirectory)/nuget'
-  nugetSource: 'EGCS-Nuget-Feed'
-  componentsProject: 'Foundation.Components/Foundation.Components.csproj'
-  commonProject: 'Foundation.Common/Foundation.Common.csproj'
-  securityProject: 'Foundation.Security/Foundation.Security.csproj'
+  nugetSource: 'TBS_Custom_Feed'
+  componentsProject: 'GCFoundation.Components/CGFoundation.Components.csproj'
+  commonProject: 'GCFoundation.Common/GCFoundation.Common.csproj'
+  securityProject: 'GCFoundation.Security/GCFoundation.Security.csproj'
 
   isMain: $[eq(variables['Build.SourceBranchName'], 'master')]
   versionSuffix: $[iif(eq(variables['isMain'], 'True'), '', '-beta')]
@@ -39,7 +38,7 @@ steps:
   displayName: 'Install NPM packages for Foundation.Components'
   inputs:
     command: 'install'
-    workingDir: 'Foundation.Components'
+    workingDir: 'GCFoundation.Components'
 
 - task: NuGetToolInstaller@1
   displayName: 'NuGet Tool Installer'
@@ -53,14 +52,14 @@ steps:
 # BUILD & PACK: Foundation.Common
 ###############################################
 - task: DotNetCoreCLI@2
-  displayName: 'Build Foundation.Common'
+  displayName: 'Build GCFoundation.Common'
   inputs:
     command: 'build'
     projects: '$(commonProject)'
     arguments: '--configuration $(buildConfiguration) --no-restore'
 
 - task: DotNetCoreCLI@2
-  displayName: 'Pack Foundation.Common'
+  displayName: 'Pack GCFoundation.Common'
   condition: ne(variables['Build.Reason'], 'PullRequest')
   inputs:
     command: 'pack'
@@ -74,14 +73,14 @@ steps:
 # BUILD & PACK: Foundation.Components
 ###############################################
 - task: DotNetCoreCLI@2
-  displayName: 'Build Foundation.Components'
+  displayName: 'Build GCFoundation.Components'
   inputs:
     command: 'build'
     projects: '$(componentsProject)'
     arguments: '--configuration $(buildConfiguration) --no-restore'
 
 - task: DotNetCoreCLI@2
-  displayName: 'Pack Foundation.Components'
+  displayName: 'Pack GCFoundation.Components'
   condition: ne(variables['Build.Reason'], 'PullRequest')
   inputs:
     command: 'pack'
@@ -95,7 +94,7 @@ steps:
 # BUILD & PACK: Foundation.Security
 ###############################################
 - task: DotNetCoreCLI@2
-  displayName: 'Build Foundation.Components'
+  displayName: 'Build GCFoundation.Security'
   inputs:
     command: 'build'
     projects: '$(securityProject)'
@@ -103,7 +102,7 @@ steps:
 
 
 - task: DotNetCoreCLI@2
-  displayName: 'Pack Foundation.Security'
+  displayName: 'Pack GCFoundation.Security'
   condition: ne(variables['Build.Reason'], 'PullRequest')
   inputs:
     command: 'pack'
@@ -125,6 +124,6 @@ steps:
   condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
   inputs:
     command: 'push'
-    publishVstsFeed: 'EGCS/EGCS-Nuget-Feed'
+    publishVstsFeed: '$(nugetSource)'
     searchPatternPush: '$(outputDir)/*.nupkg'
     allowPackageConflicts: true

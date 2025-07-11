@@ -5,12 +5,12 @@ using System.Security.Cryptography;
 
 namespace GCFoundation.Security.Middlewares
 {
-    public class FoundationContentPoliciesMiddleware
+    public class GCFoundationContentPoliciesMiddleware
     {
         private readonly RequestDelegate _next;
         private readonly GCFoundationContentPolicySettings _settings;
 
-        public FoundationContentPoliciesMiddleware(RequestDelegate next, IOptions<GCFoundationContentPolicySettings> settings)
+        public GCFoundationContentPoliciesMiddleware(RequestDelegate next, IOptions<GCFoundationContentPolicySettings> settings)
         {
             ArgumentNullException.ThrowIfNull(settings, nameof(settings));
 

@@ -45,7 +45,7 @@ namespace GCFoundation.Components.Middleware
         /// </summary>
         /// <param name="app">The application builder to which the foundation session middleware is added.</param>
         /// <returns>The updated <see cref="IApplicationBuilder"/> with the foundation session middleware configured.</returns>
-        public static IApplicationBuilder UseFoundationSession(this IApplicationBuilder app)
+        public static IApplicationBuilder UseGCFoundationSession(this IApplicationBuilder app)
         {
             app.UseSession(); // Important: required by ASP.NET Core
             app.UseMiddleware<FoundationSessionMiddleware>(); // Your own logic

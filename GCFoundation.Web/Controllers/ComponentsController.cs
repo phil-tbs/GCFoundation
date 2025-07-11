@@ -87,6 +87,7 @@ namespace GCFoundation.Web.Controllers
         /// The same view with the model and validation results.
         /// </returns>
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult FormValidationTest(FormTestViewModel model)
         {
             if (ModelState.IsValid)

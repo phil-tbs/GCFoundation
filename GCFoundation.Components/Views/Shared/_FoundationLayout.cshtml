@@ -69,7 +69,7 @@
             @await Component.InvokeAsync("Navigation", new { viewName = "GCDSBreadcrumbs", filterName = NamedNavigationFilters.Breadcrumbs, startingNodeKey = "" })
         </div>
     </gcds-header>
-    <gcds-container id="main-content" size="xl" centered tag="main" main>
+    <gcds-container id="main-content" size="xl" centered tag="main" main-container>
         <partial name="_PageNotification" />
         @* Main content *@
         @RenderBody()

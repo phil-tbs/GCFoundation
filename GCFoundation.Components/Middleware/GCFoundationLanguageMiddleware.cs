@@ -8,7 +8,7 @@ namespace GCFoundation.Components.Middleware
     /// <summary>
     /// Middleware for handling language selection based on the request URL and storing the selected language in a cookie.
     /// </summary>
-    public class LanguageMiddleware
+    public class GCFoundationLanguageMiddleware
     {
         private readonly RequestDelegate _next;
 
@@ -16,7 +16,7 @@ namespace GCFoundation.Components.Middleware
         /// Initializes the middleware with the next request delegate.
         /// </summary>
         /// <param name="next">The next request delegate in the pipeline.</param>
-        public LanguageMiddleware(RequestDelegate next)
+        public GCFoundationLanguageMiddleware(RequestDelegate next)
         {
             _next = next;
         }

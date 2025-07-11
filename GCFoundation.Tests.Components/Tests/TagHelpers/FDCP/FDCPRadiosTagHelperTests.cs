@@ -107,7 +107,9 @@ namespace GCFoundation.Tests.Components.Tests.TagHelpers.FDCP
         {
             // Arrange
             _tagHelper.Items = new List<SelectListItem>();
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
             _tagHelper.For = null;
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
 
             // Act & Assert
             var ex = Assert.Throws<InvalidOperationException>(() => _tagHelper.Process(_context, _output));

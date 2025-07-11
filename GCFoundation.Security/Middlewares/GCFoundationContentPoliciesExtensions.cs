@@ -18,9 +18,9 @@ namespace GCFoundation.Security.Middlewares
             return services;
         }
 
-        public static IApplicationBuilder UseFoundationContentPolicies(this IApplicationBuilder app)
+        public static IApplicationBuilder UseGCFoundationContentPolicies(this IApplicationBuilder app)
         {
-            app.UseMiddleware<FoundationContentPoliciesMiddleware>();
+            app.UseMiddleware<GCFoundationContentPoliciesMiddleware>();
             return app;
         }
     }

@@ -53,7 +53,9 @@ namespace GCFoundation.Tests.Components.Tests.TagHelpers.FDCP
         public void Process_WithNullFor_ThrowsInvalidOperationException()
         {
             // Arrange
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
             _tagHelper.For = null;
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
 
             // Act & Assert
             Assert.Throws<InvalidOperationException>(() => _tagHelper.Process(_context, _output));

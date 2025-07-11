@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace GCFoundation.Components.Models
 {
@@ -64,7 +65,9 @@ namespace GCFoundation.Components.Models
         /// <summary>
         /// Gets or sets the URL for navigation when the step is clicked.
         /// </summary>
+#pragma warning disable CA1056 // URI-like properties should not be strings
         public string? LinkUrl { get; set; }
+#pragma warning restore CA1056 // URI-like properties should not be strings
 
         /// <summary>
         /// Gets or sets whether this step should be rendered as a clickable link.
@@ -83,14 +86,15 @@ namespace GCFoundation.Components.Models
 
             if (DisplayMode == StepDisplayMode.Icon)
             {
+
                 return GetStatusByCurrentStep(currentStep) switch
                 {
-                    "completed" => !string.IsNullOrEmpty(CompletedIconHtml) ? CompletedIconHtml : StepNumber.ToString(),
-                    "active" => !string.IsNullOrEmpty(InProgressIconHtml) ? InProgressIconHtml : StepNumber.ToString(),
-                    _ => !string.IsNullOrEmpty(NotStartedIconHtml) ? NotStartedIconHtml : StepNumber.ToString()
+                    "completed" => !string.IsNullOrEmpty(CompletedIconHtml) ? CompletedIconHtml : StepNumber.ToString(CultureInfo.InvariantCulture),
+                    "active" => !string.IsNullOrEmpty(InProgressIconHtml) ? InProgressIconHtml : StepNumber.ToString(CultureInfo.InvariantCulture),
+                    _ => !string.IsNullOrEmpty(NotStartedIconHtml) ? NotStartedIconHtml : StepNumber.ToString(CultureInfo.InvariantCulture)
                 };
             }
-            return StepNumber.ToString();
+            return StepNumber.ToString(CultureInfo.InvariantCulture);
         }
 
         /// <summary>
