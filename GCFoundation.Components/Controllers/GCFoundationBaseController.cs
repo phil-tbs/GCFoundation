@@ -9,15 +9,15 @@ namespace GCFoundation.Components.Controllers
     /// Provides base functionality for controllers within the application.
     /// This class includes common methods for setting page notifications, menu views, and page titles.
     /// </summary>
-    public abstract class FoundationBaseController : Controller
+    public abstract class GCFoundationBaseController : Controller
     {
 
-        private readonly ILogger<FoundationBaseController> _logger;
+        private readonly ILogger<GCFoundationBaseController> _logger;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FoundationBaseController"/> class.
+        /// Initializes a new instance of the <see cref="GCFoundationBaseController"/> class.
         /// </summary>
-        protected FoundationBaseController(ILogger<FoundationBaseController> logger)
+        protected GCFoundationBaseController(ILogger<GCFoundationBaseController> logger)
         {
             _logger = logger;
         }

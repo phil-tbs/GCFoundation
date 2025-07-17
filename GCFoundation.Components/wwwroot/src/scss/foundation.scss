@@ -2,6 +2,7 @@
 @use './_overwrite' as overwrite;
 @use './components' as components;
 @use './_table' as table;
+@use './_utilities' as utilities;
 
 body {
     overflow-x: hidden;

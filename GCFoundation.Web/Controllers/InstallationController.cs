@@ -7,7 +7,7 @@ namespace GCFoundation.Web.Controllers
     /// Controller responsible for handling installation-related pages.
     /// </summary>
     [Route("installtion")]
-    public class InstallationController : FoundationBaseController
+    public class InstallationController : GCFoundationBaseController
     {
         private readonly ILogger<InstallationController> _logger;
 

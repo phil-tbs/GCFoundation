@@ -1,0 +1,339 @@
+# GCFoundation Project Rules
+
+This document outlines the coding standards, best practices, and architectural guidelines for the GCFoundation project - a .NET 8 solution built with GC Design System (GCDS) and Filtered Data Control Panel (FDCP) components.
+
+## 1. Project Architecture Overview
+
+### Solution Structure:
+- **GCFoundation.Components**: Core component library with GCDS and FDCP tag helpers
+- **GCFoundation.Common**: Shared utilities and common functionality
+- **GCFoundation.Security**: Security middleware and content policies
+- **GCFoundation.Web**: Main web application
+- **GCFoundation.Tests.Components**: Unit tests for components
+
+### Key Technologies:
+- **.NET 8**: Latest framework version
+- **ASP.NET Core MVC**: Web framework
+- **GC Design System (GCDS)**: Government of Canada design system components
+- **FDCP Components**: Custom form and data control components
+- **Razor Tag Helpers**: Custom HTML generation
+- **JavaScript/SCSS**: Frontend assets
+
+## 2. GCDS Components Guidelines
+
+### Tag Helper Naming Convention:
+- All GCDS tag helpers should use the `gcds-` prefix
+- Follow the pattern: `gcds-{component-name}`
+- Examples: `gcds-button`, `gcds-input`, `gcds-card`, `gcds-header`
+
+### Base Classes:
+- **BaseTagHelper**: Common functionality for all GCDS components
+- **BaseFormComponentTagHelper**: Form-specific functionality with model binding
+- Always inherit from appropriate base class
+
+### Component Structure:
+```csharp
+[HtmlTargetElement("gcds-component-name")]
+public class ComponentNameTagHelper : BaseTagHelper
+{
+    // Properties with XML documentation
+    public required string RequiredProperty { get; set; }
+    public string? OptionalProperty { get; set; }
+    
+    public override void Process(TagHelperContext context, TagHelperOutput output)
+    {
+        // Add attributes using AddAttributeIfNotNull
+        AddAttributeIfNotNull(output, "attribute-name", PropertyValue);
+        base.Process(context, output);
+    }
+}
+```
+
+### Language Support:
+- Always include `lang` attribute using `LanguageUtility.GetCurrentApplicationLanguage()`
+- Support both English (en) and French (fr)
+- Use `LanguageUtility.IsEnglish()` for conditional logic
+
+## 3. FDCP Components Guidelines
+
+### Tag Helper Naming Convention:
+- All FDCP tag helpers should use the `fdcp-` prefix
+- Follow the pattern: `fdcp-{component-name}`
+- Examples: `fdcp-input`, `fdcp-form-builder`, `fdcp-modal`
+
+### Form Components:
+- Inherit from `FDCPBaseFormComponentTagHelper` for form elements
+- Support model binding with `[HtmlAttributeName("for")]`
+- Include validation and error handling
+- Support localization through `DisplayAttribute`
+
+### Form Builder Pattern:
+```csharp
+[HtmlTargetElement("fdcp-form-builder")]
+public class FDCPFormBuilderTagHelper : TagHelper
+{
+    public required FormDefinition Form { get; set; }
+    
+    // Generate dynamic forms based on FormDefinition
+    // Support dependencies and validation rules
+}
+```
+
+### Data Components:
+- **FDCPTabulatorTableTagHelper**: For data tables with AJAX support
+- **FDCPFiltersBoxTagHelper**: For filter panels
+- Support both static and dynamic data sources
+
+## 4. C# Coding Standards
+
+### Naming Conventions:
+- **Classes**: PascalCase (e.g., `CardTagHelper`, `FormBuilder`)
+- **Interfaces**: IPascalCase (e.g., `IBreadcrumbsLocalizationService`)
+- **Methods**: PascalCase (e.g., `Process`, `AddAttributeIfNotNull`)
+- **Properties**: PascalCase (e.g., `CardTitle`, `IsRequired`)
+- **Parameters**: camelCase (e.g., `context`, `output`)
+- **Constants**: PascalCase (e.g., `DefaultPageSize`)
+
+### Documentation:
+- Use XML documentation for all public APIs
+- Include `<summary>`, `<param>`, `<returns>`, and `<exception>` tags
+- Document complex logic and business rules
+
+### Error Handling:
+- Use `ArgumentNullException.ThrowIfNull()` for parameter validation
+- Implement proper exception handling in tag helpers
+- Return meaningful error messages
+
+### Async/Await:
+- Use `async`/`await` for I/O operations
+- Avoid blocking calls in async methods
+- Use `ConfigureAwait(false)` when appropriate
+
+## 5. Razor Views and Tag Helpers
+
+### View Structure:
+- Use `_ViewImports.cshtml` for common imports
+- Organize views by feature/controller
+- Use partial views for reusable components
+
+### Tag Helper Usage:
+```html
+<!-- GCDS Components -->
+<gcds-button type="submit" size="regular">Submit</gcds-button>
+<gcds-input for="Model.Property" label="Property Label" hint="Help text" />
+
+<!-- FDCP Components -->
+<fdcp-form for="Model" method="post" action="/submit">
+    <fdcp-input for="Model.Property" />
+</fdcp-form>
+```
+
+### Model Binding:
+- Use `asp-for` for model binding
+- Include validation attributes
+- Support localization through resource files
+
+## 6. JavaScript Guidelines
+
+### Component Structure:
+- Use ES6+ features
+- Follow modular pattern
+- Support both GCDS and FDCP components
+
+### GCDS Integration:
+```javascript
+// GCDS component initialization
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize GCDS components
+    const gcdsComponents = document.querySelectorAll('[data-gcds-component]');
+    gcdsComponents.forEach(component => {
+        // Component-specific initialization
+    });
+});
+```
+
+### FDCP Components:
+```javascript
+// FDCP form builder
+class FDCPFormBuilder {
+    constructor(formDefinition) {
+        this.form = formDefinition;
+        this.init();
+    }
+    
+    init() {
+        // Initialize form with dependencies and validation
+    }
+}
+```
+
+## 7. SCSS/Styling Guidelines
+
+### File Organization:
+- Use BEM methodology for CSS classes
+- Organize by component type (GCDS vs FDCP)
+- Use variables for consistent theming
+
+### GCDS Integration:
+```scss
+// GCDS component overrides
+.gcds-component {
+    // Custom styling while maintaining GCDS compliance
+}
+```
+
+### FDCP Components:
+```scss
+// FDCP-specific styles
+.fdcp-component {
+    // Component-specific styling
+    &--variant {
+        // Modifier styles
+    }
+}
+```
+
+## 8. Testing Guidelines
+
+### Unit Testing:
+- Test all tag helpers
+- Mock dependencies appropriately
+- Test both success and error scenarios
+- Use xUnit framework
+
+### Test Structure:
+```csharp
+[Fact]
+public void TagHelper_WithValidInput_GeneratesCorrectOutput()
+{
+    // Arrange
+    var tagHelper = new ComponentTagHelper();
+    
+    // Act
+    var output = ProcessTagHelper(tagHelper);
+    
+    // Assert
+    Assert.Contains("expected-attribute", output.Attributes);
+}
+```
+
+## 9. Security Considerations
+
+### Content Security Policy:
+- Use `GCFoundationContentPoliciesMiddleware`
+- Implement proper CSP headers
+- Sanitize user input
+
+### Authentication/Authorization:
+- Use proper authentication schemes
+- Implement role-based access control
+- Validate all user inputs
+
+### Data Protection:
+- Encrypt sensitive data
+- Use HTTPS in production
+- Implement proper session management
+
+## 10. Performance Guidelines
+
+### Tag Helper Optimization:
+- Minimize string concatenation
+- Use `StringBuilder` for complex HTML generation
+- Cache frequently used values
+
+### Asset Optimization:
+- Minify CSS and JavaScript
+- Use bundling and compression
+- Optimize images and static assets
+
+### Database Optimization:
+- Use async database operations
+- Implement proper indexing
+- Use connection pooling
+
+## 11. Localization Guidelines
+
+### Resource Files:
+- Use `.resx` files for localization
+- Support English and French
+- Use `LanguageUtility` for language detection
+
+### Tag Helper Localization:
+```csharp
+protected string GetLocalizedLabel(PropertyInfo property)
+{
+    var displayAttr = property.GetCustomAttribute<DisplayAttribute>();
+    return displayAttr?.GetName() ?? property.Name;
+}
+```
+
+## 12. Deployment and Configuration
+
+### Environment Configuration:
+- Use `appsettings.json` for configuration
+- Support multiple environments (Development, Staging, Production)
+- Use Azure Pipelines for CI/CD
+
+### Package Management:
+- Use NuGet for .NET packages
+- Use npm for frontend packages
+- Keep dependencies up to date
+
+## 13. Common Patterns and Anti-patterns
+
+### Recommended Patterns:
+- **Dependency Injection**: Use DI container for services
+- **Repository Pattern**: Abstract data access
+- **Tag Helper Pattern**: Encapsulate HTML generation
+- **Model Binding**: Use strongly-typed models
+
+### Anti-patterns to Avoid:
+- **God Classes**: Don't create overly complex tag helpers
+- **Magic Strings**: Use constants and enums
+- **Sync over Async**: Don't block async operations
+- **Hard-coded Values**: Use configuration and resources
+
+## 14. Code Review Checklist
+
+### Before Submitting Code:
+- [ ] All tests pass
+- [ ] Code follows naming conventions
+- [ ] XML documentation is complete
+- [ ] No hard-coded strings
+- [ ] Proper error handling
+- [ ] Security considerations addressed
+- [ ] Performance implications considered
+- [ ] Localization support included
+
+### For Tag Helpers:
+- [ ] Inherits from appropriate base class
+- [ ] Uses `AddAttributeIfNotNull` for optional attributes
+- [ ] Includes language support
+- [ ] Handles null inputs gracefully
+- [ ] Includes proper validation
+
+## 15. Troubleshooting Common Issues
+
+### Tag Helper Issues:
+- Ensure proper inheritance from base classes
+- Check attribute naming conventions
+- Verify model binding setup
+- Test with both English and French
+
+### Performance Issues:
+- Profile tag helper execution
+- Check for unnecessary string operations
+- Verify database query optimization
+- Monitor memory usage
+
+### Localization Issues:
+- Verify resource file setup
+- Check language detection logic
+- Test with different cultures
+- Ensure proper encoding
+
+Remember: This project serves the Government of Canada and must maintain high standards for accessibility, security, and bilingual support. Always prioritize user experience and compliance with government standards.
+description:
+globs:
+alwaysApply: false
+---

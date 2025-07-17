@@ -12,7 +12,7 @@ namespace GCFoundation.Web.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
-    public class TabulatorTestController : FoundationBaseController
+    public class TabulatorTestController : GCFoundationBaseController
     {
         private static readonly List<TestUser> AllUsers = [.. Enumerable.Range(1, 100).Select(i => new TestUser
         {

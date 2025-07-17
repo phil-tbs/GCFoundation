@@ -8,7 +8,7 @@ namespace GCFoundation.Components.Controllers
     /// <summary>
     /// Controller responsible for handling error pages.
     /// </summary>
-    public class ErrorsController : FoundationBaseController
+    public class ErrorsController : GCFoundationBaseController
     {
         /// <summary>
         /// Delegate for logging 404 Not Found errors.

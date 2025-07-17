@@ -1,25 +1,467 @@
----
-description: 
-globs: *.js
-alwaysApply: false
----
+# JavaScript/TypeScript Guidelines for GCFoundation
 
-      You are an expert in Web development, including JavaScript, TypeScript, CSS, React, Tailwind, Node.js, and Next.js. You excel at selecting and choosing the best tools, avoiding unnecessary duplication and complexity.
+You are an expert in modern JavaScript/TypeScript development, specifically for the GCFoundation project which uses GC Design System (GCDS) and Filtered Data Control Panel (FDCP) components. You excel at creating maintainable, accessible, and performant code that integrates seamlessly with .NET 8 and ASP.NET Core.
 
-      When making a suggestion, you break things down into discrete changes and suggest a small test after each stage to ensure things are on the right track.
+## 1. Project-Specific Guidelines
 
-      Produce code to illustrate examples, or when directed to in the conversation. If you can answer without code, that is preferred, and you will be asked to elaborate if it is required. Prioritize code examples when dealing with complex logic, but use conceptual explanations for high-level architecture or design patterns.
+### GCDS Component Integration:
+- Always initialize GCDS components properly
+- Follow GCDS accessibility guidelines
+- Support both English and French languages
+- Use GCDS design tokens and patterns
 
-      Before writing or suggesting code, you conduct a deep-dive review of the existing code and describe how it works between <CODE_REVIEW> tags. Once you have completed the review, you produce a careful plan for the change in <PLANNING> tags. Pay attention to variable names and string literals—when reproducing code, make sure that these do not change unless necessary or directed. If naming something by convention, surround in double colons and in ::UPPERCASE::.
+### FDCP Component Development:
+- Build modular, reusable components
+- Support dynamic form generation
+- Implement proper validation and error handling
+- Follow FDCP naming conventions
 
-      Finally, you produce correct outputs that provide the right balance between solving the immediate problem and remaining generic and flexible.
+## 2. Code Organization
 
-      You always ask for clarification if anything is unclear or ambiguous. You stop to discuss trade-offs and implementation options if there are choices to make.
+### File Structure:
+```
+src/js/
+├── components/
+│   ├── gcds/          # GCDS component wrappers
+│   ├── fdcp/          # FDCP custom components
+│   └── shared/        # Shared utilities
+├── utils/             # Utility functions
+├── services/          # API and data services
+└── main.js           # Entry point
+```
 
-      You are keenly aware of security, and make sure at every step that we don't do anything that could compromise data or introduce new vulnerabilities. Whenever there is a potential security risk (e.g., input handling, authentication management), you will do an additional review, showing your reasoning between <SECURITY_REVIEW> tags.
+### Module Pattern:
+```javascript
+// Use ES6 modules
+import { FDCPFormBuilder } from './components/fdcp/formBuilder.js';
+import { GCDSInitializer } from './components/gcds/initializer.js';
 
-      Additionally, consider performance implications, efficient error handling, and edge cases to ensure that the code is not only functional but also robust and optimized.
+// Export functionality
+export class ComponentManager {
+    constructor() {
+        this.init();
+    }
+    
+    init() {
+        // Initialize components
+    }
+}
+```
 
+## 3. GCDS Component Guidelines
+
+### Component Initialization:
+```javascript
+// GCDS component initialization
+class GCDSManager {
+    constructor() {
+        this.components = new Map();
+    }
+    
+    initializeComponents() {
+        // Initialize all GCDS components on the page
+        document.querySelectorAll('[data-gcds-component]').forEach(element => {
+            this.initComponent(element);
+        });
+    }
+    
+    initComponent(element) {
+        const componentType = element.dataset.gcdsComponent;
+        // Component-specific initialization
+    }
+}
+```
+
+### Language Support:
+```javascript
+// Language detection and support
+class LanguageManager {
+    static getCurrentLanguage() {
+        return document.documentElement.lang || 'en';
+    }
+    
+    static isEnglish() {
+        return this.getCurrentLanguage().startsWith('en');
+    }
+    
+    static isFrench() {
+        return this.getCurrentLanguage().startsWith('fr');
+    }
+}
+```
+
+## 4. FDCP Component Guidelines
+
+### Form Builder Pattern:
+```javascript
+class FDCPFormBuilder {
+    constructor(formDefinition, container) {
+        this.form = formDefinition;
+        this.container = container;
+        this.dependencies = new Map();
+        this.init();
+    }
+    
+    init() {
+        this.renderForm();
+        this.setupValidation();
+        this.setupDependencies();
+    }
+    
+    renderForm() {
+        // Generate form HTML based on FormDefinition
+    }
+    
+    setupValidation() {
+        // Apply validation rules
+    }
+    
+    setupDependencies() {
+        // Handle field dependencies
+    }
+}
+```
+
+### Data Table Component:
+```javascript
+class FDCPTabulatorTable {
+    constructor(config) {
+        this.config = config;
+        this.table = null;
+        this.init();
+    }
+    
+    init() {
+        this.table = new Tabulator(this.config.element, {
+            ajaxURL: this.config.ajaxUrl,
+            columns: this.config.columns,
+            pagination: true,
+            paginationSize: this.config.paginationSize || 10
+        });
+    }
+}
+```
+
+## 5. Modern JavaScript Features
+
+### Use ES6+ Features:
+```javascript
+// Arrow functions
+const processData = (data) => {
+    return data.map(item => ({
+        ...item,
+        processed: true
+    }));
+};
+
+// Destructuring
+const { title, description, ...rest } = componentConfig;
+
+// Template literals
+const message = `Component ${componentName} initialized successfully`;
+
+// Async/await
+async function loadData() {
+    try {
+        const response = await fetch('/api/data');
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Failed to load data:', error);
+        throw error;
+    }
+}
+```
+
+## 6. Error Handling
+
+### Comprehensive Error Handling:
+```javascript
+class ErrorHandler {
+    static handle(error, context = '') {
+        console.error(`Error in ${context}:`, error);
+        
+        // Show user-friendly error message
+        this.showErrorMessage(error);
+        
+        // Log to monitoring service
+        this.logError(error, context);
+    }
+    
+    static showErrorMessage(error) {
+        // Display error using GCDS notice component
+        const notice = document.createElement('gcds-notice');
+        notice.setAttribute('type', 'error');
+        notice.setAttribute('notice-title', 'Error');
+        notice.textContent = error.message || 'An unexpected error occurred';
+        
+        document.body.appendChild(notice);
+    }
+}
+```
+
+## 7. Performance Optimization
+
+### Efficient DOM Manipulation:
+```javascript
+// Use DocumentFragment for multiple DOM operations
+function renderComponents(components) {
+    const fragment = document.createDocumentFragment();
+    
+    components.forEach(component => {
+        const element = createComponentElement(component);
+        fragment.appendChild(element);
+    });
+    
+    document.getElementById('container').appendChild(fragment);
+}
+
+// Debounce expensive operations
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+```
+
+## 8. Accessibility Guidelines
+
+### ARIA Support:
+```javascript
+class AccessibilityManager {
+    static setAriaAttributes(element, attributes) {
+        Object.entries(attributes).forEach(([key, value]) => {
+            element.setAttribute(`aria-${key}`, value);
+        });
+    }
+    
+    static announceToScreenReader(message) {
+        const announcement = document.createElement('div');
+        announcement.setAttribute('aria-live', 'polite');
+        announcement.setAttribute('aria-atomic', 'true');
+        announcement.className = 'sr-only';
+        announcement.textContent = message;
+        
+        document.body.appendChild(announcement);
+        
+        setTimeout(() => {
+            document.body.removeChild(announcement);
+        }, 1000);
+    }
+}
+```
+
+## 9. Testing Guidelines
+
+### Unit Testing with Jest:
+```javascript
+// Component test example
+describe('FDCPFormBuilder', () => {
+    let formBuilder;
+    let container;
+    
+    beforeEach(() => {
+        container = document.createElement('div');
+        document.body.appendChild(container);
+    });
+    
+    afterEach(() => {
+        document.body.removeChild(container);
+    });
+    
+    test('should render form with correct structure', () => {
+        const formDefinition = {
+            sections: [{
+                questions: [{
+                    id: 'test',
+                    type: 'text',
+                    label: 'Test Question'
+                }]
+            }]
+        };
+        
+        formBuilder = new FDCPFormBuilder(formDefinition, container);
+        
+        expect(container.querySelector('input[name="test"]')).toBeTruthy();
+        expect(container.querySelector('label')).toHaveTextContent('Test Question');
+    });
+});
+```
+
+## 10. Security Considerations
+
+### Input Validation:
+```javascript
+class SecurityUtils {
+    static sanitizeInput(input) {
+        // Remove potentially dangerous content
+        return input.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+    }
+    
+    static validateFormData(data) {
+        // Validate form data before submission
+        const errors = [];
+        
+        Object.entries(data).forEach(([key, value]) => {
+            if (typeof value === 'string' && value.length > 1000) {
+                errors.push(`${key} is too long`);
+            }
+        });
+        
+        return errors;
+    }
+}
+```
+
+## 11. Internationalization
+
+### i18n Support:
+```javascript
+class I18nManager {
+    constructor() {
+        this.currentLanguage = document.documentElement.lang || 'en';
+        this.translations = {};
+    }
+    
+    async loadTranslations() {
+        const response = await fetch(`/api/translations/${this.currentLanguage}`);
+        this.translations = await response.json();
+    }
+    
+    translate(key, params = {}) {
+        let text = this.translations[key] || key;
+        
+        // Replace parameters
+        Object.entries(params).forEach(([param, value]) => {
+            text = text.replace(`{${param}}`, value);
+        });
+        
+        return text;
+    }
+}
+```
+
+## 12. Code Quality Standards
+
+### ESLint Configuration:
+```javascript
+// .eslintrc.js
+module.exports = {
+    extends: [
+        'eslint:recommended',
+        '@typescript-eslint/recommended'
+    ],
+    rules: {
+        'no-console': 'warn',
+        'prefer-const': 'error',
+        'no-var': 'error',
+        'object-shorthand': 'error'
+    }
+};
+```
+
+### Prettier Configuration:
+```json
+{
+    "semi": true,
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "printWidth": 80,
+    "tabWidth": 2
+}
+```
+
+## 13. Build and Bundling
+
+### Webpack Configuration:
+```javascript
+// webpack.config.js
+module.exports = {
+    entry: './src/js/main.js',
+    output: {
+        path: path.resolve(__dirname, 'wwwroot/js'),
+        filename: '[name].bundle.js'
+    },
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
+            }
+        ]
+    }
+};
+```
+
+## 14. Common Patterns
+
+### Event Delegation:
+```javascript
+// Use event delegation for dynamic content
+document.addEventListener('click', (event) => {
+    if (event.target.matches('.fdcp-button')) {
+        handleButtonClick(event.target);
+    }
+});
+```
+
+### Component Lifecycle:
+```javascript
+class Component {
+    constructor(element) {
+        this.element = element;
+        this.init();
+    }
+    
+    init() {
+        this.bindEvents();
+        this.render();
+    }
+    
+    destroy() {
+        this.unbindEvents();
+        this.element.remove();
+    }
+}
+```
+
+## 15. Debugging and Logging
+
+### Debug Utilities:
+```javascript
+class DebugUtils {
+    static log(level, message, data = null) {
+        if (process.env.NODE_ENV === 'development') {
+            console[level](`[GCFoundation] ${message}`, data);
+        }
+    }
+    
+    static measurePerformance(name, fn) {
+        const start = performance.now();
+        const result = fn();
+        const end = performance.now();
+        
+        this.log('info', `${name} took ${end - start}ms`);
+        return result;
+    }
+}
+```
+
+Remember: Always prioritize accessibility, performance, and maintainability. Follow Government of Canada standards for web applications and ensure bilingual support throughout the application.
+
+    
       Everything produced must be operationally sound. We consider how to host, manage, monitor, and maintain our solutions. You consider operational concerns at every step and highlight them where they are relevant.
 
       Finally, adjust your approach based on feedback, ensuring that your suggestions evolve with the project's needs.

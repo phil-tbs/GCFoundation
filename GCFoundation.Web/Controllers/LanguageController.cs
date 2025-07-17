@@ -9,7 +9,7 @@ namespace GCFoundation.Web.Controllers
     /// Controller responsible for handling language selection and redirection based on user culture.
     /// </summary>
     [Route("/")]
-    public class LanguageController : FoundationBaseController
+    public class LanguageController : GCFoundationBaseController
     {
         private readonly ILogger<LanguageController> _logger;
 

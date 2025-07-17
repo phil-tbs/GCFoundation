@@ -33,6 +33,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Canada.ca</title>
+    <link rel="stylesheet" href="@StaticResourceHelper.GetCssResourcePath("foundation.min.css")" asp-append-version="true" />
     <link rel="stylesheet" href="@StaticResourceHelper.GetCssResourcePath("LanguageChooserPage.min.css")" asp-append-version="true" />
     <link href="@StaticResourceHelper.GetImageResourcePath("favicon.ico")" rel="icon" type="image/x-icon">
 </head>
@@ -53,13 +54,13 @@
                     <gcds-signature></gcds-signature>
                 </div>
                 <gcds-grid columns="1fr 1fr" container="sm" equal-row-height="true">
-                    <section class="text-end pt-3" lang="en">
+                    <section class="fdcp-text-right fdcp-pt-300" lang="en">
                         <h2 class="sr-only">@Model?.ApplicationTitleEn</h2>
                         <p>
                             <gcds-button type="link" href="@Model?.EnglishAction" translate="no">English</gcds-button>
                         </p>
                     </section>
-                    <section class="text-start pt-3" lang="fr">
+                    <section class="fdcp-text-left fdcp-pt-300" lang="fr">
                         <h2 class="sr-only">@Model?.ApplicationTitleFr</h2>
                         <p>
                             <gcds-button type="link" href="@Model?.FrenchAction" translate="no">French</gcds-button>

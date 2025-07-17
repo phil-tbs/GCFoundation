@@ -7,7 +7,7 @@ namespace GCFoundation.Web.Controllers
     /// Controller responsible for serving the template demonstration or sample view.
     /// </summary>
     [Route("template")]
-    public class TemplateController : FoundationBaseController
+    public class TemplateController : GCFoundationBaseController
     {
         private readonly ILogger<TemplateController> _logger;
 

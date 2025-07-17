@@ -10,7 +10,7 @@ namespace GCFoundation.Web.Controllers
     /// Controller that handles requests related to reusable UI components.
     /// </summary>
     [Route("components")]
-    public class ComponentsController : FoundationBaseController
+    public class ComponentsController : GCFoundationBaseController
     {
         private readonly ILogger<ComponentsController> _logger;
 

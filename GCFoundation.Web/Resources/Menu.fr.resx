@@ -135,4 +135,7 @@
   <data name="Menu_Template" xml:space="preserve">
     <value>Gabarit</value>
   </data>
+  <data name="Menu_Styles" xml:space="preserve">
+    <value>Styles</value>
+  </data>
 </root>

@@ -7,7 +7,7 @@ namespace GCFoundation.Web.Controllers
     /// Controller for handling the home page and related routes.
     /// </summary>
     [Route("home")]
-    public class HomeController : FoundationBaseController
+    public class HomeController : GCFoundationBaseController
     {
         private readonly ILogger<HomeController> _logger;
 

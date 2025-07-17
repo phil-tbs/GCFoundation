@@ -1,0 +1,720 @@
+# SCSS/CSS Guidelines for GCFoundation
+
+You are an expert in modern SCSS/CSS development, specifically for the GCFoundation project which integrates with GC Design System (GCDS) and Filtered Data Control Panel (FDCP) components. You excel at creating maintainable, accessible, and performant styles that follow Government of Canada design standards.
+
+## 1. Project Structure
+
+### File Organization:
+```
+src/scss/
+├── _variables.scss          # Global variables and design tokens
+├── _mixins.scss            # Reusable mixins
+├── _functions.scss         # Custom SCSS functions
+├── _base.scss              # Base styles and resets
+├── components/
+│   ├── _gcds-overrides.scss # GCDS component customizations
+│   ├── _fdcp-components.scss # FDCP component styles
+│   └── _shared.scss        # Shared component styles
+├── layouts/
+│   ├── _header.scss        # Header layout styles
+│   ├── _footer.scss        # Footer layout styles
+│   └── _main.scss          # Main content layout
+├── utilities/
+│   ├── _helpers.scss       # Utility classes
+│   └── _print.scss         # Print styles
+└── main.scss              # Main entry point
+```
+
+## 2. Naming Conventions
+
+### BEM Methodology:
+```scss
+// Block
+.fdcp-form-builder {
+    // Element
+    &__section {
+        // Modifier
+        &--collapsed {
+            // Styles
+        }
+    }
+    
+    &__field {
+        &--required {
+            // Required field styles
+        }
+        
+        &--error {
+            // Error state styles
+        }
+    }
+}
+```
+
+### Component Prefixes:
+- **GCDS**: Use `gcds-` prefix for GCDS component overrides
+- **FDCP**: Use `fdcp-` prefix for FDCP components
+- **Shared**: Use `gc-` prefix for shared components
+
+## 3. Variables and Design Tokens
+
+### Color System:
+```scss
+// GCDS Color Palette
+$gcds-colors: (
+    'primary': #26374a,
+    'secondary': #666666,
+    'accent': #d3080c,
+    'success': #2e8540,
+    'warning': #f39c12,
+    'error': #d3080c,
+    'info': #269abc
+);
+
+// Semantic color variables
+$color-primary: map-get($gcds-colors, 'primary');
+$color-secondary: map-get($gcds-colors, 'secondary');
+$color-accent: map-get($gcds-colors, 'accent');
+$color-success: map-get($gcds-colors, 'success');
+$color-warning: map-get($gcds-colors, 'warning');
+$color-error: map-get($gcds-colors, 'error');
+$color-info: map-get($gcds-colors, 'info');
+```
+
+### Typography:
+```scss
+// Font families
+$font-family-primary: 'Noto Sans', sans-serif;
+$font-family-secondary: 'Noto Serif', serif;
+
+// Font sizes (following GCDS scale)
+$font-sizes: (
+    'xs': 0.75rem,    // 12px
+    'sm': 0.875rem,   // 14px
+    'base': 1rem,     // 16px
+    'lg': 1.125rem,   // 18px
+    'xl': 1.25rem,    // 20px
+    '2xl': 1.5rem,    // 24px
+    '3xl': 1.875rem,  // 30px
+    '4xl': 2.25rem    // 36px
+);
+
+// Line heights
+$line-heights: (
+    'tight': 1.25,
+    'normal': 1.5,
+    'relaxed': 1.75
+);
+```
+
+### Spacing:
+```scss
+// Spacing scale (following GCDS)
+$spacing: (
+    '0': 0,
+    '1': 0.25rem,   // 4px
+    '2': 0.5rem,    // 8px
+    '3': 0.75rem,   // 12px
+    '4': 1rem,      // 16px
+    '5': 1.25rem,   // 20px
+    '6': 1.5rem,    // 24px
+    '8': 2rem,      // 32px
+    '10': 2.5rem,   // 40px
+    '12': 3rem,     // 48px
+    '16': 4rem,     // 64px
+    '20': 5rem,     // 80px
+    '24': 6rem      // 96px
+);
+```
+
+## 4. Mixins and Functions
+
+### Responsive Mixins:
+```scss
+// Breakpoint mixins
+@mixin mobile {
+    @media (max-width: 767px) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: 768px) and (max-width: 1023px) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: 1024px) {
+        @content;
+    }
+}
+
+@mixin large-desktop {
+    @media (min-width: 1440px) {
+        @content;
+    }
+}
+```
+
+### Component Mixins:
+```scss
+// Focus styles mixin
+@mixin focus-styles {
+    &:focus {
+        outline: 2px solid $color-accent;
+        outline-offset: 2px;
+    }
+    
+    &:focus:not(:focus-visible) {
+        outline: none;
+    }
+}
+
+// Button mixin
+@mixin button-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: map-get($spacing, '3') map-get($spacing, '4');
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-family: $font-family-primary;
+    font-size: map-get($font-sizes, 'base');
+    font-weight: 600;
+    line-height: map-get($line-heights, 'normal');
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    
+    @include focus-styles;
+    
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}
+```
+
+## 5. GCDS Component Overrides
+
+### GCDS Button Overrides:
+```scss
+// GCDS button customizations
+gcds-button {
+    // Custom button styles while maintaining GCDS compliance
+    &[variant="primary"] {
+        background-color: $color-primary;
+        border-color: $color-primary;
+        
+        &:hover {
+            background-color: darken($color-primary, 10%);
+            border-color: darken($color-primary, 10%);
+        }
+    }
+    
+    &[variant="secondary"] {
+        background-color: transparent;
+        border-color: $color-primary;
+        color: $color-primary;
+        
+        &:hover {
+            background-color: $color-primary;
+            color: white;
+        }
+    }
+}
+```
+
+### GCDS Form Component Overrides:
+```scss
+// GCDS input customizations
+gcds-input {
+    &[required] {
+        label::after {
+            content: ' *';
+            color: $color-error;
+        }
+    }
+    
+    &[data-error="true"] {
+        border-color: $color-error;
+        
+        .gcds-input__error-message {
+            color: $color-error;
+            font-size: map-get($font-sizes, 'sm');
+            margin-top: map-get($spacing, '1');
+        }
+    }
+}
+```
+
+## 6. FDCP Component Styles
+
+### FDCP Form Builder:
+```scss
+.fdcp-form-builder {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: map-get($spacing, '6');
+    
+    &__section {
+        margin-bottom: map-get($spacing, '8');
+        padding: map-get($spacing, '4');
+        border: 1px solid lighten($color-secondary, 30%);
+        border-radius: 8px;
+        background-color: white;
+        
+        &--collapsed {
+            .fdcp-form-builder__section-content {
+                display: none;
+            }
+        }
+    }
+    
+    &__section-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: map-get($spacing, '4');
+        
+        h3 {
+            margin: 0;
+            color: $color-primary;
+            font-size: map-get($font-sizes, 'lg');
+            font-weight: 600;
+        }
+    }
+    
+    &__section-toggle {
+        @include button-base;
+        background-color: transparent;
+        border-color: $color-secondary;
+        color: $color-secondary;
+        padding: map-get($spacing, '2') map-get($spacing, '3');
+        font-size: map-get($font-sizes, 'sm');
+        
+        &:hover {
+            background-color: $color-secondary;
+            color: white;
+        }
+    }
+    
+    &__field {
+        margin-bottom: map-get($spacing, '4');
+        
+        &--required {
+            label::after {
+                content: ' *';
+                color: $color-error;
+            }
+        }
+        
+        &--error {
+            .gcds-input {
+                border-color: $color-error;
+            }
+            
+            .fdcp-form-builder__error-message {
+                color: $color-error;
+                font-size: map-get($font-sizes, 'sm');
+                margin-top: map-get($spacing, '1');
+            }
+        }
+    }
+}
+```
+
+### FDCP Modal:
+```scss
+.fdcp-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    
+    &__content {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        max-width: 90vw;
+        max-height: 90vh;
+        overflow: auto;
+        
+        &--small {
+            width: 400px;
+        }
+        
+        &--large {
+            width: 800px;
+        }
+    }
+    
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: map-get($spacing, '4');
+        border-bottom: 1px solid lighten($color-secondary, 30%);
+        
+        h2 {
+            margin: 0;
+            color: $color-primary;
+            font-size: map-get($font-sizes, 'xl');
+        }
+    }
+    
+    &__body {
+        padding: map-get($spacing, '4');
+    }
+    
+    &__footer {
+        display: flex;
+        justify-content: flex-end;
+        gap: map-get($spacing, '3');
+        padding: map-get($spacing, '4');
+        border-top: 1px solid lighten($color-secondary, 30%);
+    }
+    
+    &__close {
+        background: none;
+        border: none;
+        font-size: map-get($font-sizes, 'xl');
+        cursor: pointer;
+        color: $color-secondary;
+        
+        &:hover {
+            color: $color-primary;
+        }
+        
+        @include focus-styles;
+    }
+}
+```
+
+## 7. Layout Styles
+
+### Header Layout:
+```scss
+.gc-header {
+    background-color: white;
+    border-bottom: 1px solid lighten($color-secondary, 30%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+    &__container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 map-get($spacing, '4');
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 80px;
+    }
+    
+    &__logo {
+        height: 40px;
+        width: auto;
+    }
+    
+    &__nav {
+        display: flex;
+        gap: map-get($spacing, '6');
+        
+        @include mobile {
+            display: none;
+        }
+    }
+    
+    &__nav-link {
+        color: $color-primary;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s ease-in-out;
+        
+        &:hover {
+            color: $color-accent;
+        }
+        
+        @include focus-styles;
+    }
+}
+```
+
+### Main Content Layout:
+```scss
+.gc-main {
+    min-height: calc(100vh - 160px); // Account for header and footer
+    padding: map-get($spacing, '6') 0;
+    
+    &__container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 map-get($spacing, '4');
+    }
+    
+    &__content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: map-get($spacing, '6');
+        
+        @include desktop {
+            grid-template-columns: 250px 1fr;
+        }
+    }
+    
+    &__sidebar {
+        @include mobile {
+            order: 2;
+        }
+    }
+    
+    &__primary {
+        @include mobile {
+            order: 1;
+        }
+    }
+}
+```
+
+## 8. Utility Classes
+
+### Spacing Utilities:
+```scss
+// Margin utilities
+@each $size, $value in $spacing {
+    .m-#{$size} { margin: $value !important; }
+    .mt-#{$size} { margin-top: $value !important; }
+    .mr-#{$size} { margin-right: $value !important; }
+    .mb-#{$size} { margin-bottom: $value !important; }
+    .ml-#{$size} { margin-left: $value !important; }
+    .mx-#{$size} { 
+        margin-left: $value !important;
+        margin-right: $value !important;
+    }
+    .my-#{$size} { 
+        margin-top: $value !important;
+        margin-bottom: $value !important;
+    }
+}
+
+// Padding utilities
+@each $size, $value in $spacing {
+    .p-#{$size} { padding: $value !important; }
+    .pt-#{$size} { padding-top: $value !important; }
+    .pr-#{$size} { padding-right: $value !important; }
+    .pb-#{$size} { padding-bottom: $value !important; }
+    .pl-#{$size} { padding-left: $value !important; }
+    .px-#{$size} { 
+        padding-left: $value !important;
+        padding-right: $value !important;
+    }
+    .py-#{$size} { 
+        padding-top: $value !important;
+        padding-bottom: $value !important;
+    }
+}
+```
+
+### Text Utilities:
+```scss
+// Text alignment
+.text-left { text-align: left !important; }
+.text-center { text-align: center !important; }
+.text-right { text-align: right !important; }
+
+// Text colors
+.text-primary { color: $color-primary !important; }
+.text-secondary { color: $color-secondary !important; }
+.text-success { color: $color-success !important; }
+.text-warning { color: $color-warning !important; }
+.text-error { color: $color-error !important; }
+.text-info { color: $color-info !important; }
+
+// Font sizes
+@each $size, $value in $font-sizes {
+    .text-#{$size} { font-size: $value !important; }
+}
+```
+
+## 9. Accessibility Features
+
+### Focus Management:
+```scss
+// Focus styles for all interactive elements
+button,
+a,
+input,
+select,
+textarea,
+[tabindex] {
+    @include focus-styles;
+}
+
+// Skip link
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: $color-primary;
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 1001;
+    
+    &:focus {
+        top: 6px;
+    }
+}
+
+// Screen reader only content
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+```
+
+### High Contrast Support:
+```scss
+@media (prefers-contrast: high) {
+    .fdcp-form-builder {
+        border-width: 2px;
+        border-color: black;
+    }
+    
+    .gcds-button {
+        border-width: 2px;
+    }
+}
+```
+
+## 10. Print Styles
+
+### Print Optimization:
+```scss
+@media print {
+    // Hide non-essential elements
+    .gc-header,
+    .gc-footer,
+    .fdcp-modal,
+    .no-print {
+        display: none !important;
+    }
+    
+    // Optimize text for printing
+    body {
+        font-size: 12pt;
+        line-height: 1.4;
+        color: black;
+        background: white;
+    }
+    
+    // Ensure links are visible
+    a {
+        color: black !important;
+        text-decoration: underline !important;
+        
+        &[href^="http"]::after {
+            content: " (" attr(href) ")";
+        }
+    }
+    
+    // Page breaks
+    .page-break {
+        page-break-before: always;
+    }
+    
+    .avoid-break {
+        page-break-inside: avoid;
+    }
+}
+```
+
+## 11. Performance Optimization
+
+### CSS Optimization:
+```scss
+// Use efficient selectors
+.fdcp-form-builder__field { /* Good */ }
+.fdcp-form-builder .field { /* Avoid */ }
+
+// Minimize specificity
+.fdcp-button { /* Good */ }
+div.fdcp-button { /* Avoid */ }
+
+// Use shorthand properties
+.fdcp-component {
+    margin: map-get($spacing, '4'); /* Good */
+    // margin-top: map-get($spacing, '4');
+    // margin-right: map-get($spacing, '4');
+    // margin-bottom: map-get($spacing, '4');
+    // margin-left: map-get($spacing, '4'); /* Avoid */
+}
+```
+
+### Critical CSS:
+```scss
+// Critical above-the-fold styles
+.critical-styles {
+    // Include only essential styles for initial render
+    .gc-header,
+    .gc-main,
+    .fdcp-form-builder {
+        // Minimal styles for layout
+    }
+}
+```
+
+## 12. Browser Support
+
+### Vendor Prefixes:
+```scss
+// Use autoprefixer for vendor prefixes
+.fdcp-component {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+    // Autoprefixer will add vendor prefixes automatically
+}
+```
+
+### Fallbacks:
+```scss
+// Provide fallbacks for modern CSS features
+.fdcp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: map-get($spacing, '4');
+    
+    // Fallback for older browsers
+    @supports not (display: grid) {
+        display: flex;
+        flex-wrap: wrap;
+        
+        > * {
+            flex: 1 1 250px;
+            margin: map-get($spacing, '2');
+        }
+    }
+}
+```
+
+Remember: Always prioritize accessibility, maintainability, and performance. Follow Government of Canada design standards and ensure your styles work across all supported browsers and devices.
+description:
+globs:
+alwaysApply: false
+---
