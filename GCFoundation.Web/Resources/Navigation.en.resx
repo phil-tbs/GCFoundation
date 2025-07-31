@@ -123,4 +123,66 @@
   <data name="Nav_Home" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="Nav_GlobalResources" xml:space="preserve">
+    <value>Global Resources</value>
+  </data>
+  <data name="Nav_Components_GCDesign" xml:space="preserve">
+    <value>GC Design System</value>
+  </data>
+  <data name="Nav_Components_Forms" xml:space="preserve">
+    <value>Forms</value>
+  </data>
+  <data name="Nav_Components_FormBuilder" xml:space="preserve">
+    <value>Form Builder</value>
+  </data>
+  <data name="Nav_Components_Badge" xml:space="preserve">
+    <value>Badge</value>
+  </data>
+  <data name="Nav_Components_Modal" xml:space="preserve">
+    <value>Modal</value>
+  </data>
+  <data name="Nav_Components_Table" xml:space="preserve">
+    <value>Table</value>
+  </data>
+  <data name="Nav_Components_PageHeading" xml:space="preserve">
+    <value>Page Heading</value>
+  </data>
+  <data name="Nav_Components_Stepper" xml:space="preserve">
+    <value>Stepper</value>
+  </data>
+
+  <data name="Nav_Installation" xml:space="preserve">
+    <value>Installation</value>
+  </data>
+  <data name="Nav_Template" xml:space="preserve">
+    <value>Template</value>
+  </data>
+  <data name="Nav_Styles" xml:space="preserve">
+    <value>Styles</value>
+  </data>
+  <data name="Nav_FilteredSearch" xml:space="preserve">
+    <value>Filtered Search</value>
+  </data>
+  <data name="Nav_Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+
+  <data name="Nav_Authentication" xml:space="preserve">
+    <value>Authentication</value>
+  </data>
+  <data name="Nav_Authentication_Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Nav_Authentication_Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="Nav_Errors" xml:space="preserve">
+    <value>Errors</value>
+  </data>
+  <data name="Nav_Errors_NotFound" xml:space="preserve">
+    <value>Page Not Found</value>
+  </data>
+  <data name="Nav_Errors_Global" xml:space="preserve">
+    <value>Global Error</value>
+  </data>
 </root>

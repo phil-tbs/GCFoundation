@@ -123,4 +123,7 @@
   <data name="Home" xml:space="preserve">
     <value>accueil</value>
   </data>
+  <data name="GlobalResources" xml:space="preserve">
+    <value>ressources-globales</value>
+  </data>
 </root>

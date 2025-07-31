@@ -1,0 +1,55 @@
+/* Custom styles for GCFoundation */
+
+/* Status indicators */
+.status-enabled {
+    color: green;
+    font-weight: 500;
+}
+
+.status-disabled {
+    color: #666;
+    font-style: italic;
+}
+
+/* Code block styling */
+.language-json pre,
+.language-cshtml pre {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    padding: 1rem;
+    overflow-x: auto;
+}
+
+/* Additional utility classes */
+.text-muted {
+    color: #6c757d;
+}
+
+.text-success {
+    color: #28a745;
+}
+
+.text-info {
+    color: #17a2b8;
+}
+
+/* Demo elements for spacing utilities */
+.demo-box {
+    width: 20px;
+    height: 20px;
+}
+
+.demo-circle {
+    width: 50px;
+    height: 50px;
+}
+
+.demo-centered {
+    width: 300px;
+}
+
+/* Error styling */
+.error-text {
+    color: red;
+} 

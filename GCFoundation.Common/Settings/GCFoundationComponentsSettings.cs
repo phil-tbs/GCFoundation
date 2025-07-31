@@ -94,5 +94,53 @@ namespace GCFoundation.Common.Settings
         /// Gets or sets the support link (or mailto) for English users.
         /// </summary>
         public string SupportLinkEn { get; set; } = default!;
+
+        /// <summary>
+        /// Gets or sets the list of additional CSS files to include globally.
+        /// These can be local paths or CDN URLs.
+        /// </summary>
+        public List<string> GlobalCssFiles { get; set; } = new List<string>();
+
+        /// <summary>
+        /// Gets or sets the list of additional JavaScript files to include globally.
+        /// These can be local paths or CDN URLs.
+        /// </summary>
+        public List<string> GlobalJavaScriptFiles { get; set; } = new List<string>();
+
+        /// <summary>
+        /// Gets or sets the list of additional meta tags to include in the head section.
+        /// Each item should be a complete meta tag (e.g., "&lt;meta name=\"description\" content=\"...\"&gt;").
+        /// </summary>
+        public List<string> GlobalMetaTags { get; set; } = new List<string>();
+
+        /// <summary>
+        /// Gets or sets the list of additional link tags to include in the head section.
+        /// Each item should be a complete link tag (e.g., "&lt;link rel=\"preconnect\" href=\"...\"&gt;").
+        /// </summary>
+        public List<string> GlobalLinkTags { get; set; } = new List<string>();
+
+        /// <summary>
+        /// Gets or sets whether to include the default foundation CSS files.
+        /// Set to false to disable automatic inclusion of foundation.min.css and other default styles.
+        /// </summary>
+        public bool IncludeDefaultCss { get; set; } = true;
+
+        /// <summary>
+        /// Gets or sets whether to include the default foundation JavaScript files.
+        /// Set to false to disable automatic inclusion of foundation.min.js and other default scripts.
+        /// </summary>
+        public bool IncludeDefaultJavaScript { get; set; } = true;
+
+        /// <summary>
+        /// Gets or sets whether to include the default GCDS CDN resources.
+        /// Set to false to disable automatic inclusion of GCDS CSS and JavaScript from CDN.
+        /// </summary>
+        public bool IncludeGCDSResources { get; set; } = true;
+
+        /// <summary>
+        /// Gets or sets whether to include Font Awesome CDN resources.
+        /// Set to false to disable automatic inclusion of Font Awesome CSS from CDN.
+        /// </summary>
+        public bool IncludeFontAwesome { get; set; } = true;
     }
 }

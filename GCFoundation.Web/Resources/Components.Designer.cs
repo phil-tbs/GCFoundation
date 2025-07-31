@@ -332,5 +332,275 @@ namespace GCFoundation.Web.Resources {
                 return ResourceManager.GetString("GcdsParagraph2", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Always Enabled.
+        /// </summary>
+        public static string GlobalResources_AlwaysEnabled {
+            get {
+                return ResourceManager.GetString("GlobalResources_AlwaysEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CSS Loading Order.
+        /// </summary>
+        public static string GlobalResources_CssLoadingOrder_Title {
+            get {
+                return ResourceManager.GetString("GlobalResources_CssLoadingOrder_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The following resources are currently configured to be loaded globally:.
+        /// </summary>
+        public static string GlobalResources_CurrentConfiguration_Description {
+            get {
+                return ResourceManager.GetString("GlobalResources_CurrentConfiguration_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Configuration.
+        /// </summary>
+        public static string GlobalResources_CurrentConfiguration_Title {
+            get {
+                return ResourceManager.GetString("GlobalResources_CurrentConfiguration_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default CSS:.
+        /// </summary>
+        public static string GlobalResources_DefaultCss_Label {
+            get {
+                return ResourceManager.GetString("GlobalResources_DefaultCss_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Note: Default foundation CSS and JavaScript files are always included and cannot be disabled. This ensures that all GCFoundation components work properly on every page..
+        /// </summary>
+        public static string GlobalResources_DefaultFilesNote {
+            get {
+                return ResourceManager.GetString("GlobalResources_DefaultFilesNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default JavaScript:.
+        /// </summary>
+        public static string GlobalResources_DefaultJavaScript_Label {
+            get {
+                return ResourceManager.GetString("GlobalResources_DefaultJavaScript_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This page demonstrates how to use the new global resources configuration feature in GCFoundation. You can configure CSS, JavaScript, meta tags, and link tags globally through the appsettings.json file..
+        /// </summary>
+        public static string GlobalResources_Description {
+            get {
+                return ResourceManager.GetString("GlobalResources_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disabled.
+        /// </summary>
+        public static string GlobalResources_Disabled {
+            get {
+                return ResourceManager.GetString("GlobalResources_Disabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enabled.
+        /// </summary>
+        public static string GlobalResources_Enabled {
+            get {
+                return ResourceManager.GetString("GlobalResources_Enabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Font Awesome:.
+        /// </summary>
+        public static string GlobalResources_FontAwesome_Label {
+            get {
+                return ResourceManager.GetString("GlobalResources_FontAwesome_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GCDS Resources:.
+        /// </summary>
+        public static string GlobalResources_GCDSResources_Label {
+            get {
+                return ResourceManager.GetString("GlobalResources_GCDSResources_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Global CSS Files.
+        /// </summary>
+        public static string GlobalResources_GlobalCssFiles_Title {
+            get {
+                return ResourceManager.GetString("GlobalResources_GlobalCssFiles_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Global JavaScript Files.
+        /// </summary>
+        public static string GlobalResources_GlobalJavaScriptFiles_Title {
+            get {
+                return ResourceManager.GetString("GlobalResources_GlobalJavaScriptFiles_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Global Link Tags.
+        /// </summary>
+        public static string GlobalResources_GlobalLinkTags_Title {
+            get {
+                return ResourceManager.GetString("GlobalResources_GlobalLinkTags_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Global Meta Tags.
+        /// </summary>
+        public static string GlobalResources_GlobalMetaTags_Title {
+            get {
+                return ResourceManager.GetString("GlobalResources_GlobalMetaTags_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To configure global resources, update your appsettings.json file:.
+        /// </summary>
+        public static string GlobalResources_HowToConfigure_Description {
+            get {
+                return ResourceManager.GetString("GlobalResources_HowToConfigure_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How to Configure.
+        /// </summary>
+        public static string GlobalResources_HowToConfigure_Title {
+            get {
+                return ResourceManager.GetString("GlobalResources_HowToConfigure_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to JavaScript Loading Order.
+        /// </summary>
+        public static string GlobalResources_JavaScriptLoadingOrder_Title {
+            get {
+                return ResourceManager.GetString("GlobalResources_JavaScriptLoadingOrder_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resources are loaded in the following order:.
+        /// </summary>
+        public static string GlobalResources_LoadingOrder_Description {
+            get {
+                return ResourceManager.GetString("GlobalResources_LoadingOrder_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resource Loading Order.
+        /// </summary>
+        public static string GlobalResources_LoadingOrder_Title {
+            get {
+                return ResourceManager.GetString("GlobalResources_LoadingOrder_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No global CSS files configured..
+        /// </summary>
+        public static string GlobalResources_NoCssFiles {
+            get {
+                return ResourceManager.GetString("GlobalResources_NoCssFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No global JavaScript files configured..
+        /// </summary>
+        public static string GlobalResources_NoJavaScriptFiles {
+            get {
+                return ResourceManager.GetString("GlobalResources_NoJavaScriptFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No global link tags configured..
+        /// </summary>
+        public static string GlobalResources_NoLinkTags {
+            get {
+                return ResourceManager.GetString("GlobalResources_NoLinkTags", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No global meta tags configured..
+        /// </summary>
+        public static string GlobalResources_NoMetaTags {
+            get {
+                return ResourceManager.GetString("GlobalResources_NoMetaTags", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The following settings control which optional resources are included:.
+        /// </summary>
+        public static string GlobalResources_ResourceInclusion_Description {
+            get {
+                return ResourceManager.GetString("GlobalResources_ResourceInclusion_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resource Inclusion Settings.
+        /// </summary>
+        public static string GlobalResources_ResourceInclusion_Title {
+            get {
+                return ResourceManager.GetString("GlobalResources_ResourceInclusion_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Global Resources Configuration.
+        /// </summary>
+        public static string GlobalResources_Title {
+            get {
+                return ResourceManager.GetString("GlobalResources_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can also use the GlobalResourceHelper in your Razor views for more control:.
+        /// </summary>
+        public static string GlobalResources_UsingHelper_Description {
+            get {
+                return ResourceManager.GetString("GlobalResources_UsingHelper_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Using GlobalResourceHelper in Views.
+        /// </summary>
+        public static string GlobalResources_UsingHelper_Title {
+            get {
+                return ResourceManager.GetString("GlobalResources_UsingHelper_Title", resourceCulture);
+            }
+        }
     }
 }

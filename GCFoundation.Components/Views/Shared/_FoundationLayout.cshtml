@@ -15,12 +15,55 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    @* Global meta tags from configuration *@
+    @foreach (var metaTag in settings.Value.GlobalMetaTags)
+    {
+        @Html.Raw(metaTag)
+    }
+    
     @await RenderSectionAsync("Metas", required: false)
+    
     <title>@ViewData["Title"] - @settings.Value.ApplicationName</title>
+    
+    @* Global link tags from configuration *@
+    @foreach (var linkTag in settings.Value.GlobalLinkTags)
+    {
+        @Html.Raw(linkTag)
+    }
+    
     <link href="@StaticResourceHelper.GetImageResourcePath("favicon.ico")" rel="icon" type="image/x-icon">
+    
+    @* GCDS CSS from CDN (if enabled) *@
+    @if (settings.Value.IncludeGCDSResources)
+    {
+        <link rel="stylesheet" href="@settings.Value.GCDSCssCDN" />
+    }
+    
+    @* Font Awesome CSS from CDN (if enabled) *@
+    @if (settings.Value.IncludeFontAwesome)
+    {
+        <link rel="stylesheet" href="@settings.Value.FontAwesomeCDN" />
+    }
+    
+    @* Default foundation CSS files (always included) *@
     <link rel="stylesheet" href="@StaticResourceHelper.GetLibResourcePath("tabulator/dist/css/GCTabulatorTheme.css")" />
     <link rel="stylesheet" href="@StaticResourceHelper.GetCssResourcePath("foundation.min.css")" asp-append-version="true" />
     <link rel="stylesheet" href="@StaticResourceHelper.GetLibResourcePath("prism/css/prism.css")" asp-append-version="true" />
+    
+    @* Global CSS files from configuration *@
+    @foreach (var cssFile in settings.Value.GlobalCssFiles)
+    {
+        if (cssFile.StartsWith("http", StringComparison.OrdinalIgnoreCase))
+        {
+            <link rel="stylesheet" href="@cssFile" />
+        }
+        else
+        {
+            <link rel="stylesheet" href="@cssFile" asp-append-version="true" />
+        }
+    }
+    
     @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
@@ -87,9 +130,30 @@
         @await Html.PartialAsync("Modals/_ExtendSessionModal");
     }
 
+    @* GCDS JavaScript from CDN (if enabled) *@
+    @if (settings.Value.IncludeGCDSResources)
+    {
+        <script type="module" src="@settings.Value.GCDSJavaScriptCDN"></script>
+    }
+
+    @* Default foundation JavaScript files (always included) *@
     <script src="@StaticResourceHelper.GetLibResourcePath("prism/js/prism.js")" asp-append-version="true"></script>
     <script src="@StaticResourceHelper.GetLibResourcePath("tabulator/dist/js/tabulator.min.js")" asp-append-version="true"></script>
     <script src="@StaticResourceHelper.GetJsResourcePath("foundation.min.js")" asp-append-version="true"></script>
+
+    @* Global JavaScript files from configuration *@
+    @foreach (var jsFile in settings.Value.GlobalJavaScriptFiles)
+    {
+        if (jsFile.StartsWith("http", StringComparison.OrdinalIgnoreCase))
+        {
+            <script src="@jsFile"></script>
+        }
+        else
+        {
+            <script src="@jsFile" asp-append-version="true"></script>
+        }
+    }
+    
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

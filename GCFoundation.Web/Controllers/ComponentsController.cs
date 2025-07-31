@@ -3,6 +3,7 @@ using GCFoundation.Components.Models.FormBuilder;
 using GCFoundation.Web.Models;
 using GCFoundation.Web.Resources;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace GCFoundation.Web.Controllers
 {
@@ -64,20 +65,7 @@ namespace GCFoundation.Web.Controllers
             return View();
         }
 
-        /// <summary>
-        /// Displays the form used to test validation behavior.
-        /// </summary>
-        /// <returns>
-        /// The form validation test view with an empty model.
-        /// </returns>
-        [HttpGet("testingForm")]
-        public IActionResult FormValidationTest()
-        {
-            SetPageTitle("Form");
-            FormTestViewModel model = new();
-
-            return View("Forms", model);
-        }
+        
 
         /// <summary>
         /// Handles the POST request to test form validation.
@@ -86,7 +74,7 @@ namespace GCFoundation.Web.Controllers
         /// <returns>
         /// The same view with the model and validation results.
         /// </returns>
-        [HttpPost]
+        [HttpPost("testingForm")]
         [ValidateAntiForgeryToken]
         public IActionResult FormValidationTest(FormTestViewModel model)
         {
@@ -96,6 +84,85 @@ namespace GCFoundation.Web.Controllers
             }
 
             return View("Forms", model);
+        }
+        
+
+        /// <summary>
+        /// Displays the global resources configuration demo page.
+        /// </summary>
+        /// <returns>
+        /// The global resources configuration view.
+        /// </returns>
+        [HttpGet("global-resources")]
+        public IActionResult GlobalResources()
+        {
+            SetPageTitle("Global Resources Configuration");
+            return View();
+        }
+
+        /// <summary>
+        /// Displays the Badge component demo page.
+        /// </summary>
+        /// <returns>
+        /// The Badge component view.
+        /// </returns>
+        [HttpGet("badge")]
+        public IActionResult Badge()
+        {
+            SetPageTitle($"{Menu.Menu_Components}: Badge");
+            return View();
+        }
+
+        /// <summary>
+        /// Displays the Modal component demo page.
+        /// </summary>
+        /// <returns>
+        /// The Modal component view.
+        /// </returns>
+        [HttpGet("modal")]
+        public IActionResult Modal()
+        {
+            SetPageTitle($"{Menu.Menu_Components}: Modal");
+            return View();
+        }
+
+        /// <summary>
+        /// Displays the Stepper component demo page.
+        /// </summary>
+        /// <returns>
+        /// The Stepper component view.
+        /// </returns>
+        [HttpGet("stepper")]
+        public IActionResult Stepper()
+        {
+            SetPageTitle($"{Menu.Menu_Components}: Stepper");
+            return View();
+        }
+
+        /// <summary>
+        /// Displays the PageHeading component demo page.
+        /// </summary>
+        /// <returns>
+        /// The PageHeading component view.
+        /// </returns>
+        [HttpGet("page-heading")]
+        public IActionResult PageHeading()
+        {
+            SetPageTitle($"{Menu.Menu_Components}: Page Heading");
+            return View();
+        }
+
+        /// <summary>
+        /// Displays the Table component demo page.
+        /// </summary>
+        /// <returns>
+        /// The Table component view.
+        /// </returns>
+        [HttpGet("table")]
+        public IActionResult Table()
+        {
+            SetPageTitle($"{Menu.Menu_Components}: Table");
+            return View();
         }
 
         /// <summary>

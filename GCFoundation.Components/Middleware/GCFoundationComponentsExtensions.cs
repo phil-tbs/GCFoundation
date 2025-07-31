@@ -1,5 +1,6 @@
 ﻿using GCFoundation.Common.Settings;
 using GCFoundation.Components.Configuration;
+using GCFoundation.Components.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,6 +32,9 @@ namespace GCFoundation.Components.Middleware
 
             // Register the CdnPolicyConfigurator
             services.AddSingleton<IConfigureOptions<GCFoundationContentPolicySettings>, FoundationComponentsCdnPolicyConfigurator>();
+
+            // Register the GlobalResourceHelper for use in Razor views
+            services.AddScoped<GlobalResourceHelper>();
 
             return services;
         }

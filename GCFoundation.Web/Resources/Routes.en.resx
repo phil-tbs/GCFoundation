@@ -123,4 +123,7 @@
   <data name="Components" xml:space="preserve">
     <value>components</value>
   </data>
+  <data name="GlobalResources" xml:space="preserve">
+    <value>global-resources</value>
+  </data>
 </root>

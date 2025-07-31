@@ -138,4 +138,7 @@
   <data name="Menu_Styles" xml:space="preserve">
     <value>Styles</value>
   </data>
+  <data name="Menu_Components_GlobalResources" xml:space="preserve">
+    <value>Global Resources</value>
+  </data>
 </root>

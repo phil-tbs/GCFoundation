@@ -61,6 +61,33 @@ namespace GCFoundation.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Authentication.
+        /// </summary>
+        public static string Nav_Authentication {
+            get {
+                return ResourceManager.GetString("Nav_Authentication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        public static string Nav_Authentication_Login {
+            get {
+                return ResourceManager.GetString("Nav_Authentication_Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logout.
+        /// </summary>
+        public static string Nav_Authentication_Logout {
+            get {
+                return ResourceManager.GetString("Nav_Authentication_Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Components.
         /// </summary>
         public static string Nav_Components {
@@ -70,11 +97,128 @@ namespace GCFoundation.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Form Builder.
+        /// </summary>
+        public static string Nav_Components_FormBuilder {
+            get {
+                return ResourceManager.GetString("Nav_Components_FormBuilder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forms.
+        /// </summary>
+        public static string Nav_Components_Forms {
+            get {
+                return ResourceManager.GetString("Nav_Components_Forms", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GC Design System.
+        /// </summary>
+        public static string Nav_Components_GCDesign {
+            get {
+                return ResourceManager.GetString("Nav_Components_GCDesign", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Errors.
+        /// </summary>
+        public static string Nav_Errors {
+            get {
+                return ResourceManager.GetString("Nav_Errors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Global Error.
+        /// </summary>
+        public static string Nav_Errors_Global {
+            get {
+                return ResourceManager.GetString("Nav_Errors_Global", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Page Not Found.
+        /// </summary>
+        public static string Nav_Errors_NotFound {
+            get {
+                return ResourceManager.GetString("Nav_Errors_NotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Filtered Search.
+        /// </summary>
+        public static string Nav_FilteredSearch {
+            get {
+                return ResourceManager.GetString("Nav_FilteredSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Global Resources.
+        /// </summary>
+        public static string Nav_GlobalResources {
+            get {
+                return ResourceManager.GetString("Nav_GlobalResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Home.
         /// </summary>
         public static string Nav_Home {
             get {
                 return ResourceManager.GetString("Nav_Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Installation.
+        /// </summary>
+        public static string Nav_Installation {
+            get {
+                return ResourceManager.GetString("Nav_Installation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        public static string Nav_Language {
+            get {
+                return ResourceManager.GetString("Nav_Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Styles.
+        /// </summary>
+        public static string Nav_Styles {
+            get {
+                return ResourceManager.GetString("Nav_Styles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tabulator Test.
+        /// </summary>
+        public static string Nav_TabulatorTest {
+            get {
+                return ResourceManager.GetString("Nav_TabulatorTest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Template.
+        /// </summary>
+        public static string Nav_Template {
+            get {
+                return ResourceManager.GetString("Nav_Template", resourceCulture);
             }
         }
     }

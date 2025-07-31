@@ -123,4 +123,66 @@
   <data name="Nav_Home" xml:space="preserve">
     <value>Accueil</value>
   </data>
+  <data name="Nav_GlobalResources" xml:space="preserve">
+    <value>Ressources globales</value>
+  </data>
+  <data name="Nav_Components_GCDesign" xml:space="preserve">
+    <value>Système de design GC</value>
+  </data>
+  <data name="Nav_Components_Forms" xml:space="preserve">
+    <value>Formulaires</value>
+  </data>
+  <data name="Nav_Components_FormBuilder" xml:space="preserve">
+    <value>Générateur de formulaires</value>
+  </data>
+  <data name="Nav_Components_Badge" xml:space="preserve">
+    <value>Badge</value>
+  </data>
+  <data name="Nav_Components_Modal" xml:space="preserve">
+    <value>Modal</value>
+  </data>
+  <data name="Nav_Components_Table" xml:space="preserve">
+    <value>Tableau</value>
+  </data>
+  <data name="Nav_Components_PageHeading" xml:space="preserve">
+    <value>Titre de page</value>
+  </data>
+  <data name="Nav_Components_Stepper" xml:space="preserve">
+    <value>Étapes</value>
+  </data>
+
+  <data name="Nav_Installation" xml:space="preserve">
+    <value>Installation</value>
+  </data>
+  <data name="Nav_Template" xml:space="preserve">
+    <value>Modèle</value>
+  </data>
+  <data name="Nav_Styles" xml:space="preserve">
+    <value>Styles</value>
+  </data>
+  <data name="Nav_FilteredSearch" xml:space="preserve">
+    <value>Recherche filtrée</value>
+  </data>
+  <data name="Nav_Language" xml:space="preserve">
+    <value>Langue</value>
+  </data>
+
+  <data name="Nav_Authentication" xml:space="preserve">
+    <value>Authentification</value>
+  </data>
+  <data name="Nav_Authentication_Login" xml:space="preserve">
+    <value>Connexion</value>
+  </data>
+  <data name="Nav_Authentication_Logout" xml:space="preserve">
+    <value>Déconnexion</value>
+  </data>
+  <data name="Nav_Errors" xml:space="preserve">
+    <value>Erreurs</value>
+  </data>
+  <data name="Nav_Errors_NotFound" xml:space="preserve">
+    <value>Page introuvable</value>
+  </data>
+  <data name="Nav_Errors_Global" xml:space="preserve">
+    <value>Erreur globale</value>
+  </data>
 </root>

@@ -12,9 +12,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Infrastructure\Middleware\**" />
     <Compile Remove="Infrastructure\Services\**" />
+    <Content Remove="Infrastructure\Middleware\**" />
     <Content Remove="Infrastructure\Services\**" />
+    <EmbeddedResource Remove="Infrastructure\Middleware\**" />
     <EmbeddedResource Remove="Infrastructure\Services\**" />
+    <None Remove="Infrastructure\Middleware\**" />
     <None Remove="Infrastructure\Services\**" />
   </ItemGroup>
 
@@ -31,10 +35,6 @@
     <ProjectReference Include="..\GCFoundation.Common\GCFoundation.Common.csproj" />
     <ProjectReference Include="..\GCFoundation.Components\CGFoundation.Components.csproj" />
     <ProjectReference Include="..\GCFoundation.Security\GCFoundation.Security.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Infrastructure\Middleware\" />
   </ItemGroup>
 
   <ItemGroup>

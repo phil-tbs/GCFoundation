@@ -210,4 +210,94 @@
   <data name="Badges_Notes_Anchor" xml:space="preserve">
     <value>notes</value>
   </data>
+  <data name="GlobalResources_Title" xml:space="preserve">
+    <value>Global Resources Configuration</value>
+  </data>
+  <data name="GlobalResources_Description" xml:space="preserve">
+    <value>This page demonstrates how to use the new global resources configuration feature in GCFoundation. You can configure CSS, JavaScript, meta tags, and link tags globally through the appsettings.json file.</value>
+  </data>
+  <data name="GlobalResources_CurrentConfiguration_Title" xml:space="preserve">
+    <value>Current Configuration</value>
+  </data>
+  <data name="GlobalResources_CurrentConfiguration_Description" xml:space="preserve">
+    <value>The following resources are currently configured to be loaded globally:</value>
+  </data>
+  <data name="GlobalResources_GlobalCssFiles_Title" xml:space="preserve">
+    <value>Global CSS Files</value>
+  </data>
+  <data name="GlobalResources_GlobalJavaScriptFiles_Title" xml:space="preserve">
+    <value>Global JavaScript Files</value>
+  </data>
+  <data name="GlobalResources_GlobalMetaTags_Title" xml:space="preserve">
+    <value>Global Meta Tags</value>
+  </data>
+  <data name="GlobalResources_GlobalLinkTags_Title" xml:space="preserve">
+    <value>Global Link Tags</value>
+  </data>
+  <data name="GlobalResources_NoCssFiles" xml:space="preserve">
+    <value>No global CSS files configured.</value>
+  </data>
+  <data name="GlobalResources_NoJavaScriptFiles" xml:space="preserve">
+    <value>No global JavaScript files configured.</value>
+  </data>
+  <data name="GlobalResources_NoMetaTags" xml:space="preserve">
+    <value>No global meta tags configured.</value>
+  </data>
+  <data name="GlobalResources_NoLinkTags" xml:space="preserve">
+    <value>No global link tags configured.</value>
+  </data>
+  <data name="GlobalResources_ResourceInclusion_Title" xml:space="preserve">
+    <value>Resource Inclusion Settings</value>
+  </data>
+  <data name="GlobalResources_ResourceInclusion_Description" xml:space="preserve">
+    <value>The following settings control which optional resources are included:</value>
+  </data>
+  <data name="GlobalResources_DefaultCss_Label" xml:space="preserve">
+    <value>Default CSS:</value>
+  </data>
+  <data name="GlobalResources_DefaultJavaScript_Label" xml:space="preserve">
+    <value>Default JavaScript:</value>
+  </data>
+  <data name="GlobalResources_GCDSResources_Label" xml:space="preserve">
+    <value>GCDS Resources:</value>
+  </data>
+  <data name="GlobalResources_FontAwesome_Label" xml:space="preserve">
+    <value>Font Awesome:</value>
+  </data>
+  <data name="GlobalResources_AlwaysEnabled" xml:space="preserve">
+    <value>Always Enabled</value>
+  </data>
+  <data name="GlobalResources_Enabled" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+  <data name="GlobalResources_Disabled" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="GlobalResources_DefaultFilesNote" xml:space="preserve">
+    <value>Note: Default foundation CSS and JavaScript files are always included and cannot be disabled. This ensures that all GCFoundation components work properly on every page.</value>
+  </data>
+  <data name="GlobalResources_LoadingOrder_Title" xml:space="preserve">
+    <value>Resource Loading Order</value>
+  </data>
+  <data name="GlobalResources_LoadingOrder_Description" xml:space="preserve">
+    <value>Resources are loaded in the following order:</value>
+  </data>
+  <data name="GlobalResources_CssLoadingOrder_Title" xml:space="preserve">
+    <value>CSS Loading Order</value>
+  </data>
+  <data name="GlobalResources_JavaScriptLoadingOrder_Title" xml:space="preserve">
+    <value>JavaScript Loading Order</value>
+  </data>
+  <data name="GlobalResources_HowToConfigure_Title" xml:space="preserve">
+    <value>How to Configure</value>
+  </data>
+  <data name="GlobalResources_HowToConfigure_Description" xml:space="preserve">
+    <value>To configure global resources, update your appsettings.json file:</value>
+  </data>
+  <data name="GlobalResources_UsingHelper_Title" xml:space="preserve">
+    <value>Using GlobalResourceHelper in Views</value>
+  </data>
+  <data name="GlobalResources_UsingHelper_Description" xml:space="preserve">
+    <value>You can also use the GlobalResourceHelper in your Razor views for more control:</value>
+  </data>
 </root>
