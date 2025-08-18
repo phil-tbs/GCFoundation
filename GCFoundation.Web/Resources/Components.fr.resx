@@ -304,4 +304,598 @@
   <data name="GlobalResources_UsingHelper_Description" xml:space="preserve">
     <value>Vous pouvez également utiliser GlobalResourceHelper dans vos vues Razor pour plus de contrôle :</value>
   </data>
+  <data name="UserLogin_AuthStatus_Title" xml:space="preserve">
+    <value>État actuel d'authentification</value>
+  </data>
+  <data name="UserLogin_Authenticated_Message" xml:space="preserve">
+    <value>Vous êtes actuellement connecté en tant que {0}</value>
+  </data>
+  <data name="UserLogin_NotAuthenticated_Message" xml:space="preserve">
+    <value>Vous n'êtes pas actuellement connecté. Utilisez le bouton de simulation de connexion ci-dessous pour tester l'état authentifié.</value>
+  </data>
+  <data name="UserLogin_SimulateLogin" xml:space="preserve">
+    <value>Simuler la connexion</value>
+  </data>
+  <data name="UserLogin_SimulateLogout" xml:space="preserve">
+    <value>Simuler la déconnexion</value>
+  </data>
+  <data name="UserLogin_ApiTest_Message" xml:space="preserve">
+    <value>Voir comment intégrer avec les API pour obtenir les informations utilisateur.</value>
+  </data>
+  <data name="UserLogin_ApiTest_Link" xml:space="preserve">
+    <value>Test API</value>
+  </data>
+  <data name="UserLogin_PageTitle" xml:space="preserve">
+    <value>Exemples de partiel de connexion utilisateur</value>
+  </data>
+  <data name="UserLogin_PageDescription" xml:space="preserve">
+    <value>Cette page démontre le composant partiel de connexion utilisateur configurable avec support de localisation en anglais et français. Le partiel peut être personnalisé grâce aux paramètres de configuration et affiche différentes informations selon l'état d'authentification.</value>
+  </data>
+  <data name="UserLogin_TestAuthStates" xml:space="preserve">
+    <value>Testez le partiel de connexion avec différents états d'authentification.</value>
+  </data>
+  <data name="UserLogin_ConfigurationOptions" xml:space="preserve">
+    <value>Options de configuration</value>
+  </data>
+  <data name="UserLogin_ConfigDescription" xml:space="preserve">
+    <value>Le partiel de connexion utilisateur prend en charge les options de configuration suivantes via appsettings.json :</value>
+  </data>
+  <data name="UserLogin_Features" xml:space="preserve">
+    <value>Fonctionnalités</value>
+  </data>
+  <data name="UserLogin_Feature_Bilingual" xml:space="preserve">
+    <value>Entièrement bilingue (anglais/français) avec détection automatique de la langue</value>
+  </data>
+  <data name="UserLogin_Feature_Configurable" xml:space="preserve">
+    <value>Options d'affichage configurables (afficher/masquer diverses informations utilisateur)</value>
+  </data>
+  <data name="UserLogin_Feature_CompactFull" xml:space="preserve">
+    <value>Modes d'affichage compact et complet</value>
+  </data>
+  <data name="UserLogin_Feature_SessionTimeout" xml:space="preserve">
+    <value>Avertissements et compte à rebours d'expiration de session</value>
+  </data>
+  <data name="UserLogin_Feature_Avatar" xml:space="preserve">
+    <value>Support d'avatar utilisateur avec génération automatique d'initiales</value>
+  </data>
+  <data name="UserLogin_Feature_GCDS" xml:space="preserve">
+    <value>Intégration des composants GCDS pour un style cohérent du gouvernement du Canada</value>
+  </data>
+  <data name="UserLogin_Feature_Responsive" xml:space="preserve">
+    <value>Design réactif pour mobile et ordinateur de bureau</value>
+  </data>
+  <data name="UserLogin_Feature_Accessibility" xml:space="preserve">
+    <value>Fonctionnalités d'accessibilité avec étiquettes ARIA appropriées</value>
+  </data>
+  <data name="UserLogin_Feature_Integration" xml:space="preserve">
+    <value>Intégration facile avec les systèmes d'authentification existants</value>
+  </data>
+  <data name="UserLogin_Position_PageTitle" xml:space="preserve">
+    <value>Connexion utilisateur en position {0}</value>
+  </data>
+  <data name="UserLogin_Position_Description" xml:space="preserve">
+    <value>Cet exemple montre comment le partiel de connexion utilisateur peut être positionné dans différentes zones de votre application.</value>
+  </data>
+  <data name="UserLogin_Position_Header_Alert" xml:space="preserve">
+    <value>Le partiel de connexion est affiché dans la zone d'en-tête (au-dessus de ce contenu).</value>
+  </data>
+  <data name="UserLogin_Position_Sidebar_Title" xml:space="preserve">
+    <value>Connexion dans la barre latérale</value>
+  </data>
+  <data name="UserLogin_Position_Sidebar_Content" xml:space="preserve">
+    <value>Ceci est la zone de contenu principal. Le partiel de connexion est affiché dans la barre latérale à gauche (sur ordinateur) ou au-dessus (sur mobile).</value>
+  </data>
+  <data name="UserLogin_Position_Inline_Title" xml:space="preserve">
+    <value>Informations de connexion en ligne</value>
+  </data>
+  <data name="UserLogin_Position_Content_Before" xml:space="preserve">
+    <value>Ceci est le contenu avant le partiel de connexion.</value>
+  </data>
+  <data name="UserLogin_Position_Content_After" xml:space="preserve">
+    <value>Ceci est le contenu après le partiel de connexion.</value>
+  </data>
+  <data name="UserLogin_Position_Footer_Title" xml:space="preserve">
+    <value>Connexion dans le pied de page</value>
+  </data>
+  <data name="UserLogin_Position_Footer_Content" xml:space="preserve">
+    <value>La zone de contenu principal. Le partiel de connexion sera affiché dans la zone de pied de page (sous ce contenu).</value>
+  </data>
+  <data name="UserLogin_Position_BackToExamples" xml:space="preserve">
+    <value>← Retour aux exemples</value>
+  </data>
+  <data name="UserLogin_Component_Title" xml:space="preserve">
+    <value>Composant partiel de connexion utilisateur</value>
+  </data>
+  <data name="UserLogin_Component_Description" xml:space="preserve">
+    <value>Un composant d'informations de connexion utilisateur configurable et bilingue qui affiche l'état d'authentification, les détails utilisateur et les informations de session. Parfait pour les déploiements cloud Azure avec authentification sans état.</value>
+  </data>
+  <data name="UserLogin_LiveExamples" xml:space="preserve">
+    <value>Exemples en direct</value>
+  </data>
+  <data name="UserLogin_LiveExamples_Description" xml:space="preserve">
+    <value>Voici des exemples fonctionnels du partiel de connexion utilisateur dans différentes configurations :</value>
+  </data>
+  <data name="UserLogin_CurrentUserState" xml:space="preserve">
+    <value>Exemple en direct - État utilisateur actuel</value>
+  </data>
+  <data name="UserLogin_CurrentUserState_Description" xml:space="preserve">
+    <value>Ceci montre l'état d'authentification réel du contexte utilisateur actuel.</value>
+  </data>
+  <data name="UserLogin_CurrentlyAuthenticated" xml:space="preserve">
+    <value>Vous êtes actuellement <strong>authentifié</strong>.</value>
+  </data>
+  <data name="UserLogin_CurrentlyNotAuthenticated" xml:space="preserve">
+    <value>Vous n'êtes actuellement <strong>pas authentifié</strong>.</value>
+  </data>
+  <data name="UserLogin_SimulateLoginNote" xml:space="preserve">
+    <value>Utilisez le bouton "Simuler la connexion" dans la section Exemples pour voir l'état authentifié.</value>
+  </data>
+  <data name="UserLogin_DefaultMode" xml:space="preserve">
+    <value>Mode par défaut</value>
+  </data>
+  <data name="UserLogin_DefaultMode_Description" xml:space="preserve">
+    <value>Mode d'affichage complet standard avec informations utilisateur.</value>
+  </data>
+  <data name="UserLogin_SessionExpiring" xml:space="preserve">
+    <value>Session expirant bientôt</value>
+  </data>
+  <data name="UserLogin_SessionExpiring_Description" xml:space="preserve">
+    <value>Exemple montrant l'avertissement d'expiration de session.</value>
+  </data>
+  <data name="UserLogin_NotAuthenticatedState" xml:space="preserve">
+    <value>État non authentifié</value>
+  </data>
+  <data name="UserLogin_NotAuthenticatedState_Description" xml:space="preserve">
+    <value>Affichage pour les utilisateurs qui ne sont pas connectés.</value>
+  </data>
+  <data name="UserLogin_ConfigOptions_Description" xml:space="preserve">
+    <value>Le partiel de connexion utilisateur est hautement configurable via appsettings.json et prend en charge les systèmes d'authentification avec et sans état.</value>
+  </data>
+  <data name="UserLogin_KeyFeatures" xml:space="preserve">
+    <value>Fonctionnalités clés</value>
+  </data>
+  <data name="UserLogin_BilingualSupport" xml:space="preserve">
+    <value>🌐 Support bilingue</value>
+  </data>
+  <data name="UserLogin_BilingualSupport_Description" xml:space="preserve">
+    <value>Localisation automatique anglais/français avec fichiers de ressources et détection de culture.</value>
+  </data>
+  <data name="UserLogin_CloudReady" xml:space="preserve">
+    <value>☁️ Prêt pour le cloud</value>
+  </data>
+  <data name="UserLogin_CloudReady_Description" xml:space="preserve">
+    <value>Support d'authentification sans état parfait pour Azure App Service et les déploiements de conteneurs.</value>
+  </data>
+  <data name="UserLogin_Configurable" xml:space="preserve">
+    <value>🔧 Configurable</value>
+  </data>
+  <data name="UserLogin_Configurable_Description" xml:space="preserve">
+    <value>Plus de 15 options de configuration pour personnaliser l'affichage et le comportement selon vos besoins.</value>
+  </data>
+  <data name="UserLogin_Responsive" xml:space="preserve">
+    <value>📱 Réactif</value>
+  </data>
+  <data name="UserLogin_Responsive_Description" xml:space="preserve">
+    <value>Design mobile-first qui fonctionne parfaitement sur toutes les tailles d'appareils.</value>
+  </data>
+  <data name="UserLogin_GCDSStyled" xml:space="preserve">
+    <value>🎨 Style GCDS</value>
+  </data>
+  <data name="UserLogin_GCDSStyled_Description" xml:space="preserve">
+    <value>Utilise les composants du système de design du gouvernement du Canada pour un style cohérent.</value>
+  </data>
+  <data name="UserLogin_Accessible" xml:space="preserve">
+    <value>♿ Accessible</value>
+  </data>
+  <data name="UserLogin_Accessible_Description" xml:space="preserve">
+    <value>Conforme WCAG avec étiquettes ARIA appropriées et balisage sémantique.</value>
+  </data>
+  <data name="UserLogin_SupportedAuthMethods" xml:space="preserve">
+    <value>Méthodes d'authentification prises en charge</value>
+  </data>
+  <data name="UserLogin_SupportedAuthMethods_Description" xml:space="preserve">
+    <value>Le composant extrait automatiquement les informations utilisateur des revendications, le rendant compatible avec divers systèmes d'authentification :</value>
+  </data>
+  <data name="UserLogin_CookieAuth" xml:space="preserve">
+    <value>Authentification par cookie</value>
+  </data>
+  <data name="UserLogin_CookieAuth_Description" xml:space="preserve">
+    <value>Authentification sans état basée sur les cookies sans sessions côté serveur. Parfait pour les déploiements cloud Azure.</value>
+  </data>
+  <data name="UserLogin_CookieAuth_Benefits" xml:space="preserve">
+    <value><strong>Avantages :</strong> Pas de Redis requis, mise à l'échelle automatique, implémentation simple.</value>
+  </data>
+  <data name="UserLogin_AzureAD" xml:space="preserve">
+    <value>Azure Active Directory</value>
+  </data>
+  <data name="UserLogin_AzureAD_Description" xml:space="preserve">
+    <value>Authentification d'entreprise avec intégration Office 365 et support de connexion unique.</value>
+  </data>
+  <data name="UserLogin_AzureAD_Benefits" xml:space="preserve">
+    <value><strong>Avantages :</strong> SSO, MFA, prêt pour l'entreprise, natif Azure.</value>
+  </data>
+  <data name="UserLogin_JWTTokens" xml:space="preserve">
+    <value>Jetons JWT</value>
+  </data>
+  <data name="UserLogin_JWTTokens_Description" xml:space="preserve">
+    <value>Authentification par jeton Web JSON pour les applications API-first et les microservices.</value>
+  </data>
+  <data name="UserLogin_JWTTokens_Benefits" xml:space="preserve">
+    <value><strong>Avantages :</strong> Complètement sans état, multiplateforme, vérifiable.</value>
+  </data>
+  <data name="UserLogin_ExternalProviders" xml:space="preserve">
+    <value>Fournisseurs externes</value>
+  </data>
+  <data name="UserLogin_ExternalProviders_Description" xml:space="preserve">
+    <value>Intégration OAuth avec Google, GitHub, Microsoft et autres fournisseurs externes.</value>
+  </data>
+  <data name="UserLogin_ExternalProviders_Benefits" xml:space="preserve">
+    <value><strong>Avantages :</strong> Pas de gestion de mots de passe, commodité utilisateur, sécurité.</value>
+  </data>
+  <data name="UserLogin_AdditionalResources" xml:space="preserve">
+    <value>Ressources supplémentaires</value>
+  </data>
+  <data name="UserLogin_CompleteExamples" xml:space="preserve">
+    <value>Exemples complets</value>
+  </data>
+  <data name="UserLogin_CompleteExamples_Description" xml:space="preserve">
+    <value>Exemples interactifs avec différentes configurations et cas d'usage.</value>
+  </data>
+  <data name="UserLogin_StatelessAuth" xml:space="preserve">
+    <value>Authentification sans état</value>
+  </data>
+  <data name="UserLogin_StatelessAuth_Description" xml:space="preserve">
+    <value>Exemples d'authentification prêts pour le cloud Azure sans sessions.</value>
+  </data>
+  <data name="StatelessAuth_Demo_Title" xml:space="preserve">
+    <value>Démonstration d'authentification sans état</value>
+  </data>
+  <data name="StatelessAuth_Demo_Description" xml:space="preserve">
+    <value>Essayez l'authentification par cookie ci-dessous et voyez comment le partiel de connexion utilisateur se met à jour automatiquement.</value>
+  </data>
+  <data name="StatelessAuth_CurrentStatus_Title" xml:space="preserve">
+    <value>Statut d'authentification actuel</value>
+  </data>
+  <data name="StatelessAuth_Authenticated_Message" xml:space="preserve">
+    <value><strong>✅ Authentifié</strong> - Vous êtes actuellement connecté en tant que <strong>{0}</strong></value>
+  </data>
+  <data name="StatelessAuth_Authenticated_Description" xml:space="preserve">
+    <value>Le partiel de connexion utilisateur ci-dessus affiche vos informations de session actuelles à partir des revendications (aucun stockage de session côté serveur).</value>
+  </data>
+  <data name="StatelessAuth_NotAuthenticated_Message" xml:space="preserve">
+    <value><strong>❌ Non authentifié</strong> - Essayez la connexion par cookie ci-dessous pour voir l'authentification sans état en action.</value>
+  </data>
+  <data name="StatelessAuth_NotAuthenticated_Description" xml:space="preserve">
+    <value>Remarquez comment le partiel de connexion utilisateur se mettra à jour automatiquement après la connexion.</value>
+  </data>
+  <data name="StatelessAuth_CookieDemo_Title" xml:space="preserve">
+    <value>Démonstration d'authentification par cookie</value>
+  </data>
+  <data name="StatelessAuth_CookieDemo_Description" xml:space="preserve">
+    <value>Testez l'authentification basée sur les cookies sans sessions serveur. Toutes les données utilisateur proviennent des revendications dans le cookie d'authentification.</value>
+  </data>
+  <data name="StatelessAuth_LoggedIn_Text" xml:space="preserve">
+    <value>Vous êtes connecté ! Cliquez sur déconnexion pour effacer le cookie d'authentification.</value>
+  </data>
+  <data name="StatelessAuth_LoggedOut_Text" xml:space="preserve">
+    <value>Ceci créera un cookie d'authentification avec des revendications utilisateur (aucun stockage de session).</value>
+  </data>
+  <data name="StatelessAuth_Login_Button" xml:space="preserve">
+    <value>🔐 Connexion avec authentification par cookie</value>
+  </data>
+  <data name="StatelessAuth_Logout_Button" xml:space="preserve">
+    <value>🚪 Déconnexion</value>
+  </data>
+  <data name="StatelessAuth_TechnicalInfo_Title" xml:space="preserve">
+    <value>Informations techniques</value>
+  </data>
+  <data name="StatelessAuth_HowItWorks" xml:space="preserve">
+    <value><strong>Comment ça fonctionne :</strong></value>
+  </data>
+  <data name="StatelessAuth_Benefit_Claims" xml:space="preserve">
+    <value>✅ Revendications stockées dans le cookie d'authentification</value>
+  </data>
+  <data name="StatelessAuth_Benefit_NoSessions" xml:space="preserve">
+    <value>✅ Aucun stockage de session côté serveur requis</value>
+  </data>
+  <data name="StatelessAuth_Benefit_Azure" xml:space="preserve">
+    <value>✅ Mise à l'échelle automatique dans le cloud Azure</value>
+  </data>
+  <data name="StatelessAuth_Benefit_LoadBalanced" xml:space="preserve">
+    <value>✅ Fonctionne sur des serveurs équilibrés en charge</value>
+  </data>
+  <data name="StatelessAuth_ViewClaims_Button" xml:space="preserve">
+    <value>📊 Voir les revendications actuelles</value>
+  </data>
+  <data name="StatelessAuth_CheckAuth_Button" xml:space="preserve">
+    <value>⚡ Vérifier le statut d'authentification</value>
+  </data>
+  <data name="StatelessAuth_DemoResults_Title" xml:space="preserve">
+    <value>Résultats de la démonstration</value>
+  </data>
+  <data name="StatelessAuth_Methods_Title" xml:space="preserve">
+    <value>Méthodes d'authentification sans état disponibles</value>
+  </data>
+  <data name="StatelessAuth_Methods_Description" xml:space="preserve">
+    <value>La fondation GC prend en charge plusieurs approches d'authentification sans état pour le déploiement cloud Azure :</value>
+  </data>
+  <data name="StatelessAuth_CookieAuth_Title" xml:space="preserve">
+    <value>🍪 Authentification par cookie</value>
+  </data>
+  <data name="StatelessAuth_CookieAuth_Description" xml:space="preserve">
+    <value>Utilise des cookies d'authentification avec des revendications (aucune session serveur). ✅ Recommandé pour la plupart des applications web.</value>
+  </data>
+  <data name="StatelessAuth_CookieAuth_Benefit1" xml:space="preserve">
+    <value>Aucun stockage côté serveur requis</value>
+  </data>
+  <data name="StatelessAuth_CookieAuth_Benefit2" xml:space="preserve">
+    <value>Mise à l'échelle automatique dans Azure</value>
+  </data>
+  <data name="StatelessAuth_CookieAuth_Benefit3" xml:space="preserve">
+    <value>Fonctionne sur des serveurs équilibrés en charge</value>
+  </data>
+  <data name="StatelessAuth_AzureAD_Title" xml:space="preserve">
+    <value>🏢 Intégration Azure AD</value>
+  </data>
+  <data name="StatelessAuth_AzureAD_Description" xml:space="preserve">
+    <value>Authentification d'entreprise avec la plateforme d'identité Microsoft. Parfait pour les applications gouvernementales.</value>
+  </data>
+  <data name="StatelessAuth_AzureAD_Benefit1" xml:space="preserve">
+    <value>Authentification unique (SSO)</value>
+  </data>
+  <data name="StatelessAuth_AzureAD_Benefit2" xml:space="preserve">
+    <value>Authentification multifacteur</value>
+  </data>
+  <data name="StatelessAuth_AzureAD_Benefit3" xml:space="preserve">
+    <value>Intégration Office 365</value>
+  </data>
+  <data name="StatelessAuth_JWT_Title" xml:space="preserve">
+    <value>🔑 Jetons JWT</value>
+  </data>
+  <data name="StatelessAuth_JWT_Description" xml:space="preserve">
+    <value>Authentification API sans état utilisant des jetons Web JSON. Idéal pour les microservices et APIs.</value>
+  </data>
+  <data name="StatelessAuth_JWT_Benefit1" xml:space="preserve">
+    <value>Complètement sans état</value>
+  </data>
+  <data name="StatelessAuth_JWT_Benefit2" xml:space="preserve">
+    <value>Compatibilité multiplateforme</value>
+  </data>
+  <data name="StatelessAuth_JWT_Benefit3" xml:space="preserve">
+    <value>Peut être vérifié indépendamment</value>
+  </data>
+  <data name="StatelessAuth_OAuth_Title" xml:space="preserve">
+    <value>🌐 Fournisseurs OAuth</value>
+  </data>
+  <data name="StatelessAuth_OAuth_Description" xml:space="preserve">
+    <value>Fournisseurs d'authentification externes (Google, GitHub, etc.). Bon pour les applications publiques.</value>
+  </data>
+  <data name="StatelessAuth_OAuth_Benefit1" xml:space="preserve">
+    <value>Aucune gestion d'identifiants</value>
+  </data>
+  <data name="StatelessAuth_OAuth_Benefit2" xml:space="preserve">
+    <value>Commodité utilisateur</value>
+  </data>
+  <data name="StatelessAuth_OAuth_Benefit3" xml:space="preserve">
+    <value>Options de connexion sociale</value>
+  </data>
+  <data name="StatelessAuth_Integration_Title" xml:space="preserve">
+    <value>💡 Intégration avec le partiel de connexion utilisateur</value>
+  </data>
+  <data name="StatelessAuth_Integration_Description1" xml:space="preserve">
+    <value><strong>Le partiel de connexion utilisateur fonctionne parfaitement avec toutes ces méthodes d'authentification !</strong> Il lit automatiquement les informations utilisateur à partir des revendications plutôt que des sessions, ce qui le rend parfait pour l'authentification sans état.</value>
+  </data>
+  <data name="StatelessAuth_Integration_Description2" xml:space="preserve">
+    <value>Que vous utilisiez des cookies, Azure AD, JWT ou OAuth - le partiel affichera automatiquement les bonnes informations utilisateur en mappant les types de revendications comme <code>ClaimTypes.Name</code>, <code>ClaimTypes.Email</code>, <code>ClaimTypes.Role</code>, etc.</value>
+  </data>
+  <data name="UserLogin_TemplateIntegration" xml:space="preserve">
+    <value>Intégration de modèle</value>
+  </data>
+  <data name="UserLogin_TemplateIntegration_Description" xml:space="preserve">
+    <value>Apprenez comment intégrer le partiel dans vos modèles de mise en page.</value>
+  </data>
+  <data name="UserLogin_QuickImplementation" xml:space="preserve">
+    <value>Guide d'implémentation rapide</value>
+  </data>
+  <data name="UserLogin_Step_ConfigureSettings" xml:space="preserve">
+    <value><strong>Configurer les paramètres :</strong> Ajoutez UserLoginSettings à votre appsettings.json</value>
+  </data>
+  <data name="UserLogin_Step_RegisterServices" xml:space="preserve">
+    <value><strong>Enregistrer les services :</strong> Les services sont auto-enregistrés avec AddGCFoundationComponents()</value>
+  </data>
+  <data name="UserLogin_Step_SetInController" xml:space="preserve">
+    <value><strong>Définir dans le contrôleur :</strong> ViewData["LoginPartialViewName"] = "_UserLoginPartial"</value>
+  </data>
+  <data name="UserLogin_Step_ConfigureAuth" xml:space="preserve">
+    <value><strong>Configurer l'authentification :</strong> Choisissez cookie, JWT, Azure AD ou autre méthode d'auth</value>
+  </data>
+  <data name="UserLogin_Step_CustomizeAppearance" xml:space="preserve">
+    <value><strong>Personnaliser l'apparence :</strong> Modifiez les paramètres pour afficher/masquer les informations utilisateur désirées</value>
+  </data>
+  <data name="Cards_Title" xml:space="preserve">
+    <value>Documentation des cartes FDCP</value>
+  </data>
+  <data name="Cards_Overview_Title" xml:space="preserve">
+    <value>Aperçu</value>
+  </data>
+  <data name="Cards_Overview_Text" xml:space="preserve">
+    <value>Le composant &lt;code&gt;&amp;lt;fdcp-card&amp;gt;&lt;/code&gt; fournit un conteneur de contenu flexible et extensible inspiré des cartes Bootstrap, conçu avec le style du Système de design du gouvernement du Canada (SGDC). Il inclut des options pour les en-têtes, pieds de page, images et diverses couleurs d'arrière-plan contextuelles.</value>
+  </data>
+  <data name="Cards_Basic_Title" xml:space="preserve">
+    <value>Carte de base</value>
+  </data>
+  <data name="Cards_Basic_Text" xml:space="preserve">
+    <value>Une carte de base avec contenu mixte et largeur flexible.</value>
+  </data>
+  <data name="Cards_WithSlots_Title" xml:space="preserve">
+    <value>Cartes avec en-tête et pied de page</value>
+  </data>
+  <data name="Cards_WithSlots_Text" xml:space="preserve">
+    <value>Utilisez l'attribut &lt;code&gt;slot&lt;/code&gt; pour définir les sections d'en-tête, corps et pied de page.</value>
+  </data>
+  <data name="Cards_WithImages_Title" xml:space="preserve">
+    <value>Cartes avec images</value>
+  </data>
+  <data name="Cards_WithImages_Text" xml:space="preserve">
+    <value>Les cartes supportent les images en haut et en bas en utilisant les attributs &lt;code&gt;image-top&lt;/code&gt; et &lt;code&gt;image-bottom&lt;/code&gt;.</value>
+  </data>
+  <data name="Cards_Horizontal_Title" xml:space="preserve">
+    <value>Cartes horizontales</value>
+  </data>
+  <data name="Cards_Horizontal_Text" xml:space="preserve">
+    <value>Utilisez l'attribut &lt;code&gt;horizontal="true"&lt;/code&gt; pour créer des dispositions de cartes horizontales.</value>
+  </data>
+  <data name="Cards_Parameters_Title" xml:space="preserve">
+    <value>Paramètres</value>
+  </data>
+  <data name="Cards_Parameters_TagId" xml:space="preserve">
+    <value>Attribut &lt;code&gt;id&lt;/code&gt; optionnel pour l'élément carte.</value>
+  </data>
+  <data name="Cards_Parameters_Width" xml:space="preserve">
+    <value>Définit la largeur de la carte en utilisant une valeur CSS (ex: "18rem", "300px", "100%").</value>
+  </data>
+  <data name="Cards_Parameters_Height" xml:space="preserve">
+    <value>Définit la hauteur de la carte en utilisant une valeur CSS (ex: "200px", "auto", "100%").</value>
+  </data>
+  <data name="Cards_Parameters_Border" xml:space="preserve">
+    <value>Si la carte doit avoir une bordure. Par défaut: true.</value>
+  </data>
+  <data name="Cards_Parameters_Shadow" xml:space="preserve">
+    <value>Si la carte doit avoir une ombre. Par défaut: false.</value>
+  </data>
+  <data name="Cards_Parameters_ImageTop" xml:space="preserve">
+    <value>URL pour l'image de la carte qui apparaît en haut.</value>
+  </data>
+  <data name="Cards_Parameters_ImageBottom" xml:space="preserve">
+    <value>URL pour l'image de la carte qui apparaît en bas.</value>
+  </data>
+  <data name="Cards_Parameters_ImageAlt" xml:space="preserve">
+    <value>Texte alternatif pour les images de la carte.</value>
+  </data>
+  <data name="Cards_Parameters_Horizontal" xml:space="preserve">
+    <value>Si la carte doit utiliser une disposition horizontale. Par défaut: false.</value>
+  </data>
+  <data name="Cards_Notes_Title" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="Cards_Notes_1" xml:space="preserve">
+    <value>Utilisez &lt;code&gt;slot="header"&lt;/code&gt;, &lt;code&gt;slot="body"&lt;/code&gt; et &lt;code&gt;slot="footer"&lt;/code&gt; pour définir les sections de la carte.</value>
+  </data>
+  <data name="Cards_Notes_2" xml:space="preserve">
+    <value>Les cartes sont réactives et s'adaptent à la largeur de leur conteneur sauf si une largeur spécifique est définie.</value>
+  </data>
+  <data name="Cards_Notes_3" xml:space="preserve">
+    <value>Toutes les cartes utilisent les variables de couleur SGDC pour un style cohérent du gouvernement du Canada.</value>
+  </data>
+  <data name="Cards_Overview_Anchor" xml:space="preserve">
+    <value>apercu</value>
+  </data>
+  <data name="Cards_Basic_Anchor" xml:space="preserve">
+    <value>base</value>
+  </data>
+  <data name="Cards_WithSlots_Anchor" xml:space="preserve">
+    <value>slots</value>
+  </data>
+  <data name="Cards_WithImages_Anchor" xml:space="preserve">
+    <value>images</value>
+  </data>
+  <data name="Cards_Horizontal_Anchor" xml:space="preserve">
+    <value>horizontal</value>
+  </data>
+  <data name="Cards_Parameters_Anchor" xml:space="preserve">
+    <value>parametres</value>
+  </data>
+  <data name="Cards_Notes_Anchor" xml:space="preserve">
+    <value>notes</value>
+  </data>
+  <data name="StatelessAuth_Demo_Title" xml:space="preserve">
+    <value>Démonstration d'authentification sans état</value>
+  </data>
+  <data name="StatelessAuth_Demo_Description" xml:space="preserve">
+    <value>Exemples d'authentification prêts pour Azure sans sessions. Essayez l'authentification par cookie ci-dessous et voyez comment le composant de connexion utilisateur se met à jour automatiquement.</value>
+  </data>
+  <data name="StatelessAuth_Current_Status_Title" xml:space="preserve">
+    <value>État d'authentification actuel</value>
+  </data>
+  <data name="StatelessAuth_Authenticated_Message" xml:space="preserve">
+    <value><strong>✅ Authentifié</strong> - Vous êtes actuellement connecté en tant que <strong>{0}</strong></value>
+  </data>
+  <data name="StatelessAuth_Session_Info_Message" xml:space="preserve">
+    <value>Le composant de connexion utilisateur ci-dessus affiche vos informations de session actuelles à partir des revendications (pas de stockage de session côté serveur).</value>
+  </data>
+  <data name="StatelessAuth_Not_Authenticated_Message" xml:space="preserve">
+    <value><strong>❌ Non authentifié</strong> - Essayez la connexion par cookie ci-dessous pour voir l'authentification sans état en action.</value>
+  </data>
+  <data name="StatelessAuth_Login_Partial_Update_Message" xml:space="preserve">
+    <value>Remarquez comment le composant de connexion utilisateur se mettra à jour automatiquement après la connexion.</value>
+  </data>
+  <data name="StatelessAuth_Interactive_Demo_Title" xml:space="preserve">
+    <value>Démonstration d'authentification interactive</value>
+  </data>
+  <data name="StatelessAuth_Logout_Button_Text" xml:space="preserve">
+    <value>🚪 Déconnexion</value>
+  </data>
+  <data name="StatelessAuth_Login_Button_Text" xml:space="preserve">
+    <value>🔐 Connexion avec auth cookie</value>
+  </data>
+  <data name="StatelessAuth_Logout_Description" xml:space="preserve">
+    <value>Vous êtes connecté ! Cliquez sur déconnexion pour effacer le cookie d'authentification.</value>
+  </data>
+  <data name="StatelessAuth_Login_Description" xml:space="preserve">
+    <value>Ceci créera un cookie d'authentification avec les revendications utilisateur (pas de stockage de session).</value>
+  </data>
+  <data name="StatelessAuth_Technical_Info_Title" xml:space="preserve">
+    <value>Informations techniques</value>
+  </data>
+  <data name="StatelessAuth_Demo_Buttons_Title" xml:space="preserve">
+    <value>Points de terminaison API de démonstration</value>
+  </data>
+  <data name="StatelessAuth_User_Info_Button" xml:space="preserve">
+    <value>Obtenir les infos utilisateur</value>
+  </data>
+  <data name="StatelessAuth_Auth_Status_Button" xml:space="preserve">
+    <value>Vérifier l'état d'auth</value>
+  </data>
+  <data name="StatelessAuth_Demo_Results_Title" xml:space="preserve">
+    <value>Réponse API</value>
+  </data>
+  <data name="StatelessAuth_Authentication_Methods_Title" xml:space="preserve">
+    <value>Comparaison des méthodes d'authentification</value>
+  </data>
+  <data name="StatelessAuth_Cookie_Method_Title" xml:space="preserve">
+    <value>🍪 Authentification par cookie (sans état)</value>
+  </data>
+  <data name="StatelessAuth_Cookie_Benefit_1" xml:space="preserve">
+    <value>Revendications stockées dans des cookies chiffrés</value>
+  </data>
+  <data name="StatelessAuth_Cookie_Benefit_2" xml:space="preserve">
+    <value>Pas de stockage de session côté serveur</value>
+  </data>
+  <data name="StatelessAuth_Cookie_Benefit_3" xml:space="preserve">
+    <value>Parfait pour la mise à l'échelle d'Azure App Service</value>
+  </data>
+  <data name="StatelessAuth_JWT_Method_Title" xml:space="preserve">
+    <value>🎫 Authentification JWT</value>
+  </data>
+  <data name="StatelessAuth_JWT_Benefit_1" xml:space="preserve">
+    <value>Authentification basée sur des jetons</value>
+  </data>
+  <data name="StatelessAuth_JWT_Benefit_2" xml:space="preserve">
+    <value>Idéal pour les points de terminaison API</value>
+  </data>
+  <data name="StatelessAuth_JWT_Benefit_3" xml:space="preserve">
+    <value>Sans état et évolutif</value>
+  </data>
+  <data name="StatelessAuth_Azure_Method_Title" xml:space="preserve">
+    <value>☁️ Azure AD / Entra ID</value>
+  </data>
+  <data name="StatelessAuth_Azure_Benefit_1" xml:space="preserve">
+    <value>Authentification unique d'entreprise</value>
+  </data>
+  <data name="StatelessAuth_Azure_Benefit_2" xml:space="preserve">
+    <value>Authentification multifacteur</value>
+  </data>
+  <data name="StatelessAuth_Azure_Benefit_3" xml:space="preserve">
+    <value>Compatibilité avec le cloud gouvernemental</value>
+  </data>
 </root>

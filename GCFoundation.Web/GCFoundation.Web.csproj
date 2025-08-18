@@ -9,6 +9,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <RootNamespace>GCFoundation.Web</RootNamespace>
     <AssemblyName>GCFoundation.Web</AssemblyName>
+	<ErrorLog>Foundation.Web.sarif,version=2.1</ErrorLog>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,6 +28,10 @@
     <PackageReference Include="cloudscribe.Web.Navigation" Version="8.0.0" />
     <PackageReference Include="cloudscribe.Web.SiteMap" Version="8.0.0" />
     <PackageReference Include="cloudscribe.Web.SiteMap.FromNavigation" Version="8.0.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Localization" Version="9.0.2" />
     <PackageReference Include="RouteLocalization.AspNetCore" Version="1.0.0" />
   </ItemGroup>

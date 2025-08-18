@@ -19,6 +19,19 @@ builder.Services.AddControllersWithViews()
     .AddViewLocalization()
     .AddDataAnnotationsLocalization();
 
+// Add authentication for demo purposes
+builder.Services.AddAuthentication("DemoAuth")
+    .AddCookie("DemoAuth", options =>
+    {
+        options.LoginPath = "/examples/user-login";
+        options.LogoutPath = "/examples/user-login";
+        options.ExpireTimeSpan = TimeSpan.FromHours(1);
+        options.SlidingExpiration = false;
+        options.Cookie.Name = "GCFoundationDemo";
+        options.Cookie.HttpOnly = true;
+        options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+    });
+
 builder.Services.AddScoped<ISiteMapNodeService, NavigationTreeSiteMapNodeService>();
 builder.Services.AddCloudscribeNavigation(builder.Configuration.GetSection("NavigationOptions"));
 
@@ -102,6 +115,8 @@ app.UseRouting();
 var localizationOptions = app.Services.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value;
 app.UseRequestLocalization(localizationOptions);
 
+// Add authentication and authorization for demo
+app.UseAuthentication();
 app.UseAuthorization();
 
 // Default route

@@ -1,6 +1,8 @@
 ﻿using GCFoundation.Common.Settings;
 using GCFoundation.Components.Configuration;
 using GCFoundation.Components.Helpers;
+using GCFoundation.Components.Services;
+using GCFoundation.Components.Settings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,11 +32,18 @@ namespace GCFoundation.Components.Middleware
             var section = configuration.GetSection("FoundationComponentsSettings");
             services.Configure<GCFoundationComponentsSettings>(section);
 
+            // Configure user login settings
+            var userLoginSection = configuration.GetSection("UserLoginSettings");
+            services.Configure<GCFoundationUserLoginSettings>(userLoginSection);
+
             // Register the CdnPolicyConfigurator
             services.AddSingleton<IConfigureOptions<GCFoundationContentPolicySettings>, FoundationComponentsCdnPolicyConfigurator>();
 
             // Register the GlobalResourceHelper for use in Razor views
             services.AddScoped<GlobalResourceHelper>();
+
+            // Register the UserLoginService for managing user login view models
+            services.AddScoped<UserLoginService>();
 
             return services;
         }

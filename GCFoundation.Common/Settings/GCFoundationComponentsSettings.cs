@@ -56,7 +56,7 @@ namespace GCFoundation.Common.Settings
         /// <summary>
         /// Gets or sets the version of the GC Design System being used.
         /// </summary>
-        public string GCDSVersion { get; set; } = "0.35.0";
+        public string GCDSVersion { get; set; } = "0.41.0";
 
         /// <summary>
         /// Gets or sets the version of Font Awesome being used.

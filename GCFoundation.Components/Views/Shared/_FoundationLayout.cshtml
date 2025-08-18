@@ -113,6 +113,15 @@
         </div>
     </gcds-header>
     <gcds-container id="main-content" size="xl" centered tag="main" main-container class="fdcp-mb-300">
+        @{
+            string? LoginPartialViewName = ViewData["LoginPartialViewName"] as string;
+        }
+
+        @if(!string.IsNullOrEmpty(LoginPartialViewName))
+        {
+            @await Html.PartialAsync(LoginPartialViewName)
+        }
+
         <partial name="_PageNotification" />
         @* Main content *@
         @RenderBody()

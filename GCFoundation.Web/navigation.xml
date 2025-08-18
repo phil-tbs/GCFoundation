@@ -31,6 +31,16 @@
 				<NavNode key="stepper" controller="Components" action="Stepper" area="" preservedRouteParameters="culture" text="Nav_Components_Stepper" >
 					<Children />
 				</NavNode>
+				<NavNode key="user-login" controller="Components" action="UserLogin" area="" preservedRouteParameters="culture" text="Nav_Components_UserLogin" >
+					<Children>
+						<NavNode key="user-login-examples" controller="UserLoginExample" action="Index" area="" preservedRouteParameters="culture" text="Nav_UserLogin_Examples" >
+							<Children />
+						</NavNode>
+						<NavNode key="user-login-positions" controller="UserLoginExample" action="PositionExample" area="" preservedRouteParameters="culture" text="Nav_UserLogin_Positions" >
+							<Children />
+						</NavNode>
+					</Children>
+				</NavNode>
 
 			</Children>
 		</NavNode>
@@ -56,6 +66,9 @@
 					<Children />
 				</NavNode>
 				<NavNode key="logout" controller="Authentication" action="Logout" area="" preservedRouteParameters="culture" text="Nav_Authentication_Logout" >
+					<Children />
+				</NavNode>
+				<NavNode key="stateless-auth-examples" controller="StatelessAuthExample" action="Index" area="" preservedRouteParameters="culture" text="Nav_Authentication_StatelessExamples" >
 					<Children />
 				</NavNode>
 			</Children>

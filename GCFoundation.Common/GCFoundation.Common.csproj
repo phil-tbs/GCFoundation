@@ -6,7 +6,15 @@
     <Nullable>enable</Nullable>
 	<AnalysisMode>All</AnalysisMode>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<ErrorLog>Foundation.Components.Common,version=2.1</ErrorLog>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Enums\" />

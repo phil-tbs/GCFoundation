@@ -1,0 +1,175 @@
+@using GCFoundation.Web.Resources
+
+<gcds-heading tag="h1">@Components.Cards_Title</gcds-heading>
+
+<gcds-grid columns="minmax(200px, 300px) minmax(0, 1fr)" align-content="@GCFoundation.Components.Enums.AlignContent.start">
+    <gcds-side-nav label="On this page">
+        <gcds-nav-link href="#@Components.Cards_Overview_Anchor">@Components.Cards_Overview_Title</gcds-nav-link>
+        <gcds-nav-link href="#@Components.Cards_Basic_Anchor">@Components.Cards_Basic_Title</gcds-nav-link>
+        <gcds-nav-link href="#@Components.Cards_WithSlots_Anchor">@Components.Cards_WithSlots_Title</gcds-nav-link>
+        <gcds-nav-link href="#@Components.Cards_WithImages_Anchor">@Components.Cards_WithImages_Title</gcds-nav-link>
+        <gcds-nav-link href="#@Components.Cards_Horizontal_Anchor">@Components.Cards_Horizontal_Title</gcds-nav-link>
+        <gcds-nav-link href="#@Components.Cards_Parameters_Anchor">@Components.Cards_Parameters_Title</gcds-nav-link>
+        <gcds-nav-link href="#@Components.Cards_Notes_Anchor">@Components.Cards_Notes_Title</gcds-nav-link>
+    </gcds-side-nav>
+    <div class="documentation-content">
+        <gcds-heading tag="h2" id="@Components.Cards_Overview_Anchor">@Components.Cards_Overview_Title</gcds-heading>
+        <p>
+            @Html.Raw(Components.Cards_Overview_Text)
+        </p>
+
+        <hr />
+
+        <gcds-heading tag="h2" id="@Components.Cards_Basic_Anchor">@Components.Cards_Basic_Title</gcds-heading>
+        <p>@Components.Cards_Basic_Text</p>
+
+        <fdcp-card width="18rem">
+            <h5 class="fdcp-card-title">Card title</h5>
+            <p class="fdcp-card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="fdcp-card-link">Go somewhere</a>
+        </fdcp-card>
+
+<pre><code class="language-html">&lt;fdcp-card width="18rem"&gt;
+    &lt;h5 class="fdcp-card-title"&gt;Card title&lt;/h5&gt;
+    &lt;p class="fdcp-card-text"&gt;Some quick example text to build on the card title and make up the bulk of the card's content.&lt;/p&gt;
+    &lt;a href="#" class="fdcp-card-link"&gt;Go somewhere&lt;/a&gt;
+&lt;/fdcp-card&gt;</code></pre>
+
+        <hr />
+
+        <gcds-heading tag="h2" id="@Components.Cards_WithSlots_Anchor">@Components.Cards_WithSlots_Title</gcds-heading>
+        <p>@Html.Raw(Components.Cards_WithSlots_Text)</p>
+
+        <fdcp-card width="18rem">
+            <div slot="header">
+                Featured
+            </div>
+            <div slot="body">
+                <h5 class="fdcp-card-title">Special title treatment</h5>
+                <p class="fdcp-card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="fdcp-card-link">Go somewhere</a>
+            </div>
+            <div slot="footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
+        </fdcp-card>
+
+<pre><code class="language-html">&lt;fdcp-card width="18rem"&gt;
+    &lt;div slot="header"&gt;
+        Featured
+    &lt;/div&gt;
+    &lt;div slot="body"&gt;
+        &lt;h5 class="fdcp-card-title"&gt;Special title treatment&lt;/h5&gt;
+        &lt;p class="fdcp-card-text"&gt;With supporting text below as a natural lead-in to additional content.&lt;/p&gt;
+        &lt;a href="#" class="fdcp-card-link"&gt;Go somewhere&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div slot="footer"&gt;
+        &lt;small class="text-muted"&gt;Last updated 3 mins ago&lt;/small&gt;
+    &lt;/div&gt;
+&lt;/fdcp-card&gt;</code></pre>
+
+        <hr />
+
+        <gcds-heading tag="h2" id="@Components.Cards_WithImages_Anchor">@Components.Cards_WithImages_Title</gcds-heading>
+        <p>@Html.Raw(Components.Cards_WithImages_Text)</p>
+
+        <fdcp-card width="18rem" image-top="https://via.placeholder.com/286x180?text=Card+Image" image-alt="Card image">
+            <h5 class="fdcp-card-title">Card title</h5>
+            <p class="fdcp-card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <p class="fdcp-card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </fdcp-card>
+
+<pre><code class="language-html">&lt;fdcp-card width="18rem" image-top="image-url.jpg" image-alt="Card image"&gt;
+    &lt;h5 class="fdcp-card-title"&gt;Card title&lt;/h5&gt;
+    &lt;p class="fdcp-card-text"&gt;Some quick example text to build on the card title and make up the bulk of the card's content.&lt;/p&gt;
+    &lt;p class="fdcp-card-text"&gt;&lt;small class="text-muted"&gt;Last updated 3 mins ago&lt;/small&gt;&lt;/p&gt;
+&lt;/fdcp-card&gt;</code></pre>
+
+        <hr />
+
+        <gcds-heading tag="h2" id="@Components.Cards_Horizontal_Anchor">@Components.Cards_Horizontal_Title</gcds-heading>
+        <p>@Html.Raw(Components.Cards_Horizontal_Text)</p>
+
+        <fdcp-card horizontal="true" width="540px" image-top="https://via.placeholder.com/180x180?text=Image" image-alt="Horizontal card image">
+            <h5 class="fdcp-card-title">Card title</h5>
+            <p class="fdcp-card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="fdcp-card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </fdcp-card>
+
+<pre><code class="language-html">&lt;fdcp-card horizontal="true" width="540px" image-top="image-url.jpg" image-alt="Horizontal card image"&gt;
+    &lt;h5 class="fdcp-card-title"&gt;Card title&lt;/h5&gt;
+    &lt;p class="fdcp-card-text"&gt;This is a wider card with supporting text below as a natural lead-in to additional content.&lt;/p&gt;
+    &lt;p class="fdcp-card-text"&gt;&lt;small class="text-muted"&gt;Last updated 3 mins ago&lt;/small&gt;&lt;/p&gt;
+&lt;/fdcp-card&gt;</code></pre>
+
+        <hr />
+
+        <gcds-heading tag="h2" id="@Components.Cards_Parameters_Anchor">@Components.Cards_Parameters_Title</gcds-heading>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Property</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>TagId</code></td>
+                    <td><code>string</code></td>
+                    <td>@Html.Raw(Components.Cards_Parameters_TagId)</td>
+                </tr>
+                <tr>
+                    <td><code>Width</code></td>
+                    <td><code>string</code></td>
+                    <td>@Components.Cards_Parameters_Width</td>
+                </tr>
+                <tr>
+                    <td><code>Height</code></td>
+                    <td><code>string</code></td>
+                    <td>@Components.Cards_Parameters_Height</td>
+                </tr>
+                <tr>
+                    <td><code>Border</code></td>
+                    <td><code>bool</code></td>
+                    <td>@Components.Cards_Parameters_Border</td>
+                </tr>
+                <tr>
+                    <td><code>Shadow</code></td>
+                    <td><code>bool</code></td>
+                    <td>@Components.Cards_Parameters_Shadow</td>
+                </tr>
+                <tr>
+                    <td><code>ImageTop</code></td>
+                    <td><code>string</code></td>
+                    <td>@Components.Cards_Parameters_ImageTop</td>
+                </tr>
+                <tr>
+                    <td><code>ImageBottom</code></td>
+                    <td><code>string</code></td>
+                    <td>@Components.Cards_Parameters_ImageBottom</td>
+                </tr>
+                <tr>
+                    <td><code>ImageAlt</code></td>
+                    <td><code>string</code></td>
+                    <td>@Components.Cards_Parameters_ImageAlt</td>
+                </tr>
+                <tr>
+                    <td><code>Horizontal</code></td>
+                    <td><code>bool</code></td>
+                    <td>@Components.Cards_Parameters_Horizontal</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr />
+
+        <gcds-heading tag="h2" id="@Components.Cards_Notes_Anchor">@Components.Cards_Notes_Title</gcds-heading>
+        <ul>
+            <li>@Html.Raw(Components.Cards_Notes_1)</li>
+            <li>@Html.Raw(Components.Cards_Notes_2)</li>
+            <li>@Html.Raw(Components.Cards_Notes_3)</li>
+        </ul>
+    </div>
+</gcds-grid>

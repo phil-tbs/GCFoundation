@@ -1,0 +1,145 @@
+@using GCFoundation.Components.Models
+@using GCFoundation.Components.Resources
+@using GCFoundation.Common.Utilities
+@using Microsoft.Extensions.Localization
+@model UserLoginViewModel
+
+@{
+    var settings = Model.Settings;
+    var isAuthenticated = Model.IsAuthenticated;
+    var containerClasses = !string.IsNullOrWhiteSpace(settings.ContainerCssClasses) ? settings.ContainerCssClasses : "fdcp-mb-200";
+}
+
+@{
+    var isHeaderPosition = (settings.Position ?? "").ToLowerInvariant() == "header";
+}
+
+@if (isHeaderPosition)
+{
+    if (isAuthenticated)
+    {
+        <div class="user-login-inline fdcp-mt-150" aria-label="@Authentication.LoginFormAriaLabel">
+            <span class="user-login-inline__text">@Authentication.SignedInAs: <strong class="fdcp-ml-50">@(Model.DisplayName ?? "")</strong></span>
+            @if (settings.ShowLogoutButton)
+            {
+                <gcds-button button-role="secondary" size="small" href="@settings.LogoutUrl">@Authentication.LogoutButton</gcds-button>
+            }
+        </div>
+    }
+}
+else
+{
+    <div class="user-login-partial @containerClasses" aria-label="@Authentication.LoginFormAriaLabel">
+        @if (isAuthenticated)
+        {
+            <!-- User logged in: Expanded display -->
+                <div class="user-login-content">
+                    <div class="user-header fdcp-mb-150">
+                        @if (settings.ShowUserAvatar)
+                        {
+                            <div class="user-avatar fdcp-mr-100">
+                                <gcds-avatar size="medium" initials="@Model.GeneratedInitials" />
+                            </div>
+                        }
+                        
+                        <div class="user-basic-info">
+                            @if (settings.ShowUserName && !string.IsNullOrWhiteSpace(Model.DisplayName))
+                            {
+                                <h2 class="user-greeting fdcp-mb-050">
+                                    @{
+                                        var greetingKey = !string.IsNullOrWhiteSpace(settings.CustomGreetingKey) ? settings.CustomGreetingKey : "WelcomeMessage";
+                                    }
+                                    @Html.Raw(string.Format(Authentication.WelcomeMessage, Model.DisplayName))
+                                </h2>
+                            }
+    
+                            @if (settings.ShowUserEmail && !string.IsNullOrWhiteSpace(Model.UserEmail))
+                            {
+                                <p class="user-email-display">@Model.UserEmail</p>
+                            }
+                        </div>
+                    </div>
+    
+                    @if (!string.IsNullOrWhiteSpace(Model.UserRole) || !string.IsNullOrWhiteSpace(Model.Department) || settings.ShowLoginTime)
+                    {
+                        <div class="user-details fdcp-mb-150">
+                            @if (!string.IsNullOrWhiteSpace(Model.UserRole))
+                            {
+                                <p class="user-role fdcp-mb-050">
+                                    <span class="detail-label">@Authentication.UserRole:</span> @Model.UserRole
+                                </p>
+                            }
+    
+                            @if (!string.IsNullOrWhiteSpace(Model.Department))
+                            {
+                                <p class="user-department fdcp-mb-050">
+                                    <span class="detail-label">@Authentication.Department:</span> @Model.Department
+                                </p>
+                            }
+    
+                            @if (settings.ShowLoginTime && Model.LoginTime.HasValue)
+                            {
+                                <p class="login-time">
+                                    <span class="detail-label">@Authentication.LoginTime:</span> @Model.FormattedLoginTime
+                                </p>
+                            }
+                        </div>
+                    }
+    
+                    @if (settings.ShowSessionTimeout && Model.SessionExpiry.HasValue)
+                    {
+                    <div class="session-status fdcp-mb-150" aria-label="@Authentication.LoginFormAriaLabel">
+                            @if (Model.IsSessionExpiringSoon)
+                            {
+                                <gcds-alert alert-role="warning" hide-close-btn="true">
+                                    <gcds-text>@Authentication.SessionExpiringSoon</gcds-text>
+                                    <gcds-text>@string.Format(Authentication.SessionTimeRemaining, Model.MinutesUntilExpiry)</gcds-text>
+                                </gcds-alert>
+                            }
+                            else
+                            {
+                                <div class="session-info">
+                                    <gcds-text>@string.Format(Authentication.SessionTimeRemaining, Model.MinutesUntilExpiry)</gcds-text>
+                                </div>
+                            }
+                        </div>
+                    }
+    
+                    <div class="user-actions" aria-label="@Authentication.AccountActions">
+                        @if (settings.ShowProfileLink && !string.IsNullOrWhiteSpace(settings.ProfileUrl))
+                        {
+                            <gcds-button button-role="secondary" size="regular" href="@settings.ProfileUrl" class="fdcp-mr-100">
+                                @Authentication.ProfileButton
+                            </gcds-button>
+                        }
+    
+                        @if (settings.ShowLogoutButton)
+                        {
+                            <gcds-button button-role="destructive" size="regular" href="@settings.LogoutUrl">
+                                @Authentication.LogoutButton
+                            </gcds-button>
+                        }
+                    </div>
+                </div>
+        }
+        else
+        {
+            <!-- Not Authenticated: Show sign in option -->
+            <div class="user-login-content not-authenticated">
+                <div class="login-prompt fdcp-mb-150">
+                    <gcds-text size="body">@Authentication.NotLoggedIn</gcds-text>
+                    <gcds-text size="small">@Authentication.PleaseSignIn</gcds-text>
+                </div>
+                
+                <div class="login-actions">
+                    <gcds-button button-role="primary" size="regular" href="@settings.LoginUrl">
+                        @Authentication.LoginButton
+                    </gcds-button>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@* Styles moved to SCSS bundle (fdcp-user-login) *@
+

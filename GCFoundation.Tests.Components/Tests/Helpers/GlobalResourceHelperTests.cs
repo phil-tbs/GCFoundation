@@ -145,7 +145,9 @@ namespace GCFoundation.Tests.Components.Tests.Helpers
         public void ShouldIncludeDefaultCss_ShouldReturnTrue()
         {
             // Act
+            #pragma warning disable CS0618 // Type or member is obsolete
             var result = _helper.ShouldIncludeDefaultCss();
+            #pragma warning restore CS0618 // Type or member is obsolete
 
             // Assert
             Assert.True(result);
@@ -155,7 +157,9 @@ namespace GCFoundation.Tests.Components.Tests.Helpers
         public void ShouldIncludeDefaultJavaScript_ShouldReturnTrue()
         {
             // Act
+            #pragma warning disable CS0618 // Type or member is obsolete
             var result = _helper.ShouldIncludeDefaultJavaScript();
+            #pragma warning restore CS0618 // Type or member is obsolete
 
             // Assert
             Assert.True(result);
@@ -194,8 +198,10 @@ namespace GCFoundation.Tests.Components.Tests.Helpers
             Assert.Empty(emptyHelper.GetGlobalJavaScriptFiles());
             Assert.Empty(emptyHelper.GetGlobalMetaTags());
             Assert.Empty(emptyHelper.GetGlobalLinkTags());
+            #pragma warning disable CS0618 // Type or member is obsolete
             Assert.True(emptyHelper.ShouldIncludeDefaultCss());
             Assert.True(emptyHelper.ShouldIncludeDefaultJavaScript());
+            #pragma warning restore CS0618 // Type or member is obsolete
             Assert.True(emptyHelper.ShouldIncludeGCDSResources());
             Assert.True(emptyHelper.ShouldIncludeFontAwesome());
         }

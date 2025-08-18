@@ -1,0 +1,239 @@
+@use '../variables' as vars;
+
+
+
+.fdcp-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: vars.$gcds-bg-white;
+    background-clip: border-box;
+    border: 1px solid vars.$gcds-border-default;
+    border-radius: 0.5rem;
+
+    &.fdcp-card-no-border {
+        border: none;
+    }
+
+    &.fdcp-card-shadow {
+        box-shadow: 0 0.125rem 0.25rem rgba(vars.$gcds-color-grayscale-900, 0.075);
+    }
+
+    &.fdcp-card-horizontal {
+        flex-direction: row;
+
+        .fdcp-card-img-top,
+        .fdcp-card-img-bottom {
+            width: auto;
+            height: 100%;
+            border-radius: 0;
+        }
+
+        .fdcp-card-img-top {
+            border-top-left-radius: calc(0.5rem - 1px);
+            border-bottom-left-radius: calc(0.5rem - 1px);
+        }
+
+        .fdcp-card-img-bottom {
+            border-top-right-radius: calc(0.5rem - 1px);
+            border-bottom-right-radius: calc(0.5rem - 1px);
+        }
+
+        .fdcp-card-body {
+            flex: 1 1 auto;
+        }
+    }
+
+    // Card images
+    .fdcp-card-img-top,
+    .fdcp-card-img-bottom {
+        width: 100%;
+        height: auto;
+    }
+
+    .fdcp-card-img-top {
+        border-top-left-radius: calc(0.5rem - 1px);
+        border-top-right-radius: calc(0.5rem - 1px);
+    }
+
+    .fdcp-card-img-bottom {
+        border-bottom-left-radius: calc(0.5rem - 1px);
+        border-bottom-right-radius: calc(0.5rem - 1px);
+    }
+
+    // Card header
+    .fdcp-card-header {
+        padding: 0.75rem 1rem;
+        margin-bottom: 0;
+        background-color: rgba(vars.$gcds-color-grayscale-900, 0.03);
+        border-bottom: 1px solid vars.$gcds-border-default;
+        border-top-left-radius: calc(0.5rem - 1px);
+        border-top-right-radius: calc(0.5rem - 1px);
+
+        &:first-child {
+            border-radius: calc(0.5rem - 1px) calc(0.5rem - 1px) 0 0;
+        }
+    }
+
+    // Card body
+    .fdcp-card-body {
+        flex: 1 1 auto;
+        padding: 1rem;
+
+        .fdcp-card-title {
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: vars.$gcds-text-primary;
+        }
+
+        .fdcp-card-subtitle {
+            margin-top: -0.375rem;
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            color: vars.$gcds-text-secondary;
+        }
+
+        .fdcp-card-text {
+            color: vars.$gcds-text-primary;
+            
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        .fdcp-card-link {
+            color: vars.$gcds-link-default;
+            text-decoration: none;
+
+            &:hover {
+                color: vars.$gcds-link-hover;
+                text-decoration: underline;
+            }
+
+            &:visited {
+                color: vars.$gcds-link-visited;
+            }
+
+            + .fdcp-card-link {
+                margin-left: 1rem;
+            }
+        }
+    }
+
+    // Card footer
+    .fdcp-card-footer {
+        padding: 0.75rem 1rem;
+        background-color: rgba(vars.$gcds-color-grayscale-900, 0.03);
+        border-top: 1px solid vars.$gcds-border-default;
+        border-bottom-left-radius: calc(0.5rem - 1px);
+        border-bottom-right-radius: calc(0.5rem - 1px);
+
+        &:last-child {
+            border-radius: 0 0 calc(0.5rem - 1px) calc(0.5rem - 1px);
+        }
+    }
+
+    // List groups in cards
+    .fdcp-card-list-group {
+        border-radius: 0;
+        border-width: 0;
+
+        .fdcp-card-list-group-item {
+            border-left: 0;
+            border-right: 0;
+            border-radius: 0;
+
+            &:first-child {
+                border-top: 0;
+            }
+
+            &:last-child {
+                border-bottom: 0;
+            }
+        }
+    }
+}
+
+// Card groups
+.fdcp-card-group {
+    display: flex;
+    flex-direction: column;
+
+    .fdcp-card {
+        margin-bottom: 0.75rem;
+    }
+
+    @media (min-width: 576px) {
+        flex-direction: row;
+        
+        .fdcp-card {
+            flex: 1 0 0%;
+            margin-right: 0;
+            margin-bottom: 0;
+
+            + .fdcp-card {
+                margin-left: 0;
+                border-left: 0;
+            }
+
+            &:not(:last-child) {
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+
+            &:not(:first-child) {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+        }
+    }
+}
+
+// Card columns for masonry layout
+.fdcp-card-columns {
+    column-count: 3;
+    column-gap: 1.25rem;
+    orphans: 1;
+    widows: 1;
+
+    .fdcp-card {
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 0.75rem;
+    }
+
+    @media (max-width: 767.98px) {
+        column-count: 1;
+    }
+
+    @media (min-width: 768px) and (max-width: 991.98px) {
+        column-count: 2;
+    }
+}
+
+// Card deck for equal height cards
+.fdcp-card-deck {
+    display: flex;
+    flex-direction: column;
+
+    .fdcp-card {
+        margin-bottom: 0.75rem;
+    }
+
+    @media (min-width: 576px) {
+        flex-flow: row wrap;
+        margin-right: -0.75rem;
+        margin-left: -0.75rem;
+
+        .fdcp-card {
+            flex: 1 0 0%;
+            margin-right: 0.75rem;
+            margin-bottom: 0;
+            margin-left: 0.75rem;
+        }
+    }
+}

@@ -1,0 +1,219 @@
+@using GCFoundation.Components.Helpers
+@using GCFoundation.Web.Resources
+@{
+    ViewData["Title"] = Components.StatelessAuth_Demo_Title;
+    string styleNonce = CspNonceHelper.AddNonceToDirective(Context, DirectiveType.Style);
+    string scriptNonce = CspNonceHelper.AddNonceToDirective(Context, DirectiveType.Script);
+}
+
+<gcds-container size="xl" centered>
+    <gcds-grid columns="1fr">
+        <div>
+            <gcds-heading tag="h1">@Components.StatelessAuth_Demo_Title</gcds-heading>
+            <gcds-text>
+                @Components.StatelessAuth_Demo_Description
+            </gcds-text>
+        </div>
+    </gcds-grid>
+
+    <!-- Current Authentication Status -->
+    <gcds-grid columns="1fr" class="fdcp-mt-300">
+        <fdcp-card card-title="@Components.StatelessAuth_Current_Status_Title" tag="article">
+            @if (User?.Identity?.IsAuthenticated == true)
+            {
+                <gcds-text>@Html.Raw(string.Format(Components.StatelessAuth_Authenticated_Message, User.Identity.Name))</gcds-text>
+                <gcds-text>@Components.StatelessAuth_Session_Info_Message</gcds-text>
+            }
+            else
+            {
+                <gcds-text>@Html.Raw(Components.StatelessAuth_Not_Authenticated_Message)</gcds-text>
+                <gcds-text>@Components.StatelessAuth_Login_Partial_Update_Message</gcds-text>
+            }
+        </fdcp-card>
+    </gcds-grid>
+
+    <!-- Interactive Demo -->
+    <gcds-grid columns="1fr" columns-tablet="1fr 1fr" class="fdcp-mt-400" equal-row-height="true">
+        <fdcp-card card-title="@Components.StatelessAuth_Interactive_Demo_Title" tag="article">
+            <gcds-text>@Components.StatelessAuth_Demo_Description</gcds-text>
+            <div class="fdcp-mt-200">
+                @if (User?.Identity?.IsAuthenticated == true)
+                {
+                    <form method="post" asp-controller="StatelessAuthExample" asp-action="CookieLogout" class="inline-form">
+                        <gcds-button button-role="destructive" type="submit" size="small">
+                            @Components.StatelessAuth_Logout_Button_Text
+                        </gcds-button>
+                    </form>
+                    <gcds-text class="fdcp-mt-200">@Components.StatelessAuth_Logout_Description</gcds-text>
+                }
+                else
+                {
+                    <form method="post" asp-controller="StatelessAuthExample" asp-action="CookieLogin" class="inline-form">
+                        <gcds-button button-role="primary" type="submit" size="small">
+                            @Components.StatelessAuth_Login_Button_Text
+                        </gcds-button>
+                    </form>
+                    <gcds-text class="fdcp-mt-200">@Components.StatelessAuth_Login_Description</gcds-text>
+                }
+            </div>
+        </fdcp-card>
+
+        <fdcp-card card-title="@Components.StatelessAuth_Technical_Info_Title" tag="article">
+            <gcds-text><strong>@Components.StatelessAuth_Demo_Buttons_Title</strong></gcds-text>
+            <ul>
+                <li>✅ @Components.StatelessAuth_Cookie_Benefit_1</li>
+                <li>✅ @Components.StatelessAuth_Cookie_Benefit_2</li>
+                <li>✅ @Components.StatelessAuth_Cookie_Benefit_3</li>
+                <li>✅ Works across load-balanced servers</li>
+            </ul>
+            <div class="fdcp-mt-200">
+                <gcds-button button-role="primary" type="button" button-id="load-user-info-btn" size="small">
+                    @Components.StatelessAuth_User_Info_Button
+                </gcds-button>
+
+                <gcds-button button-role="primary" type="button" button-id="load-auth-status-btn" size="small">
+                    @Components.StatelessAuth_Auth_Status_Button
+                </gcds-button>
+            </div>
+        </fdcp-card>
+    </gcds-grid>
+
+    <!-- Results Display (hidden by default) -->
+    <div id="demo-results" class="fdcp-d-none">
+        <gcds-grid columns="1fr" class="fdcp-mt-300">
+            <fdcp-card card-title="@Components.StatelessAuth_Demo_Results_Title" tag="article">
+                <pre id="results-content"></pre>
+            </fdcp-card>
+        </gcds-grid>
+    </div>
+
+    <!-- Stateless Authentication Info -->
+    <gcds-grid columns="1fr" class="fdcp-mt-400">
+        <div>
+            <gcds-heading tag="h2">@Components.StatelessAuth_Authentication_Methods_Title</gcds-heading>
+            <gcds-text class="fdcp-mt-200">
+                @Components.StatelessAuth_Demo_Description
+            </gcds-text>
+        </div>
+    </gcds-grid>
+
+    <gcds-grid columns="1fr" columns-tablet="1fr 1fr" class="fdcp-mt-300" equal-row-height="true">
+        <fdcp-card card-title="@Components.StatelessAuth_Cookie_Method_Title" tag="article">
+            <gcds-text>@Components.StatelessAuth_Demo_Description</gcds-text>
+            <ul class="fdcp-mt-200">
+                <li>@Components.StatelessAuth_Cookie_Benefit_1</li>
+                <li>@Components.StatelessAuth_Cookie_Benefit_2</li>
+                <li>@Components.StatelessAuth_Cookie_Benefit_3</li>
+            </ul>
+        </fdcp-card>
+
+        <fdcp-card card-title="@Components.StatelessAuth_Azure_Method_Title" tag="article">
+            <gcds-text>@Components.StatelessAuth_Azure_Benefit_3</gcds-text>
+            <ul class="fdcp-mt-200">
+                <li>@Components.StatelessAuth_Azure_Benefit_1</li>
+                <li>@Components.StatelessAuth_Azure_Benefit_2</li>
+                <li>Office 365 integration</li>
+            </ul>
+        </fdcp-card>
+
+        <fdcp-card card-title="@Components.StatelessAuth_JWT_Method_Title" tag="article">
+            <gcds-text>@Components.StatelessAuth_JWT_Benefit_2</gcds-text>
+            <ul class="fdcp-mt-200">
+                <li>@Components.StatelessAuth_JWT_Benefit_1</li>
+                <li>@Components.StatelessAuth_JWT_Benefit_3</li>
+                <li>Can be verified independently</li>
+            </ul>
+        </fdcp-card>
+
+        <fdcp-card card-title="🌐 OAuth Providers" tag="article">
+            <gcds-text>External authentication providers (Google, GitHub, etc.). Good for public-facing applications.</gcds-text>
+            <ul class="fdcp-mt-200">
+                <li>No credential management</li>
+                <li>User convenience</li>
+                <li>Social login options</li>
+            </ul>
+        </fdcp-card>
+    </gcds-grid>
+
+    <gcds-grid columns="1fr" class="fdcp-mt-400">
+        <fdcp-card card-title="💡 Integration with User Login Partial" tag="article">
+            <gcds-text>
+                <strong>The User Login Partial works seamlessly with all these authentication methods!</strong>
+                It automatically reads user information from claims rather than sessions, making it perfect for stateless authentication.
+            </gcds-text>
+            <gcds-text class="fdcp-mt-200">
+                Whether you use cookies, Azure AD, JWT, or OAuth - the partial will automatically display the correct user information 
+                by mapping claim types like <code>ClaimTypes.Name</code>, <code>ClaimTypes.Email</code>, <code>ClaimTypes.Role</code>, etc.
+            </gcds-text>
+        </fdcp-card>
+    </gcds-grid>
+</gcds-container>
+
+<script nonce="@scriptNonce">
+    // Add event listeners when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        const userInfoBtn = document.querySelector('[button-id="load-user-info-btn"]');
+        const authStatusBtn = document.querySelector('[button-id="load-auth-status-btn"]');
+        
+        if (userInfoBtn) {
+            userInfoBtn.addEventListener('gcdsClick', loadUserInfo);
+        }
+        
+        if (authStatusBtn) {
+            authStatusBtn.addEventListener('gcdsClick', loadAuthStatus);
+        }
+    });
+
+    async function loadUserInfo() {
+        try {
+            const response = await fetch('@Url.Action("GetCurrentUser", "StatelessAuthExample")');
+            const data = await response.json();
+            displayResults('Current User Claims', data);
+        } catch (error) {
+            displayResults('Error', { error: 'Failed to load user information', details: error.message });
+        }
+    }
+
+    async function loadAuthStatus() {
+        try {
+            const response = await fetch('@Url.Action("GetAuthStatus", "StatelessAuthExample")');
+            const data = await response.json();
+            displayResults('Authentication Status', data);
+        } catch (error) {
+            displayResults('Error', { error: 'Failed to load auth status', details: error.message });
+        }
+    }
+
+    function displayResults(title, data) {
+        const resultsDiv = document.getElementById('demo-results');
+        const resultsContent = document.getElementById('results-content');
+        
+        resultsContent.textContent = `${title}:\n\n${JSON.stringify(data, null, 2)}`;
+        resultsDiv.classList.remove('fdcp-d-none');
+        
+        // Scroll to results
+        resultsDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+
+<style nonce="@styleNonce">
+    .inline-form {
+        display: inline;
+    }
+
+    code {
+        background: var(--gcds-color-background-light);
+        padding: 0.125rem 0.25rem;
+        border-radius: 0.125rem;
+        font-family: 'Courier New', monospace;
+        font-size: 0.875rem;
+    }
+
+    #results-content {
+        background: var(--gcds-color-background-light); 
+        padding: 1rem; 
+        border-radius: 0.25rem; 
+        overflow-x: auto; 
+        font-size: 0.875rem;
+    }
+</style>

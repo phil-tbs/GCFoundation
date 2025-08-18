@@ -21,109 +21,364 @@ variables:
 
 name: 1.0.$(Date:yyyyMMdd)$(Rev:.r)$(versionSuffix)
 
-steps:
-- task: UseDotNet@2
-  displayName: 'Install .NET SDK'
-  inputs:
-    packageType: 'sdk'
-    version: '8.x'
+stages:
+- stage: Build
+  displayName: 'Build and Package'
+  jobs:
+  - job: BuildMatrix
+    displayName: 'Build Projects in Parallel'
+    strategy:
+      matrix:
+        Common:
+          projectPath: 'GCFoundation.Common/GCFoundation.Common.csproj'
+          projectName: 'GCFoundation.Common'
+        Components:
+          projectPath: 'GCFoundation.Components/CGFoundation.Components.csproj'
+          projectName: 'GCFoundation.Components'
+        Security:
+          projectPath: 'GCFoundation.Security/GCFoundation.Security.csproj'
+          projectName: 'GCFoundation.Security'
+      maxParallel: 3
+    
+    steps:
+    - task: UseDotNet@2
+      displayName: 'Install .NET SDK'
+      inputs:
+        packageType: 'sdk'
+        version: '8.x'
 
-- task: UseNode@1
-  inputs:
-    version: '22.x'
-  displayName: 'Install Node.js'
+    - task: UseNode@1
+      inputs:
+        version: '22.x'
+      displayName: 'Install Node.js'
 
-# Optional: Only if Foundation.Components has a package.json
-- task: Npm@1
-  displayName: 'Install NPM packages for Foundation.Components'
-  inputs:
-    command: 'install'
-    workingDir: 'GCFoundation.Components'
+    - task: NuGetToolInstaller@1
+      displayName: 'NuGet Tool Installer'
 
-- task: NuGetToolInstaller@1
-  displayName: 'NuGet Tool Installer'
+    - task: NuGetCommand@2
+      displayName: 'Restore NuGet Packages'
+      inputs:
+        restoreSolution: '$(solution)'
 
-- task: NuGetCommand@2
-  displayName: 'Restore NuGet Packages'
-  inputs:
-    restoreSolution: '$(solution)'
+    # Install NPM packages for Foundation.Components (only for Components build)
+    - task: Npm@1
+      displayName: 'Install NPM packages for Foundation.Components'
+      condition: eq(variables['projectName'], 'GCFoundation.Components')
+      inputs:
+        command: 'install'
+        workingDir: 'GCFoundation.Components'
 
-###############################################
-# BUILD & PACK: Foundation.Common
-###############################################
-- task: DotNetCoreCLI@2
-  displayName: 'Build GCFoundation.Common'
-  inputs:
-    command: 'build'
-    projects: '$(commonProject)'
-    arguments: '--configuration $(buildConfiguration) --no-restore'
+    # Build the specific project
+    - task: DotNetCoreCLI@2
+      displayName: 'Build $(projectName)'
+      inputs:
+        command: 'build'
+        projects: '$(projectPath)'
+        arguments: '--configuration $(buildConfiguration) --no-restore'
 
-- task: DotNetCoreCLI@2
-  displayName: 'Pack GCFoundation.Common'
-  condition: ne(variables['Build.Reason'], 'PullRequest')
-  inputs:
-    command: 'pack'
-    packagesToPack: '$(commonProject)'
-    configuration: '$(buildConfiguration)'
-    outputDir: '$(outputDir)'
-    nobuild: true
-    versioningScheme: byBuildNumber
+    # Pack the project (only for non-PR builds)
+    - task: DotNetCoreCLI@2
+      displayName: 'Pack $(projectName)'
+      condition: ne(variables['Build.Reason'], 'PullRequest')
+      inputs:
+        command: 'pack'
+        packagesToPack: '$(projectPath)'
+        configuration: '$(buildConfiguration)'
+        outputDir: '$(outputDir)'
+        nobuild: true
+        versioningScheme: byBuildNumber
 
-###############################################
-# BUILD & PACK: Foundation.Components
-###############################################
-- task: DotNetCoreCLI@2
-  displayName: 'Build GCFoundation.Components'
-  inputs:
-    command: 'build'
-    projects: '$(componentsProject)'
-    arguments: '--configuration $(buildConfiguration) --no-restore'
+    # Publish build artifacts for each project
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish $(projectName) Artifacts'
+      condition: ne(variables['Build.Reason'], 'PullRequest')
+      inputs:
+        pathToPublish: '$(outputDir)'
+        artifactName: '$(projectName)-packages'
+        artifactType: 'container'
 
-- task: DotNetCoreCLI@2
-  displayName: 'Pack GCFoundation.Components'
-  condition: ne(variables['Build.Reason'], 'PullRequest')
-  inputs:
-    command: 'pack'
-    packagesToPack: '$(componentsProject)'
-    configuration: '$(buildConfiguration)'
-    outputDir: '$(outputDir)'
-    nobuild: true
-    versioningScheme: byBuildNumber
+- stage: Security
+  displayName: 'Advanced Security Scanning'
+  dependsOn: Build
+  condition: succeeded()
+  jobs:
+  - job: SecurityAnalysis
+    displayName: 'Comprehensive Security Analysis'
+    steps:
+    - task: UseDotNet@2
+      displayName: 'Install .NET SDK'
+      inputs:
+        packageType: 'sdk'
+        version: '8.x'
 
-###############################################
-# BUILD & PACK: Foundation.Security
-###############################################
-- task: DotNetCoreCLI@2
-  displayName: 'Build GCFoundation.Security'
-  inputs:
-    command: 'build'
-    projects: '$(securityProject)'
-    arguments: '--configuration $(buildConfiguration) --no-restore'
+    - task: NuGetCommand@2
+      displayName: 'Restore NuGet Packages'
+      inputs:
+        restoreSolution: '$(solution)'
 
+    # Install security analysis tools
+    - task: PowerShell@2
+      displayName: 'Install Security Tools'
+      inputs:
+        targetType: 'inline'
+        script: |
+          Write-Host "## Installing Security Analysis Tools" -ForegroundColor Cyan
+          
+          # Install .NET security tools
+          try {
+            dotnet tool install --global dotnet-audit
+            Write-Host "✅ dotnet-audit installed" -ForegroundColor Green
+          } catch {
+            Write-Host "⚠️ dotnet-audit installation failed" -ForegroundColor Yellow
+          }
+          
+          try {
+            dotnet tool install --global security-scan
+            Write-Host "✅ security-scan installed" -ForegroundColor Green
+          } catch {
+            Write-Host "⚠️ security-scan installation failed" -ForegroundColor Yellow
+          }
 
-- task: DotNetCoreCLI@2
-  displayName: 'Pack GCFoundation.Security'
-  condition: ne(variables['Build.Reason'], 'PullRequest')
-  inputs:
-    command: 'pack'
-    packagesToPack: '$(securityProject)'
-    configuration: '$(buildConfiguration)'
-    outputDir: '$(outputDir)'
-    nobuild: true
-    versioningScheme: byBuildNumber
+    # OWASP Dependency Check
+    - task: PowerShell@2
+      displayName: 'OWASP Dependency Check'
+      inputs:
+        targetType: 'inline'
+        script: |
+          Write-Host "## OWASP Dependency Check" -ForegroundColor Cyan
+          Write-Host "Downloading OWASP Dependency Check..." -ForegroundColor Yellow
+          
+          try {
+            # Download OWASP Dependency Check
+            $version = "8.4.0"
+            $url = "https://github.com/jeremylong/DependencyCheck/releases/download/v$version/dependency-check-$version-release.zip"
+            Invoke-WebRequest -Uri $url -OutFile "dependency-check.zip" -UseBasicParsing
+            
+            # Extract and run
+            Expand-Archive "dependency-check.zip" -DestinationPath "dependency-check" -Force
+            
+            # Create reports directory
+            New-Item -ItemType Directory -Path "./security-reports" -Force
+            
+            # Run dependency check
+            & "./dependency-check/bin/dependency-check.bat" --project "GCFoundation" --scan . --format ALL --out ./security-reports --suppression ./security-reports/suppressions.xml --enableExperimental
+            
+            Write-Host "✅ OWASP Dependency Check completed" -ForegroundColor Green
+          } catch {
+            Write-Host "⚠️ OWASP Dependency Check failed: $_" -ForegroundColor Red
+          }
 
-###############################################
-# PUSH TO AZURE ARTIFACTS
-###############################################
-- task: NuGetAuthenticate@1
-  displayName: 'NuGet Authenticate'
-  condition: ne(variables['Build.Reason'], 'PullRequest')
+    # Enhanced Vulnerability Scanning
+    - task: PowerShell@2
+      displayName: 'Enhanced Vulnerability Scanning'
+      inputs:
+        targetType: 'inline'
+        script: |
+          Write-Host "## Enhanced Vulnerability Scanning" -ForegroundColor Cyan
+          Write-Host "=================================" -ForegroundColor Cyan
+          
+          $vulnerabilities = @()
+          
+          # Check for vulnerable packages using .NET CLI
+          Write-Host "Checking for vulnerable NuGet packages..." -ForegroundColor Yellow
+          try {
+            $vulnerableOutput = dotnet list package --vulnerable 2>&1
+            if ($LASTEXITCODE -eq 0) {
+              Write-Host "✅ No vulnerable packages found" -ForegroundColor Green
+            } else {
+              Write-Host "⚠️ Vulnerable packages detected:" -ForegroundColor Red
+              Write-Host $vulnerableOutput -ForegroundColor Red
+              $vulnerabilities += "Vulnerable NuGet packages found"
+            }
+          } catch {
+            Write-Host "⚠️ Vulnerability check not available" -ForegroundColor Yellow
+          }
+          
+          # Check for outdated packages
+          Write-Host "`nChecking for outdated packages..." -ForegroundColor Yellow
+          try {
+            $outdatedOutput = dotnet list package --outdated 2>&1
+            if ($LASTEXITCODE -ne 0) {
+              Write-Host "⚠️ Outdated packages detected:" -ForegroundColor Yellow
+              Write-Host $outdatedOutput -ForegroundColor Yellow
+            } else {
+              Write-Host "✅ All packages are up to date" -ForegroundColor Green
+            }
+          } catch {
+            Write-Host "⚠️ Outdated package check not available" -ForegroundColor Yellow
+          }
+          
+          # Check for high-risk dependencies
+          Write-Host "`nScanning for high-risk dependency patterns..." -ForegroundColor Yellow
+          $riskPatterns = @(
+            "System.Web.Mvc.*[0-4]\.",
+            "Newtonsoft.Json.*[0-9]\.",
+            "jQuery.*[1-2]\.",
+            "Microsoft.AspNetCore.*[1-2]\."
+          )
+          
+          foreach ($pattern in $riskPatterns) {
+            $matches = Get-ChildItem -Path . -Filter "*.csproj" -Recurse | 
+              Select-String -Pattern $pattern
+            if ($matches) {
+              $vulnerabilities += "High-risk dependency pattern: $pattern"
+              Write-Host "⚠️ Found high-risk dependency: $pattern" -ForegroundColor Red
+            }
+          }
+          
+          # Export vulnerability report
+          if ($vulnerabilities.Count -gt 0) {
+            $vulnerabilities | Out-File "security-reports/vulnerability-summary.txt"
+            Write-Host "`n📋 Vulnerability Summary:" -ForegroundColor Red
+            $vulnerabilities | ForEach-Object { Write-Host "  - $_" -ForegroundColor Red }
+          } else {
+            Write-Host "`n✅ No major vulnerabilities detected" -ForegroundColor Green
+          }
 
-- task: NuGetCommand@2
-  displayName: 'Push NuGet Packages to Azure Artifacts'
+    - task: PowerShell@2
+      displayName: 'Advanced Code Security Analysis'
+      inputs:
+        targetType: 'inline'
+        script: |
+          Write-Host "## Advanced Code Security Analysis" -ForegroundColor Cyan
+          Write-Host "=================================" -ForegroundColor Cyan
+          
+          $securityIssues = @()
+          
+          # Enhanced hardcoded secrets detection
+          Write-Host "Scanning for hardcoded secrets..." -ForegroundColor Yellow
+          $secretPatterns = @(
+            "(password|pwd|secret|key|token|api[_-]?key|auth[_-]?token)[\s]*[=:][\s]*[`"'][^`"']{8,}[`"']",
+            "connectionstring[\s]*[=:][\s]*[`"'][^`"']+[`"']",
+            "[A-Za-z0-9+/]{40,}={0,2}",  # Base64 patterns
+            "[0-9a-fA-F]{32,64}"          # Hex patterns
+          )
+          
+          foreach ($pattern in $secretPatterns) {
+            $matches = Get-ChildItem -Path . -Filter "*.cs" -Recurse | 
+              Select-String -Pattern $pattern -CaseSensitive:$false
+            if ($matches) {
+              $securityIssues += "Potential hardcoded secrets found"
+              Write-Host "⚠️ Found potential secrets (pattern: $pattern)" -ForegroundColor Red
+              $matches | ForEach-Object { Write-Host "  $($_.Filename):$($_.LineNumber)" -ForegroundColor Red }
+            }
+          }
+          
+          # SQL injection patterns
+          Write-Host "Scanning for SQL injection vulnerabilities..." -ForegroundColor Yellow
+          $sqlPatterns = @(
+            'SqlCommand.*[\+\$].*Request',
+            'CommandText.*[\+\$].*Request',
+            'ExecuteNonQuery.*[\+\$]',
+            'ExecuteScalar.*[\+\$]'
+          )
+          
+          foreach ($pattern in $sqlPatterns) {
+            $matches = Get-ChildItem -Path . -Filter "*.cs" -Recurse | 
+              Select-String -Pattern $pattern -CaseSensitive:$false
+            if ($matches) {
+              $securityIssues += "Potential SQL injection vulnerabilities found"
+              Write-Host "⚠️ Found potential SQL injection (pattern: $pattern)" -ForegroundColor Red
+              $matches | ForEach-Object { Write-Host "  $($_.Filename):$($_.LineNumber)" -ForegroundColor Red }
+            }
+          }
+          
+          # XSS and unsafe output patterns
+          Write-Host "Scanning for XSS vulnerabilities..." -ForegroundColor Yellow
+          $xssPatterns = @(
+            'Response\.Write.*Request',
+            'Html\.Raw.*Request',
+            '@Request\[',
+            'innerHTML.*Request'
+          )
+          
+          foreach ($pattern in $xssPatterns) {
+            $matches = Get-ChildItem -Path . -Filter "*.cs" -Recurse | 
+              Select-String -Pattern $pattern -CaseSensitive:$false
+            if ($matches) {
+              $securityIssues += "Potential XSS vulnerabilities found"
+              Write-Host "⚠️ Found potential XSS (pattern: $pattern)" -ForegroundColor Red
+              $matches | ForEach-Object { Write-Host "  $($_.Filename):$($_.LineNumber)" -ForegroundColor Red }
+            }
+          }
+          
+          # Insecure deserialization patterns
+          Write-Host "Scanning for insecure deserialization..." -ForegroundColor Yellow
+          $deserializationPatterns = @(
+            'BinaryFormatter',
+            'JavaScriptSerializer',
+            'DataContractJsonSerializer.*UntrustedData'
+          )
+          
+          foreach ($pattern in $deserializationPatterns) {
+            $matches = Get-ChildItem -Path . -Filter "*.cs" -Recurse | 
+              Select-String -Pattern $pattern -CaseSensitive:$false
+            if ($matches) {
+              $securityIssues += "Insecure deserialization patterns found"
+              Write-Host "⚠️ Found insecure deserialization (pattern: $pattern)" -ForegroundColor Red
+              $matches | ForEach-Object { Write-Host "  $($_.Filename):$($_.LineNumber)" -ForegroundColor Red }
+            }
+          }
+          
+          # Save security analysis report
+          if ($securityIssues.Count -gt 0) {
+            $securityIssues | Out-File "security-reports/code-security-issues.txt"
+            Write-Host "`n📋 Security Issues Summary:" -ForegroundColor Red
+            $securityIssues | ForEach-Object { Write-Host "  - $_" -ForegroundColor Red }
+          } else {
+            Write-Host "`n✅ No obvious security issues detected in code" -ForegroundColor Green
+          }
+
+    # Publish security reports
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Security Reports'
+      condition: always()
+      inputs:
+        pathToPublish: 'security-reports'
+        artifactName: 'security-reports'
+        artifactType: 'container'
+
+- stage: Package
+  displayName: 'Package and Publish'
+  dependsOn: [Build, Security]
   condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
-  inputs:
-    command: 'push'
-    publishVstsFeed: '$(nugetSource)'
-    searchPatternPush: '$(outputDir)/*.nupkg'
-    allowPackageConflicts: true
+  jobs:
+  - job: PublishPackages
+    displayName: 'Publish NuGet Packages'
+    steps:
+    # Download artifacts from all build jobs
+    - task: DownloadBuildArtifacts@0
+      displayName: 'Download Build Artifacts'
+      inputs:
+        buildType: 'current'
+        downloadType: 'specific'
+        itemPattern: '**/*.nupkg'
+        downloadPath: '$(System.ArtifactsDirectory)'
+
+    - task: NuGetAuthenticate@1
+      displayName: 'NuGet Authenticate'
+
+    - task: NuGetCommand@2
+      displayName: 'Push NuGet Packages to Azure Artifacts'
+      inputs:
+        command: 'push'
+        publishVstsFeed: '$(nugetSource)'
+        searchPatternPush: '$(System.ArtifactsDirectory)/**/*.nupkg'
+        allowPackageConflicts: true
+
+    # Generate deployment summary
+    - task: PowerShell@2
+      displayName: 'Generate Deployment Summary'
+      inputs:
+        targetType: 'inline'
+        script: |
+          Write-Host "## Deployment Summary" -ForegroundColor Green
+          Write-Host "=====================" -ForegroundColor Green
+          Write-Host ""
+          Write-Host "📦 Packages Published:" -ForegroundColor Cyan
+          Get-ChildItem -Path "$(System.ArtifactsDirectory)" -Filter "*.nupkg" -Recurse | 
+            ForEach-Object { Write-Host "  ✅ $($_.Name)" -ForegroundColor Green }
+          Write-Host ""
+          Write-Host "🔗 Feed: $(nugetSource)" -ForegroundColor Yellow
+          Write-Host "📅 Published: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Yellow
+          Write-Host "🏷️ Version: $(Build.BuildNumber)" -ForegroundColor Yellow

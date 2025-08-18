@@ -159,4 +159,13 @@
   <data name="Section_LanguageChooser_Description" xml:space="preserve">
     <value>A bilingual splash page similar to the one used on Canada.ca.</value>
   </data>
+  <data name="SideNav_UserLoginPartial" xml:space="preserve">
+    <value>User login partial</value>
+  </data>
+  <data name="Section_UserLoginPartial_Title" xml:space="preserve">
+    <value>User login partial template</value>
+  </data>
+  <data name="Section_UserLoginPartial_Description" xml:space="preserve">
+    <value>A configurable, bilingual component for displaying user authentication information. Supports stateless authentication systems perfect for Azure cloud deployments.</value>
+  </data>
 </root>

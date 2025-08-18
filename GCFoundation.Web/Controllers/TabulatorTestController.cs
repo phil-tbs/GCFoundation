@@ -39,6 +39,7 @@ namespace GCFoundation.Web.Controllers
         /// <response code="200">Returns the filtered and paginated user data.</response>
         /// <response code="400">If the request is null or invalid.</response>
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult GetData(TabulatorRequest request)
         {
             ArgumentNullException.ThrowIfNull(request, nameof(request));

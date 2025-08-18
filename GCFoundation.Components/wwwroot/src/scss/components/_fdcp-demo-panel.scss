@@ -1,0 +1,26 @@
+// Demo panel styles used in examples (replaces gcds-card usage)
+.demo-panel {
+    background: var(--gcds-color-background);
+    border: 1px solid var(--gcds-color-border);
+    border-radius: 0.5rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+
+    &__header {
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid var(--gcds-color-border);
+        background: var(--gcds-color-background-light);
+    }
+
+    &__body {
+        padding: 1rem;
+    }
+
+    &--accent {
+        border-left: 4px solid var(--gcds-color-action-primary-default);
+    }
+}
+
+.footer-border {
+    border-top: 1px solid var(--gcds-color-border);
+}
+

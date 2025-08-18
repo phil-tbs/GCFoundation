@@ -185,5 +185,32 @@ namespace GCFoundation.Web.Resources {
                 return ResourceManager.GetString("SideNav_MainTemplate", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User login partial.
+        /// </summary>
+        public static string SideNav_UserLoginPartial {
+            get {
+                return ResourceManager.GetString("SideNav_UserLoginPartial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User login partial template.
+        /// </summary>
+        public static string Section_UserLoginPartial_Title {
+            get {
+                return ResourceManager.GetString("Section_UserLoginPartial_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A configurable, bilingual component for displaying user authentication information. Supports stateless authentication systems perfect for Azure cloud deployments..
+        /// </summary>
+        public static string Section_UserLoginPartial_Description {
+            get {
+                return ResourceManager.GetString("Section_UserLoginPartial_Description", resourceCulture);
+            }
+        }
     }
 }

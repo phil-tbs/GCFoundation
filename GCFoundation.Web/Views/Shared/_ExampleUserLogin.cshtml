@@ -1,0 +1,43 @@
+@using GCFoundation.Components.Models
+@using GCFoundation.Components.Services
+@using GCFoundation.Components.Settings
+@using Microsoft.Extensions.Options
+@inject UserLoginService UserLoginService
+@inject IOptions<GCFoundationUserLoginSettings> LoginSettings
+
+@{
+    // Create a sample user login view model for demonstration
+    // In a real application, you would get this from the authenticated user context
+    var isAuthenticated = User?.Identity?.IsAuthenticated ?? false;
+    
+    UserLoginViewModel loginModel;
+    
+    if (isAuthenticated)
+    {
+        // Create a sample authenticated user
+        loginModel = UserLoginService.CreateViewModel(
+            userName: "John Doe",
+            userEmail: "john.doe@example.gc.ca",
+            firstName: "John",
+            lastName: "Doe",
+            userRole: "Senior Developer",
+            department: "Information Technology",
+            loginTime: DateTime.UtcNow.AddMinutes(-15), // Logged in 15 minutes ago
+            sessionExpiry: DateTime.UtcNow.AddMinutes(5) // Session expires in 5 minutes
+        );
+    }
+    else
+    {
+        // Create anonymous user model
+        loginModel = UserLoginService.CreateAnonymousViewModel();
+    }
+}
+
+@* Render the user login partial *@
+<partial name="_UserLoginPartial" model="loginModel" />
+
+@* 
+Example of how to customize settings for different scenarios:
+You can override settings in your controller or view as needed.
+*@
+
