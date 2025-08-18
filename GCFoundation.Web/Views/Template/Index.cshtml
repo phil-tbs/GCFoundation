@@ -13,6 +13,7 @@
         <gcds-nav-link href="#main-template">@Template.SideNav_MainTemplate</gcds-nav-link>
         <gcds-nav-link href="#error-templates">@Template.SideNav_ErrorTemplates</gcds-nav-link>
         <gcds-nav-link href="#language-chooser">@Template.SideNav_LanguageChooser</gcds-nav-link>
+        <gcds-nav-link href="#user-login-partial">@Template.SideNav_UserLoginPartial</gcds-nav-link>
     </gcds-side-nav>
 
     <div>
@@ -40,5 +41,116 @@
         <gcds-text>
             @Template.Section_LanguageChooser_Description
         </gcds-text>
+
+        <gcds-heading tag="h2" id="user-login-partial" class="fdcp-mt-400">
+            @Template.Section_UserLoginPartial_Title
+        </gcds-heading>
+        <gcds-text>
+            @Template.Section_UserLoginPartial_Description
+        </gcds-text>
+        
+        <gcds-heading tag="h3" class="fdcp-mt-300">Template Integration</gcds-heading>
+        <gcds-text>
+            The User Login Partial integrates seamlessly with the Foundation Layout template. 
+            Simply set the partial name in your controller and it will automatically appear in the designated area.
+        </gcds-text>
+        
+        <gcds-details details-title="Controller Implementation" class="fdcp-mt-200">
+            <pre><code>public class HomeController : GCFoundationBaseController
+{
+    public IActionResult Index()
+    {
+        // Enable the user login partial in the layout
+        ViewData["LoginPartialViewName"] = "_UserLoginPartial";
+        return View();
+    }
+}</code></pre>
+        </gcds-details>
+
+        <gcds-details details-title="Layout Integration" class="fdcp-mt-200">
+            <gcds-text>The Foundation Layout (_FoundationLayout.cshtml) includes this code:</gcds-text>
+            <pre><code>@@{
+    string? LoginPartialViewName = ViewData["LoginPartialViewName"] as string;
+}
+
+@@if(!string.IsNullOrEmpty(LoginPartialViewName))
+{
+    @@await Html.PartialAsync(LoginPartialViewName)
+}</code></pre>
+        </gcds-details>
+
+        <gcds-heading tag="h3" class="fdcp-mt-300">Authentication System Integration</gcds-heading>
+        <gcds-text>
+            The partial automatically works with various authentication systems by reading user information from claims:
+        </gcds-text>
+
+        <gcds-grid columns="1fr" columns-tablet="1fr 1fr" class="fdcp-mt-200">
+            <gcds-card card-title="Cookie Authentication" tag="div">
+                <gcds-text>Stateless cookie authentication without server sessions.</gcds-text>
+                <gcds-text class="fdcp-mt-100">
+                    <gcds-link href="@Url.Action("Index", "StatelessAuthExample")">View Examples</gcds-link>
+                </gcds-text>
+            </gcds-card>
+            
+            <gcds-card card-title="Azure Active Directory" tag="div">
+                <gcds-text>Enterprise authentication with Office 365 integration.</gcds-text>
+                <gcds-text class="fdcp-mt-100">
+                    <gcds-link href="@Url.Action("AzureAdExample", "StatelessAuthExample")">Azure AD Guide</gcds-link>
+                </gcds-text>
+            </gcds-card>
+        </gcds-grid>
+
+        <gcds-heading tag="h3" class="fdcp-mt-300">Template Customization</gcds-heading>
+        <gcds-text>
+            You can customize the partial's behavior through configuration and create multiple variants for different parts of your application:
+        </gcds-text>
+
+        <gcds-details details-title="Multiple Partial Variants" class="fdcp-mt-200">
+            <pre><code>// Create different partials for different areas
+ViewData["LoginPartialViewName"] = "_HeaderUserLogin";    // Header area
+ViewData["LoginPartialViewName"] = "_SidebarUserLogin";   // Sidebar area  
+</code></pre>
+        </gcds-details>
+
+        <gcds-details details-title="Dynamic Configuration" class="fdcp-mt-200">
+            <pre><code>// Customize settings based on user role or page type
+var userModel = _userLoginService.CreateViewModelFromContext();
+
+if (User.IsInRole("Admin"))
+{
+    userModel.Settings.ShowUserEmail = true;
+    userModel.Settings.ShowUserRole = true;
+}
+
+if (Request.Path.StartsWithSegments("/admin"))
+{
+    // Customize admin-specific settings here
+}</code></pre>
+        </gcds-details>
+
+        <gcds-heading tag="h3" class="fdcp-mt-300">Complete Examples</gcds-heading>
+        <gcds-text>
+            For comprehensive examples and interactive demonstrations:
+        </gcds-text>
+        <ul class="fdcp-mt-200">
+            <li><gcds-link href="@Url.Action("UserLogin", "Components")">Component Documentation</gcds-link> - Full component showcase</li>
+            <li><gcds-link href="@Url.Action("Index", "UserLoginExample")">Interactive Examples</gcds-link> - Working demonstrations</li>
+            <li><gcds-link href="@Url.Action("Index", "StatelessAuthExample")">Authentication Integration</gcds-link> - Cloud-ready auth examples</li>
+        </ul>
     </div>
 </gcds-grid>
+
+<style>
+    pre {
+        background: var(--gcds-color-background-light);
+        padding: 1rem;
+        border-radius: 0.25rem;
+        overflow-x: auto;
+        font-size: 0.875rem;
+        margin: 0.5rem 0;
+    }
+    
+    code {
+        font-family: 'Courier New', monospace;
+    }
+</style>

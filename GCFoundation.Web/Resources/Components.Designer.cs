@@ -602,5 +602,1364 @@ namespace GCFoundation.Web.Resources {
                 return ResourceManager.GetString("GlobalResources_UsingHelper_Title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ♿ Accessible.
+        /// </summary>
+        public static string UserLogin_Accessible {
+            get {
+                return ResourceManager.GetString("UserLogin_Accessible", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WCAG compliant with proper ARIA labels and semantic markup..
+        /// </summary>
+        public static string UserLogin_Accessible_Description {
+            get {
+                return ResourceManager.GetString("UserLogin_Accessible_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Additional Resources.
+        /// </summary>
+        public static string UserLogin_AdditionalResources {
+            get {
+                return ResourceManager.GetString("UserLogin_AdditionalResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to API test.
+        /// </summary>
+        public static string UserLogin_ApiTest_Link {
+            get {
+                return ResourceManager.GetString("UserLogin_ApiTest_Link", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to See how to integrate with APIs to get user information..
+        /// </summary>
+        public static string UserLogin_ApiTest_Message {
+            get {
+                return ResourceManager.GetString("UserLogin_ApiTest_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are currently logged in as {0}.
+        /// </summary>
+        public static string UserLogin_Authenticated_Message {
+            get {
+                return ResourceManager.GetString("UserLogin_Authenticated_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Authentication Status.
+        /// </summary>
+        public static string UserLogin_AuthStatus_Title {
+            get {
+                return ResourceManager.GetString("UserLogin_AuthStatus_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Azure Active Directory.
+        /// </summary>
+        public static string UserLogin_AzureAD {
+            get {
+                return ResourceManager.GetString("UserLogin_AzureAD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string UserLogin_AzureAD_Benefits {
+            get {
+                return ResourceManager.GetString("UserLogin_AzureAD_Benefits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enterprise authentication with Office 365 integration and single sign-on support..
+        /// </summary>
+        public static string UserLogin_AzureAD_Description {
+            get {
+                return ResourceManager.GetString("UserLogin_AzureAD_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 🌐 Bilingual Support.
+        /// </summary>
+        public static string UserLogin_BilingualSupport {
+            get {
+                return ResourceManager.GetString("UserLogin_BilingualSupport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Automatic English/French localization with resource files and culture detection..
+        /// </summary>
+        public static string UserLogin_BilingualSupport_Description {
+            get {
+                return ResourceManager.GetString("UserLogin_BilingualSupport_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ☁️ Cloud Ready.
+        /// </summary>
+        public static string UserLogin_CloudReady {
+            get {
+                return ResourceManager.GetString("UserLogin_CloudReady", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stateless authentication support perfect for Azure App Service and container deployments..
+        /// </summary>
+        public static string UserLogin_CloudReady_Description {
+            get {
+                return ResourceManager.GetString("UserLogin_CloudReady_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Complete Examples.
+        /// </summary>
+        public static string UserLogin_CompleteExamples {
+            get {
+                return ResourceManager.GetString("UserLogin_CompleteExamples", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Interactive examples with different configurations and use cases..
+        /// </summary>
+        public static string UserLogin_CompleteExamples_Description {
+            get {
+                return ResourceManager.GetString("UserLogin_CompleteExamples_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A configurable, bilingual user login information component that displays authentication status, user details, and session information. Perfect for Azure cloud deployments with stateless authentication..
+        /// </summary>
+        public static string UserLogin_Component_Description {
+            get {
+                return ResourceManager.GetString("UserLogin_Component_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Login Partial Component.
+        /// </summary>
+        public static string UserLogin_Component_Title {
+            get {
+                return ResourceManager.GetString("UserLogin_Component_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The User Login partial supports the following configuration options through appsettings.json:.
+        /// </summary>
+        public static string UserLogin_ConfigDescription {
+            get {
+                return ResourceManager.GetString("UserLogin_ConfigDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The User Login Partial is highly configurable through appsettings.json and supports both stateless and session-based authentication systems..
+        /// </summary>
+        public static string UserLogin_ConfigOptions_Description {
+            get {
+                return ResourceManager.GetString("UserLogin_ConfigOptions_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 🔧 Configurable.
+        /// </summary>
+        public static string UserLogin_Configurable {
+            get {
+                return ResourceManager.GetString("UserLogin_Configurable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 15+ configuration options to customize display and behavior for your needs..
+        /// </summary>
+        public static string UserLogin_Configurable_Description {
+            get {
+                return ResourceManager.GetString("UserLogin_Configurable_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Configuration Options.
+        /// </summary>
+        public static string UserLogin_ConfigurationOptions {
+            get {
+                return ResourceManager.GetString("UserLogin_ConfigurationOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cookie Authentication.
+        /// </summary>
+        public static string UserLogin_CookieAuth {
+            get {
+                return ResourceManager.GetString("UserLogin_CookieAuth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string UserLogin_CookieAuth_Benefits {
+            get {
+                return ResourceManager.GetString("UserLogin_CookieAuth_Benefits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stateless cookie-based auth without server-side sessions. Perfect for Azure cloud deployments..
+        /// </summary>
+        public static string UserLogin_CookieAuth_Description {
+            get {
+                return ResourceManager.GetString("UserLogin_CookieAuth_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string UserLogin_CurrentlyAuthenticated {
+            get {
+                return ResourceManager.GetString("UserLogin_CurrentlyAuthenticated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string UserLogin_CurrentlyNotAuthenticated {
+            get {
+                return ResourceManager.GetString("UserLogin_CurrentlyNotAuthenticated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Live Example - Current User State.
+        /// </summary>
+        public static string UserLogin_CurrentUserState {
+            get {
+                return ResourceManager.GetString("UserLogin_CurrentUserState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This shows the actual authentication state from the current user context..
+        /// </summary>
+        public static string UserLogin_CurrentUserState_Description {
+            get {
+                return ResourceManager.GetString("UserLogin_CurrentUserState_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default Mode.
+        /// </summary>
+        public static string UserLogin_DefaultMode {
+            get {
+                return ResourceManager.GetString("UserLogin_DefaultMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard full display mode with user information..
+        /// </summary>
+        public static string UserLogin_DefaultMode_Description {
+            get {
+                return ResourceManager.GetString("UserLogin_DefaultMode_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to External Providers.
+        /// </summary>
+        public static string UserLogin_ExternalProviders {
+            get {
+                return ResourceManager.GetString("UserLogin_ExternalProviders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string UserLogin_ExternalProviders_Benefits {
+            get {
+                return ResourceManager.GetString("UserLogin_ExternalProviders_Benefits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OAuth integration with Google, GitHub, Microsoft, and other external providers..
+        /// </summary>
+        public static string UserLogin_ExternalProviders_Description {
+            get {
+                return ResourceManager.GetString("UserLogin_ExternalProviders_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Accessibility features with proper ARIA labels.
+        /// </summary>
+        public static string UserLogin_Feature_Accessibility {
+            get {
+                return ResourceManager.GetString("UserLogin_Feature_Accessibility", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User avatar support with automatic initials generation.
+        /// </summary>
+        public static string UserLogin_Feature_Avatar {
+            get {
+                return ResourceManager.GetString("UserLogin_Feature_Avatar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fully bilingual (English/French) with automatic language detection.
+        /// </summary>
+        public static string UserLogin_Feature_Bilingual {
+            get {
+                return ResourceManager.GetString("UserLogin_Feature_Bilingual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compact and full display modes.
+        /// </summary>
+        public static string UserLogin_Feature_CompactFull {
+            get {
+                return ResourceManager.GetString("UserLogin_Feature_CompactFull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Configurable display options (show/hide various user information).
+        /// </summary>
+        public static string UserLogin_Feature_Configurable {
+            get {
+                return ResourceManager.GetString("UserLogin_Feature_Configurable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GCDS component integration for consistent Government of Canada styling.
+        /// </summary>
+        public static string UserLogin_Feature_GCDS {
+            get {
+                return ResourceManager.GetString("UserLogin_Feature_GCDS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Easy integration with existing authentication systems.
+        /// </summary>
+        public static string UserLogin_Feature_Integration {
+            get {
+                return ResourceManager.GetString("UserLogin_Feature_Integration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Responsive design for mobile and desktop.
+        /// </summary>
+        public static string UserLogin_Feature_Responsive {
+            get {
+                return ResourceManager.GetString("UserLogin_Feature_Responsive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Session timeout warnings and countdown.
+        /// </summary>
+        public static string UserLogin_Feature_SessionTimeout {
+            get {
+                return ResourceManager.GetString("UserLogin_Feature_SessionTimeout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Features.
+        /// </summary>
+        public static string UserLogin_Features {
+            get {
+                return ResourceManager.GetString("UserLogin_Features", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 🎨 GCDS Styled.
+        /// </summary>
+        public static string UserLogin_GCDSStyled {
+            get {
+                return ResourceManager.GetString("UserLogin_GCDSStyled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uses Government of Canada Design System components for consistent styling..
+        /// </summary>
+        public static string UserLogin_GCDSStyled_Description {
+            get {
+                return ResourceManager.GetString("UserLogin_GCDSStyled_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to JWT Tokens.
+        /// </summary>
+        public static string UserLogin_JWTTokens {
+            get {
+                return ResourceManager.GetString("UserLogin_JWTTokens", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string UserLogin_JWTTokens_Benefits {
+            get {
+                return ResourceManager.GetString("UserLogin_JWTTokens_Benefits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to JSON Web Token authentication for API-first applications and microservices..
+        /// </summary>
+        public static string UserLogin_JWTTokens_Description {
+            get {
+                return ResourceManager.GetString("UserLogin_JWTTokens_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Key Features.
+        /// </summary>
+        public static string UserLogin_KeyFeatures {
+            get {
+                return ResourceManager.GetString("UserLogin_KeyFeatures", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Live Examples.
+        /// </summary>
+        public static string UserLogin_LiveExamples {
+            get {
+                return ResourceManager.GetString("UserLogin_LiveExamples", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Below are working examples of the User Login Partial in different configurations:.
+        /// </summary>
+        public static string UserLogin_LiveExamples_Description {
+            get {
+                return ResourceManager.GetString("UserLogin_LiveExamples_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are not currently logged in. Use the simulate login button below to test the authenticated state..
+        /// </summary>
+        public static string UserLogin_NotAuthenticated_Message {
+            get {
+                return ResourceManager.GetString("UserLogin_NotAuthenticated_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not Authenticated State.
+        /// </summary>
+        public static string UserLogin_NotAuthenticatedState {
+            get {
+                return ResourceManager.GetString("UserLogin_NotAuthenticatedState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display for users who are not logged in..
+        /// </summary>
+        public static string UserLogin_NotAuthenticatedState_Description {
+            get {
+                return ResourceManager.GetString("UserLogin_NotAuthenticatedState_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This page demonstrates the configurable User Login partial component with English and French localization support. The partial can be customized through configuration settings and displays different information based on authentication status..
+        /// </summary>
+        public static string UserLogin_PageDescription {
+            get {
+                return ResourceManager.GetString("UserLogin_PageDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Login Partial Examples.
+        /// </summary>
+        public static string UserLogin_PageTitle {
+            get {
+                return ResourceManager.GetString("UserLogin_PageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ← Back to Examples.
+        /// </summary>
+        public static string UserLogin_Position_BackToExamples {
+            get {
+                return ResourceManager.GetString("UserLogin_Position_BackToExamples", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is content after the login partial..
+        /// </summary>
+        public static string UserLogin_Position_Content_After {
+            get {
+                return ResourceManager.GetString("UserLogin_Position_Content_After", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is content before the login partial..
+        /// </summary>
+        public static string UserLogin_Position_Content_Before {
+            get {
+                return ResourceManager.GetString("UserLogin_Position_Content_Before", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This example shows how the User Login partial can be positioned in different areas of your application..
+        /// </summary>
+        public static string UserLogin_Position_Description {
+            get {
+                return ResourceManager.GetString("UserLogin_Position_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The main content area. The login partial will be displayed in the footer area (below this content)..
+        /// </summary>
+        public static string UserLogin_Position_Footer_Content {
+            get {
+                return ResourceManager.GetString("UserLogin_Position_Footer_Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Footer Login.
+        /// </summary>
+        public static string UserLogin_Position_Footer_Title {
+            get {
+                return ResourceManager.GetString("UserLogin_Position_Footer_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The login partial is displayed in the header area (above this content)..
+        /// </summary>
+        public static string UserLogin_Position_Header_Alert {
+            get {
+                return ResourceManager.GetString("UserLogin_Position_Header_Alert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inline Login Information.
+        /// </summary>
+        public static string UserLogin_Position_Inline_Title {
+            get {
+                return ResourceManager.GetString("UserLogin_Position_Inline_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Login in {0} Position.
+        /// </summary>
+        public static string UserLogin_Position_PageTitle {
+            get {
+                return ResourceManager.GetString("UserLogin_Position_PageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is the main content area. The login partial is displayed in the sidebar to the left (on desktop) or above (on mobile)..
+        /// </summary>
+        public static string UserLogin_Position_Sidebar_Content {
+            get {
+                return ResourceManager.GetString("UserLogin_Position_Sidebar_Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sidebar Login.
+        /// </summary>
+        public static string UserLogin_Position_Sidebar_Title {
+            get {
+                return ResourceManager.GetString("UserLogin_Position_Sidebar_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quick Implementation Guide.
+        /// </summary>
+        public static string UserLogin_QuickImplementation {
+            get {
+                return ResourceManager.GetString("UserLogin_QuickImplementation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 📱 Responsive.
+        /// </summary>
+        public static string UserLogin_Responsive {
+            get {
+                return ResourceManager.GetString("UserLogin_Responsive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mobile-first design that works perfectly on all device sizes..
+        /// </summary>
+        public static string UserLogin_Responsive_Description {
+            get {
+                return ResourceManager.GetString("UserLogin_Responsive_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Session Expiring Soon.
+        /// </summary>
+        public static string UserLogin_SessionExpiring {
+            get {
+                return ResourceManager.GetString("UserLogin_SessionExpiring", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Example showing session timeout warning..
+        /// </summary>
+        public static string UserLogin_SessionExpiring_Description {
+            get {
+                return ResourceManager.GetString("UserLogin_SessionExpiring_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Simulate Login.
+        /// </summary>
+        public static string UserLogin_SimulateLogin {
+            get {
+                return ResourceManager.GetString("UserLogin_SimulateLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use the &quot;Simulate Login&quot; button in the Examples section to see the authenticated state..
+        /// </summary>
+        public static string UserLogin_SimulateLoginNote {
+            get {
+                return ResourceManager.GetString("UserLogin_SimulateLoginNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Simulate Logout.
+        /// </summary>
+        public static string UserLogin_SimulateLogout {
+            get {
+                return ResourceManager.GetString("UserLogin_SimulateLogout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stateless Authentication.
+        /// </summary>
+        public static string UserLogin_StatelessAuth {
+            get {
+                return ResourceManager.GetString("UserLogin_StatelessAuth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Azure cloud-ready authentication examples without sessions..
+        /// </summary>
+        public static string UserLogin_StatelessAuth_Description {
+            get {
+                return ResourceManager.GetString("UserLogin_StatelessAuth_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string UserLogin_Step_ConfigureAuth {
+            get {
+                return ResourceManager.GetString("UserLogin_Step_ConfigureAuth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string UserLogin_Step_ConfigureSettings {
+            get {
+                return ResourceManager.GetString("UserLogin_Step_ConfigureSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string UserLogin_Step_CustomizeAppearance {
+            get {
+                return ResourceManager.GetString("UserLogin_Step_CustomizeAppearance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string UserLogin_Step_RegisterServices {
+            get {
+                return ResourceManager.GetString("UserLogin_Step_RegisterServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string UserLogin_Step_SetInController {
+            get {
+                return ResourceManager.GetString("UserLogin_Step_SetInController", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supported Authentication Methods.
+        /// </summary>
+        public static string UserLogin_SupportedAuthMethods {
+            get {
+                return ResourceManager.GetString("UserLogin_SupportedAuthMethods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The component automatically extracts user information from claims, making it compatible with various authentication systems:.
+        /// </summary>
+        public static string UserLogin_SupportedAuthMethods_Description {
+            get {
+                return ResourceManager.GetString("UserLogin_SupportedAuthMethods_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Template Integration.
+        /// </summary>
+        public static string UserLogin_TemplateIntegration {
+            get {
+                return ResourceManager.GetString("UserLogin_TemplateIntegration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Learn how to integrate the partial into your layout templates..
+        /// </summary>
+        public static string UserLogin_TemplateIntegration_Description {
+            get {
+                return ResourceManager.GetString("UserLogin_TemplateIntegration_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test the login partial with different authentication states..
+        /// </summary>
+        public static string UserLogin_TestAuthStates {
+            get {
+                return ResourceManager.GetString("UserLogin_TestAuthStates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FDCP Card Documentation.
+        /// </summary>
+        public static string Cards_Title {
+            get {
+                return ResourceManager.GetString("Cards_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overview.
+        /// </summary>
+        public static string Cards_Overview_Title {
+            get {
+                return ResourceManager.GetString("Cards_Overview_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to overview.
+        /// </summary>
+        public static string Cards_Overview_Anchor {
+            get {
+                return ResourceManager.GetString("Cards_Overview_Anchor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Basic Card.
+        /// </summary>
+        public static string Cards_Basic_Title {
+            get {
+                return ResourceManager.GetString("Cards_Basic_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to basic.
+        /// </summary>
+        public static string Cards_Basic_Anchor {
+            get {
+                return ResourceManager.GetString("Cards_Basic_Anchor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Card with Slots.
+        /// </summary>
+        public static string Cards_WithSlots_Title {
+            get {
+                return ResourceManager.GetString("Cards_WithSlots_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to slots.
+        /// </summary>
+        public static string Cards_WithSlots_Anchor {
+            get {
+                return ResourceManager.GetString("Cards_WithSlots_Anchor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Card with Images.
+        /// </summary>
+        public static string Cards_WithImages_Title {
+            get {
+                return ResourceManager.GetString("Cards_WithImages_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to images.
+        /// </summary>
+        public static string Cards_WithImages_Anchor {
+            get {
+                return ResourceManager.GetString("Cards_WithImages_Anchor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Horizontal Card.
+        /// </summary>
+        public static string Cards_Horizontal_Title {
+            get {
+                return ResourceManager.GetString("Cards_Horizontal_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to horizontal.
+        /// </summary>
+        public static string Cards_Horizontal_Anchor {
+            get {
+                return ResourceManager.GetString("Cards_Horizontal_Anchor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parameters.
+        /// </summary>
+        public static string Cards_Parameters_Title {
+            get {
+                return ResourceManager.GetString("Cards_Parameters_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to parameters.
+        /// </summary>
+        public static string Cards_Parameters_Anchor {
+            get {
+                return ResourceManager.GetString("Cards_Parameters_Anchor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notes.
+        /// </summary>
+        public static string Cards_Notes_Title {
+            get {
+                return ResourceManager.GetString("Cards_Notes_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to notes.
+        /// </summary>
+        public static string Cards_Notes_Anchor {
+            get {
+                return ResourceManager.GetString("Cards_Notes_Anchor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The fdcp-card component provides a flexible and extensible content container.
+        /// </summary>
+        public static string Cards_Overview_Text {
+            get {
+                return ResourceManager.GetString("Cards_Overview_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A simple card with just text content:.
+        /// </summary>
+        public static string Cards_Basic_Text {
+            get {
+                return ResourceManager.GetString("Cards_Basic_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cards support header, body, and footer slots for structured content:.
+        /// </summary>
+        public static string Cards_WithSlots_Text {
+            get {
+                return ResourceManager.GetString("Cards_WithSlots_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cards can include images at the top or bottom:.
+        /// </summary>
+        public static string Cards_WithImages_Text {
+            get {
+                return ResourceManager.GetString("Cards_WithImages_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cards can be displayed horizontally with images on the side:.
+        /// </summary>
+        public static string Cards_Horizontal_Text {
+            get {
+                return ResourceManager.GetString("Cards_Horizontal_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HTML ID attribute for the card..
+        /// </summary>
+        public static string Cards_Parameters_TagId {
+            get {
+                return ResourceManager.GetString("Cards_Parameters_TagId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Width of the card..
+        /// </summary>
+        public static string Cards_Parameters_Width {
+            get {
+                return ResourceManager.GetString("Cards_Parameters_Width", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Height of the card..
+        /// </summary>
+        public static string Cards_Parameters_Height {
+            get {
+                return ResourceManager.GetString("Cards_Parameters_Height", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Whether to show border..
+        /// </summary>
+        public static string Cards_Parameters_Border {
+            get {
+                return ResourceManager.GetString("Cards_Parameters_Border", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Whether to show shadow..
+        /// </summary>
+        public static string Cards_Parameters_Shadow {
+            get {
+                return ResourceManager.GetString("Cards_Parameters_Shadow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to URL for top image..
+        /// </summary>
+        public static string Cards_Parameters_ImageTop {
+            get {
+                return ResourceManager.GetString("Cards_Parameters_ImageTop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to URL for bottom image..
+        /// </summary>
+        public static string Cards_Parameters_ImageBottom {
+            get {
+                return ResourceManager.GetString("Cards_Parameters_ImageBottom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alt text for images..
+        /// </summary>
+        public static string Cards_Parameters_ImageAlt {
+            get {
+                return ResourceManager.GetString("Cards_Parameters_ImageAlt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Whether to use horizontal layout..
+        /// </summary>
+        public static string Cards_Parameters_Horizontal {
+            get {
+                return ResourceManager.GetString("Cards_Parameters_Horizontal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cards are block-level elements and will take full width by default..
+        /// </summary>
+        public static string Cards_Notes_1 {
+            get {
+                return ResourceManager.GetString("Cards_Notes_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use slots (header, body, footer) to structure content appropriately..
+        /// </summary>
+        public static string Cards_Notes_2 {
+            get {
+                return ResourceManager.GetString("Cards_Notes_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Images are responsive and will scale to fit the card width..
+        /// </summary>
+        public static string Cards_Notes_3 {
+            get {
+                return ResourceManager.GetString("Cards_Notes_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stateless Authentication Demo.
+        /// </summary>
+        public static string StatelessAuth_Demo_Title {
+            get {
+                return ResourceManager.GetString("StatelessAuth_Demo_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Azure cloud-ready authentication examples without sessions. Try the cookie authentication below and see how the User Login Partial updates automatically..
+        /// </summary>
+        public static string StatelessAuth_Demo_Description {
+            get {
+                return ResourceManager.GetString("StatelessAuth_Demo_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Authentication Status.
+        /// </summary>
+        public static string StatelessAuth_Current_Status_Title {
+            get {
+                return ResourceManager.GetString("StatelessAuth_Current_Status_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to <strong>✅ Authenticated</strong> - You are currently logged in as <strong>{0}</strong>.
+        /// </summary>
+        public static string StatelessAuth_Authenticated_Message {
+            get {
+                return ResourceManager.GetString("StatelessAuth_Authenticated_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The User Login Partial above shows your current session information from claims (no server-side session storage)..
+        /// </summary>
+        public static string StatelessAuth_Session_Info_Message {
+            get {
+                return ResourceManager.GetString("StatelessAuth_Session_Info_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to <strong>❌ Not Authenticated</strong> - Try the cookie login below to see stateless authentication in action..
+        /// </summary>
+        public static string StatelessAuth_Not_Authenticated_Message {
+            get {
+                return ResourceManager.GetString("StatelessAuth_Not_Authenticated_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notice how the User Login Partial will update automatically after login..
+        /// </summary>
+        public static string StatelessAuth_Login_Partial_Update_Message {
+            get {
+                return ResourceManager.GetString("StatelessAuth_Login_Partial_Update_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Interactive Authentication Demo.
+        /// </summary>
+        public static string StatelessAuth_Interactive_Demo_Title {
+            get {
+                return ResourceManager.GetString("StatelessAuth_Interactive_Demo_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 🚪 Logout.
+        /// </summary>
+        public static string StatelessAuth_Logout_Button_Text {
+            get {
+                return ResourceManager.GetString("StatelessAuth_Logout_Button_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 🔐 Login with Cookie Auth.
+        /// </summary>
+        public static string StatelessAuth_Login_Button_Text {
+            get {
+                return ResourceManager.GetString("StatelessAuth_Login_Button_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You're logged in! Click logout to clear the authentication cookie..
+        /// </summary>
+        public static string StatelessAuth_Logout_Description {
+            get {
+                return ResourceManager.GetString("StatelessAuth_Logout_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This will create an authentication cookie with user claims (no session storage)..
+        /// </summary>
+        public static string StatelessAuth_Login_Description {
+            get {
+                return ResourceManager.GetString("StatelessAuth_Login_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Technical Information.
+        /// </summary>
+        public static string StatelessAuth_Technical_Info_Title {
+            get {
+                return ResourceManager.GetString("StatelessAuth_Technical_Info_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Demo API Endpoints.
+        /// </summary>
+        public static string StatelessAuth_Demo_Buttons_Title {
+            get {
+                return ResourceManager.GetString("StatelessAuth_Demo_Buttons_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get User Info.
+        /// </summary>
+        public static string StatelessAuth_User_Info_Button {
+            get {
+                return ResourceManager.GetString("StatelessAuth_User_Info_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check Auth Status.
+        /// </summary>
+        public static string StatelessAuth_Auth_Status_Button {
+            get {
+                return ResourceManager.GetString("StatelessAuth_Auth_Status_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to API Response.
+        /// </summary>
+        public static string StatelessAuth_Demo_Results_Title {
+            get {
+                return ResourceManager.GetString("StatelessAuth_Demo_Results_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Authentication Methods Comparison.
+        /// </summary>
+        public static string StatelessAuth_Authentication_Methods_Title {
+            get {
+                return ResourceManager.GetString("StatelessAuth_Authentication_Methods_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 🍪 Cookie Authentication (Stateless).
+        /// </summary>
+        public static string StatelessAuth_Cookie_Method_Title {
+            get {
+                return ResourceManager.GetString("StatelessAuth_Cookie_Method_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Claims stored in encrypted cookies.
+        /// </summary>
+        public static string StatelessAuth_Cookie_Benefit_1 {
+            get {
+                return ResourceManager.GetString("StatelessAuth_Cookie_Benefit_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No server-side session storage.
+        /// </summary>
+        public static string StatelessAuth_Cookie_Benefit_2 {
+            get {
+                return ResourceManager.GetString("StatelessAuth_Cookie_Benefit_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Perfect for Azure App Service scaling.
+        /// </summary>
+        public static string StatelessAuth_Cookie_Benefit_3 {
+            get {
+                return ResourceManager.GetString("StatelessAuth_Cookie_Benefit_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 🎫 JWT Authentication.
+        /// </summary>
+        public static string StatelessAuth_JWT_Method_Title {
+            get {
+                return ResourceManager.GetString("StatelessAuth_JWT_Method_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Token-based authentication.
+        /// </summary>
+        public static string StatelessAuth_JWT_Benefit_1 {
+            get {
+                return ResourceManager.GetString("StatelessAuth_JWT_Benefit_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ideal for API endpoints.
+        /// </summary>
+        public static string StatelessAuth_JWT_Benefit_2 {
+            get {
+                return ResourceManager.GetString("StatelessAuth_JWT_Benefit_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stateless and scalable.
+        /// </summary>
+        public static string StatelessAuth_JWT_Benefit_3 {
+            get {
+                return ResourceManager.GetString("StatelessAuth_JWT_Benefit_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ☁️ Azure AD / Entra ID.
+        /// </summary>
+        public static string StatelessAuth_Azure_Method_Title {
+            get {
+                return ResourceManager.GetString("StatelessAuth_Azure_Method_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enterprise single sign-on.
+        /// </summary>
+        public static string StatelessAuth_Azure_Benefit_1 {
+            get {
+                return ResourceManager.GetString("StatelessAuth_Azure_Benefit_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Multi-factor authentication.
+        /// </summary>
+        public static string StatelessAuth_Azure_Benefit_2 {
+            get {
+                return ResourceManager.GetString("StatelessAuth_Azure_Benefit_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Government cloud compatibility.
+        /// </summary>
+        public static string StatelessAuth_Azure_Benefit_3 {
+            get {
+                return ResourceManager.GetString("StatelessAuth_Azure_Benefit_3", resourceCulture);
+            }
+        }
     }
 }

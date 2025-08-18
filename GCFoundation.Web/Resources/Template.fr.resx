@@ -159,4 +159,13 @@
   <data name="SideNav_MainTemplate" xml:space="preserve">
     <value>Modèle principal</value>
   </data>
+  <data name="SideNav_UserLoginPartial" xml:space="preserve">
+    <value>Partiel de connexion utilisateur</value>
+  </data>
+  <data name="Section_UserLoginPartial_Title" xml:space="preserve">
+    <value>Modèle partiel de connexion utilisateur</value>
+  </data>
+  <data name="Section_UserLoginPartial_Description" xml:space="preserve">
+    <value>Un composant bilingue configurable pour afficher les informations d'authentification des utilisateurs. Prend en charge les systèmes d'authentification sans état parfaits pour les déploiements cloud Azure.</value>
+  </data>
 </root>

@@ -8,11 +8,11 @@
         /// <summary>
         /// The standard body text size.
         /// </summary>
-        Body,
+        body,
 
         /// <summary>
         /// A smaller text size, typically used for secondary or less prominent text.
         /// </summary>
-        Small
+        small
     }
 }

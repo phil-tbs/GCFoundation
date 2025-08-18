@@ -114,6 +114,19 @@ namespace GCFoundation.Web.Controllers
         }
 
         /// <summary>
+        /// Displays the Card component demo page.
+        /// </summary>
+        /// <returns>
+        /// The Card component view.
+        /// </returns>
+        [HttpGet("card")]
+        public IActionResult Card()
+        {
+            SetPageTitle($"{Menu.Menu_Components}: Card");
+            return View();
+        }
+
+        /// <summary>
         /// Displays the Modal component demo page.
         /// </summary>
         /// <returns>
@@ -162,6 +175,20 @@ namespace GCFoundation.Web.Controllers
         public IActionResult Table()
         {
             SetPageTitle($"{Menu.Menu_Components}: Table");
+            return View();
+        }
+
+        /// <summary>
+        /// Displays the User Login Partial component demo page.
+        /// </summary>
+        /// <returns>
+        /// The User Login Partial component view.
+        /// </returns>
+        [HttpGet("user-login")]
+        public IActionResult UserLogin()
+        {
+            SetPageTitle($"{Menu.Menu_Components}: User Login Partial");
+            ViewData["LoginPartialViewName"] = "_ExampleUserLogin";
             return View();
         }
 

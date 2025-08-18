@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,55 +117,67 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Section_MainTemplate_Description" xml:space="preserve">
-    <value>The main layout template provides the base structure used across pages.</value>
+  <data name="AccountActions" xml:space="preserve">
+    <value>Actions du compte</value>
   </data>
-  <data name="Index_PageTitle" xml:space="preserve">
-    <value>Template</value>
+  <data name="Department" xml:space="preserve">
+    <value>Département</value>
   </data>
-  <data name="Section_ErrorTemplates_Description" xml:space="preserve">
-    <value>The Foundation includes two error templates:</value>
+  <data name="ExtendSessionButton" xml:space="preserve">
+    <value>Prolonger la session</value>
   </data>
-  <data name="SideNav_Label" xml:space="preserve">
-    <value>On this page</value>
+  <data name="LoggedInAs" xml:space="preserve">
+    <value>Connecté en tant que</value>
   </data>
-  <data name="ErrorTemplates_NotFound" xml:space="preserve">
-    <value>Not found</value>
+  <data name="LoginButton" xml:space="preserve">
+    <value>Se connecter</value>
   </data>
-  <data name="Section_MainTemplate_Title" xml:space="preserve">
-    <value>Main template</value>
+  <data name="LoginFormAriaLabel" xml:space="preserve">
+    <value>Informations de connexion utilisateur</value>
   </data>
-  <data name="SideNav_MainTemplate" xml:space="preserve">
-    <value>Main template</value>
+  <data name="LoginTime" xml:space="preserve">
+    <value>Connecté à</value>
   </data>
-  <data name="Index_PageDescription" xml:space="preserve">
-    <value>Learn about the core templates included in the Foundation framework.</value>
+  <data name="LogoutButton" xml:space="preserve">
+    <value>Se déconnecter</value>
   </data>
-  <data name="Section_LanguageChooser_Title" xml:space="preserve">
-    <value>Language chooser template</value>
+  <data name="NotLoggedIn" xml:space="preserve">
+    <value>Non connecté</value>
   </data>
-  <data name="SideNav_LanguageChooser" xml:space="preserve">
-    <value>Language chooser template</value>
+  <data name="PleaseSignIn" xml:space="preserve">
+    <value>Veuillez vous connecter pour accéder à votre compte</value>
   </data>
-  <data name="ErrorTemplates_GlobalError" xml:space="preserve">
-    <value>Global error</value>
+  <data name="ProfileButton" xml:space="preserve">
+    <value>Profil</value>
   </data>
-  <data name="SideNav_ErrorTemplates" xml:space="preserve">
-    <value>Error templates</value>
+  <data name="SessionExpiringSoon" xml:space="preserve">
+    <value>Votre session expire bientôt</value>
   </data>
-  <data name="Section_ErrorTemplates_Title" xml:space="preserve">
-    <value>Error templates</value>
+  <data name="SessionExpiry" xml:space="preserve">
+    <value>Session expire à</value>
   </data>
-  <data name="Section_LanguageChooser_Description" xml:space="preserve">
-    <value>A bilingual splash page similar to the one used on Canada.ca.</value>
+  <data name="SessionStatusAriaLabel" xml:space="preserve">
+    <value>État de la session</value>
   </data>
-  <data name="SideNav_UserLoginPartial" xml:space="preserve">
-    <value>User login partial</value>
+  <data name="SessionTimeRemaining" xml:space="preserve">
+    <value>Session expire dans {0} minute(s)</value>
   </data>
-  <data name="Section_UserLoginPartial_Title" xml:space="preserve">
-    <value>User login partial template</value>
+  <data name="SignedInAs" xml:space="preserve">
+    <value>Connecté en tant que</value>
   </data>
-  <data name="Section_UserLoginPartial_Description" xml:space="preserve">
-    <value>A configurable, bilingual component for displaying user authentication information. Supports stateless authentication systems perfect for Azure cloud deployments.</value>
+  <data name="UserAccountInfo" xml:space="preserve">
+    <value>Informations du compte utilisateur</value>
+  </data>
+  <data name="UserEmail" xml:space="preserve">
+    <value>Courriel</value>
+  </data>
+  <data name="UserMenuAriaLabel" xml:space="preserve">
+    <value>Menu du compte utilisateur</value>
+  </data>
+  <data name="UserRole" xml:space="preserve">
+    <value>Rôle</value>
+  </data>
+  <data name="WelcomeMessage" xml:space="preserve">
+    <value>Bienvenue, {0}!</value>
   </data>
 </root>

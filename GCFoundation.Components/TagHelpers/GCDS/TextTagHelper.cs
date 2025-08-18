@@ -13,7 +13,7 @@ namespace GCFoundation.Components.TagHelpers.GCDS
         /// Gets or sets a value indicating whether the character limit is enabled.
         /// Default is <c>true</c>.
         /// </summary>
-        public bool CharacterLimit { get; set; } = true;
+        public bool CharacterLimit { get; set; }
 
         /// <summary>
         /// Gets or sets the display style of the text element. Default is <see cref="TextDisplay.Block"/>.
@@ -23,17 +23,17 @@ namespace GCFoundation.Components.TagHelpers.GCDS
         /// <summary>
         /// Gets or sets the margin-bottom value for the text element. Default is <c>300</c>.
         /// </summary>
-        public string? MarginBottom { get; set; } = "300";
+        public string? MarginBottom { get; set; } 
 
         /// <summary>
         /// Gets or sets the margin-top value for the text element. Default is <c>0</c>.
         /// </summary>
-        public string? MarginTop { get; set; } = "0";
+        public string? MarginTop { get; set; }
 
         /// <summary>
-        /// Gets or sets the size of the text. Default is <see cref="TextSize.Body"/>.
+        /// Gets or sets the size of the text. Default is <see cref="TextSize.body"/>.
         /// </summary>
-        public TextSize Size { get; set; } = TextSize.Body;
+        public TextSize Size { get; set; } = TextSize.body;
 
         /// <summary>
         /// Gets or sets the role of the text, defining its emphasis. Default is <see cref="TextRole.Primary"/>.

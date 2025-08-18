@@ -150,6 +150,9 @@
   <data name="Nav_Components_Stepper" xml:space="preserve">
     <value>Étapes</value>
   </data>
+  <data name="Nav_Components_UserLogin" xml:space="preserve">
+    <value>Partiel de connexion utilisateur</value>
+  </data>
 
   <data name="Nav_Installation" xml:space="preserve">
     <value>Installation</value>
@@ -184,5 +187,14 @@
   </data>
   <data name="Nav_Errors_Global" xml:space="preserve">
     <value>Erreur globale</value>
+  </data>
+  <data name="Nav_UserLogin_Examples" xml:space="preserve">
+    <value>Exemples interactifs</value>
+  </data>
+  <data name="Nav_UserLogin_Positions" xml:space="preserve">
+    <value>Exemples de position</value>
+  </data>
+  <data name="Nav_Authentication_StatelessExamples" xml:space="preserve">
+    <value>Exemples d'auth sans état</value>
   </data>
 </root>
