@@ -70,7 +70,7 @@ namespace GCFoundation.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Foundation components.
+        ///   Looks up a localized string similar to GCFoundation Components.
         /// </summary>
         public static string Menu_Components_FDCP {
             get {
@@ -79,7 +79,7 @@ namespace GCFoundation.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GC Design System components.
+        ///   Looks up a localized string similar to GC Design System Components.
         /// </summary>
         public static string Menu_Components_GCDesign {
             get {
@@ -93,6 +93,15 @@ namespace GCFoundation.Web.Resources {
         public static string Menu_Components_GCDesign_url {
             get {
                 return ResourceManager.GetString("Menu_Components_GCDesign_url", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Global Resources.
+        /// </summary>
+        public static string Menu_Components_GlobalResources {
+            get {
+                return ResourceManager.GetString("Menu_Components_GlobalResources", resourceCulture);
             }
         }
         

@@ -117,23 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Menu_Template" xml:space="preserve">
-    <value>Template</value>
+  <data name="Menu_Components" xml:space="preserve">
+    <value>Components</value>
+  </data>
+  <data name="Menu_Components_FDCP" xml:space="preserve">
+    <value>GCFoundation Components</value>
+  </data>
+  <data name="Menu_Components_GCDesign" xml:space="preserve">
+    <value>GC Design System Components</value>
+  </data>
+  <data name="Menu_Components_GCDesign_url" xml:space="preserve">
+    <value>https://design-system.alpha.canada.ca/en/components/</value>
   </data>
   <data name="Menu_Installation" xml:space="preserve">
     <value>Installation</value>
   </data>
-  <data name="Menu_Components_GCDesign" xml:space="preserve">
-    <value>GC Design System components</value>
-  </data>
-  <data name="Menu_Components_FDCP" xml:space="preserve">
-    <value>Foundation components</value>
-  </data>
-  <data name="Menu_Components" xml:space="preserve">
-    <value>Components</value>
-  </data>
-  <data name="Menu_Components_GCDesign_url" xml:space="preserve">
-    <value>https://design-system.alpha.canada.ca/en/components/</value>
+  <data name="Menu_Template" xml:space="preserve">
+    <value>Template</value>
   </data>
   <data name="Menu_Styles" xml:space="preserve">
     <value>Styles</value>

@@ -121,10 +121,10 @@
     <value>Components</value>
   </data>
   <data name="Menu_Components_FDCP" xml:space="preserve">
-    <value>Foundation components</value>
+    <value>GCFoundation Components</value>
   </data>
   <data name="Menu_Components_GCDesign" xml:space="preserve">
-    <value>GC Design System components</value>
+    <value>GC Design System Components</value>
   </data>
   <data name="Menu_Components_GCDesign_url" xml:space="preserve">
     <value>https://design-system.alpha.canada.ca/en/components/</value>
@@ -137,5 +137,8 @@
   </data>
   <data name="Menu_Styles" xml:space="preserve">
     <value>Styles</value>
+  </data>
+  <data name="Menu_Components_GlobalResources" xml:space="preserve">
+    <value>Global Resources</value>
   </data>
 </root>
