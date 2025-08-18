@@ -15,10 +15,15 @@
 	<RepositoryUrl></RepositoryUrl>
 	<IncludeSymbols>true</IncludeSymbols>
 	<IncludeSource>true</IncludeSource>
+	<ErrorLog>Foundation.Components.Security,version=2.1</ErrorLog>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.4" />
   </ItemGroup>
 

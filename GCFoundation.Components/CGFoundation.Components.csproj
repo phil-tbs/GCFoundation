@@ -21,6 +21,7 @@
     <RepositoryUrl>https://dev.azure.com/foc-poc/EGCS/_git/Foundation</RepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
     <IncludeSource>true</IncludeSource>
+	<ErrorLog>Foundation.Components.sarif,version=2.1</ErrorLog>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
