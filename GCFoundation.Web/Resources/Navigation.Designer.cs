@@ -97,6 +97,15 @@ namespace GCFoundation.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Badge.
+        /// </summary>
+        public static string Nav_Components_Badge {
+            get {
+                return ResourceManager.GetString("Nav_Components_Badge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Form Builder.
         /// </summary>
         public static string Nav_Components_FormBuilder {
@@ -120,6 +129,42 @@ namespace GCFoundation.Web.Resources {
         public static string Nav_Components_GCDesign {
             get {
                 return ResourceManager.GetString("Nav_Components_GCDesign", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modal.
+        /// </summary>
+        public static string Nav_Components_Modal {
+            get {
+                return ResourceManager.GetString("Nav_Components_Modal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Page Heading.
+        /// </summary>
+        public static string Nav_Components_PageHeading {
+            get {
+                return ResourceManager.GetString("Nav_Components_PageHeading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stepper.
+        /// </summary>
+        public static string Nav_Components_Stepper {
+            get {
+                return ResourceManager.GetString("Nav_Components_Stepper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Table.
+        /// </summary>
+        public static string Nav_Components_Table {
+            get {
+                return ResourceManager.GetString("Nav_Components_Table", resourceCulture);
             }
         }
         
@@ -201,15 +246,6 @@ namespace GCFoundation.Web.Resources {
         public static string Nav_Styles {
             get {
                 return ResourceManager.GetString("Nav_Styles", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tabulator Test.
-        /// </summary>
-        public static string Nav_TabulatorTest {
-            get {
-                return ResourceManager.GetString("Nav_TabulatorTest", resourceCulture);
             }
         }
         
