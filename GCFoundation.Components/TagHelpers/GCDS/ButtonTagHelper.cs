@@ -22,7 +22,7 @@ namespace GCFoundation.Components.TagHelpers.GCDS
         /// <summary>
         /// Indicates whether the button is disabled.
         /// </summary>
-        public bool Disable { get; set; }
+        public bool Disabled { get; set; }
 
         /// <summary>
         /// The name attribute of the button.
@@ -53,7 +53,7 @@ namespace GCFoundation.Components.TagHelpers.GCDS
 
             AddAttributeIfNotNull(output, "button-id", ButtonId);
             AddAttributeIfNotNull(output, "button-role", ButtonRole);
-            AddAttributeIfNotNull(output, "button-role", Disable);
+            AddAttributeIfNotNull(output, "disabled", Disabled);
             AddAttributeIfNotNull(output, "name", Name);
             AddAttributeIfNotNull(output, "size", Size);
             AddAttributeIfNotNull(output, "type", Type);

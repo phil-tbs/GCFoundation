@@ -88,6 +88,15 @@ namespace GCFoundation.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stateless Auth Examples.
+        /// </summary>
+        public static string Nav_Authentication_StatelessExamples {
+            get {
+                return ResourceManager.GetString("Nav_Authentication_StatelessExamples", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Components.
         /// </summary>
         public static string Nav_Components {
@@ -165,6 +174,15 @@ namespace GCFoundation.Web.Resources {
         public static string Nav_Components_Table {
             get {
                 return ResourceManager.GetString("Nav_Components_Table", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Login Partial.
+        /// </summary>
+        public static string Nav_Components_UserLogin {
+            get {
+                return ResourceManager.GetString("Nav_Components_UserLogin", resourceCulture);
             }
         }
         
@@ -255,6 +273,24 @@ namespace GCFoundation.Web.Resources {
         public static string Nav_Template {
             get {
                 return ResourceManager.GetString("Nav_Template", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Interactive Examples.
+        /// </summary>
+        public static string Nav_UserLogin_Examples {
+            get {
+                return ResourceManager.GetString("Nav_UserLogin_Examples", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Position Examples.
+        /// </summary>
+        public static string Nav_UserLogin_Positions {
+            get {
+                return ResourceManager.GetString("Nav_UserLogin_Positions", resourceCulture);
             }
         }
     }
