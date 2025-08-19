@@ -18,7 +18,7 @@ namespace GCFoundation.Components.TagHelpers.GCDS
         /// <summary>
         /// Gets or sets the URL for the "skip to content" link. This allows users to quickly jump to the main content of the page.
         /// </summary>
-        public required string SkipToHerf { get; set; }
+        public required string SkipToHref { get; set; }
 
         /// <summary>
         /// Gets or sets a flag indicating whether the signature has a link. Default is <c>true</c>.
@@ -39,7 +39,7 @@ namespace GCFoundation.Components.TagHelpers.GCDS
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             AddAttributeIfNotNull(output, "lang-href", LangHref);
-            AddAttributeIfNotNull(output, "skip-to-href", SkipToHerf);
+            AddAttributeIfNotNull(output, "skip-to-href", SkipToHref);
             AddAttributeIfNotNull(output, "lang", Lang);
             AddAttributeIfNotNull(output, "signature-has-link", SignatureHasLink);
             AddAttributeIfNotNull(output, "signature-variant", SignatureVariant);
