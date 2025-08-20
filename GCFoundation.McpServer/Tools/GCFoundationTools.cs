@@ -331,7 +331,7 @@ public class GCFoundationTools
         
         try
         {
-            var fields = JsonSerializer.Deserialize<FormField[]>(fieldsJson);
+            var fields = JsonSerializer.Deserialize<FormField[]>(fieldsJson) ?? Array.Empty<FormField>();
             
             sb.AppendLine("# Complete Form Solution Generated");
             sb.AppendLine($"**Form Name**: {formName}");
@@ -515,8 +515,8 @@ public class GCFoundationTools
             sb.AppendLine();
             
             // Group fields by type for better organization
-            var regularFields = fields.Where(f => f.Type != "file").ToArray();
-            var fileFields = fields.Where(f => f.Type == "file").ToArray();
+            var regularFields = fields?.Where(f => f?.Type != "file").ToArray() ?? Array.Empty<FormField>();
+            var fileFields = fields?.Where(f => f?.Type == "file").ToArray() ?? Array.Empty<FormField>();
             
             if (regularFields.Any())
             {
@@ -719,7 +719,7 @@ public class GCFoundationTools
         
         try
         {
-            var steps = JsonSerializer.Deserialize<FormStep[]>(stepsJson);
+            var steps = JsonSerializer.Deserialize<FormStep[]>(stepsJson) ?? Array.Empty<FormStep>();
             
             sb.AppendLine("# Advanced Multi-Step Form Solution");
             sb.AppendLine($"**Form Name**: {formName}");
@@ -740,15 +740,15 @@ public class GCFoundationTools
             sb.AppendLine($"    public class {modelClassName} : BaseViewModel");
             sb.AppendLine("    {");
             sb.AppendLine("        public int CurrentStep { get; set; } = 1;");
-            sb.AppendLine($"        public int TotalSteps {{ get; set; }} = {steps.Length};");
+            sb.AppendLine($"        public int TotalSteps {{ get; set; }} = {steps?.Length ?? 0};");
             sb.AppendLine("        public List<string> CompletedSteps { get; set; } = new();");
             sb.AppendLine();
             
             // Generate properties for all fields across all steps
-            foreach (var step in steps)
+            foreach (var step in steps?.Where(s => s != null) ?? Array.Empty<FormStep>())
             {
-                sb.AppendLine($"        // {step.Title} Fields");
-                if (step.Fields != null)
+                sb.AppendLine($"        // {step?.Title ?? "Unknown"} Fields");
+                if (step?.Fields != null)
                 {
                     foreach (var field in step.Fields)
                     {
@@ -775,11 +775,11 @@ public class GCFoundationTools
             sb.AppendLine();
             
             // Generate step-specific validation models
-            foreach (var step in steps)
+            foreach (var step in steps?.Where(s => s != null) ?? Array.Empty<FormStep>())
             {
-                sb.AppendLine($"    public class {step.StepName}StepModel");
+                sb.AppendLine($"    public class {step?.StepName ?? "Unknown"}StepModel");
                 sb.AppendLine("    {");
-                if (step.Fields != null)
+                if (step?.Fields != null)
                 {
                     foreach (var field in step.Fields)
                     {
@@ -820,7 +820,7 @@ public class GCFoundationTools
             sb.AppendLine();
             
             // Generate action methods for each step
-            foreach (var (step, index) in steps.Select((step, i) => (step, i + 1)))
+            foreach (var (step, index) in (steps?.Select((step, i) => (step, i + 1)) ?? Array.Empty<(FormStep, int)>()))
             {
                 sb.AppendLine($"        [HttpGet]");
                 sb.AppendLine($"        public IActionResult {step.StepName}(int stepNumber = {index})");
@@ -865,9 +865,9 @@ public class GCFoundationTools
                     sb.AppendLine("            SaveModelToSession(model);");
                 }
                 sb.AppendLine();
-                if (index < steps.Length)
+                if (index < (steps?.Length ?? 0) && steps != null && index < steps.Length)
                 {
-                    sb.AppendLine($"            return RedirectToAction(\"{steps[index].StepName}\", new {{ stepNumber = {index + 1} }});");
+                    sb.AppendLine($"            return RedirectToAction(\"{steps[index]?.StepName ?? "Unknown"}\", new {{ stepNumber = {index + 1} }});");
                 }
                 else
                 {
@@ -941,7 +941,7 @@ public class GCFoundationTools
             sb.AppendLine();
             
             // Add validation methods for each step
-            foreach (var step in steps)
+            foreach (var step in steps?.Where(s => s != null) ?? Array.Empty<FormStep>())
             {
                 sb.AppendLine($"        private bool ValidateStep{step.StepName}({modelClassName} model)");
                 sb.AppendLine("        {");
@@ -949,7 +949,7 @@ public class GCFoundationTools
                 sb.AppendLine("            ModelState.Clear();");
                 sb.AppendLine();
                 sb.AppendLine($"            // Add validation logic for {step.StepName} step");
-                if (step.Fields != null)
+                if (step?.Fields != null)
                 {
                     foreach (var field in step.Fields.Where(f => f.Required))
                     {
@@ -1010,7 +1010,7 @@ public class GCFoundationTools
             {
                 sb.AppendLine("<!-- Progress Stepper -->");
                 sb.AppendLine("<fdcp-stepper current-step=\"@Model.CurrentStep\" orientation=\"horizontal\">");
-                foreach (var (step, index) in steps.Select((step, i) => (step, i + 1)))
+                foreach (var (step, index) in (steps?.Select((step, i) => (step, i + 1)) ?? Array.Empty<(FormStep, int)>()))
                 {
                     sb.AppendLine($"    <fdcp-step title=\"{step.Title}\" description=\"Step {index}\"></fdcp-step>");
                 }
@@ -1044,13 +1044,13 @@ public class GCFoundationTools
             sb.AppendLine();
             
             // Generate conditional step content
-            foreach (var (step, index) in steps.Select((step, i) => (step, i + 1)))
+            foreach (var (step, index) in (steps?.Select((step, i) => (step, i + 1)) ?? Array.Empty<(FormStep, int)>()))
             {
                 sb.AppendLine($"    @if (Model.CurrentStep == {index})");
                 sb.AppendLine("    {");
                 sb.AppendLine($"        <gcds-fieldset fieldset-id=\"step{index}\" legend=\"{step.Title}\" legend-size=\"h2\">");
                 
-                if (step.Fields != null)
+                if (step?.Fields != null)
                 {
                     foreach (var field in step.Fields)
                     {
@@ -1097,10 +1097,10 @@ public class GCFoundationTools
             sb.AppendLine("<gcds-text>Please review your information before submitting.</gcds-text>");
             sb.AppendLine();
             
-            foreach (var (step, index) in steps.Select((step, i) => (step, i + 1)))
+            foreach (var (step, index) in (steps?.Select((step, i) => (step, i + 1)) ?? Array.Empty<(FormStep, int)>()))
             {
                 sb.AppendLine($"<gcds-details summary=\"{step.Title}\" open=\"true\">");
-                if (step.Fields != null)
+                if (step?.Fields != null)
                 {
                     foreach (var field in step.Fields)
                     {

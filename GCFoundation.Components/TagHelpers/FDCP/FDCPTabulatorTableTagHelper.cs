@@ -111,7 +111,7 @@ namespace GCFoundation.Components.TagHelpers.FDCP
             using (var writer = new StringWriter())
             {
                 tokenHtml.WriteTo(writer, System.Text.Encodings.Web.HtmlEncoder.Default);
-                antiForgeryToken = writer.ToString().Replace("\"", "&quot;");
+                antiForgeryToken = writer.ToString().Replace("\"", "&quot;", StringComparison.Ordinal);
             }
 
             // Get filterable field names for custom filtering

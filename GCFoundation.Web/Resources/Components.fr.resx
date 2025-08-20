@@ -808,17 +808,8 @@
   <data name="Cards_Notes_Anchor" xml:space="preserve">
     <value>notes</value>
   </data>
-  <data name="StatelessAuth_Demo_Title" xml:space="preserve">
-    <value>Démonstration d'authentification sans état</value>
-  </data>
-  <data name="StatelessAuth_Demo_Description" xml:space="preserve">
-    <value>Exemples d'authentification prêts pour Azure sans sessions. Essayez l'authentification par cookie ci-dessous et voyez comment le composant de connexion utilisateur se met à jour automatiquement.</value>
-  </data>
   <data name="StatelessAuth_Current_Status_Title" xml:space="preserve">
     <value>État d'authentification actuel</value>
-  </data>
-  <data name="StatelessAuth_Authenticated_Message" xml:space="preserve">
-    <value><strong>✅ Authentifié</strong> - Vous êtes actuellement connecté en tant que <strong>{0}</strong></value>
   </data>
   <data name="StatelessAuth_Session_Info_Message" xml:space="preserve">
     <value>Le composant de connexion utilisateur ci-dessus affiche vos informations de session actuelles à partir des revendications (pas de stockage de session côté serveur).</value>
