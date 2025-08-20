@@ -88,11 +88,29 @@ namespace GCFoundation.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stateless Auth Examples.
+        /// </summary>
+        public static string Nav_Authentication_StatelessExamples {
+            get {
+                return ResourceManager.GetString("Nav_Authentication_StatelessExamples", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Components.
         /// </summary>
         public static string Nav_Components {
             get {
                 return ResourceManager.GetString("Nav_Components", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Badge.
+        /// </summary>
+        public static string Nav_Components_Badge {
+            get {
+                return ResourceManager.GetString("Nav_Components_Badge", resourceCulture);
             }
         }
         
@@ -120,6 +138,51 @@ namespace GCFoundation.Web.Resources {
         public static string Nav_Components_GCDesign {
             get {
                 return ResourceManager.GetString("Nav_Components_GCDesign", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modal.
+        /// </summary>
+        public static string Nav_Components_Modal {
+            get {
+                return ResourceManager.GetString("Nav_Components_Modal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Page Heading.
+        /// </summary>
+        public static string Nav_Components_PageHeading {
+            get {
+                return ResourceManager.GetString("Nav_Components_PageHeading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stepper.
+        /// </summary>
+        public static string Nav_Components_Stepper {
+            get {
+                return ResourceManager.GetString("Nav_Components_Stepper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Table.
+        /// </summary>
+        public static string Nav_Components_Table {
+            get {
+                return ResourceManager.GetString("Nav_Components_Table", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Login Partial.
+        /// </summary>
+        public static string Nav_Components_UserLogin {
+            get {
+                return ResourceManager.GetString("Nav_Components_UserLogin", resourceCulture);
             }
         }
         
@@ -205,20 +268,29 @@ namespace GCFoundation.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tabulator Test.
-        /// </summary>
-        public static string Nav_TabulatorTest {
-            get {
-                return ResourceManager.GetString("Nav_TabulatorTest", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Template.
         /// </summary>
         public static string Nav_Template {
             get {
                 return ResourceManager.GetString("Nav_Template", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Interactive Examples.
+        /// </summary>
+        public static string Nav_UserLogin_Examples {
+            get {
+                return ResourceManager.GetString("Nav_UserLogin_Examples", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Position Examples.
+        /// </summary>
+        public static string Nav_UserLogin_Positions {
+            get {
+                return ResourceManager.GetString("Nav_UserLogin_Positions", resourceCulture);
             }
         }
     }

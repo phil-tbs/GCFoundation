@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Menu_Components" xml:space="preserve">
-    <value>Composants</value>
+    <value>Composantes</value>
   </data>
   <data name="Menu_Components_FDCP" xml:space="preserve">
-    <value>Composants de foundation</value>
+    <value>Composantes de GCFoundation</value>
   </data>
   <data name="Menu_Components_GCDesign" xml:space="preserve">
-    <value>Composants du syst'eme de design GC</value>
+    <value>Composantes du système de design GC</value>
   </data>
   <data name="Menu_Components_GCDesign_url" xml:space="preserve">
     <value>https://systeme-design.alpha.canada.ca/fr/composants/</value>
