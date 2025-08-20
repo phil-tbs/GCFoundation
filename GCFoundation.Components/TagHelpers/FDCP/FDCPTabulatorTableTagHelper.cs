@@ -114,12 +114,17 @@ namespace GCFoundation.Components.TagHelpers.FDCP
                 antiForgeryToken = writer.ToString().Replace("\"", "&quot;");
             }
 
+            // Get filterable field names for custom filtering
+            var filterableFields = Columns.Where(c => c.Filter).Select(c => c.Field).ToArray();
+            var filterableFieldsJson = JsonSerializer.Serialize(filterableFields, jsonOptions);
+
             var tableDiv = $@"
             <div id='{Id}-tabulator' class='tabulator-table'
                  data-layout='fitColumns'
                  data-pagination='local'
                  data-pagination-size='{PaginationSize}'
                  data-columns='{JsonSerializer.Serialize(Columns, jsonOptions)}'
+                 data-filterable-fields='{filterableFieldsJson}'
                  data-antiforgery-token='{antiForgeryToken}'";
 
             if (UseStaticData && Data != null)

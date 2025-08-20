@@ -65,16 +65,12 @@ document.querySelectorAll('.tabulator-search-input').forEach(el => {
         if (value === "") {
             table.clearFilter();
         } else {
-            const fields = table.getColumns()
-                .filter(col => {
-                    const def = col.getDefinition();
-                    return def.filter; // Only fields with headerFilter enabled
-                })
-                .map(col => col.getField());
-
+            // Get the table element to access filterable fields
+            const tableElement = document.getElementById(tabulatorId);
+            const filterableFields = JSON.parse(tableElement.dataset.filterableFields || '[]');
 
             table.setFilter(
-                fields.map(field => ({ field: field, type: "like", value: value }))
+                filterableFields.map(field => ({ field: field, type: "like", value: value }))
             );
         }
     }, 200)); // 200ms debounce
