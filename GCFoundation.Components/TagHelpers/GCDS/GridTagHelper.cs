@@ -100,9 +100,9 @@ namespace GCFoundation.Components.TagHelpers.GCDS
             AddAttributeIfNotNull(output, "container", Container);
             AddAttributeIfNotNull(output, "display", Display);
             AddAttributeIfNotNull(output, "equal-row-height", EqualRowHeight);
-            AddAttributeIfNotNull(output, "gab", Gap);
-            AddAttributeIfNotNull(output, "gapDesktop", GapDesktop);
-            AddAttributeIfNotNull(output, "gapTablet", GapTablet);
+            AddAttributeIfNotNull(output, "gap", Gap);
+            AddAttributeIfNotNull(output, "gap-desktop", GapDesktop);
+            AddAttributeIfNotNull(output, "gap-tablet", GapTablet);
 
             AddAttributeIfNotNullWithCaseConversion(output, "justify-content", JustifyContent);
             AddAttributeIfNotNullWithCaseConversion(output, "justify-items", JustifyItems);

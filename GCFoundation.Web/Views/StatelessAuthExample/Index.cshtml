@@ -40,7 +40,7 @@
                 @if (User?.Identity?.IsAuthenticated == true)
                 {
                     <form method="post" asp-controller="StatelessAuthExample" asp-action="CookieLogout" class="inline-form">
-                        <gcds-button button-role="destructive" type="submit" size="small">
+                        <gcds-button button-role="danger" type="submit" size="small">
                             @Components.StatelessAuth_Logout_Button_Text
                         </gcds-button>
                     </form>
