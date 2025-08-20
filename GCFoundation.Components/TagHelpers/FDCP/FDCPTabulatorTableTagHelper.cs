@@ -1,7 +1,11 @@
 ﻿using GCFoundation.Components.Models;
 using Microsoft.AspNetCore.Razor.TagHelpers;
+using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.IO;
 
 namespace GCFoundation.Components.TagHelpers.FDCP
 {
@@ -11,6 +15,11 @@ namespace GCFoundation.Components.TagHelpers.FDCP
     [HtmlTargetElement("fdcp-tabulator-table")]
     public class FDCPTabulatorTableTagHelper : TagHelper
     {
+        /// <summary>
+        /// ViewContext for accessing the current view context.
+        /// </summary>
+        [ViewContext]
+        public ViewContext ViewContext { get; set; } = null!;
 
         /// <summary>
         /// The HTML element ID to assign to the Tabulator container (must be unique).
@@ -93,12 +102,25 @@ namespace GCFoundation.Components.TagHelpers.FDCP
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
             };
 
+            // Get anti-forgery token
+            var htmlHelper = (IHtmlHelper)ViewContext.HttpContext.RequestServices.GetService(typeof(IHtmlHelper))!;
+            ((IViewContextAware)htmlHelper).Contextualize(ViewContext);
+            
+            string antiForgeryToken = "";
+            var tokenHtml = htmlHelper.AntiForgeryToken();
+            using (var writer = new StringWriter())
+            {
+                tokenHtml.WriteTo(writer, System.Text.Encodings.Web.HtmlEncoder.Default);
+                antiForgeryToken = writer.ToString().Replace("\"", "&quot;");
+            }
+
             var tableDiv = $@"
             <div id='{Id}-tabulator' class='tabulator-table'
                  data-layout='fitColumns'
                  data-pagination='local'
                  data-pagination-size='{PaginationSize}'
-                 data-columns='{JsonSerializer.Serialize(Columns, jsonOptions)}'";
+                 data-columns='{JsonSerializer.Serialize(Columns, jsonOptions)}'
+                 data-antiforgery-token='{antiForgeryToken}'";
 
             if (UseStaticData && Data != null)
             {

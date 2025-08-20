@@ -6,7 +6,7 @@ using ModelContextProtocol.Server;
 /// Comprehensive MCP tools for all FDCP (Federal Design Component Package) components.
 /// Provides generation capabilities for advanced components and specialized functionality.
 /// </summary>
-internal class ComprehensiveFDCPTools
+public class ComprehensiveFDCPTools
 {
     #region Advanced Form Components
 

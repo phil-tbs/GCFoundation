@@ -7,7 +7,7 @@ using ModelContextProtocol.Server;
 /// Core MCP tools for GC Foundation utilities and helpers.
 /// Provides quick component generation, validation helpers, and project guidance.
 /// </summary>
-internal class GCFoundationTools
+public class GCFoundationTools
 {
     [McpServerTool]
     [Description("Quick generator for common GCDS text patterns and components.")]
@@ -350,7 +350,7 @@ internal class GCFoundationTools
             sb.AppendLine($"    public class {modelClassName}");
             sb.AppendLine("    {");
             
-            foreach (var field in fields)
+            foreach (var field in fields ?? [])
             {
                 // Add validation attributes
                 if (field.Required)
@@ -700,21 +700,7 @@ internal class GCFoundationTools
         return System.Text.RegularExpressions.Regex.Replace(input, "(\\B[A-Z])", " $1");
     }
 
-    // Helper class for form field definition
-    private class FormField
-    {
-        public string Name { get; set; } = "";
-        public string Type { get; set; } = "text";
-        public string Label { get; set; } = "";
-        public bool Required { get; set; } = false;
-        public string? Validation { get; set; }
-        public int MaxLength { get; set; } = 0;
-        public string? Placeholder { get; set; }
-        public string? Hint { get; set; }
-        public int Rows { get; set; } = 0;
-        public bool Multiple { get; set; } = false;
-        public string? Accept { get; set; }
-    }
+
 
     [McpServerTool]
     [Description("Generates an advanced multi-step form with conditional fields and complex validation.")]
@@ -737,7 +723,7 @@ internal class GCFoundationTools
             
             sb.AppendLine("# Advanced Multi-Step Form Solution");
             sb.AppendLine($"**Form Name**: {formName}");
-            sb.AppendLine($"**Steps**: {steps.Length}");
+            sb.AppendLine($"**Steps**: {steps?.Length ?? 0}");
             sb.AppendLine($"**Features**: Multi-step navigation, Conditional fields, Progress tracking");
             sb.AppendLine();
             

@@ -9,7 +9,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <RootNamespace>GCFoundation.Web</RootNamespace>
     <AssemblyName>GCFoundation.Web</AssemblyName>
-	<ErrorLog>Foundation.Web.sarif,version=2.1</ErrorLog>
+	<ErrorLog>$(OutputPath)Foundation.Web.sarif</ErrorLog>
   </PropertyGroup>
 
   <ItemGroup>

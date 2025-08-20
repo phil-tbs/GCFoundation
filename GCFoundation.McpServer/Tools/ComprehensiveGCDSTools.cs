@@ -6,7 +6,7 @@ using ModelContextProtocol.Server;
 /// Comprehensive MCP tools for all GCDS (Government of Canada Design System) components.
 /// Provides generation capabilities for every GCDS component available in the framework.
 /// </summary>
-internal class ComprehensiveGCDSTools
+public class ComprehensiveGCDSTools
 {
     #region Form Components
 

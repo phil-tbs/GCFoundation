@@ -8,7 +8,7 @@ using ModelContextProtocol.Server;
 /// MCP tools for configuring and scaffolding GC Foundation projects.
 /// Provides setup templates, middleware configuration, and project structure generation.
 /// </summary>
-internal class ProjectConfigurationTools
+public class ProjectConfigurationTools
 {
     #region NuGet Package Management
 
