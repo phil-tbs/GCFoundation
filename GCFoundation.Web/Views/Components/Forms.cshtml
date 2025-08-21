@@ -1,7 +1,7 @@
 ﻿@using System.Web
 @using GCFoundation.Web.Models
+@using GCFoundation.Web.Resources
 @model FormTestViewModel
-
 
 @if (Model == null)
 {
@@ -10,20 +10,12 @@
 else
 {
     <section>
-        <gcds-heading tag="h1">
-            Form
-        </gcds-heading>
-        <gcds-text>
-            The form components from the foundation help you build your own form with minumum implementation
-            Almost everything is done in the model
-        </gcds-text>
+        <gcds-heading tag="h1">@Components.Index_Forms_Title</gcds-heading>
+        <gcds-text>@Html.Raw(Forms.Page_Description)</gcds-text>
     </section>
     <div>
-        <gcds-heading tag="h2">
-            Form components preview
-        </gcds-heading>
-        <fdcp-form method="post" action="@Url.Action("FormValidationTest", "Components")" for="@Model">
-
+        <gcds-heading tag="h2">@Forms.Sample_Form</gcds-heading>
+        <fdcp-form method="post" action="@Url.Action("Forms", "Components")" for="@Model">
             <fdcp-input for="@Model.FullName" />
             <fdcp-input for="@Model.Email" />
             <fdcp-input for="@Model.Password" />
@@ -41,39 +33,31 @@ else
             <fdcp-checkbox for="@Model.AgreeToTerms" required="true" />
 
             <gcds-button type="submit">Submit</gcds-button>
-
         </fdcp-form>
     </div>
 
-    
-
     <div>
         <pre>
-        <code class="language-cshtml">
-                @Html.Raw(HttpUtility.HtmlEncode(@"
+        <code class="language-cshtml">@Html.Raw(HttpUtility.HtmlEncode(@"
 <fdcp-form method=""post"" action=""@Url.Action(""FormValidationTest"", ""Components"")"" for=""@Model"">
+    <fdcp-input for=""@Model.FullName"" />
+    <fdcp-input for=""@Model.Email"" />
+    <fdcp-input for=""@Model.Password"" />
+    <fdcp-input for=""@Model.Website"" />
+    <fdcp-input for=""@Model.Age"" />
+    <fdcp-input for=""@Model.Bio"" />
+    <fdcp-input for=""@Model.DateOfBirth"" />
 
-<fdcp-input for=""@Model.FullName"" />
-<fdcp-input for=""@Model.Email"" />
-<fdcp-input for=""@Model.Password"" />
-<fdcp-input for=""@Model.Website"" />
-<fdcp-input for=""@Model.Age"" />
-<fdcp-input for=""@Model.Bio"" />
-<fdcp-input for=""@Model.DateOfBirth"" />
+    <fdcp-select for=""@Model.SelectedCountry"" items=""@Model.CountryOptions"" />
 
-<fdcp-select for=""@Model.SelectedCountry"" items=""@Model.CountryOptions"" />
+    <fdcp-radios for=""@Model.Gender"" items=""@Model.GenderOptions"" />
 
-<fdcp-radios for=""@Model.Gender"" items=""@Model.GenderOptions"" />
+    <fdcp-checkboxes for=""@Model.SelectedInterests"" items=""@Model.InterestOptions"" required=""true"" />
 
-<fdcp-checkboxes for=""@Model.SelectedInterests"" items=""@Model.InterestOptions"" required=""true"" />
+    <fdcp-checkbox for=""@Model.AgreeToTerms"" required=""true"" />
 
-<fdcp-checkbox for=""@Model.AgreeToTerms"" required=""true"" />
-
-<gcds-button type=""submit"">Submit</gcds-button>
-
-</fdcp-form>
-        "))
-        </code>
+    <gcds-button type=""submit"">Submit</gcds-button>
+</fdcp-form>"))</code>
         </pre>
     </div>
 }

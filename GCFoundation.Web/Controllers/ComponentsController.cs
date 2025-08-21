@@ -3,7 +3,6 @@ using GCFoundation.Components.Models.FormBuilder;
 using GCFoundation.Web.Models;
 using GCFoundation.Web.Resources;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace GCFoundation.Web.Controllers
 {
@@ -11,20 +10,8 @@ namespace GCFoundation.Web.Controllers
     /// Controller that handles requests related to reusable UI components.
     /// </summary>
     [Route("components")]
-    public class ComponentsController : GCFoundationBaseController
+    public class ComponentsController(ILogger<ComponentsController> logger) : GCFoundationBaseController(logger)
     {
-        private readonly ILogger<ComponentsController> _logger;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ComponentsController"/> class.
-        /// </summary>
-        /// <param name="logger">The logger used for logging actions and events in this controller.</param>
-        public ComponentsController(ILogger<ComponentsController> logger)
-            : base(logger)
-        {
-            _logger = logger;
-        }
-
         /// <summary>
         /// Displays the main components overview page.
         /// </summary>
@@ -39,68 +26,6 @@ namespace GCFoundation.Web.Controllers
         }
 
         /// <summary>
-        /// Displays a specific component view based on the component name.
-        /// </summary>
-        /// <param name="componentName">The name of the component to load.</param>
-        /// <returns>
-        /// The view for the specified component.
-        /// </returns>
-        [HttpGet("component")]
-        public IActionResult GetComponent(string componentName)
-        {
-            SetPageTitle($"{Menu.Menu_Components}: {componentName}");
-            return View(componentName);
-        }
-
-        /// <summary>
-        /// Displays the GC Design System components page.
-        /// </summary>
-        /// <returns>
-        /// The GC Design System view.
-        /// </returns>
-        [HttpGet("gcds")]
-        public IActionResult Gcds()
-        {
-            SetPageTitle(Menu.Menu_Components_GCDesign);
-            return View();
-        }
-
-        
-
-        /// <summary>
-        /// Handles the POST request to test form validation.
-        /// </summary>
-        /// <param name="model">The form data submitted by the user.</param>
-        /// <returns>
-        /// The same view with the model and validation results.
-        /// </returns>
-        [HttpPost("testingForm")]
-        [ValidateAntiForgeryToken]
-        public IActionResult FormValidationTest(FormTestViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                // Add your logic here if needed when the model is valid
-            }
-
-            return View("Forms", model);
-        }
-        
-
-        /// <summary>
-        /// Displays the global resources configuration demo page.
-        /// </summary>
-        /// <returns>
-        /// The global resources configuration view.
-        /// </returns>
-        [HttpGet("global-resources")]
-        public IActionResult GlobalResources()
-        {
-            SetPageTitle("Global Resources Configuration");
-            return View();
-        }
-
-        /// <summary>
         /// Displays the Badge component demo page.
         /// </summary>
         /// <returns>
@@ -109,7 +34,7 @@ namespace GCFoundation.Web.Controllers
         [HttpGet("badge")]
         public IActionResult Badge()
         {
-            SetPageTitle($"{Menu.Menu_Components}: Badge");
+            SetPageTitle($"{Menu.Menu_Components} : {Resources.Components.Index_Badge_Title}");
             return View();
         }
 
@@ -122,74 +47,22 @@ namespace GCFoundation.Web.Controllers
         [HttpGet("card")]
         public IActionResult Card()
         {
-            SetPageTitle($"{Menu.Menu_Components}: Card");
+            SetPageTitle($"{Menu.Menu_Components} : {Resources.Components.Index_Card_Title}");
             return View();
         }
 
         /// <summary>
-        /// Displays the Modal component demo page.
+        /// Displays a specific component view based on the component name.
         /// </summary>
+        /// <param name="componentName">The name of the component to load.</param>
         /// <returns>
-        /// The Modal component view.
+        /// The view for the specified component.
         /// </returns>
-        [HttpGet("modal")]
-        public IActionResult Modal()
+        [HttpGet("component")]
+        public IActionResult GetComponent(string componentName)
         {
-            SetPageTitle($"{Menu.Menu_Components}: Modal");
-            return View();
-        }
-
-        /// <summary>
-        /// Displays the Stepper component demo page.
-        /// </summary>
-        /// <returns>
-        /// The Stepper component view.
-        /// </returns>
-        [HttpGet("stepper")]
-        public IActionResult Stepper()
-        {
-            SetPageTitle($"{Menu.Menu_Components}: Stepper");
-            return View();
-        }
-
-        /// <summary>
-        /// Displays the PageHeading component demo page.
-        /// </summary>
-        /// <returns>
-        /// The PageHeading component view.
-        /// </returns>
-        [HttpGet("page-heading")]
-        public IActionResult PageHeading()
-        {
-            SetPageTitle($"{Menu.Menu_Components}: Page Heading");
-            return View();
-        }
-
-        /// <summary>
-        /// Displays the Table component demo page.
-        /// </summary>
-        /// <returns>
-        /// The Table component view.
-        /// </returns>
-        [HttpGet("table")]
-        public IActionResult Table()
-        {
-            SetPageTitle($"{Menu.Menu_Components}: Table");
-            return View();
-        }
-
-        /// <summary>
-        /// Displays the User Login Partial component demo page.
-        /// </summary>
-        /// <returns>
-        /// The User Login Partial component view.
-        /// </returns>
-        [HttpGet("user-login")]
-        public IActionResult UserLogin()
-        {
-            SetPageTitle($"{Menu.Menu_Components}: User Login Partial");
-            ViewData["LoginPartialViewName"] = "_ExampleUserLogin";
-            return View();
+            SetPageTitle($"{Menu.Menu_Components} : {componentName}");
+            return View(componentName);
         }
 
         /// <summary>
@@ -199,9 +72,10 @@ namespace GCFoundation.Web.Controllers
         /// <returns>
         /// A view containing a form with various input types and complex dependencies.
         /// </returns>
-        [HttpGet("TestFormBuilder")]
-        public IActionResult ExampleFormBuilder()
+        [HttpGet("form-builder")]
+        public IActionResult FormBuilder()
         {
+            SetPageTitle($"{Menu.Menu_Components} : {Resources.Components.Index_FormBuilder_Title}");
             var form = new FormDefinition
             {
                 Id = "demo-form",
@@ -517,10 +391,12 @@ namespace GCFoundation.Web.Controllers
         /// <returns>
         /// Redirects to the example form builder view with a success message if valid; otherwise, returns the form view with validation errors.
         /// </returns>
-        [HttpPost("SubmitFormBuilder")]
+        [HttpPost("form-builder")]
         [ValidateAntiForgeryToken]
-        public IActionResult SubmitFormBuilder([FromForm] FormViewModel viewModel)
+        public IActionResult FormBuilder([FromForm] FormViewModel viewModel)
         {
+            SetPageTitle($"{Menu.Menu_Components} : {Resources.Components.Index_FormBuilder_Title}");
+
             ArgumentNullException.ThrowIfNull(viewModel, nameof(viewModel));
             // Add the form data to the validation context
             var validationContext = new System.ComponentModel.DataAnnotations.ValidationContext(viewModel.Form)
@@ -541,6 +417,133 @@ namespace GCFoundation.Web.Controllers
             // Redirect to success page or show success message
             TempData["SuccessMessage"] = "Form submitted successfully!";
             return RedirectToAction("ExampleFormBuilder");
+        }
+
+        /// <summary>
+        /// Displays a sample form linked to properties of a class.
+        /// </summary>
+        /// <returns>
+        /// The Forms component view.
+        /// </returns>
+        [HttpGet("forms")]
+        public IActionResult Forms()
+        {
+            SetPageTitle($"{Menu.Menu_Components} : {Resources.Components.Index_Forms_Title}");
+            FormTestViewModel model = new FormTestViewModel();
+
+            return View("Forms", model);
+        }
+
+        /// <summary>
+        /// Handles the POST request to test form validation.
+        /// </summary>
+        /// <param name="model">The form data submitted by the user.</param>
+        /// <returns>
+        /// The Forms component view with the POSTed model and validation results.
+        /// </returns>
+        [HttpPost("forms")]
+        [ValidateAntiForgeryToken]
+        public IActionResult Forms(FormTestViewModel model)
+        {
+            SetPageTitle($"{Menu.Menu_Components} : {Resources.Components.Index_Forms_Title}");
+            if (ModelState.IsValid)
+            {
+                // Add your logic here if needed when the model is valid
+            }
+
+            return View("Forms", model);
+        }
+
+        /// <summary>
+        /// Displays the GC Design System components page.
+        /// </summary>
+        /// <returns>
+        /// The GC Design System view.
+        /// </returns>
+        [HttpGet("gcds")]
+        public IActionResult Gcds()
+        {
+            SetPageTitle(Menu.Menu_Components_GCDesign);
+            return View();
+        }
+
+        /// <summary>
+        /// Displays the global resources configuration demo page.
+        /// </summary>
+        /// <returns>
+        /// The global resources configuration view.
+        /// </returns>
+        [HttpGet("global-resources")]
+        public IActionResult GlobalResources()
+        {
+            SetPageTitle($"{Menu.Menu_Components} : {Resources.Components.GlobalResources_Title}");
+            return View();
+        }
+
+        /// <summary>
+        /// Displays the Modal component demo page.
+        /// </summary>
+        /// <returns>
+        /// The Modal component view.
+        /// </returns>
+        [HttpGet("modal")]
+        public IActionResult Modal()
+        {
+            SetPageTitle($"{Menu.Menu_Components} : {Resources.Components.Index_Modal_Title}");
+            return View();
+        }
+
+        /// <summary>
+        /// Displays the PageHeading component demo page.
+        /// </summary>
+        /// <returns>
+        /// The PageHeading component view.
+        /// </returns>
+        [HttpGet("page-heading")]
+        public IActionResult PageHeading()
+        {
+            SetPageTitle($"{Menu.Menu_Components} : {Resources.Components.Index_PageHeading_Title}");
+            return View();
+        }
+
+        /// <summary>
+        /// Displays the Stepper component demo page.
+        /// </summary>
+        /// <returns>
+        /// The Stepper component view.
+        /// </returns>
+        [HttpGet("stepper")]
+        public IActionResult Stepper()
+        {
+            SetPageTitle($"{Menu.Menu_Components} : {Resources.Components.Index_Stepper_Title}");
+            return View();
+        }
+
+        /// <summary>
+        /// Displays the Table component demo page.
+        /// </summary>
+        /// <returns>
+        /// The Table component view.
+        /// </returns>
+        [HttpGet("table")]
+        public IActionResult Table()
+        {
+            SetPageTitle($"{Menu.Menu_Components} : {Resources.Components.Index_Table_Title}");
+            return View();
+        }
+
+        /// <summary>
+        /// Displays the User Login Partial component demo page.
+        /// </summary>
+        /// <returns>
+        /// The User Login Partial component view.
+        /// </returns>
+        [HttpGet("user-login")]
+        public IActionResult UserLogin()
+        {
+            SetPageTitle($"{Menu.Menu_Components} : {Resources.Components.Index_UserLoginPartial_Title}");
+            ViewData["LoginPartialViewName"] = "_ExampleUserLogin";
+            return View();
         }
     }
 }

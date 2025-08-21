@@ -241,6 +241,24 @@ namespace GCFoundation.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The &lt;code&gt;&amp;lt;fdcp-form&amp;gt;&lt;/code&gt; component helps you build your own form with minumum implementation. Most of the work gets done in the model. The following example present you with a form coded a sample model defined on the server-side. Input fields are then assigned to properties of the model..
+        /// </summary>
+        public static string Page_Description {
+            get {
+                return ResourceManager.GetString("Page_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forms.
+        /// </summary>
+        public static string Page_Title {
+            get {
+                return ResourceManager.GetString("Page_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Choose a strong password with at least 8 characters..
         /// </summary>
         public static string Password_Hint {
@@ -255,6 +273,15 @@ namespace GCFoundation.Web.Resources {
         public static string Password_Label {
             get {
                 return ResourceManager.GetString("Password_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sample form.
+        /// </summary>
+        public static string Sample_Form {
+            get {
+                return ResourceManager.GetString("Sample_Form", resourceCulture);
             }
         }
         

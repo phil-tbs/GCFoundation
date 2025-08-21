@@ -189,4 +189,13 @@
   <data name="DateOfBirth_Hint" xml:space="preserve">
     <value>Enter your date of birth</value>
   </data>
+  <data name="Page_Title" xml:space="preserve">
+    <value>Forms</value>
+  </data>
+  <data name="Page_Description" xml:space="preserve">
+    <value>The &lt;code&gt;&amp;lt;fdcp-form&amp;gt;&lt;/code&gt; component helps you build your own form with minumum implementation. Most of the work gets done in the model. The following example present you with a form coded a sample model defined on the server-side. Input fields are then assigned to properties of the model.</value>
+  </data>
+  <data name="Sample_Form" xml:space="preserve">
+    <value>Sample form</value>
+  </data>
 </root>
