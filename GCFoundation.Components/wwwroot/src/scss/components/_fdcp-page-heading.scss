@@ -1,28 +1,43 @@
 ﻿.fdcp-page-header-container {
-    width: 100vw;
-    position: relative;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
     display: flex;
-    top: 0;
+    height: 20rem;
     left: 50%;
     margin-left: -50vw;
-    margin-top: -114px;
+    margin-top: -3rem;
     padding-left: 0;
     padding-right: 0;
-    height: 32rem;
-    align-items: center;
+    position: relative;
+    top: 0;
+    width: 100vw;
     z-index: 0;
-    background-size: cover;
-    background-position:center;
 
     .text-container {
         max-width: 70%;
         max-height: 16rem;
-        padding: 3rem 1rem 2rem calc((100vw - var(--gcds-container-size-xl)) / 2);
-        border-radius: 0rem 3.125rem 3.125rem 0rem;
-        background: rgba(255, 255, 255, 0.50);
-        box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.25), 34px -34px 34px 0px rgba(165, 165, 165, 0.10) inset, -34px 34px 34px 0px rgba(255, 255, 255, 0.10) inset;
-        backdrop-filter: blur(34px);
+        padding: 0 1rem 0 calc((100vw - var(--gcds-container-size-xl)) / 2);
     }
+
+    .text-container.text-container-well {
+        backdrop-filter: blur(34px);
+        background: rgba(255, 255, 255, 0.50);
+        border-radius: 0rem 3.125rem 3.125rem 0rem;
+        box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.25), 34px -34px 34px 0px rgba(165, 165, 165, 0.10) inset, -34px 34px 34px 0px rgba(255, 255, 255, 0.10) inset;
+        max-height: 16rem;
+        max-width: 70%;
+        padding-top: 3rem;
+        padding-bottom: 2rem;
+    }
+}
+
+.fdcp-page-header-container.fdcp-page-header-large {
+    height: 32rem;
+}
+
+.fdcp-page-header-container.fdcp-page-header-overlap-breadcrumb {
+    margin-top: -5.5rem;
 }
 
 .full-width-section {
