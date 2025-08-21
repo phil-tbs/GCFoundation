@@ -16,6 +16,7 @@ namespace GCFoundation.Tests.Components.Tests.Helpers
 
         public GlobalResourceHelperTests()
         {
+            // Create settings object with only settable properties
             _settings = new GCFoundationComponentsSettings
             {
                 IncludeDefaultCss = true,
@@ -24,7 +25,7 @@ namespace GCFoundation.Tests.Components.Tests.Helpers
                 IncludeFontAwesome = true
             };
 
-            // Add items to the collections instead of replacing them
+            // Add items to the read-only collections after object creation
             _settings.GlobalCssFiles.Add("https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css");
             _settings.GlobalCssFiles.Add("/css/custom-styles.css");
 
