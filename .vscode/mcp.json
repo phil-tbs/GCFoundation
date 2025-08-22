@@ -1,0 +1,17 @@
+{
+  "servers": {
+    "GCFoundation.McpServer": {
+      "type": "stdio",
+      "command": "dotnet",
+      "args": [
+        "run",
+        "--project",
+        "GCFoundation.McpServer"
+      ],
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
+

@@ -1,6 +1,7 @@
 using GCFoundation.Common.Settings;
 using GCFoundation.Components.Helpers;
 using Microsoft.Extensions.Options;
+using System.Collections.ObjectModel;
 using Xunit;
 
 namespace GCFoundation.Tests.Components.Tests.Helpers
@@ -15,33 +16,27 @@ namespace GCFoundation.Tests.Components.Tests.Helpers
 
         public GlobalResourceHelperTests()
         {
+            // Create settings object with only settable properties
             _settings = new GCFoundationComponentsSettings
             {
-                GlobalCssFiles = new List<string>
-                {
-                    "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css",
-                    "/css/custom-styles.css"
-                },
-                GlobalJavaScriptFiles = new List<string>
-                {
-                    "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js",
-                    "/js/custom-scripts.js"
-                },
-                GlobalMetaTags = new List<string>
-                {
-                    "<meta name=\"description\" content=\"Test description\">",
-                    "<meta property=\"og:title\" content=\"Test Title\">"
-                },
-                GlobalLinkTags = new List<string>
-                {
-                    "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">",
-                    "<link rel=\"canonical\" href=\"https://example.com\">"
-                },
                 IncludeDefaultCss = true,
                 IncludeDefaultJavaScript = true,
                 IncludeGCDSResources = true,
                 IncludeFontAwesome = true
             };
+
+            // Add items to the read-only collections after object creation
+            _settings.GlobalCssFiles.Add("https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css");
+            _settings.GlobalCssFiles.Add("/css/custom-styles.css");
+
+            _settings.GlobalJavaScriptFiles.Add("https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js");
+            _settings.GlobalJavaScriptFiles.Add("/js/custom-scripts.js");
+
+            _settings.GlobalMetaTags.Add("<meta name=\"description\" content=\"Test description\">");
+            _settings.GlobalMetaTags.Add("<meta property=\"og:title\" content=\"Test Title\">");
+
+            _settings.GlobalLinkTags.Add("<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">");
+            _settings.GlobalLinkTags.Add("<link rel=\"canonical\" href=\"https://example.com\">");
 
             var options = Options.Create(_settings);
             _helper = new GlobalResourceHelper(options);

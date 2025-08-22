@@ -1,4 +1,5 @@
 ﻿using GCFoundation.Common.Utilities;
+using System.Collections.ObjectModel;
 
 namespace GCFoundation.Common.Settings
 {
@@ -96,28 +97,28 @@ namespace GCFoundation.Common.Settings
         public string SupportLinkEn { get; set; } = default!;
 
         /// <summary>
-        /// Gets or sets the list of additional CSS files to include globally.
+        /// Gets the list of additional CSS files to include globally.
         /// These can be local paths or CDN URLs.
         /// </summary>
-        public List<string> GlobalCssFiles { get; set; } = new List<string>();
+        public Collection<string> GlobalCssFiles { get; } = new Collection<string>();
 
         /// <summary>
-        /// Gets or sets the list of additional JavaScript files to include globally.
+        /// Gets the list of additional JavaScript files to include globally.
         /// These can be local paths or CDN URLs.
         /// </summary>
-        public List<string> GlobalJavaScriptFiles { get; set; } = new List<string>();
+        public Collection<string> GlobalJavaScriptFiles { get; } = new Collection<string>();
 
         /// <summary>
-        /// Gets or sets the list of additional meta tags to include in the head section.
+        /// Gets the list of additional meta tags to include in the head section.
         /// Each item should be a complete meta tag (e.g., "&lt;meta name=\"description\" content=\"...\"&gt;").
         /// </summary>
-        public List<string> GlobalMetaTags { get; set; } = new List<string>();
+        public Collection<string> GlobalMetaTags { get; } = new Collection<string>();
 
         /// <summary>
-        /// Gets or sets the list of additional link tags to include in the head section.
+        /// Gets the list of additional link tags to include in the head section.
         /// Each item should be a complete link tag (e.g., "&lt;link rel=\"preconnect\" href=\"...\"&gt;").
         /// </summary>
-        public List<string> GlobalLinkTags { get; set; } = new List<string>();
+        public Collection<string> GlobalLinkTags { get; } = new Collection<string>();
 
         /// <summary>
         /// Gets or sets whether to include the default foundation CSS files.

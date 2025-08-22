@@ -15,7 +15,7 @@
 	<RepositoryUrl></RepositoryUrl>
 	<IncludeSymbols>true</IncludeSymbols>
 	<IncludeSource>true</IncludeSource>
-	<ErrorLog>Foundation.Components.Security,version=2.1</ErrorLog>
+	<ErrorLog>Foundation.Components.Security.sarif,version=2.1</ErrorLog>
   </PropertyGroup>
 
   <ItemGroup>

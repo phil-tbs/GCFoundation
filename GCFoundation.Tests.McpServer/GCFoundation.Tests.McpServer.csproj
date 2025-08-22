@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsTestProject>true</IsTestProject>
+    <RootNamespace>GCFoundation.Tests.McpServer</RootNamespace>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>GCFoundation.Tests.McpServer</AssemblyName>
+    <ErrorLog>GCFoundation.Tests.McpServer.sarif,version=2.1</ErrorLog>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
+    <PackageReference Include="Moq" Version="4.20.72" />
+    <PackageReference Include="xunit.v3" Version="1.1.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.0.2" />
+    <PackageReference Include="coverlet.collector" Version="6.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="FluentAssertions" Version="6.12.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GCFoundation.McpServer\GCFoundation.McpServer.csproj" />
+    <ProjectReference Include="..\GCFoundation.Components\CGFoundation.Components.csproj" />
+    <ProjectReference Include="..\GCFoundation.Common\GCFoundation.Common.csproj" />
+  </ItemGroup>
+
+</Project>

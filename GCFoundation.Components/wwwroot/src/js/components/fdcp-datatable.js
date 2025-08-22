@@ -26,6 +26,28 @@
         config.ajaxContentType = "json";
         config.paginationMode = "remote";
         config.filterMode = "remote";
+
+        // Add anti-forgery token to AJAX requests if available
+        if (el.dataset.antiforgeryToken) {
+            // Parse the anti-forgery token HTML to extract the token value
+            const parser = new DOMParser();
+            const tokenDoc = parser.parseFromString(el.dataset.antiforgeryToken, 'text/html');
+            const tokenInput = tokenDoc.querySelector('input[name="__RequestVerificationToken"]');
+            
+            if (tokenInput) {
+                const tokenValue = tokenInput.getAttribute('value');
+                config.ajaxRequestFunc = function(url, config, params) {
+                    return fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'RequestVerificationToken': tokenValue
+                        },
+                        body: JSON.stringify(params)
+                    }).then(response => response.json());
+                };
+            }
+        }
     }
 
 
@@ -43,17 +65,12 @@ document.querySelectorAll('.tabulator-search-input').forEach(el => {
         if (value === "") {
             table.clearFilter();
         } else {
-            console.log(table.getColumns());
-            const fields = table.getColumns()
-                .filter(col => {
-                    const def = col.getDefinition();
-                    return def.filter; // Only fields with headerFilter enabled
-                })
-                .map(col => col.getField());
-
+            // Get the table element to access filterable fields
+            const tableElement = document.getElementById(tabulatorId);
+            const filterableFields = JSON.parse(tableElement.dataset.filterableFields || '[]');
 
             table.setFilter(
-                fields.map(field => ({ field: field, type: "like", value: value }))
+                filterableFields.map(field => ({ field: field, type: "like", value: value }))
             );
         }
     }, 200)); // 200ms debounce

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/draft/2025-07-09/server.json",
+  "description": "MCP server for GC Foundation components that helps developers generate Government of Canada Design System (GCDS) and Federal Design Component Package (FDCP) markup, forms, and layouts.",
+  "name": "io.github.gc-foundation/gcfoundation-mcp-server",
+  "packages": [
+    {
+      "registry_name": "nuget",
+      "name": "GCFoundation.McpServer",
+      "version": "0.1.0-beta",
+      "package_arguments": [],
+      "environment_variables": [
+        {
+          "name": "ASPNETCORE_ENVIRONMENT",
+          "value": "{environment}",
+          "variables": {
+            "environment": {
+              "description": "ASP.NET Core environment setting (Development, Staging, Production)",
+              "is_required": false,
+              "is_secret": false
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "repository": {
+    "url": "https://github.com/gc-foundation/GCFoundation",
+    "source": "github"
+  },
+  "version_detail": {
+    "version": "0.1.0-beta"
+  }
+}
