@@ -42,8 +42,9 @@ namespace GCFoundation.Components.Models
         public string? Tooltip { get; set; }
 
         /// <summary>
-        /// If we want to filter on that column
+        /// If we want to filter on that column (used for custom filtering, not passed to Tabulator)
         /// </summary>
+        [JsonIgnore]
         public bool Filter { get; set; }
 
     }

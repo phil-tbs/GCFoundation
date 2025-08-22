@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
 	<AnalysisMode>All</AnalysisMode>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
-	<ErrorLog>Foundation.Components.Common,version=2.1</ErrorLog>
+	<ErrorLog>$(OutputPath)Foundation.Components.Common.sarif</ErrorLog>
   </PropertyGroup>
 
   <ItemGroup>
