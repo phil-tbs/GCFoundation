@@ -2,67 +2,67 @@
 @using GCFoundation.Web.Resources
 @using Microsoft.AspNetCore.Routing
 
-<gcds-heading tag="h1" margin-bottom="400">Components</gcds-heading>
+<gcds-heading tag="h1" margin-bottom="400">@Components.Index_Page_Title</gcds-heading>
 
 <gcds-grid columns="repeat(3, 1fr)" equal-row-height>
    
-    <gcds-card card-title="Forms"
-               href="@Url.Action("FormValidationTest", "Components")"
-               description="A way to create forms">
-
-    </gcds-card>
-
-    <gcds-card card-title="Table"
-               href="@Url.Action("Table", "Components")"
-               description="A way to display information in a table">
-
-    </gcds-card>
-
-    <gcds-card card-title="Modal"
-               href="@Url.Action("Modal", "Components")"
-               description="A way to display information in a popup box (modal)">
-
-    </gcds-card>
-
-    <gcds-card card-title="Filtered search"
-               href="@Url.Action("Index", "FilteredSearch")"
-               description="A way to display search with filtered result">
-
-    </gcds-card>
-
-    <gcds-card card-title="Badge"
+    <gcds-card card-title="@Components.Index_Badge_Title"
                href="@Url.Action("Badge", "Components")"
-               description="A way to display tags">
+               description="@Components.Index_Badge_Description">
 
     </gcds-card>
 
-    <gcds-card card-title="Card"
+    <gcds-card card-title="@Components.Index_Card_Title"
                href="@Url.Action("Card", "Components")"
-               description="Flexible content containers with headers, footers, and images">
+               description="@Components.Index_Card_Description">
 
     </gcds-card>
 
-    <gcds-card card-title="Page heading"
+    <gcds-card card-title="@Components.Index_FilteredSearch_Title"
+               href="@Url.Action("Index", "FilteredSearch")"
+               description="@Components.Index_FilteredSearch_Description">
+
+    </gcds-card>
+
+    <gcds-card card-title="@Components.Index_FormBuilder_Title"
+               href="@Url.Action("FormBuilder", "Components")"
+               description="@Components.Index_FormBuilder_Description">
+
+    </gcds-card>
+
+    <gcds-card card-title="@Components.Index_Forms_Title"
+               href="@Url.Action("Forms", "Components")"
+               description="@Components.Index_Forms_Description">
+
+    </gcds-card>
+
+    <gcds-card card-title="@Components.Index_Modal_Title"
+               href="@Url.Action("Modal", "Components")"
+               description="@Components.Index_Modal_Description">
+
+    </gcds-card>
+
+    <gcds-card card-title="@Components.Index_PageHeading_Title"
                href="@Url.Action("PageHeading", "Components")"
-               description="A way to add main heading at the top of the page">
+               description="@Components.Index_PageHeading_Description">
 
     </gcds-card>
 
-    <gcds-card card-title="Form builder"
-               href="@Url.Action("ExampleFormBuilder", "Components")"
-               description="A way to build form automaticly from a structure">
-
-    </gcds-card>
-
-    <gcds-card card-title="Stepper"
+    <gcds-card card-title="@Components.Index_Stepper_Title"
                href="@Url.Action("Stepper", "Components")"
-               description="Create a stepper for a flow or a form">
+               description="@Components.Index_Stepper_Description">
 
     </gcds-card>
 
-    <gcds-card card-title="User Login Partial"
+    <gcds-card card-title="@Components.Index_Table_Title"
+               href="@Url.Action("Table", "Components")"
+               description="@Components.Index_Table_Description">
+
+    </gcds-card>
+
+    <gcds-card card-title="@Components.Index_UserLoginPartial_Title"
                href="@Url.Action("UserLogin", "Components")"
-               description="Configurable user login information display with bilingual support">
+               description="@Components.Index_UserLoginPartial_Description">
 
     </gcds-card>
 

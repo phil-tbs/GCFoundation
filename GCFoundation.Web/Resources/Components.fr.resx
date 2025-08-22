@@ -328,6 +328,12 @@
   <data name="UserLogin_PageTitle" xml:space="preserve">
     <value>Exemples de partiel de connexion utilisateur</value>
   </data>
+  <data name="UserLogin_Component_Title" xml:space="preserve">
+    <value>Composant partiel de connexion utilisateur</value>
+  </data>
+  <data name="UserLogin_Position_PageTitle" xml:space="preserve">
+    <value>Connexion utilisateur en position {0}</value>
+  </data>
   <data name="UserLogin_PageDescription" xml:space="preserve">
     <value>Cette page démontre le composant partiel de connexion utilisateur configurable avec support de localisation en anglais et français. Le partiel peut être personnalisé grâce aux paramètres de configuration et affiche différentes informations selon l'état d'authentification.</value>
   </data>
@@ -370,9 +376,6 @@
   <data name="UserLogin_Feature_Integration" xml:space="preserve">
     <value>Intégration facile avec les systèmes d'authentification existants</value>
   </data>
-  <data name="UserLogin_Position_PageTitle" xml:space="preserve">
-    <value>Connexion utilisateur en position {0}</value>
-  </data>
   <data name="UserLogin_Position_Description" xml:space="preserve">
     <value>Cet exemple montre comment le partiel de connexion utilisateur peut être positionné dans différentes zones de votre application.</value>
   </data>
@@ -403,9 +406,6 @@
   <data name="UserLogin_Position_BackToExamples" xml:space="preserve">
     <value>← Retour aux exemples</value>
   </data>
-  <data name="UserLogin_Component_Title" xml:space="preserve">
-    <value>Composant partiel de connexion utilisateur</value>
-  </data>
   <data name="UserLogin_Component_Description" xml:space="preserve">
     <value>Un composant d'informations de connexion utilisateur configurable et bilingue qui affiche l'état d'authentification, les détails utilisateur et les informations de session. Parfait pour les déploiements cloud Azure avec authentification sans état.</value>
   </data>
@@ -422,10 +422,10 @@
     <value>Ceci montre l'état d'authentification réel du contexte utilisateur actuel.</value>
   </data>
   <data name="UserLogin_CurrentlyAuthenticated" xml:space="preserve">
-    <value>Vous êtes actuellement <strong>authentifié</strong>.</value>
+    <value />
   </data>
   <data name="UserLogin_CurrentlyNotAuthenticated" xml:space="preserve">
-    <value>Vous n'êtes actuellement <strong>pas authentifié</strong>.</value>
+    <value />
   </data>
   <data name="UserLogin_SimulateLoginNote" xml:space="preserve">
     <value>Utilisez le bouton "Simuler la connexion" dans la section Exemples pour voir l'état authentifié.</value>
@@ -503,7 +503,7 @@
     <value>Authentification sans état basée sur les cookies sans sessions côté serveur. Parfait pour les déploiements cloud Azure.</value>
   </data>
   <data name="UserLogin_CookieAuth_Benefits" xml:space="preserve">
-    <value><strong>Avantages :</strong> Pas de Redis requis, mise à l'échelle automatique, implémentation simple.</value>
+    <value />
   </data>
   <data name="UserLogin_AzureAD" xml:space="preserve">
     <value>Azure Active Directory</value>
@@ -512,7 +512,7 @@
     <value>Authentification d'entreprise avec intégration Office 365 et support de connexion unique.</value>
   </data>
   <data name="UserLogin_AzureAD_Benefits" xml:space="preserve">
-    <value><strong>Avantages :</strong> SSO, MFA, prêt pour l'entreprise, natif Azure.</value>
+    <value />
   </data>
   <data name="UserLogin_JWTTokens" xml:space="preserve">
     <value>Jetons JWT</value>
@@ -521,7 +521,7 @@
     <value>Authentification par jeton Web JSON pour les applications API-first et les microservices.</value>
   </data>
   <data name="UserLogin_JWTTokens_Benefits" xml:space="preserve">
-    <value><strong>Avantages :</strong> Complètement sans état, multiplateforme, vérifiable.</value>
+    <value />
   </data>
   <data name="UserLogin_ExternalProviders" xml:space="preserve">
     <value>Fournisseurs externes</value>
@@ -530,7 +530,7 @@
     <value>Intégration OAuth avec Google, GitHub, Microsoft et autres fournisseurs externes.</value>
   </data>
   <data name="UserLogin_ExternalProviders_Benefits" xml:space="preserve">
-    <value><strong>Avantages :</strong> Pas de gestion de mots de passe, commodité utilisateur, sécurité.</value>
+    <value />
   </data>
   <data name="UserLogin_AdditionalResources" xml:space="preserve">
     <value>Ressources supplémentaires</value>
@@ -547,23 +547,245 @@
   <data name="UserLogin_StatelessAuth_Description" xml:space="preserve">
     <value>Exemples d'authentification prêts pour le cloud Azure sans sessions.</value>
   </data>
+  <data name="UserLogin_TemplateIntegration" xml:space="preserve">
+    <value>Intégration de modèle</value>
+  </data>
+  <data name="UserLogin_TemplateIntegration_Description" xml:space="preserve">
+    <value>Apprenez comment intégrer le partiel dans vos modèles de mise en page.</value>
+  </data>
+  <data name="UserLogin_QuickImplementation" xml:space="preserve">
+    <value>Guide d'implémentation rapide</value>
+  </data>
+  <data name="UserLogin_Step_ConfigureSettings" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UserLogin_Step_RegisterServices" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UserLogin_Step_SetInController" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UserLogin_Step_ConfigureAuth" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UserLogin_Step_CustomizeAppearance" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Cards_Title" xml:space="preserve">
+    <value>Documentation des cartes FDCP</value>
+  </data>
+  <data name="Cards_Overview_Title" xml:space="preserve">
+    <value>Aperçu</value>
+  </data>
+  <data name="Cards_Overview_Anchor" xml:space="preserve">
+    <value>apercu</value>
+  </data>
+  <data name="Cards_Basic_Title" xml:space="preserve">
+    <value>Carte de base</value>
+  </data>
+  <data name="Cards_Basic_Anchor" xml:space="preserve">
+    <value>base</value>
+  </data>
+  <data name="Cards_WithSlots_Title" xml:space="preserve">
+    <value>Cartes avec en-tête et pied de page</value>
+  </data>
+  <data name="Cards_WithSlots_Anchor" xml:space="preserve">
+    <value>slots</value>
+  </data>
+  <data name="Cards_WithImages_Title" xml:space="preserve">
+    <value>Cartes avec images</value>
+  </data>
+  <data name="Cards_WithImages_Anchor" xml:space="preserve">
+    <value>images</value>
+  </data>
+  <data name="Cards_Horizontal_Title" xml:space="preserve">
+    <value>Cartes horizontales</value>
+  </data>
+  <data name="Cards_Horizontal_Anchor" xml:space="preserve">
+    <value>horizontal</value>
+  </data>
+  <data name="Cards_Parameters_Title" xml:space="preserve">
+    <value>Paramètres</value>
+  </data>
+  <data name="Cards_Parameters_Anchor" xml:space="preserve">
+    <value>parametres</value>
+  </data>
+  <data name="Cards_Notes_Title" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="Cards_Notes_Anchor" xml:space="preserve">
+    <value>notes</value>
+  </data>
+  <data name="Cards_Overview_Text" xml:space="preserve">
+    <value>Le composant &lt;code&gt;&amp;lt;fdcp-card&amp;gt;&lt;/code&gt; fournit un conteneur de contenu flexible et extensible inspiré des cartes Bootstrap, conçu avec le style du Système de design du gouvernement du Canada (SGDC). Il inclut des options pour les en-têtes, pieds de page, images et diverses couleurs d'arrière-plan contextuelles.</value>
+  </data>
+  <data name="Cards_Basic_Text" xml:space="preserve">
+    <value>Une carte de base avec contenu mixte et largeur flexible.</value>
+  </data>
+  <data name="Cards_WithSlots_Text" xml:space="preserve">
+    <value>Utilisez l'attribut &lt;code&gt;slot&lt;/code&gt; pour définir les sections d'en-tête, corps et pied de page.</value>
+  </data>
+  <data name="Cards_WithImages_Text" xml:space="preserve">
+    <value>Les cartes supportent les images en haut et en bas en utilisant les attributs &lt;code&gt;image-top&lt;/code&gt; et &lt;code&gt;image-bottom&lt;/code&gt;.</value>
+  </data>
+  <data name="Cards_Horizontal_Text" xml:space="preserve">
+    <value>Utilisez l'attribut &lt;code&gt;horizontal="true"&lt;/code&gt; pour créer des dispositions de cartes horizontales.</value>
+  </data>
+  <data name="Cards_Parameters_TagId" xml:space="preserve">
+    <value>Attribut &lt;code&gt;id&lt;/code&gt; optionnel pour l'élément carte.</value>
+  </data>
+  <data name="Cards_Parameters_Width" xml:space="preserve">
+    <value>Définit la largeur de la carte en utilisant une valeur CSS (ex: "18rem", "300px", "100%").</value>
+  </data>
+  <data name="Cards_Parameters_Height" xml:space="preserve">
+    <value>Définit la hauteur de la carte en utilisant une valeur CSS (ex: "200px", "auto", "100%").</value>
+  </data>
+  <data name="Cards_Parameters_Border" xml:space="preserve">
+    <value>Si la carte doit avoir une bordure. Par défaut: true.</value>
+  </data>
+  <data name="Cards_Parameters_Shadow" xml:space="preserve">
+    <value>Si la carte doit avoir une ombre. Par défaut: false.</value>
+  </data>
+  <data name="Cards_Parameters_ImageTop" xml:space="preserve">
+    <value>URL pour l'image de la carte qui apparaît en haut.</value>
+  </data>
+  <data name="Cards_Parameters_ImageBottom" xml:space="preserve">
+    <value>URL pour l'image de la carte qui apparaît en bas.</value>
+  </data>
+  <data name="Cards_Parameters_ImageAlt" xml:space="preserve">
+    <value>Texte alternatif pour les images de la carte.</value>
+  </data>
+  <data name="Cards_Parameters_Horizontal" xml:space="preserve">
+    <value>Si la carte doit utiliser une disposition horizontale. Par défaut: false.</value>
+  </data>
+  <data name="Cards_Notes_1" xml:space="preserve">
+    <value>Utilisez &lt;code&gt;slot="header"&lt;/code&gt;, &lt;code&gt;slot="body"&lt;/code&gt; et &lt;code&gt;slot="footer"&lt;/code&gt; pour définir les sections de la carte.</value>
+  </data>
+  <data name="Cards_Notes_2" xml:space="preserve">
+    <value>Les cartes sont réactives et s'adaptent à la largeur de leur conteneur sauf si une largeur spécifique est définie.</value>
+  </data>
+  <data name="Cards_Notes_3" xml:space="preserve">
+    <value>Toutes les cartes utilisent les variables de couleur SGDC pour un style cohérent du gouvernement du Canada.</value>
+  </data>
   <data name="StatelessAuth_Demo_Title" xml:space="preserve">
     <value>Démonstration d'authentification sans état</value>
   </data>
   <data name="StatelessAuth_Demo_Description" xml:space="preserve">
     <value>Essayez l'authentification par cookie ci-dessous et voyez comment le partiel de connexion utilisateur se met à jour automatiquement.</value>
   </data>
+  <data name="StatelessAuth_Authenticated_Message" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Cards_Overview_Anchor" xml:space="preserve">
+    <value>apercu</value>
+  </data>
+  <data name="Cards_Basic_Anchor" xml:space="preserve">
+    <value>base</value>
+  </data>
+  <data name="Cards_WithSlots_Anchor" xml:space="preserve">
+    <value>slots</value>
+  </data>
+  <data name="Cards_WithImages_Anchor" xml:space="preserve">
+    <value>images</value>
+  </data>
+  <data name="Cards_Horizontal_Anchor" xml:space="preserve">
+    <value>horizontal</value>
+  </data>
+  <data name="Cards_Parameters_Anchor" xml:space="preserve">
+    <value>parametres</value>
+  </data>
+  <data name="Cards_Notes_Anchor" xml:space="preserve">
+    <value>notes</value>
+  </data>
+  <data name="StatelessAuth_Current_Status_Title" xml:space="preserve">
+    <value>État d'authentification actuel</value>
+  </data>
+  <data name="StatelessAuth_Session_Info_Message" xml:space="preserve">
+    <value>Le composant de connexion utilisateur ci-dessus affiche vos informations de session actuelles à partir des revendications (pas de stockage de session côté serveur).</value>
+  </data>
+  <data name="StatelessAuth_Not_Authenticated_Message" xml:space="preserve">
+    <value />
+  </data>
+  <data name="StatelessAuth_Login_Partial_Update_Message" xml:space="preserve">
+    <value>Remarquez comment le composant de connexion utilisateur se mettra à jour automatiquement après la connexion.</value>
+  </data>
+  <data name="StatelessAuth_Interactive_Demo_Title" xml:space="preserve">
+    <value>Démonstration d'authentification interactive</value>
+  </data>
+  <data name="StatelessAuth_Logout_Button_Text" xml:space="preserve">
+    <value>🚪 Déconnexion</value>
+  </data>
+  <data name="StatelessAuth_Login_Button_Text" xml:space="preserve">
+    <value>🔐 Connexion avec auth cookie</value>
+  </data>
+  <data name="StatelessAuth_Logout_Description" xml:space="preserve">
+    <value>Vous êtes connecté ! Cliquez sur déconnexion pour effacer le cookie d'authentification.</value>
+  </data>
+  <data name="StatelessAuth_Login_Description" xml:space="preserve">
+    <value>Ceci créera un cookie d'authentification avec les revendications utilisateur (pas de stockage de session).</value>
+  </data>
+  <data name="StatelessAuth_Technical_Info_Title" xml:space="preserve">
+    <value>Informations techniques</value>
+  </data>
+  <data name="StatelessAuth_Demo_Buttons_Title" xml:space="preserve">
+    <value>Points de terminaison API de démonstration</value>
+  </data>
+  <data name="StatelessAuth_User_Info_Button" xml:space="preserve">
+    <value>Obtenir les infos utilisateur</value>
+  </data>
+  <data name="StatelessAuth_Auth_Status_Button" xml:space="preserve">
+    <value>Vérifier l'état d'auth</value>
+  </data>
+  <data name="StatelessAuth_Demo_Results_Title" xml:space="preserve">
+    <value>Réponse API</value>
+  </data>
+  <data name="StatelessAuth_Authentication_Methods_Title" xml:space="preserve">
+    <value>Comparaison des méthodes d'authentification</value>
+  </data>
+  <data name="StatelessAuth_Cookie_Method_Title" xml:space="preserve">
+    <value>🍪 Authentification par cookie (sans état)</value>
+  </data>
+  <data name="StatelessAuth_Cookie_Benefit_1" xml:space="preserve">
+    <value>Revendications stockées dans des cookies chiffrés</value>
+  </data>
+  <data name="StatelessAuth_Cookie_Benefit_2" xml:space="preserve">
+    <value>Pas de stockage de session côté serveur</value>
+  </data>
+  <data name="StatelessAuth_Cookie_Benefit_3" xml:space="preserve">
+    <value>Parfait pour la mise à l'échelle d'Azure App Service</value>
+  </data>
+  <data name="StatelessAuth_JWT_Method_Title" xml:space="preserve">
+    <value>🎫 Authentification JWT</value>
+  </data>
+  <data name="StatelessAuth_JWT_Benefit_1" xml:space="preserve">
+    <value>Authentification basée sur des jetons</value>
+  </data>
+  <data name="StatelessAuth_JWT_Benefit_2" xml:space="preserve">
+    <value>Idéal pour les points de terminaison API</value>
+  </data>
+  <data name="StatelessAuth_JWT_Benefit_3" xml:space="preserve">
+    <value>Sans état et évolutif</value>
+  </data>
+  <data name="StatelessAuth_Azure_Method_Title" xml:space="preserve">
+    <value>☁️ Azure AD / Entra ID</value>
+  </data>
+  <data name="StatelessAuth_Azure_Benefit_1" xml:space="preserve">
+    <value>Authentification unique d'entreprise</value>
+  </data>
+  <data name="StatelessAuth_Azure_Benefit_2" xml:space="preserve">
+    <value>Authentification multifacteur</value>
+  </data>
+  <data name="StatelessAuth_Azure_Benefit_3" xml:space="preserve">
+    <value>Compatibilité avec le cloud gouvernemental</value>
+  </data>
   <data name="StatelessAuth_CurrentStatus_Title" xml:space="preserve">
     <value>Statut d'authentification actuel</value>
-  </data>
-  <data name="StatelessAuth_Authenticated_Message" xml:space="preserve">
-    <value><strong>✅ Authentifié</strong> - Vous êtes actuellement connecté en tant que <strong>{0}</strong></value>
   </data>
   <data name="StatelessAuth_Authenticated_Description" xml:space="preserve">
     <value>Le partiel de connexion utilisateur ci-dessus affiche vos informations de session actuelles à partir des revendications (aucun stockage de session côté serveur).</value>
   </data>
   <data name="StatelessAuth_NotAuthenticated_Message" xml:space="preserve">
-    <value><strong>❌ Non authentifié</strong> - Essayez la connexion par cookie ci-dessous pour voir l'authentification sans état en action.</value>
+    <value />
   </data>
   <data name="StatelessAuth_NotAuthenticated_Description" xml:space="preserve">
     <value>Remarquez comment le partiel de connexion utilisateur se mettra à jour automatiquement après la connexion.</value>
@@ -590,7 +812,7 @@
     <value>Informations techniques</value>
   </data>
   <data name="StatelessAuth_HowItWorks" xml:space="preserve">
-    <value><strong>Comment ça fonctionne :</strong></value>
+    <value />
   </data>
   <data name="StatelessAuth_Benefit_Claims" xml:space="preserve">
     <value>✅ Revendications stockées dans le cookie d'authentification</value>
@@ -683,210 +905,72 @@
     <value>💡 Intégration avec le partiel de connexion utilisateur</value>
   </data>
   <data name="StatelessAuth_Integration_Description1" xml:space="preserve">
-    <value><strong>Le partiel de connexion utilisateur fonctionne parfaitement avec toutes ces méthodes d'authentification !</strong> Il lit automatiquement les informations utilisateur à partir des revendications plutôt que des sessions, ce qui le rend parfait pour l'authentification sans état.</value>
+    <value />
   </data>
   <data name="StatelessAuth_Integration_Description2" xml:space="preserve">
-    <value>Que vous utilisiez des cookies, Azure AD, JWT ou OAuth - le partiel affichera automatiquement les bonnes informations utilisateur en mappant les types de revendications comme <code>ClaimTypes.Name</code>, <code>ClaimTypes.Email</code>, <code>ClaimTypes.Role</code>, etc.</value>
+    <value />
   </data>
-  <data name="UserLogin_TemplateIntegration" xml:space="preserve">
-    <value>Intégration de modèle</value>
+  <data name="Index_Forms_Title" xml:space="preserve">
+    <value>Formulaires</value>
   </data>
-  <data name="UserLogin_TemplateIntegration_Description" xml:space="preserve">
-    <value>Apprenez comment intégrer le partiel dans vos modèles de mise en page.</value>
+  <data name="Index_Forms_Description" xml:space="preserve">
+    <value>Un moyen de créer des formulaires</value>
   </data>
-  <data name="UserLogin_QuickImplementation" xml:space="preserve">
-    <value>Guide d'implémentation rapide</value>
+  <data name="Index_Table_Title" xml:space="preserve">
+    <value>Tableau</value>
   </data>
-  <data name="UserLogin_Step_ConfigureSettings" xml:space="preserve">
-    <value><strong>Configurer les paramètres :</strong> Ajoutez UserLoginSettings à votre appsettings.json</value>
+  <data name="Index_Table_Description" xml:space="preserve">
+    <value>Un moyen d'afficher des informations dans un tableau</value>
   </data>
-  <data name="UserLogin_Step_RegisterServices" xml:space="preserve">
-    <value><strong>Enregistrer les services :</strong> Les services sont auto-enregistrés avec AddGCFoundationComponents()</value>
+  <data name="Index_Modal_Title" xml:space="preserve">
+    <value>Fenêtre modale</value>
   </data>
-  <data name="UserLogin_Step_SetInController" xml:space="preserve">
-    <value><strong>Définir dans le contrôleur :</strong> ViewData["LoginPartialViewName"] = "_UserLoginPartial"</value>
+  <data name="Index_Modal_Description" xml:space="preserve">
+    <value>Un moyen d'afficher des informations dans une boîte de dialogue (modale)</value>
   </data>
-  <data name="UserLogin_Step_ConfigureAuth" xml:space="preserve">
-    <value><strong>Configurer l'authentification :</strong> Choisissez cookie, JWT, Azure AD ou autre méthode d'auth</value>
+  <data name="Index_FilteredSearch_Title" xml:space="preserve">
+    <value>Recherche filtrée</value>
   </data>
-  <data name="UserLogin_Step_CustomizeAppearance" xml:space="preserve">
-    <value><strong>Personnaliser l'apparence :</strong> Modifiez les paramètres pour afficher/masquer les informations utilisateur désirées</value>
+  <data name="Index_FilteredSearch_Description" xml:space="preserve">
+    <value>Un moyen d'afficher une recherche avec des résultats filtrés</value>
   </data>
-  <data name="Cards_Title" xml:space="preserve">
-    <value>Documentation des cartes FDCP</value>
+  <data name="Index_Badge_Title" xml:space="preserve">
+    <value>Badge</value>
   </data>
-  <data name="Cards_Overview_Title" xml:space="preserve">
-    <value>Aperçu</value>
+  <data name="Index_Badge_Description" xml:space="preserve">
+    <value>Un moyen d'afficher des étiquettes</value>
   </data>
-  <data name="Cards_Overview_Text" xml:space="preserve">
-    <value>Le composant &lt;code&gt;&amp;lt;fdcp-card&amp;gt;&lt;/code&gt; fournit un conteneur de contenu flexible et extensible inspiré des cartes Bootstrap, conçu avec le style du Système de design du gouvernement du Canada (SGDC). Il inclut des options pour les en-têtes, pieds de page, images et diverses couleurs d'arrière-plan contextuelles.</value>
+  <data name="Index_Card_Title" xml:space="preserve">
+    <value>Carte</value>
   </data>
-  <data name="Cards_Basic_Title" xml:space="preserve">
-    <value>Carte de base</value>
+  <data name="Index_Card_Description" xml:space="preserve">
+    <value>Conteneurs de contenu flexibles avec en-têtes, pieds de page et images</value>
   </data>
-  <data name="Cards_Basic_Text" xml:space="preserve">
-    <value>Une carte de base avec contenu mixte et largeur flexible.</value>
+  <data name="Index_PageHeading_Title" xml:space="preserve">
+    <value>En-tête de page</value>
   </data>
-  <data name="Cards_WithSlots_Title" xml:space="preserve">
-    <value>Cartes avec en-tête et pied de page</value>
+  <data name="Index_PageHeading_Description" xml:space="preserve">
+    <value>Un moyen d'ajouter un titre principal en haut de la page</value>
   </data>
-  <data name="Cards_WithSlots_Text" xml:space="preserve">
-    <value>Utilisez l'attribut &lt;code&gt;slot&lt;/code&gt; pour définir les sections d'en-tête, corps et pied de page.</value>
+  <data name="Index_FormBuilder_Title" xml:space="preserve">
+    <value>Constructeur de formulaires</value>
   </data>
-  <data name="Cards_WithImages_Title" xml:space="preserve">
-    <value>Cartes avec images</value>
+  <data name="Index_FormBuilder_Description" xml:space="preserve">
+    <value>Un moyen de construire automatiquement un formulaire à partir d'une structure</value>
   </data>
-  <data name="Cards_WithImages_Text" xml:space="preserve">
-    <value>Les cartes supportent les images en haut et en bas en utilisant les attributs &lt;code&gt;image-top&lt;/code&gt; et &lt;code&gt;image-bottom&lt;/code&gt;.</value>
+  <data name="Index_Stepper_Title" xml:space="preserve">
+    <value>Étapes</value>
   </data>
-  <data name="Cards_Horizontal_Title" xml:space="preserve">
-    <value>Cartes horizontales</value>
+  <data name="Index_Stepper_Description" xml:space="preserve">
+    <value>Créer un processus étape par étape pour un flux ou un formulaire</value>
   </data>
-  <data name="Cards_Horizontal_Text" xml:space="preserve">
-    <value>Utilisez l'attribut &lt;code&gt;horizontal="true"&lt;/code&gt; pour créer des dispositions de cartes horizontales.</value>
+  <data name="Index_UserLoginPartial_Title" xml:space="preserve">
+    <value>Partiel de connexion utilisateur</value>
   </data>
-  <data name="Cards_Parameters_Title" xml:space="preserve">
-    <value>Paramètres</value>
+  <data name="Index_UserLoginPartial_Description" xml:space="preserve">
+    <value>Affichage configurable des informations de connexion utilisateur avec support bilingue</value>
   </data>
-  <data name="Cards_Parameters_TagId" xml:space="preserve">
-    <value>Attribut &lt;code&gt;id&lt;/code&gt; optionnel pour l'élément carte.</value>
-  </data>
-  <data name="Cards_Parameters_Width" xml:space="preserve">
-    <value>Définit la largeur de la carte en utilisant une valeur CSS (ex: "18rem", "300px", "100%").</value>
-  </data>
-  <data name="Cards_Parameters_Height" xml:space="preserve">
-    <value>Définit la hauteur de la carte en utilisant une valeur CSS (ex: "200px", "auto", "100%").</value>
-  </data>
-  <data name="Cards_Parameters_Border" xml:space="preserve">
-    <value>Si la carte doit avoir une bordure. Par défaut: true.</value>
-  </data>
-  <data name="Cards_Parameters_Shadow" xml:space="preserve">
-    <value>Si la carte doit avoir une ombre. Par défaut: false.</value>
-  </data>
-  <data name="Cards_Parameters_ImageTop" xml:space="preserve">
-    <value>URL pour l'image de la carte qui apparaît en haut.</value>
-  </data>
-  <data name="Cards_Parameters_ImageBottom" xml:space="preserve">
-    <value>URL pour l'image de la carte qui apparaît en bas.</value>
-  </data>
-  <data name="Cards_Parameters_ImageAlt" xml:space="preserve">
-    <value>Texte alternatif pour les images de la carte.</value>
-  </data>
-  <data name="Cards_Parameters_Horizontal" xml:space="preserve">
-    <value>Si la carte doit utiliser une disposition horizontale. Par défaut: false.</value>
-  </data>
-  <data name="Cards_Notes_Title" xml:space="preserve">
-    <value>Notes</value>
-  </data>
-  <data name="Cards_Notes_1" xml:space="preserve">
-    <value>Utilisez &lt;code&gt;slot="header"&lt;/code&gt;, &lt;code&gt;slot="body"&lt;/code&gt; et &lt;code&gt;slot="footer"&lt;/code&gt; pour définir les sections de la carte.</value>
-  </data>
-  <data name="Cards_Notes_2" xml:space="preserve">
-    <value>Les cartes sont réactives et s'adaptent à la largeur de leur conteneur sauf si une largeur spécifique est définie.</value>
-  </data>
-  <data name="Cards_Notes_3" xml:space="preserve">
-    <value>Toutes les cartes utilisent les variables de couleur SGDC pour un style cohérent du gouvernement du Canada.</value>
-  </data>
-  <data name="Cards_Overview_Anchor" xml:space="preserve">
-    <value>apercu</value>
-  </data>
-  <data name="Cards_Basic_Anchor" xml:space="preserve">
-    <value>base</value>
-  </data>
-  <data name="Cards_WithSlots_Anchor" xml:space="preserve">
-    <value>slots</value>
-  </data>
-  <data name="Cards_WithImages_Anchor" xml:space="preserve">
-    <value>images</value>
-  </data>
-  <data name="Cards_Horizontal_Anchor" xml:space="preserve">
-    <value>horizontal</value>
-  </data>
-  <data name="Cards_Parameters_Anchor" xml:space="preserve">
-    <value>parametres</value>
-  </data>
-  <data name="Cards_Notes_Anchor" xml:space="preserve">
-    <value>notes</value>
-  </data>
-  <data name="StatelessAuth_Current_Status_Title" xml:space="preserve">
-    <value>État d'authentification actuel</value>
-  </data>
-  <data name="StatelessAuth_Session_Info_Message" xml:space="preserve">
-    <value>Le composant de connexion utilisateur ci-dessus affiche vos informations de session actuelles à partir des revendications (pas de stockage de session côté serveur).</value>
-  </data>
-  <data name="StatelessAuth_Not_Authenticated_Message" xml:space="preserve">
-    <value><strong>❌ Non authentifié</strong> - Essayez la connexion par cookie ci-dessous pour voir l'authentification sans état en action.</value>
-  </data>
-  <data name="StatelessAuth_Login_Partial_Update_Message" xml:space="preserve">
-    <value>Remarquez comment le composant de connexion utilisateur se mettra à jour automatiquement après la connexion.</value>
-  </data>
-  <data name="StatelessAuth_Interactive_Demo_Title" xml:space="preserve">
-    <value>Démonstration d'authentification interactive</value>
-  </data>
-  <data name="StatelessAuth_Logout_Button_Text" xml:space="preserve">
-    <value>🚪 Déconnexion</value>
-  </data>
-  <data name="StatelessAuth_Login_Button_Text" xml:space="preserve">
-    <value>🔐 Connexion avec auth cookie</value>
-  </data>
-  <data name="StatelessAuth_Logout_Description" xml:space="preserve">
-    <value>Vous êtes connecté ! Cliquez sur déconnexion pour effacer le cookie d'authentification.</value>
-  </data>
-  <data name="StatelessAuth_Login_Description" xml:space="preserve">
-    <value>Ceci créera un cookie d'authentification avec les revendications utilisateur (pas de stockage de session).</value>
-  </data>
-  <data name="StatelessAuth_Technical_Info_Title" xml:space="preserve">
-    <value>Informations techniques</value>
-  </data>
-  <data name="StatelessAuth_Demo_Buttons_Title" xml:space="preserve">
-    <value>Points de terminaison API de démonstration</value>
-  </data>
-  <data name="StatelessAuth_User_Info_Button" xml:space="preserve">
-    <value>Obtenir les infos utilisateur</value>
-  </data>
-  <data name="StatelessAuth_Auth_Status_Button" xml:space="preserve">
-    <value>Vérifier l'état d'auth</value>
-  </data>
-  <data name="StatelessAuth_Demo_Results_Title" xml:space="preserve">
-    <value>Réponse API</value>
-  </data>
-  <data name="StatelessAuth_Authentication_Methods_Title" xml:space="preserve">
-    <value>Comparaison des méthodes d'authentification</value>
-  </data>
-  <data name="StatelessAuth_Cookie_Method_Title" xml:space="preserve">
-    <value>🍪 Authentification par cookie (sans état)</value>
-  </data>
-  <data name="StatelessAuth_Cookie_Benefit_1" xml:space="preserve">
-    <value>Revendications stockées dans des cookies chiffrés</value>
-  </data>
-  <data name="StatelessAuth_Cookie_Benefit_2" xml:space="preserve">
-    <value>Pas de stockage de session côté serveur</value>
-  </data>
-  <data name="StatelessAuth_Cookie_Benefit_3" xml:space="preserve">
-    <value>Parfait pour la mise à l'échelle d'Azure App Service</value>
-  </data>
-  <data name="StatelessAuth_JWT_Method_Title" xml:space="preserve">
-    <value>🎫 Authentification JWT</value>
-  </data>
-  <data name="StatelessAuth_JWT_Benefit_1" xml:space="preserve">
-    <value>Authentification basée sur des jetons</value>
-  </data>
-  <data name="StatelessAuth_JWT_Benefit_2" xml:space="preserve">
-    <value>Idéal pour les points de terminaison API</value>
-  </data>
-  <data name="StatelessAuth_JWT_Benefit_3" xml:space="preserve">
-    <value>Sans état et évolutif</value>
-  </data>
-  <data name="StatelessAuth_Azure_Method_Title" xml:space="preserve">
-    <value>☁️ Azure AD / Entra ID</value>
-  </data>
-  <data name="StatelessAuth_Azure_Benefit_1" xml:space="preserve">
-    <value>Authentification unique d'entreprise</value>
-  </data>
-  <data name="StatelessAuth_Azure_Benefit_2" xml:space="preserve">
-    <value>Authentification multifacteur</value>
-  </data>
-  <data name="StatelessAuth_Azure_Benefit_3" xml:space="preserve">
-    <value>Compatibilité avec le cloud gouvernemental</value>
+  <data name="Index_Page_Title" xml:space="preserve">
+    <value>Composantes</value>
   </data>
 </root>

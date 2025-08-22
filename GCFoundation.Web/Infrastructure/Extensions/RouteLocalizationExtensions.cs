@@ -43,8 +43,8 @@ namespace GCFoundation.Web.Infrastructure.Extensions
 
                 setup.UseCulture("fr")
                 .WhereController(nameof(ComponentsController))
-                .WhereAction(nameof(ComponentsController.FormValidationTest))
-                .TranslateAction("test-validation-formulaire");
+                .WhereAction(nameof(ComponentsController.Forms))
+                .TranslateAction("formulaires");
 
                 setup.UseCulture("fr")
                 .WhereController(nameof(ComponentsController))
@@ -53,13 +53,8 @@ namespace GCFoundation.Web.Infrastructure.Extensions
 
                 setup.UseCulture("fr")
                 .WhereController(nameof(ComponentsController))
-                .WhereAction(nameof(ComponentsController.ExampleFormBuilder))
-                .TranslateAction("constructeur-formulaire-exemple");
-
-                setup.UseCulture("fr")
-                .WhereController(nameof(ComponentsController))
-                .WhereAction(nameof(ComponentsController.SubmitFormBuilder))
-                .TranslateAction("soumettre-constructeur-formulaire");
+                .WhereAction(nameof(ComponentsController.FormBuilder))
+                .TranslateAction("constructeur-formulaires");
 
                 setup.UseCulture("fr")
                 .WhereController(nameof(ComponentsController))
@@ -156,8 +151,8 @@ namespace GCFoundation.Web.Infrastructure.Extensions
 
                 setup.UseCulture("en")
                     .WhereController(nameof(ComponentsController))
-                    .WhereAction(nameof(ComponentsController.FormValidationTest))
-                    .TranslateAction("testingForm");
+                    .WhereAction(nameof(ComponentsController.Forms))
+                    .TranslateAction("forms");
 
                 setup.UseCulture("en")
                     .WhereController(nameof(ComponentsController))
@@ -166,13 +161,8 @@ namespace GCFoundation.Web.Infrastructure.Extensions
 
                 setup.UseCulture("en")
                     .WhereController(nameof(ComponentsController))
-                    .WhereAction(nameof(ComponentsController.ExampleFormBuilder))
-                    .TranslateAction("TestFormBuilder");
-
-                setup.UseCulture("en")
-                    .WhereController(nameof(ComponentsController))
-                    .WhereAction(nameof(ComponentsController.SubmitFormBuilder))
-                    .TranslateAction("SubmitFormBuilder");
+                    .WhereAction(nameof(ComponentsController.FormBuilder))
+                    .TranslateAction("form-builder");
 
                 setup.UseCulture("en")
                     .WhereController(nameof(ComponentsController))

@@ -117,68 +117,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Website_Label" xml:space="preserve">
-    <value>Website</value>
-  </data>
-  <data name="Interests_Label" xml:space="preserve">
-    <value>What is your interests?</value>
-  </data>
-  <data name="Bio_Hint" xml:space="preserve">
-    <value>Write a short biography about yourself.</value>
-  </data>
-  <data name="AgreeToTerms_Hint" xml:space="preserve">
-    <value>You must agree to continue.</value>
-  </data>
-  <data name="Gender_Hint" xml:space="preserve">
-    <value>Select your gender identity.</value>
-  </data>
-  <data name="Country_Hint" xml:space="preserve">
-    <value>Select your country of residence.</value>
-  </data>
-  <data name="Password_Label" xml:space="preserve">
-    <value>Password</value>
-  </data>
-  <data name="Field_Lastname" xml:space="preserve">
-    <value>Lastname</value>
-  </data>
-  <data name="Gender_Label" xml:space="preserve">
-    <value>Gender</value>
-  </data>
-  <data name="FullName_Label" xml:space="preserve">
-    <value>Full Name</value>
-  </data>
   <data name="Field_Firstname_Label" xml:space="preserve">
     <value>Firstname</value>
-  </data>
-  <data name="Website_Hint" xml:space="preserve">
-    <value>Enter your personal or company website URL.</value>
-  </data>
-  <data name="FullName_Hint" xml:space="preserve">
-    <value>Enter your full name as shown on ID.</value>
   </data>
   <data name="Field_Firstname_Hint" xml:space="preserve">
     <value>Enter your first name</value>
   </data>
-  <data name="DateOfBirth_Hint" xml:space="preserve">
-    <value>Enter your date of birth</value>
+  <data name="Field_Lastname" xml:space="preserve">
+    <value>Lastname</value>
+  </data>
+  <data name="FullName_Label" xml:space="preserve">
+    <value>Full Name</value>
+  </data>
+  <data name="FullName_Hint" xml:space="preserve">
+    <value>Enter your full name as shown on ID.</value>
+  </data>
+  <data name="Email_Label" xml:space="preserve">
+    <value>Email adress</value>
   </data>
   <data name="Email_Hint" xml:space="preserve">
     <value>Enter a valid email address (e.g., name@example.com).</value>
   </data>
-  <data name="DateOfBirth_Label" xml:space="preserve">
-    <value>Date of birth</value>
-  </data>
-  <data name="Country_Label" xml:space="preserve">
-    <value>Country</value>
+  <data name="Password_Label" xml:space="preserve">
+    <value>Password</value>
   </data>
   <data name="Password_Hint" xml:space="preserve">
     <value>Choose a strong password with at least 8 characters.</value>
   </data>
-  <data name="Bio_Label" xml:space="preserve">
-    <value>Bio</value>
+  <data name="Website_Label" xml:space="preserve">
+    <value>Website</value>
   </data>
-  <data name="AgreeToTerms_Label" xml:space="preserve">
-    <value>Agree to Terms and Conditions</value>
+  <data name="Website_Hint" xml:space="preserve">
+    <value>Enter your personal or company website URL.</value>
   </data>
   <data name="Age_Label" xml:space="preserve">
     <value>Age</value>
@@ -186,7 +156,46 @@
   <data name="Age_Hint" xml:space="preserve">
     <value>Enter your age (must be 18 or older).</value>
   </data>
-  <data name="Email_Label" xml:space="preserve">
-    <value>Email adress</value>
+  <data name="Bio_Label" xml:space="preserve">
+    <value>Bio</value>
+  </data>
+  <data name="Bio_Hint" xml:space="preserve">
+    <value>Write a short biography about yourself.</value>
+  </data>
+  <data name="Country_Label" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="Country_Hint" xml:space="preserve">
+    <value>Select your country of residence.</value>
+  </data>
+  <data name="Gender_Label" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="Gender_Hint" xml:space="preserve">
+    <value>Select your gender identity.</value>
+  </data>
+  <data name="AgreeToTerms_Label" xml:space="preserve">
+    <value>Agree to Terms and Conditions</value>
+  </data>
+  <data name="AgreeToTerms_Hint" xml:space="preserve">
+    <value>You must agree to continue.</value>
+  </data>
+  <data name="Interests_Label" xml:space="preserve">
+    <value>What is your interests?</value>
+  </data>
+  <data name="DateOfBirth_Label" xml:space="preserve">
+    <value>Date of birth</value>
+  </data>
+  <data name="DateOfBirth_Hint" xml:space="preserve">
+    <value>Enter your date of birth</value>
+  </data>
+  <data name="Page_Title" xml:space="preserve">
+    <value>Forms</value>
+  </data>
+  <data name="Page_Description" xml:space="preserve">
+    <value>The &lt;code&gt;&amp;lt;fdcp-form&amp;gt;&lt;/code&gt; component helps you build your own form with minumum implementation. Most of the work gets done in the model. The following example present you with a form coded a sample model defined on the server-side. Input fields are then assigned to properties of the model.</value>
+  </data>
+  <data name="Sample_Form" xml:space="preserve">
+    <value>Sample form</value>
   </data>
 </root>

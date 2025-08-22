@@ -189,4 +189,13 @@
   <data name="DateOfBirth_Hint" xml:space="preserve">
     <value>Entrez votre date de naissance</value>
   </data>
+  <data name="Page_Title" xml:space="preserve">
+    <value>Formulaires</value>
+  </data>
+  <data name="Page_Description" xml:space="preserve">
+    <value>La composante &lt;code&gt;&amp;lt;fdcp-form&amp;gt;&lt;/code&gt; vous aide à construire vos propres formulaires avec une minimum d'efforts. La plupart du travail se fait à la définition du modèle. L'exemple suivant vous présente un formulaire basé sur un modèle défini du coté-serveur. Les champs sont alors associés aux propriétés du modèle.</value>
+  </data>
+  <data name="Sample_Form" xml:space="preserve">
+    <value>Exemple d'un formulaire</value>
+  </data>
 </root>
